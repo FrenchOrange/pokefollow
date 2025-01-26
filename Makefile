@@ -1,6 +1,5 @@
 roms := \
 	pokecrystal.gbc \
-	pokecrystal_au.gbc \
 	pokecrystal_debug.gbc \
 
 rom_obj := \
@@ -24,7 +23,6 @@ rom_obj := \
 	lib/mobile/mail.o
 
 pokecrystal_obj         := $(rom_obj:.o=.o)
-pokecrystal_au_obj      := $(rom_obj:.o=_au.o)
 pokecrystal_debug_obj   := $(rom_obj:.o=_debug.o)
 
 
@@ -46,14 +44,13 @@ RGBLINK ?= $(RGBDS)rgblink
 ### Build targets
 
 .SUFFIXES:
-.PHONY: all crystal crystal_au crystal_debug clean tidy compare tools
+.PHONY: all crystal crystal_debug clean tidy compare tools
 .SECONDEXPANSION:
 .PRECIOUS:
 .SECONDARY:
 
 all: crystal
 crystal:         pokecrystal.gbc
-crystal_au:      pokecrystal_au.gbc
 crystal_debug:   pokecrystal_debug.gbc
 
 clean: tidy
@@ -76,7 +73,6 @@ tidy:
 	      $(roms:.gbc=.sym) \
 	      $(roms:.gbc=.map) \
 	      $(pokecrystal_obj) \
-	      $(pokecrystal_au_obj) \
 	      $(pokecrystal_debug_obj) \
 	      rgbdscheck.o
 	$(MAKE) clean -C tools/
@@ -95,7 +91,6 @@ RGBASMFLAGS += -E
 endif
 
 $(pokecrystal_obj):         RGBASMFLAGS +=
-$(pokecrystal_au_obj):      RGBASMFLAGS += -D _CRYSTAL_AU
 $(pokecrystal_debug_obj):   RGBASMFLAGS += -D _DEBUG
 
 rgbdscheck.o: rgbdscheck.asm
@@ -118,14 +113,12 @@ endef
 
 # Dependencies for shared objects objects
 $(foreach obj, $(pokecrystal_obj), $(eval $(call DEP,$(obj),$(obj:.o=.asm))))
-$(foreach obj, $(pokecrystal_au_obj), $(eval $(call DEP,$(obj),$(obj:_au.o=.asm))))
 $(foreach obj, $(pokecrystal_debug_obj), $(eval $(call DEP,$(obj),$(obj:_debug.o=.asm))))
 
 endif
 
 
 pokecrystal_opt         = -Cjv -t PM_CRYSTAL -i BYTE -n 0 -k 01 -l 0x33 -m 0x10 -r 3 -p 0
-pokecrystal_au_opt      = -Cjv -t PM_CRYSTAL -i BYTU -n 0 -k 01 -l 0x33 -m 0x10 -r 3 -p 0
 pokecrystal_debug_opt   = -Cjv -t PM_CRYSTAL -i BYTE -n 0 -k 01 -l 0x33 -m 0x10 -r 3 -p 0
 
 %.gbc: $$(%_obj) layout.link
