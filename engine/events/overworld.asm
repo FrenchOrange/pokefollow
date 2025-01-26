@@ -407,6 +407,15 @@ UsedSurfScript:
 	callasm .stubbed_fn
 
 	readmem wSurfingPlayerState
+	ifequal PLAYER_SURF_PIKA, .pika_surf
+	setval (PAL_NPC_BLUE << 4)
+	jump .apply_palette
+.pika_surf
+	setval (PAL_NPC_RED << 4)
+.apply_palette
+	special SetPlayerPalette
+
+	readmem wSurfingPlayerState
 	writevar VAR_MOVEMENT
 
 	special UpdatePlayerSprite
@@ -858,6 +867,7 @@ EscapeRopeOrDig:
 	applymovement PLAYER, .DigOut
 	farscall Script_AbortBugContest
 	special WarpToSpawnPoint
+	callasm ResetPlayerPalette
 	loadvar VAR_MOVEMENT, PLAYER_NORMAL
 	newloadmap MAPSETUP_DOOR
 	playsound SFX_WARP_FROM
