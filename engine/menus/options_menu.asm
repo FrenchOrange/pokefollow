@@ -466,11 +466,17 @@ Options_Frame:
 .RightPressed:
 	ld a, [hl]
 	inc a
+	cp $9
+	jr nz, .Save
+	xor a
 	jr .Save
 
 .LeftPressed:
 	ld a, [hl]
 	dec a
+	cp $ff
+	jr nz, .Save
+	ld a, $8
 
 .Save:
 	maskbits NUM_FRAMES
