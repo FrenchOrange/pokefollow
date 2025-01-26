@@ -642,9 +642,10 @@ _CGB_TrainerCard:
 	ld a, PRYCE
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
-	ld a, PREDEFPAL_CGB_BADGE
-	call GetPredefPal
-	call LoadHLPaletteIntoDE
+	ld hl, .JohtoBadgePalettes
+	ld bc, 8 palettes
+	ld a, BANK(wOBPals1)
+	call FarCopyWRAM
 
 	; fill screen with opposite-gender palette for the card border
 	hlcoord 0, 0, wAttrmap
@@ -721,6 +722,9 @@ _CGB_TrainerCard:
 	ldh [hCGBPalUpdate], a
 	ret
 
+.JohtoBadgePalettes:
+INCLUDE "gfx/trainer_card/johto_badges.pal"
+
 _CGB_TrainerCardKanto:
 	ld de, wBGPals1
 	xor a ; CHRIS & MISTY
@@ -747,9 +751,10 @@ _CGB_TrainerCardKanto:
 	ld a, BLUE
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
-	ld a, PREDEFPAL_CGB_BADGE
-	call GetPredefPal
-	call LoadHLPaletteIntoDE
+	ld hl, .KantoBadgePalettes
+	ld bc, 8 palettes
+	ld a, BANK(wOBPals1)
+	call FarCopyWRAM
 
 	; fill screen with opposite-gender palette for the card border
 	hlcoord 0, 0, wAttrmap
@@ -817,6 +822,9 @@ _CGB_TrainerCardKanto:
 	ld a, TRUE
 	ldh [hCGBPalUpdate], a
 	ret
+
+.KantoBadgePalettes:
+INCLUDE "gfx/trainer_card/kanto_badges.pal"
 
 _CGB_MoveList:
 	ld de, wBGPals1
