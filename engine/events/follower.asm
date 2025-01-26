@@ -292,11 +292,11 @@ DancingHappilyText:
 	done
 
 DefaultInteraction:
+	applymovement FOLLOWER, .followerjumptest
 	opentext
 	followcry
 	random 50
 	ifequal 1, .give_item
-	applymovement FOLLOWER, .followerjumptest
 	writetext .text
 	closetext
 	end
