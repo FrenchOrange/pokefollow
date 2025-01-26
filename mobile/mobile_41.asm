@@ -1112,4 +1112,4 @@ Function10650a: ; unreferenced
 	ret
 
 MobileDialingFrameGFX:
-INCBIN "gfx/mobile/dialing_frame.2bpp"
+	ret

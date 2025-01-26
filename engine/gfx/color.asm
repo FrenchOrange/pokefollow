@@ -156,10 +156,8 @@ Intro_LoadMagikarpPalettes: ; unreferenced
 	ret
 
 .MagikarpBGPal:
-INCLUDE "gfx/intro/gs_magikarp_bg.pal"
-
 .MagikarpOBPal:
-INCLUDE "gfx/intro/gs_magikarp_ob.pal"
+	ret
 
 Intro_LoadAllPal0: ; unreferenced
 	call CheckCGB
@@ -1317,14 +1315,9 @@ INCLUDE "gfx/diploma/diploma.pal"
 PartyMenuOBPals:
 INCLUDE "gfx/stats/party_menu_ob.pal"
 
-UnusedBattleObjectPals: ; unreferenced
-INCLUDE "gfx/battle_anims/unused_battle_anims.pal"
-
 UnusedGSTitleBGPals:
-INCLUDE "gfx/title/unused_gs_bg.pal"
-
 UnusedGSTitleOBPals:
-INCLUDE "gfx/title/unused_gs_fg.pal"
+	ret
 
 MalePokegearPals:
 INCLUDE "gfx/pokegear/pokegear.pal"
@@ -1346,7 +1339,7 @@ SetFirstOBJPalette::
 	jp ApplyPals
 
 BetaPokerPals:
-INCLUDE "gfx/beta_poker/beta_poker.pal"
+	ret
 
 SlotMachinePals:
 INCLUDE "gfx/slots/slots.pal"

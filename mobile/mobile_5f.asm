@@ -81,14 +81,10 @@ Function17c000:
 	ret
 
 HaveWantGFX:
-INCBIN "gfx/mobile/havewant.2bpp"
-
 MobileSelectGFX:
-INCBIN "gfx/mobile/select.2bpp"
-
 HaveWantMap:
 ; Interleaved tile/palette map.
-INCBIN "gfx/mobile/havewant_map.bin"
+	ret
 
 HaveWantPals:
 ; BG and OBJ palettes.
@@ -3525,16 +3521,10 @@ Function17e6de:
 	ret
 
 PokemonNewsGFX:
-INCBIN "gfx/mobile/pokemon_news.2bpp"
-
 PostalMarkGFX:
-INCBIN "gfx/font/postal_mark.2bpp"
-
 PokemonNewsTileAttrmap:
-INCBIN "gfx/mobile/pokemon_news.bin"
-
 PokemonNewsPalettes:
-INCLUDE "gfx/mobile/pokemon_news.pal"
+	ret
 
 RunMobileScript::
 	ld a, $6

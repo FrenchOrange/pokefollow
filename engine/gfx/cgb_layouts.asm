@@ -983,4 +983,4 @@ GS_CGB_MysteryGift: ; unreferenced
 	ret
 
 .MysteryGiftPalette:
-INCLUDE "gfx/mystery_gift/gs_mystery_gift.pal"
+	ret

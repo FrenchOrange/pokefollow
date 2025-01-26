@@ -6904,10 +6904,8 @@ Unknown_10327a:
 	db $00, $00, $01, $03
 
 MobileTradeLightsGFX:
-INCBIN "gfx/mobile/mobile_trade_lights.2bpp"
-
 MobileTradeLightsPalettes:
-INCLUDE "gfx/mobile/mobile_trade_lights.pal"
+	ret
 
 Function103302:
 	call Function103309

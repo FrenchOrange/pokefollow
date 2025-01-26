@@ -587,4 +587,4 @@ MemoryGame_InterpretJoypad_AnimateCursor:
 	ret
 
 MemoryGameLZ:
-INCBIN "gfx/memory_game/memory_game.2bpp.lz"
+	ret

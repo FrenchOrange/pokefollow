@@ -8,14 +8,9 @@ gfx/battle/dude.2bpp.lz: LZFLAGS += --align 4
 
 gfx/diploma/diploma.2bpp.lz: LZFLAGS += --method 8 --align 1
 
-gfx/memory_game/memory_game.2bpp.lz: LZFLAGS += --method 2 --align 4
-
 gfx/intro/%.lz: LZFLAGS += --align 4
 gfx/intro/suicune_close.2bpp.lz: LZFLAGS += --method 2 --align 4
 gfx/intro/unown_back.2bpp.lz: LZFLAGS += --method 2 --align 4
-
-gfx/mobile/mobile_trade.%.lz: LZFLAGS += --align 4
-gfx/mobile/mobile_trade_sprites.2bpp.lz: LZFLAGS += --align 4
 
 gfx/new_game/shrink1.2bpp.lz: LZFLAGS += --align 4
 gfx/new_game/shrink2.2bpp.lz: LZFLAGS += --align 4
@@ -25,7 +20,6 @@ gfx/pc/pc.2bpp.lz: LZFLAGS = --compressor null --method 1 --align 1
 gfx/player/chris_back.2bpp.lz: LZFLAGS += --align 4
 
 gfx/pokedex/pokedex.2bpp.lz: LZFLAGS += --method 8 --align 1
-gfx/pokedex/pokedex_sgb.2bpp.lz: LZFLAGS += --method 8 --align 1
 gfx/pokedex/question_mark.2bpp.lz: LZFLAGS += --align 4
 gfx/pokedex/slowpoke.2bpp.lz: LZFLAGS = --compressor null --method 1 --align 1
 

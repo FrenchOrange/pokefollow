@@ -287,13 +287,9 @@ Function170d02:
 	ret
 
 PichuAnimatedMobileGFX:
-INCBIN "gfx/mobile/pichu_animated.2bpp.lz"
-
 ElectroBallMobileGFX:
-INCBIN "gfx/mobile/electro_ball.2bpp.lz"
-
 PichuBorderMobileGFX:
-INCBIN "gfx/mobile/pichu_border.2bpp"
+	ret
 
 Function1719c8:
 	ldh a, [hInMenu]
@@ -747,28 +743,14 @@ Function171d2b:
 	ret
 
 MobilePasswordPalettes:
-INCLUDE "gfx/mobile/mobile_password.pal"
-
 AsciiFontGFX:
-INCBIN "gfx/mobile/ascii_font.2bpp"
-
 PasswordTopTilemap:
-INCBIN "gfx/mobile/password_top.tilemap"
-
 PasswordBottomTilemap:
-INCBIN "gfx/mobile/password_bottom.tilemap"
-
 PasswordShiftTilemap:
-INCBIN "gfx/mobile/password_shift.tilemap"
-
 ChooseMobileCenterTilemap:
-INCBIN "gfx/mobile/mobile_center.tilemap"
-
 MobilePasswordAttrmap:
-INCBIN "gfx/mobile/password.attrmap"
-
 ChooseMobileCenterAttrmap:
-INCBIN "gfx/mobile/mobile_center.attrmap"
+	ret
 
 PasswordSlowpokeLZ:
 INCBIN "gfx/pokedex/slowpoke.2bpp.lz"
@@ -863,10 +845,6 @@ Palette_172edf:
 	RGB  0,  0,  0
 
 Stadium2N64GFX:
-INCBIN "gfx/mobile/stadium2_n64.2bpp"
-
 Stadium2N64Tilemap:
-INCBIN "gfx/mobile/stadium2_n64.tilemap"
-
 Stadium2N64Attrmap:
-INCBIN "gfx/mobile/stadium2_n64.attrmap"
+	ret

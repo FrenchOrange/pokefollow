@@ -97,20 +97,11 @@ UnusedTitleScreen: ; unreferenced
 	ret
 
 UnusedTitleBG_GFX:
-INCBIN "gfx/title/old_bg.2bpp"
-
 UnusedTitleBG_Tilemap:
-; 32x32 (alternating tiles and attributes)
-INCBIN "gfx/title/old_bg.tilemap"
-
 UnusedTitleBG_Palettes:
-INCLUDE "gfx/title/old_bg.pal"
-
 UnusedTitleFG_GFX:
-INCBIN "gfx/title/old_fg.2bpp"
-
 UnusedTitleFG_Palettes:
-INCLUDE "gfx/title/old_fg.pal"
+	ret
 
 UnusedTitleFG_OAM:
 	dbsprite  7,  3,  0,  0, $00, 1
