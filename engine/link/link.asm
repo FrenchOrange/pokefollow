@@ -67,11 +67,7 @@ Gen2ToGen1LinkComms:
 .player_1
 	ld de, MUSIC_NONE
 	call PlayMusic
-if DEF(_CRYSTAL11_VC)
-	ld c, 26
-else
 	ld c, 3
-endc
 	call DelayFrames
 	xor a
 	ldh [rIF], a
@@ -228,11 +224,7 @@ Gen2ToGen2LinkComms:
 .player_1
 	ld de, MUSIC_NONE
 	call PlayMusic
-if DEF(_CRYSTAL11_VC)
-	ld c, 26
-else
 	ld c, 3
-endc
 	call DelayFrames
 	xor a
 	ldh [rIF], a
@@ -2185,11 +2177,7 @@ GetIncompatibleMonName:
 	ret
 
 EnterTimeCapsule:
-if DEF(_CRYSTAL11_VC)
-	ld c, 26
-else
 	ld c, 10
-endc
 	call DelayFrames
 	ld a, $4
 	call Link_EnsureSync
@@ -2402,11 +2390,7 @@ CheckLinkTimeout_Gen2:
 	ld a, $6
 	ld [wPlayerLinkAction], a
 	ld hl, wLinkTimeoutFrames
-if DEF(_CRYSTAL11_VC)
-	ld a, $3
-else
 	ld a, 1
-endc
 	ld [hli], a
 	ld [hl], 50
 	call Link_CheckCommunicationError
@@ -2465,11 +2449,7 @@ Link_CheckCommunicationError:
 	ret
 
 .AcknowledgeSerial:
-if DEF(_CRYSTAL11_VC)
-	ld b, 26
-else
 	ld b, 10
-endc
 .loop
 	call DelayFrame
 	call LinkDataReceived

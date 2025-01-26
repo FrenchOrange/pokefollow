@@ -1584,22 +1584,14 @@ _LinkBattleSendReceiveAction:
 	inc a
 	jr z, .waiting
 
-if DEF(_CRYSTAL11_VC)
-	ld b, 26
-else
 	ld b, 10
-endc
 .receive
 	call DelayFrame
 	call LinkTransfer
 	dec b
 	jr nz, .receive
 
-if DEF(_CRYSTAL11_VC)
-	ld b, 26
-else
 	ld b, 10
-endc
 .acknowledge
 	call DelayFrame
 	call LinkDataReceived

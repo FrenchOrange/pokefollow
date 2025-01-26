@@ -74,11 +74,7 @@ _UnownPrinter:
 	jr nz, .pressed_b
 
 	ldh a, [hJoyPressed]
-if DEF(_CRYSTAL11_VC)
-	and NO_INPUT
-else
 	and A_BUTTON
-endc
 	jr nz, .pressed_a
 
 	call .LeftRight

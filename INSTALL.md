@@ -151,20 +151,10 @@ To build **pokecrystal.gbc**:
 make
 ```
 
-To build **pokecrystal11.gbc**:
-
-```bash
-make crystal11
-```
-
 ### Build with a local rgbds version
 
 If you have different projects that require different versions of `rgbds`, it might not be convenient to install rgbds 0.7.0 globally. Instead, you can put its files in a directory within pokecrystal, such as `pokecrystal/rgbds-0.7.0/`. Then specify it when you run `make`:
 
 ```bash
 make RGBDS=rgbds-0.7.0/
-```
-
-```bash
-make RGBDS=rgbds-0.7.0/ crystal11
 ```

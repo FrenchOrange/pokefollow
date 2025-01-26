@@ -67,11 +67,7 @@ ReadAnyMail:
 	ldh a, [hJoyPressed]
 	and A_BUTTON | B_BUTTON | START
 	jr z, .loop
-if DEF(_CRYSTAL11_VC)
-	and NO_INPUT
-else
 	and START
-endc
 	jr nz, .pressed_start
 	ret
 
