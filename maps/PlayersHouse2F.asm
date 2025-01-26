@@ -216,6 +216,55 @@ PlayersRadioText4:
 	line "#MON CHANNEL…"
 	done
 
+DebugSign:
+	setflag ENGINE_POKEDEX
+	setflag ENGINE_POKEGEAR
+	setflag ENGINE_RADIO_CARD
+	setflag ENGINE_MAP_CARD
+	setflag ENGINE_ZEPHYRBADGE
+	setflag ENGINE_HIVEBADGE
+	setflag ENGINE_PLAINBADGE
+	setflag ENGINE_FOGBADGE
+	setflag ENGINE_MINERALBADGE
+	setflag ENGINE_STORMBADGE
+	setflag ENGINE_RISINGBADGE
+	setflag ENGINE_GLACIERBADGE
+	setflag ENGINE_BOULDERBADGE
+	setflag ENGINE_CASCADEBADGE
+	setflag ENGINE_THUNDERBADGE
+	setflag ENGINE_RAINBOWBADGE
+	setflag ENGINE_SOULBADGE
+	setflag ENGINE_MARSHBADGE
+	setflag ENGINE_VOLCANOBADGE
+	setflag ENGINE_EARTHBADGE
+	giveitem BICYCLE
+	giveitem MASTER_BALL, 99
+	giveitem RARE_CANDY, 99
+	giveitem MAX_REPEL, 99
+	giveitem ESCAPE_ROPE, 99
+	giveitem BERRY, 99
+	giveitem HM_CUT
+	giveitem HM_FLY
+	giveitem HM_SURF
+	giveitem HM_STRENGTH
+	giveitem HM_FLASH
+	giveitem HM_WHIRLPOOL
+	giveitem HM_WATERFALL
+	giveitem TM_ROCK_SMASH, 99
+	giveitem TM_HEADBUTT, 99
+	opentext
+	givepoke FERALIGATR, 100
+	givepoke PIDGEOT, 100
+	givepoke LAPRAS, 100
+	givepoke PIKACHU, 100
+	givepoke JIGGLYPUFF, 100
+	closetext
+	playsound SFX_WARP_TO
+	special ClearBGPalettesBufferScreen
+	waitsfx
+	warp ROUTE_23, 11, 06
+	end
+
 PlayersHouse2F_MapEvents:
 	db 0, 0 ; filler
 
@@ -229,6 +278,7 @@ PlayersHouse2F_MapEvents:
 	bg_event  3,  1, BGEVENT_READ, PlayersHouseRadioScript
 	bg_event  5,  1, BGEVENT_READ, PlayersHouseBookshelfScript
 	bg_event  6,  0, BGEVENT_IFSET, PlayersHousePosterScript
+	bg_event  1,  0, BGEVENT_READ, DebugSign
 
 	def_object_events
 	object_event  4,  2, SPRITE_CONSOLE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, PlayersHouseGameConsoleScript, EVENT_PLAYERS_HOUSE_2F_CONSOLE
