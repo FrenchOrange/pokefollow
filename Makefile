@@ -194,14 +194,11 @@ gfx/pokemon/unown_%/front.2bpp: rgbgfx += --colors gbc:$(@:front.2bpp=normal.gbc
 
 ### Misc file-specific graphics rules
 
-gfx/pokemon/spearow/normal.gbcpal: tools/gbcpal += --reverse
 gfx/pokemon/fearow/normal.gbcpal: tools/gbcpal += --reverse
 gfx/pokemon/farfetch_d/normal.gbcpal: tools/gbcpal += --reverse
-gfx/pokemon/hitmonlee/normal.gbcpal: tools/gbcpal += --reverse
 gfx/pokemon/scyther/normal.gbcpal: tools/gbcpal += --reverse
 gfx/pokemon/jynx/normal.gbcpal: tools/gbcpal += --reverse
 gfx/pokemon/porygon/normal.gbcpal: tools/gbcpal += --reverse
-gfx/pokemon/azumarill/normal.gbcpal: tools/gbcpal += --reverse
 gfx/pokemon/porygon2/normal.gbcpal: tools/gbcpal += --reverse
 
 gfx/trainers/swimmer_m.gbcpal: tools/gbcpal += --reverse

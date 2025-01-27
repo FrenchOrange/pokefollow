@@ -1,27 +1,27 @@
 	; DebugColor_GFX tile IDs
-	const_def $6a
-	const DEBUGTEST_TICKS_1 ; $6a
-	const DEBUGTEST_TICKS_2 ; $6b
-	const DEBUGTEST_WHITE   ; $6c
-	const DEBUGTEST_LIGHT   ; $6d
-	const DEBUGTEST_DARK    ; $6e
-	const DEBUGTEST_BLACK   ; $6f
-	const DEBUGTEST_0       ; $70
-	const DEBUGTEST_1       ; $71
-	const DEBUGTEST_2       ; $72
-	const DEBUGTEST_3       ; $73
-	const DEBUGTEST_4       ; $74
-	const DEBUGTEST_5       ; $75
-	const DEBUGTEST_6       ; $76
-	const DEBUGTEST_7       ; $77
-	const DEBUGTEST_8       ; $78
-	const DEBUGTEST_9       ; $79
-	const DEBUGTEST_A       ; $7a
-	const DEBUGTEST_B       ; $7b
-	const DEBUGTEST_C       ; $7c
-	const DEBUGTEST_D       ; $7d
-	const DEBUGTEST_E       ; $7e
-	const DEBUGTEST_F       ; $7f
+	const_def $5a
+	const DEBUGTEST_TICKS_1 ; $5a
+	const DEBUGTEST_TICKS_2 ; $5b
+	const DEBUGTEST_WHITE   ; $5c
+	const DEBUGTEST_LIGHT   ; $5d
+	const DEBUGTEST_DARK    ; $5e
+	const DEBUGTEST_BLACK   ; $5f
+	const DEBUGTEST_0       ; $60
+	const DEBUGTEST_1       ; $61
+	const DEBUGTEST_2       ; $62
+	const DEBUGTEST_3       ; $63
+	const DEBUGTEST_4       ; $64
+	const DEBUGTEST_5       ; $65
+	const DEBUGTEST_6       ; $66
+	const DEBUGTEST_7       ; $67
+	const DEBUGTEST_8       ; $68
+	const DEBUGTEST_9       ; $69
+	const DEBUGTEST_A       ; $6a
+	const DEBUGTEST_B       ; $6b
+	const DEBUGTEST_C       ; $6c
+	const DEBUGTEST_D       ; $6d
+	const DEBUGTEST_E       ; $6e
+	const DEBUGTEST_F       ; $6f
 
 	; DebugColorMain.Jumptable indexes
 	const_def
@@ -32,21 +32,12 @@
 	const DEBUGCOLORMAIN_INITTMHM       ; 4
 	const DEBUGCOLORMAIN_TMHMJOYPAD     ; 5
 
-DebugColorPicker: ; unreferenced
+_DebugColorPicker:
 ; A debug menu to test monster and trainer palettes at runtime.
-	ldh a, [hCGB]
-	and a
-	jr nz, .cgb
-	ldh a, [hSGB]
-	and a
-	ret z
-
-.cgb
-	ldh a, [hInMenu]
-	push af
-	ld a, TRUE
-	ldh [hInMenu], a
-
+	ld hl, wOptions
+	call ClearBGPalettes
+	call ClearSprites
+	call ClearTilemap
 	call DisableLCD
 	call DebugColor_InitVRAM
 	call DebugColor_LoadGFX
@@ -54,6 +45,8 @@ DebugColorPicker: ; unreferenced
 	call DebugColor_InitMonOrTrainerColor
 	call EnableLCD
 	ld de, MUSIC_NONE
+	call PlayMusic	
+	ld de, MUSIC_MT_MOON_SQUARE
 	call PlayMusic
 
 	xor a ; DEBUGCOLORMAIN_INITSCREEN
@@ -68,10 +61,14 @@ DebugColorPicker: ; unreferenced
 	call DebugColor_PlaceCursor
 	call DelayFrame
 	jr .loop
-
 .exit
-	pop af
-	ldh [hInMenu], a
+	ld de, MUSIC_NEW_BARK_TOWN
+	call PlayMusic
+	call ClearBGPalettes
+	call ClearTilemap
+	call ClearSprites
+	ld hl, wOptions
+	res 4, [hl]
 	ret
 
 DebugColor_InitMonOrTrainerColor:
@@ -158,6 +155,11 @@ DebugColor_LoadGFX:
 	ld hl, DebugColor_GFX
 	ld de, vTiles2 tile DEBUGTEST_TICKS_1
 	ld bc, 22 tiles
+	call CopyBytes
+
+	ld hl, DebugColor_GFX tile 5
+	ld de, vTiles2 tile $7f
+	ld bc, 1 tiles
 	call CopyBytes
 
 	ld hl, DebugColor_UpArrowGFX
@@ -307,12 +309,12 @@ DebugColor_InitScreen:
 	lb bc, 7, 18
 	ld a, DEBUGTEST_WHITE
 	call DebugColor_FillBoxWithByte
-	hlcoord 11, 0
-	lb bc, 2, 3
+	hlcoord 10, 0
+	lb bc, 1, 4
 	ld a, DEBUGTEST_LIGHT
 	call DebugColor_FillBoxWithByte
-	hlcoord 16, 0
-	lb bc, 2, 3
+	hlcoord 15, 0
+	lb bc, 1, 4
 	ld a, DEBUGTEST_DARK
 	call DebugColor_FillBoxWithByte
 	call DebugColor_LoadRGBMeter
@@ -321,7 +323,7 @@ DebugColor_InitScreen:
 	inc a
 	ld [wCurPartySpecies], a
 	ld [wTextDecimalByte], a
-	hlcoord 0, 1
+	hlcoord 1, 0
 	ld de, wTextDecimalByte
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 3
 	call PrintNum
@@ -329,38 +331,40 @@ DebugColor_InitScreen:
 	and a
 	jr nz, .trainer
 
-; mon
-	ld a, UNOWN_A
-	ld [wUnownLetter], a
-	call GetPokemonName
-	hlcoord 4, 1
+	; mon	
+	ld a, UNOWN_A	
+	ld [wUnownLetter], a	
+	call GetPokemonName	
+	hlcoord 1, 2	
+	call PlaceString	
+	xor a	
+	ld [wBoxAlignment], a	
+	hlcoord 12, 3	
+	call _PrepMonFrontpic	
+	ld de, vTiles2 tile $31	
+	predef GetMonBackpic	
+	ld a, $31	
+	ldh [hGraphicStartTile], a	
+	hlcoord 2, 4	
+	lb bc, 6, 6	
+	predef PlaceGraphic	
+	ld a, [wDebugColorIsShiny]	
+	and a	
+	jr z, .normal	
+; shiny	
+	ld de, .ShinyText	
+	jr .place_text	
+.normal	
+	ld de, .NormalText	
+.place_text	
+	hlcoord 1, 1	
+	call PlaceString	
+	hlcoord 1, 17	
+	ld de, .SwitchText	
 	call PlaceString
-	xor a
-	ld [wBoxAlignment], a
-	hlcoord 12, 3
-	call _PrepMonFrontpic
-	ld de, vTiles2 tile $31
-	predef GetMonBackpic
-	ld a, $31
-	ldh [hGraphicStartTile], a
-	hlcoord 2, 4
-	lb bc, 6, 6
-	predef PlaceGraphic
-
-	ld a, [wDebugColorIsShiny]
-	and a
-	jr z, .normal
-; shiny
-	ld de, .ShinyText
-	jr .place_text
-.normal
-	ld de, .NormalText
-.place_text
-	hlcoord 7, 17
-	call PlaceString
-	hlcoord 0, 17
-	ld de, .SwitchText
-	call PlaceString
+	hlcoord 13, 17	
+	ld de, .ModeText	
+	call PlaceString	
 	jr .done
 
 .trainer
@@ -368,7 +372,13 @@ DebugColor_InitScreen:
 	ld [wTrainerClass], a
 	callfar GetTrainerAttributes
 	ld de, wStringBuffer1
-	hlcoord 4, 1
+	hlcoord 1, 2
+	call PlaceString
+	hlcoord 1, 17
+	ld de, .PokemonModeText
+	call PlaceString
+	hlcoord 13, 17
+	ld de, .ExitText
 	call PlaceString
 	ld de, vTiles2
 	callfar GetTrainerPic
@@ -385,13 +395,17 @@ DebugColor_InitScreen:
 	ret
 
 .ShinyText:
-	db "レア", DEBUGTEST_BLACK, DEBUGTEST_BLACK, "@" ; Rare (shiny)
-
+	db "SHINY@"
 .NormalText:
-	db "ノーマル@" ; Normal
-
+	db "NORMAL@"
 .SwitchText:
-	db DEBUGTEST_A, "きりかえ▶@" ; (A) Switches
+	db DEBUGTEST_A, "▶COLOR@"
+.ModeText:
+	db DEBUGTEST_B, "▶MODE@"
+.PokemonModeText:
+	db DEBUGTEST_A, "▶POKéMON@"
+.ExitText:
+	db DEBUGTEST_B, "▶EXIT@"
 
 DebugColor_LoadRGBMeter:
 	decoord 0, 11, wAttrmap
@@ -472,10 +486,10 @@ DebugColor_UpdatePalettes:
 	ld c, 1
 	call DebugColor_LoadPalettes_White_Col1_Col2_Black
 
-	hlcoord 10, 2
+	hlcoord 10, 1
 	ld de, wDebugLightColor
 	call DebugColor_PrintHexColor
-	hlcoord 15, 2
+	hlcoord 15, 1
 	ld de, wDebugDarkColor
 	call DebugColor_PrintHexColor
 
@@ -566,16 +580,26 @@ DebugColor_Joypad:
 
 .tmhm
 ; Enter the TM/HM checker.
+	ld a, [wDebugColorIsTrainer]
+	and a
+	ret nz
 	ld a, DEBUGCOLORMAIN_INITTMHM
 	ld [wJumptableIndex], a
+	ret
+
+; new
+.exitmode
+	ld hl, wJumptableIndex
+	set 7, [hl]
 	ret
 
 .toggle_shiny
 ; Toggle between the normal and shiny mon colors.
 	ld a, [wDebugColorIsTrainer]
 	and a
-	ret nz
-
+	jr z, .SwapColor
+	jp DebugColorPicker_SwapMode
+.SwapColor
 	ld a, [wDebugColorIsShiny]
 	xor %00000100
 	ld [wDebugColorIsShiny], a
@@ -695,9 +719,15 @@ DebugColor_InitTMHM:
 	ld bc, SCREEN_WIDTH * 8
 	ld a, DEBUGTEST_BLACK
 	call ByteFill
-	hlcoord 2, 12
+	hlcoord 2, 11
 	ld de, DebugColor_AreYouFinishedString
 	call PlaceString
+	hlcoord 1, 17
+	ld de, SwapText_Trainer
+	call PlaceString
+	hlcoord 13, 17
+	ld de, SwapText_Back
+	call PlaceString	
 	xor a
 	ld [wDebugColorCurTMHM], a
 	call DebugColor_PrintTMHMMove
@@ -705,22 +735,26 @@ DebugColor_InitTMHM:
 	ld [wJumptableIndex], a
 	ret
 
+SwapText_Trainer:	
+	db DEBUGTEST_A,"▶TRAINER@"
+	
+SwapText_Back:	
+	db DEBUGTEST_B,"▶BACK@"	
+
 DebugColor_TMHMJoypad:
-	ld hl, hJoyPressed
-	ld a, [hl]
-	and B_BUTTON
+	ld hl, hJoyPressed	
+	ld a, [hl]	
+	and B_BUTTON	
 	jr nz, .cancel
-	call .scroll
+	ld a, [hl]	
+	and A_BUTTON
+	jr nz, DebugColorPicker_SwapMode	
+	call .scroll	
 	ret
 
 .cancel
 	ld a, DEBUGCOLORMAIN_INITSCREEN
 	ld [wJumptableIndex], a
-	ret
-
-.exit ; unreferenced
-	ld hl, wJumptableIndex
-	set 7, [hl]
 	ret
 
 .scroll:
@@ -735,7 +769,7 @@ DebugColor_TMHMJoypad:
 
 .up
 	ld a, [wDebugColorCurTMHM]
-	cp NUM_TM_HM_TUTOR - 1
+	cp NUM_TM_HM_TUTOR -1
 	jr z, .wrap_down
 	inc a
 	jr .done
@@ -758,15 +792,23 @@ DebugColor_TMHMJoypad:
 	ld [wDebugColorCurTMHM], a
 	call DebugColor_PrintTMHMMove
 	ret
+	
+DebugColorPicker_SwapMode:
+	ld a, [wDebugColorIsTrainer]
+	and a
+	jr z, .LoadTrainers
+	xor a
+	jr .ReloadColorPicker
+.LoadTrainers	
+	ld a, 1
+.ReloadColorPicker	
+	ld [wDebugColorIsTrainer], a
+	jp _DebugColorPicker	
 
 DebugColor_PrintTMHMMove:
-	hlcoord 10, 11
+	hlcoord 0, 13
 	call .ClearRow
-	hlcoord 10, 12
-	call .ClearRow
-	hlcoord 10, 13
-	call .ClearRow
-	hlcoord 10, 14
+	hlcoord 0, 14
 	call .ClearRow
 
 	ld a, [wDebugColorCurTMHM]
@@ -776,7 +818,7 @@ DebugColor_PrintTMHMMove:
 	ld a, [wTempTMHM]
 	ld [wPutativeTMHMMove], a
 	call GetMoveName
-	hlcoord 10, 12
+	hlcoord 2, 13
 	call PlaceString
 
 	ld a, [wDebugColorCurTMHM]
@@ -794,10 +836,10 @@ DebugColor_PrintTMHMMove:
 	ret
 
 .AbleText:
-	db "おぼえられる@" ; Learnable
+	db "Can Learn@" ; Learnable
 
-.NotAbleText:
-	db "おぼえられない@" ; Not learnable
+.NotAbleText:	
+	db "Can't Learn@" ; Not learnable
 
 .GetNumberedTMHM:
 	cp NUM_TMS
@@ -810,7 +852,7 @@ DebugColor_PrintTMHMMove:
 	ret
 
 .ClearRow:
-	ld bc, 10
+	ld bc, 20
 	ld a, DEBUGTEST_BLACK
 	call ByteFill
 	ret
@@ -988,9 +1030,9 @@ _DebugColor_PushSGBPals:
 
 DebugColor_PlaceCursor:
 	ld a, DEBUGTEST_BLACK
-	hlcoord 10, 0
+	hlcoord 9, 1
 	ld [hl], a
-	hlcoord 15, 0
+	hlcoord 14, 1
 	ld [hl], a
 	hlcoord 1, 11
 	ld [hl], a
@@ -1017,10 +1059,10 @@ DebugColor_PlaceCursor:
 	and a
 	jr z, .light
 ; dark
-	hlcoord 15, 0
+	hlcoord 14, 1
 	jr .place
 .light
-	hlcoord 10, 0
+	hlcoord 9, 1
 .place
 	ld [hl], "▶"
 
@@ -1058,10 +1100,7 @@ DebugColor_PlaceCursor:
 	ret
 
 DebugColor_AreYouFinishedString:
-	db   "おわりますか？"                        ; Are you finished?
-	next "はい<DOT><DOT><DOT>", DEBUGTEST_A ; YES...(A)
-	next "いいえ<DOT><DOT>", DEBUGTEST_B     ; NO..(B)
-	db   "@"
+	db   "TM/HMs:@"
 
 DebugColor_UpArrowGFX:
 INCBIN "gfx/debug/up_arrow.2bpp"
@@ -1183,67 +1222,6 @@ DebugTileset_LoadPalettes:
 
 	pop af
 	ldh [rSVBK], a
-	ret
-
-DebugColorMain2: ; unreferenced
-	ld hl, hJoyLast
-	ld a, [hl]
-	and SELECT
-	jr nz, .next_palette
-	ld a, [hl]
-	and B_BUTTON
-	jr nz, .cancel
-	call DebugTileset_Joypad
-	ret
-
-.next_palette
-	ld hl, wDebugTilesetCurPalette
-	ld a, [hl]
-	inc a
-	and PALETTE_MASK
-	cp PAL_BG_TEXT
-	jr nz, .palette_ok
-	xor a ; PAL_BG_GRAY
-.palette_ok
-	ld [hl], a
-	decoord 1, 1, 0
-	call DebugColor_DrawAttributeSwatch
-	decoord 6, 1, 0
-	call DebugColor_DrawAttributeSwatch
-	decoord 11, 1, 0
-	call DebugColor_DrawAttributeSwatch
-	decoord 16, 1, 0
-	call DebugColor_DrawAttributeSwatch
-
-	ldh a, [rSVBK]
-	push af
-	ld a, BANK(wBGPals2)
-	ldh [rSVBK], a
-
-	ld hl, wBGPals2
-	ld a, [wDebugTilesetCurPalette]
-	ld bc, 1 palettes
-	call AddNTimes
-	ld de, wDebugPalette
-	ld bc, 1 palettes
-	call CopyBytes
-
-	pop af
-	ldh [rSVBK], a
-
-	ld a, 2
-	ldh [hBGMapMode], a
-	ld c, 3
-	call DelayFrames
-	ld a, 1
-	ldh [hBGMapMode], a
-	ret
-
-.cancel
-	call ClearSprites
-	ldh a, [hWY]
-	xor %11010000
-	ldh [hWY], a
 	ret
 
 DebugTileset_UpdatePalettes:
@@ -1435,10 +1413,4 @@ DebugTileset_CalculatePalette:
 	ld a, e
 	ld [hli], a
 	ld [hl], d
-	ret
-
-.dummy1: ; unreferenced
-	ret
-
-.dummy2: ; unreferenced
 	ret

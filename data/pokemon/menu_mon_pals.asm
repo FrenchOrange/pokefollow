@@ -21,7 +21,7 @@ MenuMonPals::
 	menu_mon_pals GREEN,  GREEN  ; IVYSAUR
 	menu_mon_pals GREEN,  GREEN  ; VENUSAUR
 	menu_mon_pals RED,    BROWN  ; CHARMANDER
-	menu_mon_pals RED,    PINK   ; CHARMELEON
+	menu_mon_pals RED,    BROWN  ; CHARMELEON
 	menu_mon_pals RED,    BLUE   ; CHARIZARD
 	menu_mon_pals BLUE,   GREEN  ; SQUIRTLE
 	menu_mon_pals BLUE,   GREEN  ; WARTORTLE

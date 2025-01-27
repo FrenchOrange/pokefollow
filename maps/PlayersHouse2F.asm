@@ -216,6 +216,19 @@ PlayersRadioText4:
 	line "#MON CHANNEL…"
 	done
 
+DebugColor:
+	opentext
+	writetext NowEnteringText
+	pause 45
+	special ColorPicker
+	closetext
+	end
+
+NowEnteringText:
+	text "NOW ENTERING..."
+	line "COLOR PICKER MENU."
+	done
+
 DebugSign:
 	setflag ENGINE_POKEDEX
 	setflag ENGINE_POKEGEAR
@@ -278,6 +291,7 @@ PlayersHouse2F_MapEvents:
 	bg_event  3,  1, BGEVENT_READ, PlayersHouseRadioScript
 	bg_event  5,  1, BGEVENT_READ, PlayersHouseBookshelfScript
 	bg_event  6,  0, BGEVENT_IFSET, PlayersHousePosterScript
+	bg_event  0,  0, BGEVENT_READ, DebugColor
 	bg_event  1,  0, BGEVENT_READ, DebugSign
 
 	def_object_events

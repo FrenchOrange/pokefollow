@@ -206,12 +206,10 @@ CardFlip:
 	call StartGameCornerGame
 	ret
 
-UnusedMemoryGame:
-	call CheckCoinsAndCoinCase
-	ret c
-	ld a, BANK(_MemoryGame)
-	ld hl, _MemoryGame
-	call StartGameCornerGame
+ColorPicker:
+	call FadeToMenu
+	farcall _DebugColorPicker
+	call ExitAllMenus
 	ret
 
 StartGameCornerGame:
