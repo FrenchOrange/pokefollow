@@ -971,16 +971,16 @@ GetSubstitutePic: ; used only for BANK(GetSubstitutePic)
 	and a
 	jr z, .player
 
-	ld hl, MonsterSpriteGFX + 0 tiles
+	ld hl, SubstituteSpriteGFX + 0 tiles
 	ld de, sScratch + (2 * 7 + 5) tiles
 	call .CopyTile
-	ld hl, MonsterSpriteGFX + 1 tiles
+	ld hl, SubstituteSpriteGFX + 1 tiles
 	ld de, sScratch + (3 * 7 + 5) tiles
 	call .CopyTile
-	ld hl, MonsterSpriteGFX + 2 tiles
+	ld hl, SubstituteSpriteGFX + 2 tiles
 	ld de, sScratch + (2 * 7 + 6) tiles
 	call .CopyTile
-	ld hl, MonsterSpriteGFX + 3 tiles
+	ld hl, SubstituteSpriteGFX + 3 tiles
 	ld de, sScratch + (3 * 7 + 6) tiles
 	call .CopyTile
 
@@ -991,16 +991,16 @@ GetSubstitutePic: ; used only for BANK(GetSubstitutePic)
 	jr .done
 
 .player
-	ld hl, MonsterSpriteGFX + 4 tiles
+	ld hl, SubstituteSpriteGFX + 4 tiles
 	ld de, sScratch + (2 * 6 + 4) tiles
 	call .CopyTile
-	ld hl, MonsterSpriteGFX + 5 tiles
+	ld hl, SubstituteSpriteGFX + 5 tiles
 	ld de, sScratch + (3 * 6 + 4) tiles
 	call .CopyTile
-	ld hl, MonsterSpriteGFX + 6 tiles
+	ld hl, SubstituteSpriteGFX + 6 tiles
 	ld de, sScratch + (2 * 6 + 5) tiles
 	call .CopyTile
-	ld hl, MonsterSpriteGFX + 7 tiles
+	ld hl, SubstituteSpriteGFX + 7 tiles
 	ld de, sScratch + (3 * 6 + 5) tiles
 	call .CopyTile
 
@@ -1018,7 +1018,7 @@ GetSubstitutePic: ; used only for BANK(GetSubstitutePic)
 
 .CopyTile:
 	ld bc, 1 tiles
-	ld a, BANK(MonsterSpriteGFX)
+	ld a, BANK(SubstituteSpriteGFX)
 	call FarCopyBytes
 	ret
 
