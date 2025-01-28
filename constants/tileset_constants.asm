@@ -1,5 +1,5 @@
 ; Tilesets indexes (see data/tilesets.asm)
-	const_def 1
+	const_def
 	const TILESET_JOHTO                ; 01
 	const TILESET_JOHTO_MODERN         ; 02
 	const TILESET_KANTO                ; 03
@@ -31,7 +31,7 @@
 	const TILESET_ICE_PATH             ; 1d
 	const TILESET_DARK_CAVE            ; 1e
 	const TILESET_FOREST               ; 1f
-DEF NUM_TILESETS EQU const_value - 1
+DEF NUM_TILESETS EQU const_value
 
 ; wTileset struct size
 DEF TILESET_LENGTH EQU 14

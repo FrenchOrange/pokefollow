@@ -35,7 +35,6 @@ _AnimateTileset::
 
 	jp hl
 
-Tileset0Anim:
 TilesetJohtoModernAnim:
 TilesetKantoAnim:
 	dw vTiles2 tile $14, AnimateWaterTile

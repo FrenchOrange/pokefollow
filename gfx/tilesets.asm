@@ -15,15 +15,12 @@ INCBIN "data/tilesets/kanto_metatiles.bin"
 TilesetKantoColl::
 INCLUDE "data/tilesets/kanto_collision.asm"
 
-Tileset0GFX::
 TilesetJohtoGFX::
 INCBIN "gfx/tilesets/johto.2bpp.lz"
 
-Tileset0Meta::
 TilesetJohtoMeta::
 INCBIN "data/tilesets/johto_metatiles.bin"
 
-Tileset0Coll::
 TilesetJohtoColl::
 INCLUDE "data/tilesets/johto_collision.asm"
 
@@ -35,15 +32,6 @@ INCBIN "data/tilesets/ice_path_metatiles.bin"
 
 TilesetIcePathColl::
 INCLUDE "data/tilesets/ice_path_collision.asm"
-
-TilesetPlayersRoomGFX::
-INCBIN "gfx/tilesets/players_room.2bpp.lz"
-
-TilesetPlayersRoomMeta::
-INCBIN "data/tilesets/players_room_metatiles.bin"
-
-TilesetPlayersRoomColl::
-INCLUDE "data/tilesets/players_room_collision.asm"
 
 
 SECTION "Tileset Data 2", ROMX
@@ -303,7 +291,6 @@ INCLUDE "data/tilesets/ruins_of_alph_collision.asm"
 
 SECTION "Tileset Data 8", ROMX
 
-Tileset0Attr::
 TilesetJohtoAttr::
 INCBIN "data/tilesets/johto_attributes.bin"
 
@@ -378,6 +365,15 @@ INCBIN "data/tilesets/tower_attributes.bin"
 
 
 SECTION "Tileset Data 10", ROMX
+
+TilesetPlayersRoomGFX::
+INCBIN "gfx/tilesets/players_room.2bpp.lz"
+
+TilesetPlayersRoomMeta::
+INCBIN "data/tilesets/players_room_metatiles.bin"
+
+TilesetPlayersRoomColl::
+INCLUDE "data/tilesets/players_room_collision.asm"
 
 TilesetCaveAttr::
 TilesetDarkCaveAttr::
