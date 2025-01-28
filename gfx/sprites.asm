@@ -72,7 +72,7 @@ BlackBeltSpriteGFX::           INCBIN "gfx/sprites/black_belt.2bpp"
 ReceptionistSpriteGFX::        INCBIN "gfx/sprites/receptionist.2bpp"
 OfficerSpriteGFX::             INCBIN "gfx/sprites/officer.2bpp"
 CalSpriteGFX::                 INCBIN "gfx/sprites/cal.2bpp"
-SlowpokeSpriteGFX::            INCBIN "gfx/sprites/slowpoke.2bpp"
+RocketSlowpokeSpriteGFX::      INCBIN "gfx/sprites/rocket_slowpoke.2bpp"
 CaptainSpriteGFX::             INCBIN "gfx/sprites/captain.2bpp"
 BigLaprasSpriteGFX::           INCBIN "gfx/sprites/big_lapras.2bpp"
 GymGuideSpriteGFX::            INCBIN "gfx/sprites/gym_guide.2bpp"
@@ -109,4 +109,6 @@ StandingYoungsterSpriteGFX::   INCBIN "gfx/sprites/standing_youngster.2bpp"
 
 SECTION "Sprites 3", ROMX
 
+ChrisRunSpriteGFX::            INCBIN "gfx/sprites/chris_run.2bpp"
+KrisRunSpriteGFX::             INCBIN "gfx/sprites/kris_run.2bpp"
 AnimPokeBallSpriteGFX::        INCBIN "gfx/sprites/anim_pokeball.2bpp"

@@ -1,39 +1,53 @@
 SpriteMons:
 ; entries correspond to SPRITE_* constants past SPRITE_POKEMON
 	table_width 1, SpriteMons
-	db UNOWN
-	db GEODUDE
-	db GROWLITHE
-	db WEEDLE
-	db SHELLDER
-	db ODDISH
-	db GENGAR
+	db BULBASAUR	; Doll
+	db CHARMANDER	; Doll
+	db SQUIRTLE	; Doll
+	db CLEFAIRY	; Doll & OW
+	db DIGLETT	; Doll & OW
+	db GENGAR	; Doll
+	db GEODUDE	; Doll
+	db GRIMER	; Doll
+	db JIGGLYPUFF	; Doll & OW
+	db MACHOP	; Doll & OW
+	db MAGIKARP	; Doll & OW
+	db ODDISH	; Doll
+	db PIKACHU	; Doll
+	db POLIWAG	; Doll
+	db SHELLDER	; Doll
+	db STARYU	; Doll
+	db VOLTORB	; Doll
+	db WEEDLE	; Doll
+	db TENTACOOL	; Doll
+	db UNOWN	; Doll
+	db SLOWPOKE     ; OW onward
+	db SLOWBRO
+	db DRATINI
+	db POLIWRATH
+	db MEOWTH
 	db ZUBAT
-	db MAGIKARP
-	db SQUIRTLE
-	db TOGEPI
-	db BUTTERFREE
-	db DIGLETT
-	db POLIWAG
-	db PIKACHU
-	db CLEFAIRY
-	db CHARMANDER
-	db JYNX
-	db STARMIE
-	db BULBASAUR
-	db JIGGLYPUFF
-	db GRIMER
-	db EKANS
-	db PARAS
-	db TENTACOOL
-	db TAUROS
-	db MACHOP
-	db VOLTORB
-	db LAPRAS
+	db KANGASKHAN
+	db FEAROW
+	db BLISSEY
+	db DODRIO
+	db ELECTRODE
 	db RHYDON
-	db MOLTRES
-	db SNORLAX
+	db MACHOKE
+	db ABRA
 	db GYARADOS
-	db LUGIA
+	db PSYDUCK
+	db NIDORINO
+	db PERSIAN
+	db NIDORAN_M
+	db NIDORAN_F
+	db BAYLEEF
+	db QUAGSIRE
+	db BUTTERFREE
+	db MILTANK
+	db MURKROW
+	db SPRITE_GROWLITHE
+	db SPRITE_MOLTRES
 	db HO_OH
+	db LUGIA
 	assert_table_length NUM_POKEMON_SPRITES
