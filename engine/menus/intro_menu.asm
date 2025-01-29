@@ -67,7 +67,7 @@ NewGame:
 	call OakSpeech
 	call InitializeWorld
 
-	ld a, LANDMARK_NEW_BARK_TOWN
+	ld a, LANDMARK_PALLET_TOWN
 	ld [wPrevLandmark], a
 
 	ld a, SPAWN_HOME
@@ -383,7 +383,7 @@ Continue:
 	ret
 
 .SpawnAfterE4:
-	ld a, SPAWN_NEW_BARK
+	ld a, SPAWN_PALLET_TOWN
 	ld [wDefaultSpawnpoint], a
 	call PostCreditsSpawn
 	jp FinishContinueFunction
