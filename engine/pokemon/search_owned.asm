@@ -48,6 +48,7 @@ MonCheck:
 CheckOwnMonAnywhere:
 ; Check if the player owns any monsters of the species in wScriptVar.
 ; It must exist in either party or PC, and have the player's OT and ID.
+; CheckOwnMon does not check the Day-Care.
 
 	; If there are no monsters in the party,
 	; the player must not own any yet.
@@ -56,7 +57,6 @@ CheckOwnMonAnywhere:
 	and a
 	ret z
 
-; BUG: CheckOwnMon does not check the Day-Care (see docs/bugs_and_glitches.md)
 	ld d, a
 	ld e, 0
 	ld hl, wPartyMon1Species
@@ -222,8 +222,7 @@ CheckOwnMon:
 
 	ld hl, wPlayerName
 
-; BUG: CheckOwnMon only checks the first five letters of OT names (see docs/bugs_and_glitches.md)
-rept NAME_LENGTH_JAPANESE - 2
+rept PLAYER_NAME_LENGTH - 2
 	ld a, [de]
 	cp [hl]
 	jr nz, .notfound

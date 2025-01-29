@@ -1455,7 +1455,6 @@ FishFunction:
 	dw .FishNoFish
 
 .TryFish:
-; BUG: You can fish on top of NPCs (see docs/bugs_and_glitches.md)
 	ld a, [wPlayerState]
 	cp PLAYER_SURF
 	jr z, .fail
@@ -1464,7 +1463,9 @@ FishFunction:
 	call GetFacingTileCoord
 	call GetTilePermission
 	cp WATER_TILE
-	jr z, .facingwater
+	jr nz, .fail
+	farcall CheckFacingObject
+	jr nc, .facingwater
 .fail
 	ld a, $3
 	ret
