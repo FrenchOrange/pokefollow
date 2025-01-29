@@ -383,7 +383,7 @@ Continue:
 	ret
 
 .SpawnAfterE4:
-	ld a, SPAWN_PALLET_TOWN
+	ld a, SPAWN_PALLET
 	ld [wDefaultSpawnpoint], a
 	call PostCreditsSpawn
 	jp FinishContinueFunction
