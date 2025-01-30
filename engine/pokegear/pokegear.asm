@@ -2303,12 +2303,12 @@ Pokedex_GetArea:
 	ld c, 4
 	call Request2bpp
 	call LoadTownMapGFX
-	call FillKantoMap
+	call FillJohtoMap
 	call .PlaceString_MonsNest
 	call TownMapPals
 	hlbgcoord 0, 0, vBGMap1
 	call TownMapBGUpdate
-	call FillJohtoMap
+	call FillKantoMap
 	call .PlaceString_MonsNest
 	call TownMapPals
 	hlbgcoord 0, 0
@@ -2318,7 +2318,7 @@ Pokedex_GetArea:
 	call SetDefaultBGPAndOBP
 	xor a
 	ldh [hBGMapMode], a
-	xor a ; JOHTO_REGION
+	ld a, KANTO_REGION
 	call .GetAndPlaceNest
 .loop
 	call JoyTextDelay
@@ -2349,10 +2349,10 @@ Pokedex_GetArea:
 
 .LeftRightInput:
 	ld a, [hl]
-	and D_LEFT
+	and D_RIGHT
 	jr nz, .left
 	ld a, [hl]
-	and D_RIGHT
+	and D_LEFT
 	jr nz, .right
 	ret
 
@@ -2363,13 +2363,15 @@ Pokedex_GetArea:
 	call ClearSprites
 	ld a, SCREEN_HEIGHT_PX
 	ldh [hWY], a
-	xor a ; JOHTO_REGION
+	ld a, KANTO_REGION
 	call .GetAndPlaceNest
 	ret
 
 .right
-	ld a, [wStatusFlags]
-	bit STATUSFLAGS_HALL_OF_FAME_F, a
+	ld de, EVENT_BEAT_ELITE_FOUR
+	ld b, CHECK_FLAG
+	call EventFlagAction
+
 	ret z
 	ldh a, [hWY]
 	and a
@@ -2377,7 +2379,7 @@ Pokedex_GetArea:
 	call ClearSprites
 	xor a
 	ldh [hWY], a
-	ld a, KANTO_REGION
+	ld a, JOHTO_REGION
 	call .GetAndPlaceNest
 	ret
 
