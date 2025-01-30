@@ -150,26 +150,26 @@ TrainerCard_Page2_LoadGFX:
 	ld hl, vTiles0 tile $00
 	lb bc, BANK(BadgeGFX), 44
 	call Request2bpp
-	ld hl, TrainerCard_JohtoBadgesOAM
+	ld hl, TrainerCard_KantoBadgesOAM
 	call TrainerCard_Page2_3_InitObjectsAndStrings
 	call TrainerCard_IncrementJumptable
 	ret
 
 TrainerCard_Page2_Joypad:
-	ld hl, TrainerCard_JohtoBadgesOAM
+	ld hl, TrainerCard_KantoBadgesOAM
 	call TrainerCard_Page2_3_AnimateBadges
 	ld hl, hJoyLast
 	ld a, [hl]
 	and D_LEFT
 	jr nz, .pressed_left
-	ld a, [wKantoBadges]
+	ld a, [wJohtoBadges]
 	and a
-	jr nz, .has_kanto_badges
+	jr nz, .has_johto_badges
 	ld a, [hl]
 	and A_BUTTON
 	jr nz, .Quit
 	ret
-.has_kanto_badges
+.has_johto_badges
 	ld a, [hl]
 	and D_RIGHT | A_BUTTON
 	jr nz, .pressed_right_a
@@ -198,7 +198,7 @@ TrainerCard_Page3_LoadGFX:
 	call WaitBGMap
 	ld b, SCGB_TRAINER_CARD_KANTO
 	call GetSGBLayout
-	call SetDefaultBGPAndOBP ; this function was called 'SetPalettes' in older versions of pokecrystal
+	call SetDefaultBGPAndOBP
 	call WaitBGMap
 	ld de, LeaderGFX2
 	ld hl, vTiles2 tile $29
@@ -208,13 +208,13 @@ TrainerCard_Page3_LoadGFX:
 	ld hl, vTiles0 tile $00
 	lb bc, BANK(BadgeGFX2), 44
 	call Request2bpp
-	ld hl, TrainerCard_KantoBadgesOAM
+	ld hl, TrainerCard_JohtoBadgesOAM
 	call TrainerCard_Page2_3_InitObjectsAndStrings
 	call TrainerCard_IncrementJumptable
 	ret
 
 TrainerCard_Page3_Joypad:
-	ld hl, TrainerCard_KantoBadgesOAM
+	ld hl, TrainerCard_JohtoBadgesOAM
 	call TrainerCard_Page2_3_AnimateBadges
 	ld hl, hJoyLast
 	ld a, [hl]
@@ -307,9 +307,6 @@ TrainerCard_Page1_PrintDexCaught_GameTime:
 .Dex_PlayTime:
 	db   "#DEX"
 	next "PLAY TIME@"
-
-.Unused: ; unreferenced
-	db "@"
 
 .Badges:
 	db "  BADGES▶@"
@@ -674,9 +671,9 @@ TrainerCard_KantoBadgesOAM:
 
 CardStatusGFX: INCBIN "gfx/trainer_card/card_status.2bpp"
 
-LeaderGFX:  INCBIN "gfx/trainer_card/johto_leaders.2bpp"
-LeaderGFX2: INCBIN "gfx/trainer_card/kanto_leaders.2bpp"
-BadgeGFX:   INCBIN "gfx/trainer_card/johto_badges.2bpp"
-BadgeGFX2:  INCBIN "gfx/trainer_card/kanto_badges.2bpp"
+LeaderGFX: INCBIN "gfx/trainer_card/kanto_leaders.2bpp"
+LeaderGFX2:  INCBIN "gfx/trainer_card/johto_leaders.2bpp"
+BadgeGFX:   INCBIN "gfx/trainer_card/kanto_badges.2bpp"
+BadgeGFX2:  INCBIN "gfx/trainer_card/johto_badges.2bpp"
 
 CardRightCornerGFX: INCBIN "gfx/trainer_card/card_right_corner.2bpp"
