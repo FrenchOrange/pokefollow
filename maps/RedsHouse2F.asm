@@ -38,22 +38,22 @@ NowEnteringText:
 
 DebugSign:
 	opentext
-	; full pokegear
+; full pokegear
 	setflag ENGINE_POKEGEAR
 	setflag ENGINE_PHONE_CARD
 	setflag ENGINE_MAP_CARD
 	setflag ENGINE_RADIO_CARD
 	setflag ENGINE_EXPN_CARD
-	; pokedex
+; pokedex
 	setflag ENGINE_POKEDEX
-	; useful items
+; useful items
 	giveitem BICYCLE
 	giveitem MASTER_BALL, 99
 	giveitem RARE_CANDY, 99
 	giveitem MAX_REPEL, 99
 	giveitem ESCAPE_ROPE, 99
 	giveitem BERRY, 99
-	; useful moves
+; useful moves
 	giveitem HM_CUT
 	giveitem HM_FLY
 	giveitem HM_SURF
@@ -63,7 +63,7 @@ DebugSign:
 	giveitem HM_WATERFALL
 	giveitem TM_ROCK_SMASH, 99
 	giveitem TM_HEADBUTT, 99
-	; all badges
+; all badges
 	setflag ENGINE_ZEPHYRBADGE
 	setflag ENGINE_HIVEBADGE
 	setflag ENGINE_PLAINBADGE
@@ -80,7 +80,7 @@ DebugSign:
 	setflag ENGINE_SOULBADGE
 	setflag ENGINE_VOLCANOBADGE
 	setflag ENGINE_EARTHBADGE
-	; fly anywhere
+; fly anywhere
 	setflag ENGINE_FLYPOINT_NEW_BARK
 	setflag ENGINE_FLYPOINT_CHERRYGROVE
 	setflag ENGINE_FLYPOINT_VIOLET
@@ -105,21 +105,18 @@ DebugSign:
 	setflag ENGINE_FLYPOINT_FUCHSIA
 	setflag ENGINE_FLYPOINT_SAFFRON
 	setflag ENGINE_FLYPOINT_CINNABAR
-	; debug team
+; debug team
 	givepoke FERALIGATR, 100
 	givepoke PIDGEOT, 100
 	givepoke LAPRAS, 100
 	givepoke PIKACHU, 100
 	givepoke JIGGLYPUFF, 100
-	; misc pokemon for testing
-	givepoke PIKACHU, 50
-	givepoke GENGAR, 50
-	givepoke DITTO, 50
 	closetext
-	playsound SFX_WARP_TO
-	special ClearBGPalettesBufferScreen
-	waitsfx
-	warp ROUTE_23, 11, 06
+; warp some place else
+;	playsound SFX_WARP_TO
+;	special ClearBGPalettesBufferScreen
+;	waitsfx
+;	warp ROUTE_23, 11, 06
 	end
 
 RedsHouse2F_MapEvents:
