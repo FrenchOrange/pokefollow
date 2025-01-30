@@ -2240,42 +2240,14 @@ FlyMap:
 .CheckRegion:
 ; The first 46 locations are part of Johto. The rest are in Kanto.
 	cp KANTO_LANDMARK
-	jr nc, .KantoFlyMap
-; Johto fly map
-; Note that .NoKanto should be modified in tandem with this branch
+	jr c, .JohtoFlyMap
+; Kanto fly map
 	push af
-	ld a, JOHTO_FLYPOINT ; first Johto flypoint
-	ld [wTownMapPlayerIconLandmark], a ; first one is default (New Bark Town)
-	ld [wStartFlypoint], a
-	ld a, KANTO_FLYPOINT - 1 ; last Johto flypoint
-	ld [wEndFlypoint], a
-; Fill out the map
-	call FillJohtoMap
-	call .MapHud
-	pop af
-	call TownMapPlayerIcon
-	ret
-
-.KantoFlyMap:
-; The event that there are no flypoints enabled in a map is not
-; accounted for. As a result, if you attempt to select a flypoint
-; when there are none enabled, the game will crash. Additionally,
-; the flypoint selection has a default starting point that
-; can be flown to even if none are enabled.
-; To prevent both of these things from happening when the player
-; enters Kanto, fly access is restricted until Indigo Plateau is
-; visited and its flypoint enabled.
-	push af
-	ld c, SPAWN_INDIGO
-	call HasVisitedSpawn
-	and a
-	jr z, .NoKanto
-; Kanto's map is only loaded if we've visited Indigo Plateau
 	ld a, KANTO_FLYPOINT ; first Kanto flypoint
+	ld [wTownMapPlayerIconLandmark], a ; first one is default (Pallet Town)
 	ld [wStartFlypoint], a
 	ld a, NUM_FLYPOINTS - 1 ; last Kanto flypoint
 	ld [wEndFlypoint], a
-	ld [wTownMapPlayerIconLandmark], a ; last one is default (Indigo Plateau)
 ; Fill out the map
 	call FillKantoMap
 	call .MapHud
@@ -2283,15 +2255,20 @@ FlyMap:
 	call TownMapPlayerIcon
 	ret
 
-.NoKanto:
-; If Indigo Plateau hasn't been visited, we use Johto's map instead
+.JohtoFlyMap:
+	push af
 	ld a, JOHTO_FLYPOINT ; first Johto flypoint
 	ld [wTownMapPlayerIconLandmark], a ; first one is default (New Bark Town)
 	ld [wStartFlypoint], a
 	ld a, KANTO_FLYPOINT - 1 ; last Johto flypoint
 	ld [wEndFlypoint], a
+; Fill out the map
 	call FillJohtoMap
+	call .MapHud
 	pop af
+	call TownMapPlayerIcon
+	ret
+
 .MapHud:
 	call TownMapBubble
 	call TownMapPals
