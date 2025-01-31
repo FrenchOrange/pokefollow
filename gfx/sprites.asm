@@ -71,7 +71,7 @@ GentlemanSpriteGFX::           INCBIN "gfx/sprites/gentleman.2bpp"
 BlackBeltSpriteGFX::           INCBIN "gfx/sprites/black_belt.2bpp"
 ReceptionistSpriteGFX::        INCBIN "gfx/sprites/receptionist.2bpp"
 OfficerSpriteGFX::             INCBIN "gfx/sprites/officer.2bpp"
-CalSpriteGFX::                 INCBIN "gfx/sprites/cal.2bpp"
+JamesSpriteGFX::               INCBIN "gfx/sprites/james.2bpp"
 RocketSlowpokeSpriteGFX::      INCBIN "gfx/sprites/rocket_slowpoke.2bpp"
 CaptainSpriteGFX::             INCBIN "gfx/sprites/captain.2bpp"
 BigLaprasSpriteGFX::           INCBIN "gfx/sprites/big_lapras.2bpp"
@@ -105,7 +105,7 @@ SubstituteSpriteGFX::          INCBIN "gfx/sprites/substitute.2bpp"
 SuicuneSpriteGFX::             INCBIN "gfx/sprites/suicune.2bpp"
 EnteiSpriteGFX::               INCBIN "gfx/sprites/entei.2bpp"
 RaikouSpriteGFX::              INCBIN "gfx/sprites/raikou.2bpp"
-StandingYoungsterSpriteGFX::   INCBIN "gfx/sprites/standing_youngster.2bpp"
+JessieSpriteGFX::              INCBIN "gfx/sprites/jessie.2bpp"
 
 SECTION "Sprites 3", ROMX
 
