@@ -157,7 +157,6 @@ TrainerCard_Page2_LoadGFX:
 
 TrainerCard_Page2_Joypad:
 	ld hl, TrainerCard_KantoBadgesOAM
-	call TrainerCard_Page2_3_AnimateBadges
 	ld hl, hJoyLast
 	ld a, [hl]
 	and D_LEFT
@@ -215,7 +214,6 @@ TrainerCard_Page3_LoadGFX:
 
 TrainerCard_Page3_Joypad:
 	ld hl, TrainerCard_JohtoBadgesOAM
-	call TrainerCard_Page2_3_AnimateBadges
 	ld hl, hJoyLast
 	ld a, [hl]
 	and D_LEFT
@@ -468,16 +466,6 @@ TrainerCard_Page1_PrintGameTime:
 	xor " " ^ $2e ; alternate between space and small colon ($2e) tiles
 	ld [hl], a
 	ret
-
-TrainerCard_Page2_3_AnimateBadges:
-	ldh a, [hVBlankCounter]
-	and %111
-	ret nz
-	ld a, [wTrainerCardBadgeFrameCounter]
-	inc a
-	and %111
-	ld [wTrainerCardBadgeFrameCounter], a
-	jr TrainerCard_Page2_3_OAMUpdate
 
 TrainerCard_Page2_3_OAMUpdate:
 ; copy flag array pointer
