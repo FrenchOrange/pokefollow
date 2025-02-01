@@ -48,8 +48,8 @@ EngineFlags:
 	engine_flag wJohtoBadges, HIVEBADGE
 	engine_flag wJohtoBadges, PLAINBADGE
 	engine_flag wJohtoBadges, FOGBADGE
-	engine_flag wJohtoBadges, MINERALBADGE
 	engine_flag wJohtoBadges, STORMBADGE
+	engine_flag wJohtoBadges, MINERALBADGE
 	engine_flag wJohtoBadges, GLACIERBADGE
 	engine_flag wJohtoBadges, RISINGBADGE
 
