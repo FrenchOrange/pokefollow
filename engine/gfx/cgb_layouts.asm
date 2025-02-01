@@ -630,7 +630,7 @@ _CGB_TrainerCard:
 	ld a, LT_SURGE ; ERIKA
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
-	ld a, JANINE
+	ld a, KOGA
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
 	ld a, SABRINA
@@ -670,34 +670,42 @@ _CGB_TrainerCard:
 	hlcoord 3, 10, wAttrmap
 	lb bc, 3, 3
 	ld a, $2 ; brock
+
 	call FillBoxCGB
 	hlcoord 7, 10, wAttrmap
 	lb bc, 3, 3
 	ld a, $0 ; misty / chris
+
 	call FillBoxCGB
 	hlcoord 11, 10, wAttrmap
 	lb bc, 3, 3
 	ld a, $3 ; lt.surge / erika
+
 	call FillBoxCGB
 	hlcoord 15, 10, wAttrmap
 	lb bc, 3, 3
-	ld a, $3 ; erika / lt.surge
+	ld a, $5 ; sabrina
+
 	call FillBoxCGB
 	hlcoord 3, 13, wAttrmap
 	lb bc, 3, 3
-	ld a, $4 ; janine
+	ld a, $3 ; erika / lt.surge
+
 	call FillBoxCGB
 	hlcoord 7, 13, wAttrmap
 	lb bc, 3, 3
-	ld a, $5 ; sabrina
+	ld a, $4 ; koga
+
 	call FillBoxCGB
 	hlcoord 11, 13, wAttrmap
 	lb bc, 3, 3
 	ld a, $6 ; blaine
+
 	call FillBoxCGB
 	hlcoord 15, 13, wAttrmap
 	lb bc, 3, 3
 	ld a, $7 ; blue
+
 	call FillBoxCGB
 	; top-right corner still uses the border's palette
 	ld a, [wPlayerGender]
