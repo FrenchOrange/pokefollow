@@ -46,8 +46,8 @@ SpriteMons:
 	db BUTTERFREE
 	db MILTANK
 	db MURKROW
-	db SPRITE_GROWLITHE
-	db SPRITE_MOLTRES
+	db GROWLITHE
+	db MOLTRES
 	db HO_OH
 	db LUGIA
 	assert_table_length NUM_POKEMON_SPRITES

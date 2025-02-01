@@ -1,9 +1,9 @@
 	object_const_def
 	const FUCHSIAGYM_JANINE
-	const FUCHSIAGYM_FUCHSIA_GYM_1
-	const FUCHSIAGYM_FUCHSIA_GYM_2
-	const FUCHSIAGYM_FUCHSIA_GYM_3
-	const FUCHSIAGYM_FUCHSIA_GYM_4
+	const FUCHSIAGYM_LASS1
+	const FUCHSIAGYM_LASS2
+	const FUCHSIAGYM_LASS3
+	const FUCHSIAGYM_YOUNGSTER
 	const FUCHSIAGYM_GYM_GUIDE
 
 FuchsiaGym_MapScripts:
@@ -29,11 +29,6 @@ FuchsiaGymJanineScript:
 	setevent EVENT_BEAT_LASS_LINDA
 	setevent EVENT_BEAT_PICNICKER_CINDY
 	setevent EVENT_BEAT_CAMPER_BARRY
-	variablesprite SPRITE_FUCHSIA_GYM_1, SPRITE_LASS
-	variablesprite SPRITE_FUCHSIA_GYM_2, SPRITE_LASS
-	variablesprite SPRITE_FUCHSIA_GYM_3, SPRITE_LASS
-	variablesprite SPRITE_FUCHSIA_GYM_4, SPRITE_YOUNGSTER
-	special LoadUsedSpritesGFX
 	opentext
 	writetext Text_ReceivedSoulBadge
 	playsound SFX_GET_BADGE
@@ -58,13 +53,6 @@ FuchsiaGymJanineScript:
 	end
 
 LassAliceScript:
-	checkevent EVENT_BEAT_LASS_ALICE
-	iftrue .AliceUnmasked
-	applymovement FUCHSIAGYM_FUCHSIA_GYM_1, Movement_NinjaSpin
-	faceplayer
-	variablesprite SPRITE_FUCHSIA_GYM_1, SPRITE_LASS
-	special LoadUsedSpritesGFX
-.AliceUnmasked:
 	faceplayer
 	opentext
 	checkevent EVENT_BEAT_LASS_ALICE
@@ -75,14 +63,8 @@ LassAliceScript:
 	winlosstext LassAliceBeatenText, 0
 	loadtrainer LASS, ALICE
 	startbattle
-	iftrue .AliceBecomesJanine
 	reloadmapafterbattle
 	setevent EVENT_BEAT_LASS_ALICE
-	end
-
-.AliceBecomesJanine:
-	variablesprite SPRITE_FUCHSIA_GYM_1, SPRITE_JANINE
-	reloadmapafterbattle
 	end
 
 .AliceAfterScript:
@@ -92,13 +74,6 @@ LassAliceScript:
 	end
 
 LassLindaScript:
-	checkevent EVENT_BEAT_LASS_LINDA
-	iftrue .LindaUnmasked
-	applymovement FUCHSIAGYM_FUCHSIA_GYM_2, Movement_NinjaSpin
-	faceplayer
-	variablesprite SPRITE_FUCHSIA_GYM_2, SPRITE_LASS
-	special LoadUsedSpritesGFX
-.LindaUnmasked:
 	faceplayer
 	opentext
 	checkevent EVENT_BEAT_LASS_LINDA
@@ -109,14 +84,8 @@ LassLindaScript:
 	winlosstext LassLindaBeatenText, 0
 	loadtrainer LASS, LINDA
 	startbattle
-	iftrue .LindaBecomesJanine
 	reloadmapafterbattle
 	setevent EVENT_BEAT_LASS_LINDA
-	end
-
-.LindaBecomesJanine:
-	variablesprite SPRITE_FUCHSIA_GYM_2, SPRITE_JANINE
-	reloadmapafterbattle
 	end
 
 .LindaAfterScript:
@@ -126,13 +95,6 @@ LassLindaScript:
 	end
 
 PicnickerCindyScript:
-	checkevent EVENT_BEAT_PICNICKER_CINDY
-	iftrue .CindyUnmasked
-	applymovement FUCHSIAGYM_FUCHSIA_GYM_3, Movement_NinjaSpin
-	faceplayer
-	variablesprite SPRITE_FUCHSIA_GYM_3, SPRITE_LASS
-	special LoadUsedSpritesGFX
-.CindyUnmasked:
 	faceplayer
 	opentext
 	checkevent EVENT_BEAT_PICNICKER_CINDY
@@ -143,14 +105,8 @@ PicnickerCindyScript:
 	winlosstext PicnickerCindyBeatenText, 0
 	loadtrainer PICNICKER, CINDY
 	startbattle
-	iftrue .CindyBecomesJanine
 	reloadmapafterbattle
 	setevent EVENT_BEAT_PICNICKER_CINDY
-	end
-
-.CindyBecomesJanine:
-	variablesprite SPRITE_FUCHSIA_GYM_3, SPRITE_JANINE
-	reloadmapafterbattle
 	end
 
 .CindyAfterScript:
@@ -160,13 +116,6 @@ PicnickerCindyScript:
 	end
 
 CamperBarryScript:
-	checkevent EVENT_BEAT_CAMPER_BARRY
-	iftrue .BarryUnmasked
-	applymovement FUCHSIAGYM_FUCHSIA_GYM_4, Movement_NinjaSpin
-	faceplayer
-	variablesprite SPRITE_FUCHSIA_GYM_4, SPRITE_YOUNGSTER
-	special LoadUsedSpritesGFX
-.BarryUnmasked:
 	faceplayer
 	opentext
 	checkevent EVENT_BEAT_CAMPER_BARRY
@@ -176,15 +125,8 @@ CamperBarryScript:
 	closetext
 	winlosstext CamperBarryBeatenText, 0
 	loadtrainer CAMPER, BARRY
-	startbattle
-	iftrue .BarryBecomesJanine
-	reloadmapafterbattle
+	startbattle	reloadmapafterbattle
 	setevent EVENT_BEAT_CAMPER_BARRY
-	end
-
-.BarryBecomesJanine:
-	variablesprite SPRITE_FUCHSIA_GYM_4, SPRITE_JANINE
-	reloadmapafterbattle
 	end
 
 .BarryAfterScript:
@@ -393,8 +335,8 @@ FuchsiaGym_MapEvents:
 
 	def_object_events
 	object_event  1, 10, SPRITE_JANINE, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, FuchsiaGymJanineScript, -1
-	object_event  5,  7, SPRITE_FUCHSIA_GYM_1, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, LassAliceScript, -1
-	object_event  5, 11, SPRITE_FUCHSIA_GYM_2, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, LassLindaScript, -1
-	object_event  9,  4, SPRITE_FUCHSIA_GYM_3, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, PicnickerCindyScript, -1
-	object_event  4,  2, SPRITE_FUCHSIA_GYM_4, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, CamperBarryScript, -1
+	object_event  5,  7, SPRITE_LASS, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, LassAliceScript, -1
+	object_event  5, 11, SPRITE_LASS, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, LassLindaScript, -1
+	object_event  9,  4, SPRITE_LASS, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, PicnickerCindyScript, -1
+	object_event  4,  2, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, CamperBarryScript, -1
 	object_event  7, 15, SPRITE_GYM_GUIDE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, FuchsiaGymGuideScript, -1

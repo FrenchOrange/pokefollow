@@ -116,6 +116,7 @@ DebugSign:
 ;	playsound SFX_WARP_TO
 ;	special ClearBGPalettesBufferScreen
 ;	waitsfx
+;	warp NEW_BARK_TOWN, 13, 06
 ;	warp ROUTE_23, 11, 06
 	end
 
