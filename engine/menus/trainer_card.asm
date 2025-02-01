@@ -617,45 +617,44 @@ TrainerCard_KantoBadgesOAM:
 	dw wKantoBadges
 
 	; Boulderbadge
-	db $68, $18, 0
+	db $64, $24, 0
 	db $00, $20 | (1 << 7), $24, $20
 	db $00, $20 | (1 << 7), $24, $20
 
 	; Cascadebadge
-	db $68, $38, 1
+	db $64, $44, 1
 	db $04, $20 | (1 << 7), $24, $20
 	db $04, $20 | (1 << 7), $24, $20
 
 	; Thunderbadge
-	db $68, $58, 2
+	db $64, $64, 2
 	db $08, $20 | (1 << 7), $24, $20
 	db $08, $20 | (1 << 7), $24, $20
 
 	; Marshbadge
-	db $68, $78, 3
+	db $64, $84, 3
 	db $14, $20 | (1 << 7), $24, $20
 	db $14, $20 | (1 << 7), $24, $20
 
 	; Rainbowbadge
-	db $80, $18, 4
+	db $7c, $24, 4
 	db $0c, $20 | (1 << 7), $24, $20
 	db $0c, $20 | (1 << 7), $24, $20
 
 	; Soulbadge
-	db $80, $38, 5
+	db $7c, $44, 5
 	db $10, $20 | (1 << 7), $24, $20
 	db $10, $20 | (1 << 7), $24, $20
 
 	; Volcanobadge
-	db $80, $58, 6
+	db $7c, $64, 6
 	db $18, $20 | (1 << 7), $24, $20
 	db $18, $20 | (1 << 7), $24, $20
 
 	; Earthbadge
-	; X-flips on alternate cycles.
-	db $80, $78, 7
-	db $1c,            $20 | (1 << 7), $24, $20
-	db $1c | (1 << 7), $20 | (1 << 7), $24, $20
+	db $7c, $84, 7
+	db $1c, $20 | (1 << 7), $24, $20
+	db $1c, $20 | (1 << 7), $24, $20
 
 CardStatusGFX: INCBIN "gfx/trainer_card/card_status.2bpp"
 
