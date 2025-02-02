@@ -1543,7 +1543,7 @@ NEXTU
 ; trainer card badges
 wTrainerCardBadgeFrameCounter:: db
 wTrainerCardBadgeTileID:: db
-wTrainerCardBadgePaletteAddr:: db
+wTrainerCardBadgePaletteAddr:: dw
 
 NEXTU
 ; slot machine
