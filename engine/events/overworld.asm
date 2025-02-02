@@ -130,15 +130,15 @@ CutFunction:
 	dw .FailCut
 
 .CheckAble:
-	ld de, ENGINE_HIVEBADGE
+	ld de, ENGINE_CASCADEBADGE
 	call CheckBadge
-	jr c, .nohivebadge
+	jr c, .nocascadebadge
 	call CheckMapForSomethingToCut
 	jr c, .nothingtocut
 	ld a, $1
 	ret
 
-.nohivebadge
+.nocascadebadge
 	ld a, $80
 	ret
 
@@ -278,9 +278,9 @@ FlashFunction:
 	ret
 
 .CheckUseFlash:
-	ld de, ENGINE_ZEPHYRBADGE
+	ld de, ENGINE_BOULDERBADGE
 	farcall CheckBadge
-	jr c, .nozephyrbadge
+	jr c, .noboulderbadge
 	push hl
 	farcall SpecialAerodactylChamber
 	pop hl
@@ -298,7 +298,7 @@ FlashFunction:
 	ld a, $80
 	ret
 
-.nozephyrbadge
+.noboulderbadge
 	ld a, $80
 	ret
 
@@ -344,9 +344,9 @@ SurfFunction:
 	dw .AlreadySurfing
 
 .TrySurf:
-	ld de, ENGINE_FOGBADGE
+	ld de, ENGINE_SOULBADGE
 	call CheckBadge
-	jr c, .nofogbadge
+	jr c, .nosoulbadge
 	ld hl, wBikeFlags
 	bit BIKEFLAGS_ALWAYS_ON_BIKE_F, [hl]
 	jr nz, .cannotsurf
@@ -365,7 +365,7 @@ SurfFunction:
 	jr c, .cannotsurf
 	ld a, $1
 	ret
-.nofogbadge
+.nosoulbadge
 	ld a, $80
 	ret
 .alreadyfail
@@ -508,7 +508,7 @@ TrySurfOW::
 	call CheckDirection
 	jr c, .quit
 
-	ld de, ENGINE_FOGBADGE
+	ld de, ENGINE_SOULBADGE
 	call CheckEngineFlag
 	jr c, .quit
 
@@ -563,9 +563,9 @@ FlyFunction:
 	dw .FailFly
 
 .TryFly:
-	ld de, ENGINE_STORMBADGE
+	ld de, ENGINE_THUNDERBADGE
 	call CheckBadge
-	jr c, .nostormbadge
+	jr c, .nothunderbadge
 	call GetMapEnvironment
 	call CheckOutdoorMap
 	jr z, .outdoors
@@ -588,7 +588,7 @@ FlyFunction:
 	ld a, $1
 	ret
 
-.nostormbadge
+.nothunderbadge
 	ld a, $82
 	ret
 
@@ -646,7 +646,7 @@ WaterfallFunction:
 	ret
 
 .TryWaterfall:
-	ld de, ENGINE_RISINGBADGE
+	ld de, ENGINE_VOLCANOBADGE
 	farcall CheckBadge
 	ld a, $80
 	ret c
@@ -716,7 +716,7 @@ TryWaterfallOW::
 	ld d, WATERFALL
 	call CheckPartyMove
 	jr c, .failed
-	ld de, ENGINE_RISINGBADGE
+	ld de, ENGINE_VOLCANOBADGE
 	call CheckEngineFlag
 	jr c, .failed
 	call CheckMapCanWaterfall
@@ -974,7 +974,7 @@ StrengthFunction:
 	ret
 
 .TryStrength:
-	ld de, ENGINE_PLAINBADGE
+	ld de, ENGINE_RAINBOWBADGE
 	call CheckBadge
 	jr c, .Failed
 	jr .UseStrength
@@ -1071,7 +1071,7 @@ TryStrengthOW:
 	call CheckPartyMove
 	jr c, .nope
 
-	ld de, ENGINE_PLAINBADGE
+	ld de, ENGINE_RAINBOWBADGE
 	call CheckEngineFlag
 	jr c, .nope
 
@@ -1110,9 +1110,9 @@ WhirlpoolFunction:
 	dw .FailWhirlpool
 
 .TryWhirlpool:
-	ld de, ENGINE_GLACIERBADGE
+	ld de, ENGINE_EARTHBADGE
 	call CheckBadge
-	jr c, .noglacierbadge
+	jr c, .noearthbadge
 	call TryWhirlpoolMenu
 	jr c, .failed
 	ld a, $1
@@ -1122,7 +1122,7 @@ WhirlpoolFunction:
 	ld a, $2
 	ret
 
-.noglacierbadge
+.noearthbadge
 	ld a, $80
 	ret
 
@@ -1204,7 +1204,7 @@ TryWhirlpoolOW::
 	ld d, WHIRLPOOL
 	call CheckPartyMove
 	jr c, .failed
-	ld de, ENGINE_GLACIERBADGE
+	ld de, ENGINE_EARTHBADGE
 	call CheckEngineFlag
 	jr c, .failed
 	call TryWhirlpoolMenu
@@ -1779,7 +1779,7 @@ TryCutOW::
 	call CheckPartyMove
 	jr c, .cant_cut
 
-	ld de, ENGINE_HIVEBADGE
+	ld de, ENGINE_CASCADEBADGE
 	call CheckEngineFlag
 	jr c, .cant_cut
 
