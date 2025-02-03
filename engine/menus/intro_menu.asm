@@ -9,9 +9,6 @@ Intro_MainMenu:
 	farcall MainMenu
 	jp StartTitleScreen
 
-IntroMenu_DummyFunction: ; unreferenced
-	ret
-
 PrintDayOfWeek:
 	push de
 	ld hl, .Days
@@ -63,7 +60,6 @@ NewGame:
 	ld [wDebugFlags], a
 	call ResetWRAM
 	call NewGame_ClearTilemapEtc
-	call PlayerProfileSetup
 	call OakSpeech
 	call InitializeWorld
 
@@ -188,8 +184,8 @@ _ResetWRAM:
 	xor a
 	ld [wMonType], a
 
-	ld [wJohtoBadges], a
 	ld [wKantoBadges], a
+	ld [wJohtoBadges], a
 
 	ld [wCoins], a
 	ld [wCoins + 1], a
