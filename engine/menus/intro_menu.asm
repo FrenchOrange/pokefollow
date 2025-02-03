@@ -639,26 +639,11 @@ OakSpeech:
 	call RotateFourPalettesRight
 	call RotateThreePalettesRight
 	xor a
-	ld [wCurPartySpecies], a
-	ld a, POKEMON_PROF
-	ld [wTrainerClass], a
-	call Intro_PrepTrainerPic
-
-	ld b, SCGB_TRAINER_OR_MON_FRONTPIC_PALS
-	call GetSGBLayout
-	call Intro_RotatePalettesLeftFrontpic
-
-	ld hl, OakText1
-	call PrintText
-if !DEF(_DEBUG)
-	call RotateThreePalettesRight
-	call ClearTilemap
-
-	ld a, WOOPER
+; Bulbasaur
+	ld a, BULBASAUR
 	ld [wCurSpecies], a
 	ld [wCurPartySpecies], a
 	call GetBaseData
-
 	hlcoord 6, 4
 	call PrepMonFrontpic
 
@@ -668,30 +653,56 @@ if !DEF(_DEBUG)
 
 	ld b, SCGB_TRAINER_OR_MON_FRONTPIC_PALS
 	call GetSGBLayout
-	call Intro_WipeInFrontpic
+	call Intro_RotatePalettesLeftFrontpic
 
-	ld hl, OakText2
-	call PrintText
-	ld hl, OakText4
+	ld hl, IntroMenuText1
 	call PrintText
 	call RotateThreePalettesRight
 	call ClearTilemap
 
-	xor a
+; Squirtle
+	ld a, SQUIRTLE
+	ld [wCurSpecies], a
 	ld [wCurPartySpecies], a
-	ld a, POKEMON_PROF
-	ld [wTrainerClass], a
-	call Intro_PrepTrainerPic
+	call GetBaseData
+	hlcoord 6, 4
+	call PrepMonFrontpic
+
+	xor a
+	ld [wTempMonDVs], a
+	ld [wTempMonDVs + 1], a
 
 	ld b, SCGB_TRAINER_OR_MON_FRONTPIC_PALS
 	call GetSGBLayout
 	call Intro_RotatePalettesLeftFrontpic
 
-	ld hl, OakText5
+	ld hl, IntroMenuText2
 	call PrintText
 	call RotateThreePalettesRight
 	call ClearTilemap
 
+; Charmander
+	ld a, CHARMANDER
+	ld [wCurSpecies], a
+	ld [wCurPartySpecies], a
+	call GetBaseData
+	hlcoord 6, 4
+	call PrepMonFrontpic
+
+	xor a
+	ld [wTempMonDVs], a
+	ld [wTempMonDVs + 1], a
+
+	ld b, SCGB_TRAINER_OR_MON_FRONTPIC_PALS
+	call GetSGBLayout
+	call Intro_RotatePalettesLeftFrontpic
+
+	ld hl, IntroMenuText3
+	call PrintText
+	call RotateThreePalettesRight
+	call ClearTilemap
+
+; Show Player sprite
 	xor a
 	ld [wCurPartySpecies], a
 	farcall DrawIntroPlayerPic
@@ -699,56 +710,40 @@ if !DEF(_DEBUG)
 	ld b, SCGB_TRAINER_OR_MON_FRONTPIC_PALS
 	call GetSGBLayout
 	call Intro_RotatePalettesLeftFrontpic
-endc
-	ld hl, OakText6
+
+	ld hl, IntroMenuText4
 	call PrintText
+	call RotateThreePalettesRight
 	call NamePlayer
-	ld hl, OakText7
+
+	ld hl, IntroMenuText5
 	call PrintText
 	ret
 
-OakText1:
-	text_far _OakText1
+IntroMenuText1:
+	text_far _IntroMenuText1
 	text_end
 
-OakText2:
-	text_far _OakText2
-	text_asm
-	ld a, WOOPER
-	call PlayMonCry
-	call WaitSFX
-	ld hl, OakText3
-	ret
-
-OakText3:
-	text_far _OakText3
+IntroMenuText2:
+	text_far _IntroMenuText2
 	text_end
 
-OakText4:
-	text_far _OakText4
+IntroMenuText3:
+	text_far _IntroMenuText3
 	text_end
 
-OakText5:
-	text_far _OakText5
+IntroMenuText4:
+	text_far _IntroMenuText4
 	text_end
 
-OakText6:
-	text_far _OakText6
-	text_end
-
-OakText7:
-	text_far _OakText7
+IntroMenuText5:
+	text_far _IntroMenuText5
 	text_end
 
 NamePlayer:
-	farcall MovePlayerPicRight
-	farcall ShowPlayerNamingChoices
-	ld a, [wMenuCursorY]
-	dec a
 	jr z, .NewName
 	call StorePlayerName
 	farcall ApplyMonOrTrainerPals
-	farcall MovePlayerPicLeft
 	ret
 
 .NewName:
@@ -785,15 +780,6 @@ NamePlayer:
 .Kris:
 	db "KRIS@@@@@@@"
 
-GSShowPlayerNamingChoices: ; unreferenced
-	call LoadMenuHeader
-	call VerticalMenu
-	ld a, [wMenuCursorY]
-	dec a
-	call CopyNameFromMenu
-	call CloseWindow
-	ret
-
 StorePlayerName:
 	ld a, "@"
 	ld bc, NAME_LENGTH
@@ -817,7 +803,7 @@ ShrinkPlayer:
 	ld [wMusicFadeID + 1], a
 
 	ld de, SFX_ESCAPE_ROPE
-	call PlaySFX
+	call WaitPlaySFX
 	pop af
 	rst Bankswitch
 

@@ -1523,55 +1523,37 @@ _MayRegisterItemText::
 	line "on SELECT Button."
 	done
 
-_OakText1::
-	text "Hello! Sorry to"
-	line "keep you waiting!"
-
-if !DEF(_DEBUG)
-	para "Welcome to the"
-	line "world of #MON!"
-
-	para "My name is OAK."
-
-	para "People call me the"
-	line "#MON PROF."
-endc
+_IntroMenuText1::
+	text "BULBASAUR…"
 	prompt
 
-_OakText2::
-	text "This world is in-"
-	line "habited by crea-"
-	cont "tures that we call"
-	cont "#MON.@"
-	text_end
-
-_OakText3::
-	text_promptbutton
-	text_end
-
-	text_end ; unreferenced
-
-_OakText4::
-	text "People and #MON"
-	line "live together by"
-
-	para "supporting each"
-	line "other."
-
-	para "Some people play"
-	line "with #MON, some"
-	cont "battle with them."
+_IntroMenuText2::
+	text "SQUIRTLE…"
 	prompt
 
-_OakText5::
-	text "But we don't know"
-	line "everything about"
-	cont "#MON yet."
+_IntroMenuText3::
+	text "CHARMANDER…"
+	prompt
 
-	para "There are still"
-	line "many mysteries to"
-	cont "solve."
+_IntroMenuText4::
+	text "With their help,"
+	line "you became the"
 
-	para "That's why I study"
-	line "#MON every day."
+	para "greatest #MON"
+	line "trainer."
+
+	para "Scratch that, a"
+	line "#MON MASTER!"
+
+	para "Everyone cheers"
+	line "you on. They all"
+	cont "cheer for--"
+	prompt
+
+_IntroMenuText5::
+	text "<PLAYER>!"
+
+	para "<PLAYER>! <PLAYER>!"
+
+	para "<PLAYER>… Wake up!"
 	prompt

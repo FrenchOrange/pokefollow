@@ -1,31 +1,3 @@
-_OakText6::
-	text "Now, what did you"
-	line "say your name was?"
-	prompt
-
-_OakText7::
-	text "<PLAYER>, are you"
-	line "ready?"
-
-if !DEF(_DEBUG)
-	para "Your very own"
-	line "#MON story is"
-	cont "about to unfold."
-
-	para "You'll face fun"
-	line "times and tough"
-	cont "challenges."
-
-	para "A world of dreams"
-	line "and adventures"
-
-	para "with #MON"
-	line "awaits! Let's go!"
-endc
-	para "I'll be seeing you"
-	line "later!"
-	done
-
 _ClockTimeMayBeWrongText::
 	text "The clock's time"
 	line "may be wrong."
