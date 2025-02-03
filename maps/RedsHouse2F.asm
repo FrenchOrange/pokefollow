@@ -1,20 +1,79 @@
+	object_const_def
+	const REDSHOUSE2F_CLEFAIRY
+	const REDSHOUSE2F_POLIWAG
+	const REDSHOUSE2F_VOLTORB
+	const REDSHOUSE2F_BIG_SNORLAX
+
 RedsHouse2F_MapScripts:
 	def_scene_scripts
 
 	def_callbacks
 
-RedsHouse2FN64Script:
-	jumptext RedsHouse2FN64Text
+RedsHouse2FTVScript:
+	opentext
+	checkevent EVENT_WATCHED_TV_ONCE
+	iffalse .TV1Script
+	iftrue .RedsHouse2FTVScript2
+	end
+
+.TV1Script:
+	writetext RedsHouse2FTVText1
+	waitbutton
+	closetext
+	setevent EVENT_WATCHED_TV_ONCE
+	end
+
+.RedsHouse2FTVScript2:
+	checkevent EVENT_WATCHED_TV_TWICE
+	iffalse .TV2Script
+	writetext RedsHouse2FTVText3
+	waitbutton
+	closetext
+	end
+
+.TV2Script:
+	writetext RedsHouse2FTVText2
+	waitbutton
+	closetext
+	setevent EVENT_WATCHED_TV_TWICE
+	end
 
 RedsHouse2FPCScript:
 	jumptext RedsHouse2FPCText
 
-RedsHouse2FN64Text:
-	text "<PLAYER> played the"
-	line "N64."
+RedsHouse2FTVText1:
+	text "A live televised"
+	line "POKéMON battle!"
 
-	para "Better get going--"
-	line "no time to lose!"
+	para "NIDORINO begins"
+	line "the battle with a"
+	cont "HORN ATTACK--"
+
+	para "But GENGAR bounces"
+	line "right back!"
+	done
+
+RedsHouse2FTVText2:
+	text "GENGAR retaliates"
+	line "with HYPNOSIS."
+
+	para "Wait! The trainer"
+	line "recalls NIDORINO."
+
+	para "Which POKéMON will"
+	line "he use now?"
+
+	para "Ah…"
+
+	para "Gotta get going,"
+	line "no time for TV!"
+	done
+
+RedsHouse2FTVText3:
+	text "Ah…"
+
+	para "Gotta get going,"
+	line "no time for TV!"
 	done
 
 RedsHouse2FPCText:
@@ -30,6 +89,52 @@ DebugColor:
 	special ColorPicker
 	closetext
 	end
+
+RedsHouse2FCoinBankScript:
+	opentext
+	checkevent EVENT_GOT_COINS_FROM_COIN_BANK
+	iftrue .GotCoins
+	writetext RedsHouse2FCoinBankText
+	waitbutton
+	writetext RedsHouse2FGotCoinsText
+	waitbutton
+	waitsfx
+	playsound SFX_TRANSACTION
+	closetext
+	givemoney $0, 20
+	setevent EVENT_GOT_COINS_FROM_COIN_BANK
+	end
+.GotCoins:
+	writetext RedsHouse2FCoinBankText
+	waitbutton
+	closetext
+	end
+
+RedsHouse2FCoinBankText:
+	text "It's a CLEFAIRY"
+	line "coin bank."
+	done
+
+RedsHouse2FGotCoinsText:
+	text "Hey, there's 20¥"
+	line "inside!"
+	done
+
+RedsHouse2FSharpenerScript:
+	jumptext RedsHouse2FSharpenerText
+
+RedsHouse2FSharpenerText:
+	text "It's a POLIWAG"
+	line "pencil sharpener."
+	done
+
+RedsHouse2FSnorlaxDollScript:
+	jumptext RedsHouse2FSnorlaxDollText
+
+RedsHouse2FSnorlaxDollText:
+	text "An old SNORLAX"
+	line "beanbag chair."
+	done
 
 NowEnteringText:
 	text "NOW ENTERING..."
@@ -124,14 +229,19 @@ RedsHouse2F_MapEvents:
 	db 0, 0 ; filler
 
 	def_warp_events
-	warp_event  7,  0, REDS_HOUSE_1F, 3
+	warp_event  3,  7, REDS_HOUSE_1F, 3
+	warp_event  4,  7, REDS_HOUSE_1F, 3
 
 	def_coord_events
 
 	def_bg_events
-	bg_event  3,  5, BGEVENT_READ, RedsHouse2FN64Script
+	bg_event  1,  1, BGEVENT_READ, RedsHouse2FTVScript
 	bg_event  0,  1, BGEVENT_READ, RedsHouse2FPCScript
-	bg_event  4,  1, BGEVENT_READ, DebugColor
-	bg_event  5,  1, BGEVENT_READ, DebugSign
+	bg_event  5,  0, BGEVENT_READ, DebugColor
+	bg_event  2,  1, BGEVENT_READ, DebugSign
 
 	def_object_events
+	object_event  0,  7, SPRITE_CLEFAIRY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_PINK, OBJECTTYPE_SCRIPT, 0, RedsHouse2FCoinBankScript, -1
+	object_event  7,  6, SPRITE_POLIWAG, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, RedsHouse2FSharpenerScript, -1
+	object_event  7,  1, SPRITE_VOLTORB, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, ObjectEvent, -1
+	object_event  1,  4, SPRITE_BIG_SNORLAX, SPRITEMOVEDATA_BIGDOLLSYM, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, RedsHouse2FSnorlaxDollScript, -1

@@ -8,7 +8,7 @@ SpawnPoints:
 ; entries correspond to SPAWN_* constants
 	table_width 4, SpawnPoints
 
-	spawn REDS_HOUSE_2F,               1,  6
+	spawn REDS_HOUSE_2F,               6,  2
 	spawn VIRIDIAN_POKECENTER_1F,      5,  3
 
 	spawn PALLET_TOWN,                 5,  6
