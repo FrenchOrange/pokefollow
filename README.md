@@ -1,28 +1,20 @@
-# Pokémon Crystal [![Build Status][ci-badge]][ci]
+# Pokémon Crystal
 
-This is a disassembly of Pokémon Crystal.
+This is a rom hack based on Vulcandth's [follower Pokémon branch](https://github.com/fellowship-of-the-roms/pokecrystal/tree/follow-mons), itself forked from pret's Pokémon Crystal disassembly.
 
-It builds the following ROMs:
+## Changes
+* Fixed off-model Pokémon sprites. Palettes were also improved for a good amount of Pokémon.
+* Some QOL features, like "Running Shoes" (works by holding down B), and an automatic Repel reuse message.
+* Fixed [bugs and glitches](https://github.com/pret/pokecrystal/blob/master/docs/bugs_and_glitches.md).
 
-- Pokemon - Crystal Version (UE) (V1.0) [C][!].gbc `sha1: f4cd194bdee0d04ca4eac29e09b8e4e9d818c133`
-
+## Release
 To set up the repository, see [INSTALL.md](INSTALL.md).
 
-
-## See also
-
-- [**FAQ**](FAQ.md)
-- [**Documentation**][docs]
-- [**Wiki**][wiki] (includes [tutorials][tutorials])
-- [**Symbols**][symbols]
-
-You can find us on [Discord (pret, #pokecrystal)](https://discord.gg/d5dubZ3).
-
-For other pret projects, see [pret.github.io](https://pret.github.io/).
-
-[docs]: https://pret.github.io/pokecrystal/
-[wiki]: https://github.com/pret/pokecrystal/wiki
-[tutorials]: https://github.com/pret/pokecrystal/wiki/Tutorials
-[symbols]: https://github.com/pret/pokecrystal/tree/symbols
-[ci]: https://github.com/pret/pokecrystal/actions
-[ci-badge]: https://github.com/pret/pokecrystal/actions/workflows/main.yml/badge.svg
+## Credits
+Some HUGE thanks to:
+* All the amazing people who worked tirelessly on the different Pokémon disassemblies.
+* The awesome folks who wrote down the various tutorials for Pokecrystal.
+* Vulcandth, for the Pokémon follower code utilized by this hack.
+* Artist [kensuyjin33](https://www.deviantart.com/kensuyjin33) from his beautiful trainers sprites for Ash.
+* SoupPotato, creator of [Sourcrystal](https://github.com/SoupPotato/Sourcrystal), for some incredible new Pokémon sprites.
+* The original creatives behind Pokémon, both the games themselves and the later tie-in animated series.

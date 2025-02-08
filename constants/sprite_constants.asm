@@ -11,7 +11,7 @@
 	const SPRITE_BLUE ; 07
 	const SPRITE_BILL ; 08
 	const SPRITE_ELDER ; 09
-	const SPRITE_JANINE ; 0a
+	const SPRITE_CHRIS_PJ ; 0a
 	const SPRITE_KURT ; 0b
 	const SPRITE_MOM ; 0c
 	const SPRITE_BLAINE ; 0d

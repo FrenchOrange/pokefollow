@@ -206,6 +206,7 @@
 
 	const_next 200
 ; Kanto story events
+	const EVENT_GOT_PROPER_CLOTHES
 	const EVENT_WATCHED_TV_ONCE
 	const EVENT_WATCHED_TV_TWICE
 	const EVENT_GOT_COINS_FROM_COIN_BANK
@@ -271,7 +272,7 @@
 	const EVENT_DANA_GAVE_THUNDERSTONE
 	const EVENT_TULLY_GAVE_WATER_STONE
 	const EVENT_TIFFANY_GAVE_PINK_BOW
-; Unused: next 336 events
+; Unused: next 335 events
 
 	const_next 600
 ; Kurt Apricorn events

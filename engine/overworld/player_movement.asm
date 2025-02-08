@@ -37,6 +37,8 @@ DoPlayerMovement::
 	ld a, [wPlayerState]
 	cp PLAYER_NORMAL
 	jr z, .Normal
+	cp PLAYER_PAJAMA
+	jr z, .Normal
 	cp PLAYER_SURF
 	jr z, .Surf
 	cp PLAYER_SURF_PIKA
@@ -325,6 +327,12 @@ DoPlayerMovement::
 	ld a, [wWalkingDirection]
 	cp STANDING
 	jr z, .ensurewalk
+	ld de, EVENT_GOT_PROPER_CLOTHES
+	ld b, CHECK_FLAG
+	call EventFlagAction
+	ld a, c
+	and a
+	jr nz, .ensurewalk
 	ldh a, [hJoypadDown]
 	and B_BUTTON
 	cp B_BUTTON
