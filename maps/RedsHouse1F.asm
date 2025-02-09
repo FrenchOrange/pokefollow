@@ -72,6 +72,32 @@ RedsHouse1FTVText:
 	cont "in JOHTO…"
 	done
 
+RedsMomTestPJ:
+	applymovement PLAYER, RedsHouse1FMovementData_PlayerSpinsClockwiseEndsFacingDown
+	setval (PAL_NPC_GREEN << 4)
+	special SetPlayerPalette
+	loadvar VAR_MOVEMENT, PLAYER_PAJAMA
+	applymovement PLAYER, RedsHouse1FMovementData_PlayerSpinsClockwiseEndsFacingDown
+	special UpdatePlayerSprite
+	end
+
+RedsMomTestGoBack:
+	applymovement PLAYER, RedsHouse1FMovementData_PlayerSpinsClockwiseEndsFacingDown
+	setval (PAL_NPC_RED << 4)
+	special SetPlayerPalette
+	loadvar VAR_MOVEMENT, PLAYER_NORMAL
+	special UpdatePlayerSprite
+	setevent EVENT_GOT_PROPER_CLOTHES
+	end
+
+RedsHouse1FMovementData_PlayerSpinsClockwiseEndsFacingDown:
+	turn_head DOWN
+	turn_head LEFT
+	turn_head UP
+	turn_head RIGHT
+	turn_head DOWN
+	step_end
+
 RedsHouse1F_MapEvents:
 	db 0, 0 ; filler
 
@@ -89,3 +115,5 @@ RedsHouse1F_MapEvents:
 
 	def_object_events
 	object_event  5,  3, SPRITE_REDS_MOM, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, RedsMom, -1
+	object_event  5,  1, SPRITE_REDS_MOM, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, RedsMomTestPJ, -1
+	object_event  6,  1, SPRITE_REDS_MOM, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, RedsMomTestGoBack, -1
