@@ -1,4 +1,5 @@
 	object_const_def
+	const PALLETTOWN_DODRIO
 	const PALLETTOWN_TEACHER
 	const PALLETTOWN_FISHER
 
@@ -11,6 +12,35 @@ PalletTown_MapScripts:
 PalletTownFlypointCallback:
 	setflag ENGINE_FLYPOINT_PALLET
 	endcallback
+
+PalletTownDodrioScript:
+	opentext
+	checktime MORN
+	iftrue .morn
+	checktime DAY | EVE
+	iftrue .day_eve
+.morn
+	writetext PalletTownDodrioMornText
+	cry DODRIO
+	cry DODRIO
+	waitbutton
+	closetext
+	end
+
+.day_eve
+	writetext PalletTownDodrioDayEveText
+	cry DODRIO
+	waitbutton
+	closetext
+	end
+
+PalletTownDodrioMornText:
+	text "DODRIO: Doo! Do!"
+	done
+
+PalletTownDodrioDayEveText:
+	text "DODRIO: Doo!"
+	done
 
 PalletTownTeacherScript:
 	jumptextfaceplayer PalletTownTeacherText
@@ -84,5 +114,6 @@ PalletTown_MapEvents:
 	bg_event 33, 23, BGEVENT_READ, BluesHouseSign
 
 	def_object_events
+	object_event 10, 27, SPRITE_DODRIO_STATIC, SPRITEMOVEDATA_POKEMON, 0, 0, -1, MORN | DAY | EVE, 0, OBJECTTYPE_SCRIPT, 0, PalletTownDodrioScript, -1
 	object_event 26, 26, SPRITE_TEACHER, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, PalletTownTeacherScript, -1
 	object_event 31, 31, SPRITE_FISHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 2, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, PalletTownFisherScript, -1

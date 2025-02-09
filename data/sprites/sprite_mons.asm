@@ -30,7 +30,6 @@ SpriteMons:
 	db KANGASKHAN
 	db FEAROW
 	db BLISSEY
-	db DODRIO
 	db ELECTRODE
 	db RHYDON
 	db MACHOKE

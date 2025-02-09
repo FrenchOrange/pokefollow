@@ -106,7 +106,8 @@
 	const SPRITE_JESSIE ; 66
 	const SPRITE_CHRIS_RUN ; 67
  	const SPRITE_KRIS_RUN ; 68
-	const SPRITE_FOLLOWER ; 69
+	const SPRITE_DODRIO_STATIC ; 69
+	const SPRITE_FOLLOWER ; last
 DEF NUM_OVERWORLD_SPRITES EQU const_value - 1
 
 ; SpriteMons indexes (see data/sprites/sprite_mons.asm)
@@ -141,7 +142,6 @@ DEF SPRITE_POKEMON EQU const_value
 	const SPRITE_KANGASKHAN
 	const SPRITE_FEAROW
 	const SPRITE_BLISSEY
-	const SPRITE_DODRIO
 	const SPRITE_ELECTRODE
 	const SPRITE_RHYDON
 	const SPRITE_MACHOKE
