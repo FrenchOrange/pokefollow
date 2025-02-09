@@ -101,7 +101,7 @@ RedsHouse2FCoinBankScript:
 	waitsfx
 	playsound SFX_TRANSACTION
 	closetext
-	givemoney $0, 20
+	givemoney $0, 100
 	setevent EVENT_GOT_COINS_FROM_COIN_BANK
 	end
 .GotCoins:
@@ -116,7 +116,7 @@ RedsHouse2FCoinBankText:
 	done
 
 RedsHouse2FGotCoinsText:
-	text "Hey, there's 20¥"
+	text "Hey, there's 100¥"
 	line "inside!"
 	done
 
