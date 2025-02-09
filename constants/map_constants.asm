@@ -301,6 +301,8 @@ ENDM
 	map_const REDS_HOUSE_2F,                                4,  4 ;  4
 	map_const BLUES_HOUSE,                                  4,  4 ;  5
 	map_const OAKS_LAB,                                     5,  6 ;  6
+	map_const PALLET_OAK_TV_SPEECH_HOUSE,                   4,  4 ;  7
+	map_const PALLET_DODRIO_HOUSE,                          4,  4 ;  8
 	endgroup
 
 	newgroup PEWTER                                               ; 14
