@@ -24,15 +24,6 @@ INCBIN "data/tilesets/johto_metatiles.bin"
 TilesetJohtoColl::
 INCLUDE "data/tilesets/johto_collision.asm"
 
-TilesetIcePathGFX::
-INCBIN "gfx/tilesets/ice_path.2bpp.lz"
-
-TilesetIcePathMeta::
-INCBIN "data/tilesets/ice_path_metatiles.bin"
-
-TilesetIcePathColl::
-INCLUDE "data/tilesets/ice_path_collision.asm"
-
 
 SECTION "Tileset Data 2", ROMX
 
@@ -365,6 +356,15 @@ INCBIN "data/tilesets/tower_attributes.bin"
 
 
 SECTION "Tileset Data 10", ROMX
+
+TilesetIcePathGFX::
+INCBIN "gfx/tilesets/ice_path.2bpp.lz"
+
+TilesetIcePathMeta::
+INCBIN "data/tilesets/ice_path_metatiles.bin"
+
+TilesetIcePathColl::
+INCLUDE "data/tilesets/ice_path_collision.asm"
 
 TilesetPlayersRoomGFX::
 INCBIN "gfx/tilesets/players_room.2bpp.lz"
