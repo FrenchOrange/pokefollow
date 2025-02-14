@@ -29,9 +29,9 @@
 	RGB 09,08,12, 04,04,05 ; eve
 
 ; group 6 (Cinnabar)
-	RGB 31,10,00, 18,06,00 ; morn/day
-	RGB 18,05,09, 17,08,07 ; nite
-	RGB 25,08,00, 15,04,00 ; eve
+	RGB 27,28,31, 17,19,22 ; morn/day
+	RGB 14,14,18, 10,09,13 ; nite
+	RGB 25,12,10, 21,08,06 ; eve
 
 ; group 7 (Cerulean)
 	RGB 17,27,31, 05,15,31 ; morn/day
@@ -64,9 +64,9 @@
 	RGB 22,18,01, 20,08,00 ; eve
 
 ; group 13 (Pallet)
-	RGB 27,28,31, 17,19,22 ; morn/day
-	RGB 14,14,18, 10,09,13 ; nite
-	RGB 25,12,10, 21,08,06 ; eve
+	RGB 31,10,00, 18,06,00 ; morn/day
+	RGB 18,05,09, 17,08,07 ; nite
+	RGB 25,08,00, 15,04,00 ; eve
 
 ; group 14 (Pewter)
 	RGB 19,19,16, 10,12,15 ; morn/day

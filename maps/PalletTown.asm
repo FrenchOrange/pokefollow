@@ -101,21 +101,21 @@ PalletTown_MapEvents:
 	db 0, 0 ; filler
 
 	def_warp_events
-	warp_event 27, 23, REDS_HOUSE_1F, 1
-	warp_event 35, 23, BLUES_HOUSE, 1
-	warp_event  8,  5, OAKS_LAB, 1
-	warp_event  9, 23, PALLET_OAK_TV_SPEECH_HOUSE, 1
-	warp_event  9, 29, PALLET_DODRIO_HOUSE, 1
+	warp_event 28, 23, REDS_HOUSE_1F, 1
+	warp_event 38, 23, BLUES_HOUSE, 1
+	warp_event  6,  5, OAKS_LAB, 1
+	warp_event  8, 23, PALLET_OAK_TV_SPEECH_HOUSE, 1
+	warp_event  8, 29, PALLET_DODRIO_HOUSE, 1
 
 	def_coord_events
 
 	def_bg_events
 	bg_event 29, 29, BGEVENT_READ, PalletTownSign
-	bg_event 25, 23, BGEVENT_READ, RedsHouseSign
+	bg_event 27, 25, BGEVENT_READ, RedsHouseSign
 	bg_event 17, 11, BGEVENT_READ, OaksLabSign
-	bg_event 33, 23, BGEVENT_READ, BluesHouseSign
+	bg_event 37, 25, BGEVENT_READ, BluesHouseSign
 
 	def_object_events
-	object_event 10, 27, SPRITE_DODRIO_STATIC, SPRITEMOVEDATA_POKEMON, 0, 0, -1, MORN | DAY | EVE, 0, OBJECTTYPE_SCRIPT, 0, PalletTownDodrioScript, -1
-	object_event 26, 26, SPRITE_TEACHER, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, PalletTownTeacherScript, -1
-	object_event 31, 31, SPRITE_FISHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 2, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, PalletTownFisherScript, -1
+	object_event  7, 27, SPRITE_DODRIO_STATIC, SPRITEMOVEDATA_POKEMON, 0, 0, -1, MORN | DAY | EVE, 0, OBJECTTYPE_SCRIPT, 0, PalletTownDodrioScript, -1
+	object_event 26, 27, SPRITE_TEACHER, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, PalletTownTeacherScript, -1
+	object_event 31, 32, SPRITE_FISHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 2, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, PalletTownFisherScript, -1

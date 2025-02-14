@@ -296,7 +296,7 @@ ENDM
 
 	newgroup PALLET                                               ; 13
 	map_const ROUTE_1,                                     10, 18 ;  1
-	map_const PALLET_TOWN,                                 21, 19 ;  2
+	map_const PALLET_TOWN,                                 22, 20 ;  2
 	map_const REDS_HOUSE_1F,                                4,  4 ;  3
 	map_const REDS_HOUSE_2F,                                4,  4 ;  4
 	map_const BLUES_HOUSE,                                  4,  4 ;  5

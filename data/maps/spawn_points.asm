@@ -11,7 +11,7 @@ SpawnPoints:
 	spawn REDS_HOUSE_2F,               6,  2
 	spawn VIRIDIAN_POKECENTER_1F,      5,  3
 
-	spawn PALLET_TOWN,                 5,  6
+	spawn PALLET_TOWN,                28, 24
 	spawn VIRIDIAN_CITY,              23, 26
 	spawn PEWTER_CITY,                13, 26
 	spawn CERULEAN_CITY,              19, 22
