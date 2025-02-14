@@ -215,8 +215,16 @@ DebugSign:
 	givepoke PIDGEOT, 100
 	givepoke LAPRAS, 100
 	givepoke PIKACHU, 100
-	givepoke JIGGLYPUFF, 100
 	closetext
+; debug hm
+	loadmem wPartyMon1Moves+0, SURF
+	loadmem wPartyMon1Moves+1, ROCK_SMASH
+	loadmem wPartyMon2Moves+0, FLY
+	loadmem wPartyMon2Moves+1, STRENGTH
+	loadmem wPartyMon2Moves+2, CUT
+	loadmem wPartyMon3Moves+2, WATERFALL
+	loadmem wPartyMon4Moves+0, FLASH
+	loadmem wPartyMon4Moves+1, HEADBUTT
 ; warp some place else
 ;	playsound SFX_WARP_TO
 ;	special ClearBGPalettesBufferScreen

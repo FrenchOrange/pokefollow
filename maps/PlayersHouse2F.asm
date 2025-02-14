@@ -80,9 +80,7 @@ PlayersHouseRadioScript:
 	end
 
 PlayersHouseBookshelfScript:
-	stowfollower
-	end
-	;jumpstd PictureBookshelfScript
+	jumpstd PictureBookshelfScript
 
 PlayersHousePCScript:
 	opentext
