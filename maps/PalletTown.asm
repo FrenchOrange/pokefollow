@@ -112,7 +112,7 @@ PalletTown_MapEvents:
 	def_bg_events
 	bg_event 29, 29, BGEVENT_READ, PalletTownSign
 	bg_event 27, 25, BGEVENT_READ, RedsHouseSign
-	bg_event 17, 11, BGEVENT_READ, OaksLabSign
+	bg_event 17, 12, BGEVENT_READ, OaksLabSign
 	bg_event 37, 25, BGEVENT_READ, BluesHouseSign
 
 	def_object_events
