@@ -17,5 +17,6 @@ Some HUGE thanks to:
 * Vulcandth, for the Pokémon follower code utilized by this hack.
 * Artist [kensuyjin33](https://www.deviantart.com/kensuyjin33) for some beautiful trainers sprites for Ash.
 * Red++ v4 for some new overworld tiles.
+* Pokémon AshGray for a few overworld tiles and inspiration.
 * SoupPotato, creator of [Sourcrystal](https://github.com/SoupPotato/Sourcrystal), for some incredible new Pokémon sprites.
 * The original creatives behind Pokémon, both the games themselves and the later tie-in animated series.

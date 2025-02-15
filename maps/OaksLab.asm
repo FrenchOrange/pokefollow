@@ -12,7 +12,7 @@ OaksLab_MapScripts:
 OaksLabNoopScene: ; unreferenced
 	end
 
-Oak:
+ProfOakScript:
 	faceplayer
 	opentext
 	checkevent EVENT_OPENED_MT_SILVER
@@ -58,9 +58,6 @@ OaksAssistant1Script:
 
 OaksAssistant2Script:
 	jumptextfaceplayer OaksAssistant2Text
-
-OaksAssistant3Script:
-	jumptextfaceplayer OaksAssistant3Text
 
 OaksLabBookshelf:
 	jumpstd DifficultBookshelfScript
@@ -183,17 +180,6 @@ OakYesKantoBadgesText:
 	done
 
 OaksAssistant1Text:
-	text "The PROF's #MON"
-	line "TALK radio program"
-
-	para "isn't aired here"
-	line "in KANTO."
-
-	para "It's a shame--I'd"
-	line "like to hear it."
-	done
-
-OaksAssistant2Text:
 	text "Thanks to your"
 	line "work on the #-"
 	cont "DEX, the PROF's"
@@ -202,7 +188,7 @@ OaksAssistant2Text:
 	line "along great."
 	done
 
-OaksAssistant3Text:
+OaksAssistant2Text:
 	text "Don't tell anyone,"
 	line "but PROF.OAK'S"
 
@@ -258,31 +244,36 @@ OaksLab_MapEvents:
 	db 0, 0 ; filler
 
 	def_warp_events
-	warp_event  4, 11, PALLET_TOWN, 3
-	warp_event  5, 11, PALLET_TOWN, 3
+	warp_event 21,  9, PALLET_TOWN, 3
+	warp_event 22,  9, PALLET_TOWN, 3
+	warp_event 27,  1, OAKS_LAB, 4
+	warp_event  9, 11, OAKS_LAB, 3
+	warp_event 27,  7, OAKS_LAB, 7
+	warp_event 27,  8, OAKS_LAB, 8
+	warp_event 34,  7, OAKS_LAB, 5
+	warp_event 34,  8, OAKS_LAB, 6
 
 	def_coord_events
 
 	def_bg_events
-	bg_event  6,  1, BGEVENT_READ, OaksLabBookshelf
-	bg_event  7,  1, BGEVENT_READ, OaksLabBookshelf
-	bg_event  8,  1, BGEVENT_READ, OaksLabBookshelf
-	bg_event  9,  1, BGEVENT_READ, OaksLabBookshelf
-	bg_event  0,  7, BGEVENT_READ, OaksLabBookshelf
-	bg_event  1,  7, BGEVENT_READ, OaksLabBookshelf
-	bg_event  2,  7, BGEVENT_READ, OaksLabBookshelf
-	bg_event  3,  7, BGEVENT_READ, OaksLabBookshelf
-	bg_event  6,  7, BGEVENT_READ, OaksLabBookshelf
-	bg_event  7,  7, BGEVENT_READ, OaksLabBookshelf
-	bg_event  8,  7, BGEVENT_READ, OaksLabBookshelf
-	bg_event  9,  7, BGEVENT_READ, OaksLabBookshelf
+	bg_event 39,  4, BGEVENT_READ, OaksLabBookshelf
+	bg_event 37,  8, BGEVENT_READ, OaksLabBookshelf
+	bg_event 38,  8, BGEVENT_READ, OaksLabBookshelf
+	bg_event 39,  8, BGEVENT_READ, OaksLabBookshelf
+	bg_event 35,  4, BGEVENT_READ, OaksLabBookshelf
+	bg_event 36,  4, BGEVENT_READ, OaksLabBookshelf
+	bg_event 37,  4, BGEVENT_READ, OaksLabBookshelf
+	bg_event 38,  4, BGEVENT_READ, OaksLabBookshelf
+	bg_event 45,  4, BGEVENT_READ, OaksLabBookshelf
+	bg_event 46,  4, BGEVENT_READ, OaksLabBookshelf
+	bg_event 47,  4, BGEVENT_READ, OaksLabBookshelf
+	bg_event 48,  4, BGEVENT_READ, OaksLabBookshelf
 	bg_event  4,  0, BGEVENT_READ, OaksLabPoster1
 	bg_event  5,  0, BGEVENT_READ, OaksLabPoster2
-	bg_event  9,  3, BGEVENT_READ, OaksLabTrashcan
+	bg_event 44,  9, BGEVENT_READ, OaksLabTrashcan
 	bg_event  0,  1, BGEVENT_READ, OaksLabPC
 
 	def_object_events
-	object_event  4,  2, SPRITE_OAK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Oak, -1
-	object_event  1,  8, SPRITE_SCIENTIST, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, OaksAssistant1Script, -1
-	object_event  8,  9, SPRITE_SCIENTIST, SPRITEMOVEDATA_WALK_UP_DOWN, 0, 1, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, OaksAssistant2Script, -1
-	object_event  1,  4, SPRITE_SCIENTIST, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, OaksAssistant3Script, -1
+	object_event  4,  2, SPRITE_OAK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ProfOakScript, -1
+	object_event 38,  2, SPRITE_SCIENTIST, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, OaksAssistant1Script, -1
+	object_event 45,  6, SPRITE_SCIENTIST, SPRITEMOVEDATA_WALK_UP_DOWN, 0, 1, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, OaksAssistant2Script, -1
