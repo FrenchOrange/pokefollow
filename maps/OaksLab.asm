@@ -59,20 +59,14 @@ OaksAssistant1Script:
 OaksAssistant2Script:
 	jumptextfaceplayer OaksAssistant2Text
 
-OaksLabBookshelf:
-	jumpstd DifficultBookshelfScript
-
 OaksLabPoster1:
 	jumptext OaksLabPoster1Text
 
 OaksLabPoster2:
 	jumptext OaksLabPoster2Text
 
-OaksLabTrashcan:
-	jumptext OaksLabTrashcanText
-
-OaksLabPC:
-	jumptext OaksLabPCText
+OaksLabWindow:
+	jumptext OaksLabWindowText
 
 OakWelcomeKantoText:
 	text "OAK: Ah, <PLAY_G>!"
@@ -209,35 +203,10 @@ OaksLabPoster2Text:
 	line "manner."
 	done
 
-OaksLabTrashcanText:
-	text "There's nothing in"
-	line "here…"
-	done
-
-OaksLabPCText:
-	text "There's an e-mail"
-	line "message on the PC."
-
-	para "…"
-
-	para "PROF.OAK, how is"
-	line "your research"
-	cont "coming along?"
-
-	para "I'm still plugging"
-	line "away."
-
-	para "I heard rumors"
-	line "that <PLAY_G> is"
-
-	para "getting quite a"
-	line "reputation."
-
-	para "I'm delighted to"
-	line "hear that."
-
-	para "ELM in NEW BARK"
-	line "TOWN 8-)"
+OaksLabWindowText:
+	text "A large grassy"
+	line "field extends"
+	cont "behind the house."
 	done
 
 OaksLab_MapEvents:
@@ -256,22 +225,12 @@ OaksLab_MapEvents:
 	def_coord_events
 
 	def_bg_events
-	bg_event 39,  4, BGEVENT_READ, OaksLabBookshelf
-	bg_event 37,  8, BGEVENT_READ, OaksLabBookshelf
-	bg_event 38,  8, BGEVENT_READ, OaksLabBookshelf
-	bg_event 39,  8, BGEVENT_READ, OaksLabBookshelf
-	bg_event 35,  4, BGEVENT_READ, OaksLabBookshelf
-	bg_event 36,  4, BGEVENT_READ, OaksLabBookshelf
-	bg_event 37,  4, BGEVENT_READ, OaksLabBookshelf
-	bg_event 38,  4, BGEVENT_READ, OaksLabBookshelf
-	bg_event 45,  4, BGEVENT_READ, OaksLabBookshelf
-	bg_event 46,  4, BGEVENT_READ, OaksLabBookshelf
-	bg_event 47,  4, BGEVENT_READ, OaksLabBookshelf
-	bg_event 48,  4, BGEVENT_READ, OaksLabBookshelf
 	bg_event  4,  0, BGEVENT_READ, OaksLabPoster1
 	bg_event  5,  0, BGEVENT_READ, OaksLabPoster2
-	bg_event 44,  9, BGEVENT_READ, OaksLabTrashcan
-	bg_event  0,  1, BGEVENT_READ, OaksLabPC
+	bg_event 48,  0, BGEVENT_READ, OaksLabWindow
+	bg_event 45,  0, BGEVENT_READ, OaksLabWindow
+	bg_event 39,  0, BGEVENT_READ, OaksLabWindow
+	bg_event 36,  0, BGEVENT_READ, OaksLabWindow
 
 	def_object_events
 	object_event  4,  2, SPRITE_OAK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ProfOakScript, -1

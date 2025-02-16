@@ -170,14 +170,6 @@ TVText:
 	text "It's a TV."
 	done
 
-HomepageText:
-	text "#MON JOURNAL"
-	line "HOME PAGE…"
-
-	para "It hasn't been"
-	line "updated…"
-	done
-
 ; not used
 	text "#MON RADIO!"
 
@@ -188,6 +180,13 @@ HomepageText:
 TrashCanText:
 	text "There's nothing in"
 	line "here…"
+	done
+
+ComputerText:
+	text "It's all elaborate"
+	line "words and numbers"
+	cont "that are hard to"
+	cont "parse…"
 	done
 
 ; not used

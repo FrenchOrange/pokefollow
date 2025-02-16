@@ -14,7 +14,8 @@ StdScripts::
 	add_stdscript TownMapScript
 	add_stdscript WindowScript
 	add_stdscript TVScript
-	add_stdscript HomepageScript ; unused
+	add_stdscript TrashcanScript
+	add_stdscript ComputerScript
 	add_stdscript Radio1Script
 	add_stdscript Radio2Script
 	add_stdscript TrashCanScript
@@ -228,8 +229,11 @@ TVScript:
 	closetext
 	end
 
-HomepageScript:
-	farjumptext HomepageText
+TrashcanScript:
+	farjumptext TrashCanText
+
+ComputerScript:
+	farjumptext ComputerText
 
 Radio1Script:
 	opentext

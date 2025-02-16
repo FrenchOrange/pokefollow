@@ -122,7 +122,7 @@ CollisionPermissionTable::
 	db LAND_TILE         ; COLL_WARP_CARPET_LEFT
 	db LAND_TILE         ; COLL_WARP_77
 	db LAND_TILE         ; COLL_WARP_CARPET_UP
-	db LAND_TILE         ; COLL_DOOR_79
+	db WALL_TILE         ; COLL_BOOKSHELF_HARD
 	db LAND_TILE         ; COLL_STAIRCASE
 	db LAND_TILE         ; COLL_CAVE
 	db LAND_TILE         ; COLL_WARP_PANEL
@@ -153,11 +153,11 @@ CollisionPermissionTable::
 	db WALL_TILE         ; COLL_TOWN_MAP
 	db WALL_TILE         ; COLL_MART_SHELF
 	db WALL_TILE         ; COLL_TV
-	db WALL_TILE         ; COLL_COUNTER_98
+	db WALL_TILE         ; COLL_TRASHCAN
 	db WALL_TILE         ; 99
 	db WALL_TILE         ; 9a
 	db WALL_TILE         ; 9b
-	db WALL_TILE         ; COLL_9C
+	db WALL_TILE         ; COLL_COMPUTER
 	db WALL_TILE         ; COLL_WINDOW
 	db WALL_TILE         ; 9e
 	db WALL_TILE         ; COLL_INCENSE_BURNER

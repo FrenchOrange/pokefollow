@@ -43,7 +43,6 @@ CheckWarpFacingDown:
 
 .blocks
 	db COLL_DOOR
-	db COLL_DOOR_79
 	db COLL_STAIRCASE
 	db COLL_STAIRCASE_73
 	db COLL_CAVE

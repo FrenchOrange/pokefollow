@@ -138,32 +138,22 @@ CheckGrassTile::
 
 CheckSuperTallGrassTile::
 	cp COLL_LONG_GRASS
-	ret z
-	cp COLL_LONG_GRASS_1C
 	ret
 
 CheckCutTreeTile::
 	cp COLL_CUT_TREE
-	ret z
-	cp COLL_CUT_TREE_1A
 	ret
 
 CheckHeadbuttTreeTile::
 	cp COLL_HEADBUTT_TREE
-	ret z
-	cp COLL_HEADBUTT_TREE_1D
 	ret
 
 CheckCounterTile::
 	cp COLL_COUNTER
-	ret z
-	cp COLL_COUNTER_98
 	ret
 
 CheckPitTile::
 	cp COLL_PIT
-	ret z
-	cp COLL_PIT_68
 	ret
 
 CheckIceTile::
@@ -192,8 +182,6 @@ CheckWaterfallTile::
 CheckStandingOnEntrance::
 	ld a, [wPlayerTileCollision]
 	cp COLL_DOOR
-	ret z
-	cp COLL_DOOR_79
 	ret z
 	cp COLL_STAIRCASE
 	ret z

@@ -73,7 +73,7 @@ DEF COLL_DOOR_75           EQU $75 ; unused
 DEF COLL_WARP_CARPET_LEFT  EQU $76
 DEF COLL_WARP_77           EQU $77 ; unused
 DEF COLL_WARP_CARPET_UP    EQU $78
-DEF COLL_DOOR_79           EQU $79 ; unused
+DEF COLL_BOOKSHELF_HARD    EQU $79
 DEF COLL_STAIRCASE         EQU $7a
 DEF COLL_CAVE              EQU $7b
 DEF COLL_WARP_PANEL        EQU $7c
@@ -87,8 +87,8 @@ DEF COLL_RADIO             EQU $94
 DEF COLL_TOWN_MAP          EQU $95
 DEF COLL_MART_SHELF        EQU $96
 DEF COLL_TV                EQU $97
-DEF COLL_COUNTER_98        EQU $98 ; unused
-DEF COLL_9C                EQU $9c ; garbage
+DEF COLL_TRASHCAN          EQU $98
+DEF COLL_COMPUTER          EQU $9c
 DEF COLL_WINDOW            EQU $9d
 DEF COLL_INCENSE_BURNER    EQU $9f
 DEF COLL_HOP_RIGHT         EQU $a0
