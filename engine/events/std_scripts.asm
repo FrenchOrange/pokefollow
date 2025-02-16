@@ -224,8 +224,38 @@ WindowScript:
 
 TVScript:
 	opentext
-	farwritetext TVText
-	waitbutton
+	farwritetext TVStartText
+	promptbutton
+	checktime MORN
+	iftrue .morn
+	checktime DAY
+	iftrue .day
+	checktime EVE
+	iftrue .eve
+	checktime NITE
+	iftrue .nite
+
+.morn
+	farwritetext TVMornText
+	promptbutton
+	closetext
+	end
+
+.day
+	farwritetext TVDayText
+	promptbutton
+	closetext
+	end
+
+.eve
+	farwritetext TVEveText
+	promptbutton
+	closetext
+	end
+
+.nite
+	farwritetext TVNiteText
+	promptbutton
 	closetext
 	end
 

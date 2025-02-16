@@ -2,7 +2,7 @@
 	const OAKSLAB_OAK
 	const OAKSLAB_SCIENTIST1
 	const OAKSLAB_SCIENTIST2
-	const OAKSLAB_SCIENTIST3
+	const OAKSLAB_BLANK
 
 OaksLab_MapScripts:
 	def_scene_scripts
@@ -67,6 +67,9 @@ OaksLabPoster2:
 
 OaksLabWindow:
 	jumptext OaksLabWindowText
+
+OaksLabLockedDoor:
+	jumptext OaksLabDoorText
 
 OakWelcomeKantoText:
 	text "OAK: Ah, <PLAY_G>!"
@@ -209,6 +212,10 @@ OaksLabWindowText:
 	cont "behind the house."
 	done
 
+OaksLabDoorText:
+	text "It's locked…"
+	done
+
 OaksLab_MapEvents:
 	db 0, 0 ; filler
 
@@ -234,5 +241,6 @@ OaksLab_MapEvents:
 
 	def_object_events
 	object_event  4,  2, SPRITE_OAK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ProfOakScript, -1
-	object_event 38,  2, SPRITE_SCIENTIST, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, OaksAssistant1Script, -1
-	object_event 45,  6, SPRITE_SCIENTIST, SPRITEMOVEDATA_WALK_UP_DOWN, 0, 1, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, OaksAssistant2Script, -1
+	object_event 38,  2, SPRITE_SCIENTIST, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OaksAssistant1Script, -1
+	object_event 45,  6, SPRITE_SCIENTIST, SPRITEMOVEDATA_WALK_UP_DOWN, 0, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OaksAssistant2Script, -1
+	object_event 24,  0, SPRITE_BLANK, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OaksLabLockedDoor, -1

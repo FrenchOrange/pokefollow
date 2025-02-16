@@ -17,7 +17,7 @@ OverworldSprites:
 	overworld_sprite BillSpriteGFX, 12, WALKING_SPRITE, PAL_OW_RED
 	overworld_sprite ElderSpriteGFX, 12, WALKING_SPRITE, PAL_OW_BROWN
 	overworld_sprite ChrisPJSpriteGFX, 12, WALKING_SPRITE, PAL_OW_GREEN
-	overworld_sprite KurtSpriteGFX, 12, WALKING_SPRITE, PAL_OW_BROWN
+	overworld_sprite KurtSpriteGFX, 12, WALKING_SPRITE, PAL_OW_BLUE
 	overworld_sprite MomSpriteGFX, 12, WALKING_SPRITE, PAL_OW_RED
 	overworld_sprite BlaineSpriteGFX, 12, WALKING_SPRITE, PAL_OW_BROWN
 	overworld_sprite RedsMomSpriteGFX, 12, WALKING_SPRITE, PAL_OW_BROWN
@@ -111,6 +111,7 @@ OverworldSprites:
 	overworld_sprite JessieSpriteGFX, 12, WALKING_SPRITE, PAL_OW_RED
  	overworld_sprite ChrisRunSpriteGFX, 12, WALKING_SPRITE, PAL_OW_RED
  	overworld_sprite KrisRunSpriteGFX, 12, WALKING_SPRITE, PAL_OW_BLUE
+	overworld_sprite BlankSpriteGFX, 4, STILL_SPRITE, PAL_OW_RED
 	overworld_sprite DodrioStaticSpriteGFX, 12, STANDING_SPRITE, PAL_OW_BROWN
 	overworld_sprite SurfGyaradosSpriteGFX, 12, WALKING_SPRITE, PAL_OW_BLUE
 	assert_table_length NUM_OVERWORLD_SPRITES - 1

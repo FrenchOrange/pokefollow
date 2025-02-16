@@ -111,6 +111,7 @@ SECTION "Sprites 3", ROMX
 
 ChrisRunSpriteGFX::            INCBIN "gfx/sprites/chris_run.2bpp"
 KrisRunSpriteGFX::             INCBIN "gfx/sprites/kris_run.2bpp"
+BlankSpriteGFX::               INCBIN "gfx/sprites/blank.2bpp"
 DodrioStaticSpriteGFX::        INCBIN "gfx/sprites/static_dodrio.2bpp"
 SurfGyaradosSpriteGFX::        INCBIN "gfx/sprites/surf_gyarados.2bpp"
 AnimPokeBallSpriteGFX::        INCBIN "gfx/sprites/anim_pokeball.2bpp"

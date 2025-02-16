@@ -69,12 +69,16 @@ PalletTownTeacherText:
 	done
 
 PalletTownFisherText:
-	text "Technology is"
-	line "incredible!"
+	text "Isn't technology"
+	line "the greatest?"
 
-	para "You can now trade"
-	line "#MON across"
-	cont "time like e-mail."
+	para "The have machines"
+	line "that transfer"
+	cont "ownership of a"
+
+	para "#MON from one"
+	line "trainer to another"
+	cont "in mere seconds!"
 	done
 
 PalletTownSignText:

@@ -74,11 +74,6 @@ NurseGoodbyeText:
 	line "again."
 	done
 
-; not used
-	text "We hope to see you"
-	line "again."
-	done
-
 NursePokerusText:
 	text "Your #MON"
 	line "appear to be"
@@ -166,15 +161,28 @@ WindowText:
 	line "Lookin' good!"
 	done
 
-TVText:
+TVStartText:
 	text "It's a TV."
 	done
 
-; not used
-	text "#MON RADIO!"
+TVMornText:
+	text "It's the #MON"
+	line "animated series!"
+	done
 
-	para "Call in with your"
-	line "requests now!"
+TVDayText:
+	text "A sports match"
+	line "is playing."
+	done
+
+TVEveText:
+	text "PROF.OAK's show is"
+	line "on air!"
+	done
+
+TVNiteText:
+	text "It's all late night"
+	line "infomercials."
 	done
 
 TrashCanText:
@@ -187,16 +195,6 @@ ComputerText:
 	line "words and numbers"
 	cont "that are hard to"
 	cont "parse…"
-	done
-
-; not used
-	text "A #MON may be"
-	line "able to move this."
-	done
-
-; not used
-	text "Maybe a #MON"
-	line "can break this."
 	done
 
 PokecenterSignText:

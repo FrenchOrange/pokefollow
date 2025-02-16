@@ -26,7 +26,7 @@
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 19
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 1a
 	tilecoll WALL, WALL, BOOKSHELF, BOOKSHELF ; 1b
-	tilecoll WALL, WALL, WALL, FLOOR ; 1c
+	tilecoll WALL, WALL, TRASHCAN, FLOOR ; 1c
 	tilecoll WALL, WALL, FLOOR, WALL ; 1d
 	tilecoll WALL, WALL, WALL, WALL ; 1e
 	tilecoll FLOOR, WALL, FLOOR, WALL ; 1f
