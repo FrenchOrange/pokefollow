@@ -904,4 +904,7 @@ BattleTowerOutside_Blocks:
 GoldenrodDeptStoreRoof_Blocks:
 	INCBIN "maps/GoldenrodDeptStoreRoof.ablk"
 
+PalletLake_Blocks:
+	INCBIN "maps/PalletLake.ablk"
+
 ENDSECTION
