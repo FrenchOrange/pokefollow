@@ -21,12 +21,15 @@ SpriteMons:
 	db WEEDLE	; Doll
 	db TENTACOOL	; Doll
 	db UNOWN	; Doll
-	db SLOWPOKE     ; OW onward
+	db PIDGEY       ; OW onward
+	db SPEAROW
+	db SLOWPOKE
 	db SLOWBRO
 	db DRATINI
 	db POLIWRATH
 	db MEOWTH
 	db ZUBAT
+	db FARFETCH_D
 	db KANGASKHAN
 	db FEAROW
 	db BLISSEY

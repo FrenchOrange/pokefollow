@@ -177,7 +177,7 @@ TVDayText:
 
 TVEveText:
 	text "PROF.OAK's show is"
-	line "on air!"
+	line "on the air!"
 	done
 
 TVNiteText:

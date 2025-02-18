@@ -1,5 +1,5 @@
 	object_const_def
-	const PALLETDODRIOHOUSE_POKEFAN_M
+	const PALLETDODRIOHOUSE_SALESMAN
 	const PALLETDODRIOHOUSE_DODRIO
 
 PalletDodrioHouse_MapScripts:
@@ -7,10 +7,10 @@ PalletDodrioHouse_MapScripts:
 
 	def_callbacks
 
-PalletDodrioHousePokefanMScript:
-	jumptextfaceplayer PalletDodrioHousePokefanMText
+PalletDodrioHouseSalesmanScript:
+	jumptextfaceplayer PalletDodrioHouseSalesmanText
 
-PalletDodrioHousePokefanMText:
+PalletDodrioHouseSalesmanText:
 	text "I'm no trainer, my"
 	line "DODRIO is made for"
 	cont "telling the time,"
@@ -49,5 +49,5 @@ PalletDodrioHouse_MapEvents:
 	def_bg_events
 
 	def_object_events
-	object_event  1,  4, SPRITE_POKEFAN_M, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 1, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, PalletDodrioHousePokefanMScript, -1
+	object_event  1,  4, SPRITE_SALESMAN, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, PalletDodrioHouseSalesmanScript, -1
 	object_event  6,  2, SPRITE_DODRIO_STATIC, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, NITE, 0, OBJECTTYPE_SCRIPT, 0, PalletDodrioHouseAsleepScript, -1

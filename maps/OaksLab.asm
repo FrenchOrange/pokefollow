@@ -59,14 +59,11 @@ OaksAssistant1Script:
 OaksAssistant2Script:
 	jumptextfaceplayer OaksAssistant2Text
 
-OaksLabPoster1:
-	jumptext OaksLabPoster1Text
-
-OaksLabPoster2:
-	jumptext OaksLabPoster2Text
-
 OaksLabWindow:
 	jumptext OaksLabWindowText
+
+OaksLabBlackboard:
+	jumptext OaksLabBlackboardText
 
 OaksLabLockedDoor:
 	jumptext OaksLabDoorText
@@ -193,23 +190,20 @@ OaksAssistant2Text:
 	line "a live broadcast."
 	done
 
-OaksLabPoster1Text:
-	text "Press START to"
-	line "open the MENU."
-	done
-
-OaksLabPoster2Text:
-	text "The SAVE option is"
-	line "on the MENU."
-
-	para "Use it in a timely"
-	line "manner."
-	done
-
 OaksLabWindowText:
 	text "A large grassy"
 	line "field extends"
 	cont "behind the house."
+	done
+
+OaksLabBlackboardText:
+	text "Various research"
+	line "notes… Hmm."
+
+	para "PROF.OAK seems to"
+	line "also like writing"
+	cont "haiku in his spare"
+	cont "time?"
 	done
 
 OaksLabDoorText:
@@ -220,27 +214,27 @@ OaksLab_MapEvents:
 	db 0, 0 ; filler
 
 	def_warp_events
-	warp_event 21,  9, PALLET_TOWN, 3
-	warp_event 22,  9, PALLET_TOWN, 3
-	warp_event 27,  1, OAKS_LAB, 4
-	warp_event  9, 11, OAKS_LAB, 3
-	warp_event 27,  7, OAKS_LAB, 7
-	warp_event 27,  8, OAKS_LAB, 8
-	warp_event 34,  7, OAKS_LAB, 5
-	warp_event 34,  8, OAKS_LAB, 6
+	warp_event 27, 11, PALLET_TOWN, 3
+	warp_event 28, 11, PALLET_TOWN, 3
+	warp_event 33,  3, OAKS_LAB, 4
+	warp_event 15,  5, OAKS_LAB, 3
+	warp_event 33,  9, OAKS_LAB, 7
+	warp_event 33, 10, OAKS_LAB, 8
+	warp_event 40,  9, OAKS_LAB, 5
+	warp_event 40, 10, OAKS_LAB, 6
 
 	def_coord_events
 
 	def_bg_events
-	bg_event  4,  0, BGEVENT_READ, OaksLabPoster1
-	bg_event  5,  0, BGEVENT_READ, OaksLabPoster2
-	bg_event 48,  0, BGEVENT_READ, OaksLabWindow
-	bg_event 45,  0, BGEVENT_READ, OaksLabWindow
-	bg_event 39,  0, BGEVENT_READ, OaksLabWindow
-	bg_event 36,  0, BGEVENT_READ, OaksLabWindow
+	bg_event 54,  2, BGEVENT_READ, OaksLabWindow
+	bg_event 51,  2, BGEVENT_READ, OaksLabWindow
+	bg_event 45,  2, BGEVENT_READ, OaksLabWindow
+	bg_event 42,  2, BGEVENT_READ, OaksLabWindow
+	bg_event  3,  3, BGEVENT_READ, OaksLabBlackboard
+	bg_event  4,  3, BGEVENT_READ, OaksLabBlackboard
 
 	def_object_events
-	object_event  3,  5, SPRITE_OAK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ProfOakScript, -1
-	object_event 38,  2, SPRITE_SCIENTIST, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OaksAssistant1Script, -1
-	object_event 45,  6, SPRITE_SCIENTIST, SPRITEMOVEDATA_WALK_UP_DOWN, 0, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OaksAssistant2Script, -1
-	object_event 24,  0, SPRITE_BLANK, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OaksLabLockedDoor, -1
+	object_event  7,  6, SPRITE_OAK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ProfOakScript, -1
+	object_event 44,  4, SPRITE_SCIENTIST, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OaksAssistant1Script, -1
+	object_event 51,  8, SPRITE_SCIENTIST, SPRITEMOVEDATA_WALK_UP_DOWN, 0, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OaksAssistant2Script, -1
+	object_event 30,  2, SPRITE_BLANK, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OaksLabLockedDoor, -1
