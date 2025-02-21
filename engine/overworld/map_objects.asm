@@ -384,14 +384,6 @@ CheckFollowerInvisOneStep:
 	ret z
 	bit FOLLOWER_INVISIBLE_ONE_STEP_F, [hl]
 	ret z
-;	push hl
-;	push bc
-;	push de
-;	ld bc, wObject1Struct
-;	call IsObjectStandingOnSomeoneElse
-;	pop de
-;	pop bc
-;	pop hl
 	ret c
 	res FOLLOWER_INVISIBLE_ONE_STEP_F, [hl]
 	bit FOLLOWER_IN_POKEBALL_F, [hl]
