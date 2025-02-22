@@ -41,13 +41,13 @@ PalletDodrioHouse_MapEvents:
 	db 0, 0 ; filler
 
 	def_warp_events
-	warp_event  2,  7, PALLET_TOWN, 5
-	warp_event  3,  7, PALLET_TOWN, 5
+	warp_event  3,  9, PALLET_TOWN, 5
+	warp_event  4,  9, PALLET_TOWN, 5
 
 	def_coord_events
 
 	def_bg_events
 
 	def_object_events
-	object_event  1,  4, SPRITE_SALESMAN, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, PalletDodrioHouseSalesmanScript, -1
-	object_event  6,  2, SPRITE_DODRIO_STATIC, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, NITE, 0, OBJECTTYPE_SCRIPT, 0, PalletDodrioHouseAsleepScript, -1
+	object_event  1,  6, SPRITE_SALESMAN, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, PalletDodrioHouseSalesmanScript, -1
+	object_event  8,  4, SPRITE_DODRIO_STATIC, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, NITE, 0, OBJECTTYPE_SCRIPT, 0, PalletDodrioHouseAsleepScript, -1

@@ -146,12 +146,12 @@ BluesHouse_MapEvents:
 	db 0, 0 ; filler
 
 	def_warp_events
-	warp_event  2,  7, PALLET_TOWN, 2
-	warp_event  3,  7, PALLET_TOWN, 2
+	warp_event  3,  9, PALLET_TOWN, 2
+	warp_event  4,  9, PALLET_TOWN, 2
 
 	def_coord_events
 
 	def_bg_events
 
 	def_object_events
-	object_event  2,  3, SPRITE_DAISY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DaisyScript, -1
+	object_event  3,  5, SPRITE_DAISY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DaisyScript, -1
