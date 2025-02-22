@@ -9,9 +9,16 @@ BluesHouse_MapScripts:
 DaisyScript:
 	faceplayer
 	opentext
+	checkevent EVENT_GOT_STARTER_FROM_OAK
+	iftrue .CheckDaisyHour
+	writetext DaisyHelloText
+	waitbutton
+	closetext
+	end
+.CheckDaisyHour:
 	readvar VAR_HOUR
 	ifequal 15, .ThreePM
-	writetext DaisyHelloText
+	writetext DaisyHelloAfterText
 	waitbutton
 	closetext
 	end
@@ -64,17 +71,24 @@ DaisyScript:
 	end
 
 DaisyHelloText:
-	text "DAISY: Hi! My kid"
-	line "brother is the GYM"
+	text "DAISY: Hi <PLAYER>!"
+	line "Where you looking"
+	cont "for my brother?"
 
-	para "LEADER in VIRIDIAN"
-	line "CITY."
+	para "He should still be"
+	line "at Grandpa's lab."
+	done
 
-	para "But he goes out"
-	line "of town so often,"
+DaisyHelloAfterText:
+	text "Good luck on your"
+	line "journey, <PLAYER>."
 
-	para "it causes problems"
-	line "for the trainers."
+	para "I can't offer much,"
+	line "but feel free to"
+	cont "come by for tea."
+
+	para "I usually have a"
+	line "cup around 3 P.M."
 	done
 
 DaisyOfferGroomingText:

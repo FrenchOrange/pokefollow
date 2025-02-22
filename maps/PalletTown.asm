@@ -1,6 +1,6 @@
 	object_const_def
 	const PALLETTOWN_DODRIO
-	const PALLETTOWN_TEACHER
+	const PALLETTOWN_LASS
 	const PALLETTOWN_FISHER
 
 PalletTown_MapScripts:
@@ -42,8 +42,20 @@ PalletTownDodrioDayEveText:
 	text "DODRIO: Doo!"
 	done
 
-PalletTownTeacherScript:
-	jumptextfaceplayer PalletTownTeacherText
+PalletTownLassScript:
+	faceplayer
+	opentext
+	checkevent EVENT_GOT_STARTER_FROM_OAK
+	iftrue .GotStarter
+	writetext PalletTownLassText
+	waitbutton
+	closetext
+	end
+.GotStarter:
+	writetext PalletTownLassStarterText
+	waitbutton
+	closetext
+	end
 
 PalletTownFisherScript:
 	jumptextfaceplayer PalletTownFisherText
@@ -60,19 +72,41 @@ OaksLabSign:
 BluesHouseSign:
 	jumptext BluesHouseSignText
 
-PalletTownTeacherText:
+PalletTownLassText:
 	text "I'm raising #-"
 	line "MON too."
 
 	para "They serve as my"
-	line "private guards."
+	line "private guards"
+	cont "when I'm out and"
+	cont "about."
+
+	para "But, uh. Were you"
+	line "not supposed to"
+	cont "get a POKéMON of"
+	cont "your own today?"
+	done
+
+PalletTownLassStarterText:
+	text "You got a #MON!"
+	line "It even follows"
+	cont "you outside its"
+	cont "# BALL."
+
+	para "Guess it wants to"
+	line "stretch its legs."
+
+	para "Can't imagine"
+	line "sitting inside a"
+	cont "# BALL is all"
+	cont "that comfortable."
 	done
 
 PalletTownFisherText:
 	text "Isn't technology"
 	line "the greatest?"
 
-	para "The have machines"
+	para "They have machines"
 	line "that transfer"
 	cont "ownership of a"
 
@@ -121,5 +155,5 @@ PalletTown_MapEvents:
 
 	def_object_events
 	object_event 11, 27, SPRITE_DODRIO_STATIC, SPRITEMOVEDATA_POKEMON, 0, 0, -1, MORN | DAY | EVE, 0, OBJECTTYPE_SCRIPT, 0, PalletTownDodrioScript, -1
-	object_event 30, 27, SPRITE_TEACHER, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, PalletTownTeacherScript, -1
+	object_event 30, 27, SPRITE_LASS, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, PalletTownLassScript, -1
 	object_event 35, 32, SPRITE_FISHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 2, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, PalletTownFisherScript, -1

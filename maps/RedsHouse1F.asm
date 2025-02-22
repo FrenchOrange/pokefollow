@@ -13,14 +13,13 @@ RedHouse1FNoopScene:
 RedsMom:
 	faceplayer
 	opentext
-	checkevent EVENT_MET_REDS_MOM
-	iftrue .MetAlready
+	checkevent EVENT_GOT_STARTER_FROM_OAK
+	iftrue .GotStarterMom
 	writetext RedsMomText1
 	waitbutton
 	closetext
-	setevent EVENT_MET_REDS_MOM
 	end
-.MetAlready:
+.GotStarterMom:
 	writetext RedsMomText2
 	waitbutton
 	closetext
@@ -30,37 +29,31 @@ RedsHouse1FBookshelf:
 	jumpstd PictureBookshelfScript
 
 RedsMomText1:
-	text "Hi!"
+	text "Oh, <PLAYER>. You"
+	line "knew today was an"
+	cont "important day, and"
 
-	para "RED's been away"
-	line "for a long time."
+	para "you slept in all"
+	line "the same."
 
-	para "He hasn't called"
-	line "either, so I have"
-
-	para "no idea where he"
-	line "is or what he's"
-	cont "been doing."
-
-	para "They say that no"
-	line "word is proof that"
-
-	para "he's doing fine,"
-	line "but I do worry"
-	cont "about him."
+	para "Hurry, maybe there"
+	line "is still a #MON"
+	cont "or two left!"
 	done
 
 RedsMomText2:
-	text "I worry about RED"
-	line "getting hurt or"
+	text "All boys must"
+	line "leave  home one"
+	cont "day, that's how"
+	cont "things go."
 
-	para "sick, but he's a"
-	line "boy. I'm proud"
+	para "I'll be rooting for"
+	line "you, <PLAYER>, just"
+	cont "don't go crying to"
 
-	para "that he is doing"
-	line "what he wants to"
-
-	para "do."
+	para "your mama if"
+	line "things don't go as"
+	cont "planned!"
 	done
 
 RedsMomTestPJ:
@@ -93,17 +86,16 @@ RedsHouse1F_MapEvents:
 	db 0, 0 ; filler
 
 	def_warp_events
-	warp_event  2,  7, PALLET_TOWN, 1
-	warp_event  3,  7, PALLET_TOWN, 1
-	warp_event  7,  0, REDS_HOUSE_2F, 1
+	warp_event  2,  9, PALLET_TOWN, 1
+	warp_event  3,  9, PALLET_TOWN, 1
+	warp_event  9,  2, REDS_HOUSE_2F, 1
 
 	def_coord_events
 
 	def_bg_events
-	bg_event  0,  1, BGEVENT_READ, RedsHouse1FBookshelf
-	bg_event  1,  1, BGEVENT_READ, RedsHouse1FBookshelf
+	bg_event  2,  3, BGEVENT_READ, RedsHouse1FBookshelf
 
 	def_object_events
-	object_event  5,  3, SPRITE_REDS_MOM, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, RedsMom, -1
-	object_event  5,  1, SPRITE_REDS_MOM, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, RedsMomTestPJ, -1
-	object_event  6,  1, SPRITE_REDS_MOM, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, RedsMomTestGoBack, -1
+	object_event  6,  5, SPRITE_REDS_MOM, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, RedsMom, -1
+	object_event  6,  3, SPRITE_REDS_MOM, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, RedsMomTestPJ, -1
+	object_event  7,  3, SPRITE_REDS_MOM, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, RedsMomTestGoBack, -1

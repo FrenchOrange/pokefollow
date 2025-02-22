@@ -237,19 +237,19 @@ RedsHouse2F_MapEvents:
 	db 0, 0 ; filler
 
 	def_warp_events
-	warp_event  3,  7, REDS_HOUSE_1F, 3
-	warp_event  4,  7, REDS_HOUSE_1F, 3
+	warp_event  3,  9, REDS_HOUSE_1F, 3
+	warp_event  4,  9, REDS_HOUSE_1F, 3
 
 	def_coord_events
 
 	def_bg_events
-	bg_event  1,  1, BGEVENT_READ, RedsHouse2FTVScript
-	bg_event  0,  1, BGEVENT_READ, RedsHouse2FPCScript
-	bg_event  5,  0, BGEVENT_READ, DebugColor
-	bg_event  2,  1, BGEVENT_READ, DebugSign
+	bg_event  1,  3, BGEVENT_READ, RedsHouse2FTVScript
+	bg_event  0,  3, BGEVENT_READ, RedsHouse2FPCScript
+	bg_event  5,  2, BGEVENT_READ, DebugColor
+	bg_event  2,  3, BGEVENT_READ, DebugSign
 
 	def_object_events
-	object_event  0,  7, SPRITE_CLEFAIRY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_PINK, OBJECTTYPE_SCRIPT, 0, RedsHouse2FCoinBankScript, -1
-	object_event  7,  6, SPRITE_POLIWAG, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, RedsHouse2FSharpenerScript, -1
-	object_event  7,  1, SPRITE_VOLTORB, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, ObjectEvent, -1
-	object_event  1,  4, SPRITE_BIG_SNORLAX, SPRITEMOVEDATA_BIGDOLLSYM, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, RedsHouse2FSnorlaxDollScript, -1
+	object_event  0,  9, SPRITE_CLEFAIRY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_PINK, OBJECTTYPE_SCRIPT, 0, RedsHouse2FCoinBankScript, -1
+	object_event  7,  8, SPRITE_POLIWAG, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, RedsHouse2FSharpenerScript, -1
+	object_event  7,  3, SPRITE_VOLTORB, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, ObjectEvent, -1
+	object_event  1,  6, SPRITE_BIG_SNORLAX, SPRITEMOVEDATA_BIGDOLLSYM, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, RedsHouse2FSnorlaxDollScript, -1

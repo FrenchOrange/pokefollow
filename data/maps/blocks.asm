@@ -164,6 +164,7 @@ CherrygroveEvolutionSpeechHouse_Blocks:
 Route30BerryHouse_Blocks:
 PalletOakTVSpeechHouse_Blocks:
 PalletDodrioHouse_Blocks:
+LavenderPokemonRefuge_Blocks:
 	INCBIN "maps/House1.ablk"
 
 SafariZoneFuchsiaGateBeta_Blocks:
@@ -759,9 +760,6 @@ RedsHouse2F_Blocks:
 OaksLab_Blocks:
 	INCBIN "maps/OaksLab.ablk"
 
-MrFujisHouse_Blocks:
-	INCBIN "maps/MrFujisHouse.ablk"
-
 LavRadioTower1F_Blocks:
 	INCBIN "maps/LavRadioTower1F.ablk"
 
@@ -770,9 +768,6 @@ SilverCaveItemRooms_Blocks:
 
 DayCare_Blocks:
 	INCBIN "maps/DayCare.ablk"
-
-SoulHouse_Blocks:
-	INCBIN "maps/SoulHouse.ablk"
 
 PewterGym_Blocks:
 	INCBIN "maps/PewterGym.ablk"

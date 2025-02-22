@@ -32,12 +32,6 @@ LavenderTownSign:
 KantoRadioStationSign:
 	jumptext KantoRadioStationSignText
 
-VolunteerPokemonHouseSign:
-	jumptext VolunteerPokemonHouseSignText
-
-SoulHouseSign:
-	jumptext SoulHouseSignText
-
 LavenderPokecenterSignText:
 	jumpstd PokecenterSignScript
 
@@ -91,28 +85,15 @@ KantoRadioStationSignText:
 	cont "Around the Clock!"
 	done
 
-VolunteerPokemonHouseSignText:
-	text "LAVENDER VOLUNTEER"
-	line "#MON HOUSE"
-	done
-
-SoulHouseSignText:
-	text "SOUL HOUSE"
-
-	para "May the Souls of"
-	line "#MON Rest Easy"
-	done
-
 LavenderTown_MapEvents:
 	db 0, 0 ; filler
 
 	def_warp_events
 	warp_event  5,  5, LAVENDER_POKECENTER_1F, 1
-	warp_event  5,  9, MR_FUJIS_HOUSE, 1
+	warp_event  5,  9, LAVENDER_POKEMON_REFUGE, 1
 	warp_event  3, 13, LAVENDER_SPEECH_HOUSE, 1
 	warp_event  7, 13, LAVENDER_NAME_RATER, 1
 	warp_event  1,  5, LAVENDER_MART, 2
-	warp_event 13, 11, SOUL_HOUSE, 1
 	warp_event 14,  5, LAV_RADIO_TOWER_1F, 1
 
 	def_coord_events
@@ -120,8 +101,6 @@ LavenderTown_MapEvents:
 	def_bg_events
 	bg_event 11,  3, BGEVENT_READ, LavenderTownSign
 	bg_event 15,  7, BGEVENT_READ, KantoRadioStationSign
-	bg_event  3,  9, BGEVENT_READ, VolunteerPokemonHouseSign
-	bg_event 15, 13, BGEVENT_READ, SoulHouseSign
 	bg_event  6,  5, BGEVENT_READ, LavenderPokecenterSignText
 	bg_event  2,  5, BGEVENT_READ, LavenderMartSignText
 

@@ -275,7 +275,7 @@ ENDM
 	map_const POKECOM_CENTER_ADMIN_OFFICE_MOBILE,          16, 16 ; 21
 	map_const ILEX_FOREST_AZALEA_GATE,                      5,  4 ; 22
 	map_const ROUTE_34_ILEX_FOREST_GATE,                    5,  4 ; 23
-	map_const DAY_CARE,                                     5,  4 ; 24
+	map_const DAY_CARE,                                     4,  4 ; 24
 	endgroup
 
 	newgroup VERMILION                                            ; 12
@@ -298,8 +298,8 @@ ENDM
 	map_const ROUTE_1,                                     19, 24 ;  1
 	map_const PALLET_LAKE,                                 13, 13 ;  2
 	map_const PALLET_TOWN,                                 24, 20 ;  3
-	map_const REDS_HOUSE_1F,                                4,  4 ;  4
-	map_const REDS_HOUSE_2F,                                4,  4 ;  5
+	map_const REDS_HOUSE_1F,                                5,  5 ;  4
+	map_const REDS_HOUSE_2F,                                4,  5 ;  5
 	map_const BLUES_HOUSE,                                  5,  5 ;  6
 	map_const OAKS_LAB,                                    28,  6 ;  7
 	map_const PALLET_OAK_TV_SPEECH_HOUSE,                   5,  5 ;  8
@@ -366,14 +366,13 @@ ENDM
 	map_const LAVENDER_TOWN,                               10,  9 ;  4
 	map_const LAVENDER_POKECENTER_1F,                       5,  4 ;  5
 	map_const LAVENDER_POKECENTER_2F_BETA,                  8,  4 ;  6
-	map_const MR_FUJIS_HOUSE,                               5,  4 ;  7
+	map_const LAVENDER_POKEMON_REFUGE,                      5,  5 ;  7
 	map_const LAVENDER_SPEECH_HOUSE,                        4,  4 ;  8
 	map_const LAVENDER_NAME_RATER,                          4,  4 ;  9
 	map_const LAVENDER_MART,                                6,  4 ; 10
-	map_const SOUL_HOUSE,                                   5,  4 ; 11
-	map_const LAV_RADIO_TOWER_1F,                          10,  4 ; 12
-	map_const ROUTE_8_SAFFRON_GATE,                         5,  4 ; 13
-	map_const ROUTE_12_SUPER_ROD_HOUSE,                     4,  4 ; 14
+	map_const LAV_RADIO_TOWER_1F,                          10,  4 ; 11
+	map_const ROUTE_8_SAFFRON_GATE,                         5,  4 ; 12
+	map_const ROUTE_12_SUPER_ROD_HOUSE,                     4,  4 ; 13
 	endgroup
 
 	newgroup SILVER                                               ; 19
@@ -484,7 +483,7 @@ ENDM
 	map_const SAFFRON_MAGNET_TRAIN_STATION,                10,  9 ;  9
 	map_const SILPH_CO_1F,                                  8,  4 ; 10
 	map_const COPYCATS_HOUSE_1F,                            4,  4 ; 11
-	map_const COPYCATS_HOUSE_2F,                            5,  3 ; 12
+	map_const COPYCATS_HOUSE_2F,                            4,  3 ; 12
 	map_const ROUTE_5_UNDERGROUND_PATH_ENTRANCE,            4,  4 ; 13
 	map_const ROUTE_5_SAFFRON_GATE,                         5,  4 ; 14
 	map_const ROUTE_5_CLEANSE_TAG_HOUSE,                    4,  4 ; 15
