@@ -169,7 +169,7 @@
 	tilecoll WALL, WALL, WALL, WALL ; a8
 	tilecoll WALL, WALL, WALL, WALL ; a9
 	tilecoll WALL, WALL, WALL, WALL ; aa
-	tilecoll LEFT_WALL, RIGHT_WALL, LEFT_WALL, RIGHT_WALL ; ab
+	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; ab
 	tilecoll WALL, WALL, WALL, WALL ; ac
 	tilecoll WALL, WALL, WALL, WALL ; ad
 	tilecoll WALL, WALL, WALL, WALL ; ae

@@ -1523,37 +1523,39 @@ _MayRegisterItemText::
 	line "on SELECT Button."
 	done
 
-_IntroMenuText1::
-	text "BULBASAUR…"
-	prompt
+_IntroMenuMonologue::
+	text "That's right,"
+	line "you're <PLAYER>,"
+	cont "from PALLET TOWN!"
 
-_IntroMenuText2::
-	text "SQUIRTLE…"
-	prompt
+	para "In PALLET TOWN,"
+	line "10 year olds like"
+	cont "you are able to"
 
-_IntroMenuText3::
-	text "CHARMANDER…"
-	prompt
+	para "get a LICENSE to"
+	line "use #MON. And"
+	cont "tomorrow is when"
 
-_IntroMenuText4::
-	text "With their help,"
-	line "you became the"
+	para "you will get your"
+	line "beginner #MON"
+	cont "from PROF.OAK, the"
 
-	para "greatest #MON"
-	line "trainer."
+	para "town's #MON"
+	line "expert."
 
-	para "Scratch that, a"
-	line "#MON MASTER!"
+	para "Then you can start"
+	line "your #MON"
+	cont "Trainer journey!"
 
-	para "Everyone cheers"
-	line "you on. They all"
-	cont "cheer for--"
-	prompt
+	para "You hearby declare"
+	line "to the #MON of"
+	cont "the world; I will"
 
-_IntroMenuText5::
-	text "<PLAYER>!"
+	para "be the greatest"
+	line "#MON Trainer."
 
-	para "<PLAYER>! <PLAYER>!"
+	para "No, scratch that."
+	line "A #MON Master!"
 
-	para "<PLAYER>… Wake up!"
+	para "Yes, that'll be me!"
 	prompt

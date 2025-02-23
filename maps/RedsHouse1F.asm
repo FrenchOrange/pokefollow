@@ -3,12 +3,8 @@
 
 RedsHouse1F_MapScripts:
 	def_scene_scripts
-	scene_script RedHouse1FNoopScene ; unusable
 
 	def_callbacks
-
-RedHouse1FNoopScene:
-	end
 
 RedsMom:
 	faceplayer
@@ -18,11 +14,13 @@ RedsMom:
 	writetext RedsMomText1
 	waitbutton
 	closetext
+	turnobject REDSHOUSE1F_REDS_MOM, LEFT
 	end
 .GotStarterMom:
 	writetext RedsMomText2
 	waitbutton
 	closetext
+	turnobject REDSHOUSE1F_REDS_MOM, LEFT
 	end
 
 RedsHouse1FBookshelf:
@@ -43,7 +41,7 @@ RedsMomText1:
 
 RedsMomText2:
 	text "All boys must"
-	line "leave  home one"
+	line "leave home one"
 	cont "day, that's how"
 	cont "things go."
 

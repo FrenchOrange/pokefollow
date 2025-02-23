@@ -299,7 +299,7 @@ ENDM
 	map_const PALLET_LAKE,                                 13, 13 ;  2
 	map_const PALLET_TOWN,                                 24, 20 ;  3
 	map_const REDS_HOUSE_1F,                                5,  5 ;  4
-	map_const REDS_HOUSE_2F,                                4,  5 ;  5
+	map_const REDS_HOUSE_2F,                                7,  5 ;  5
 	map_const BLUES_HOUSE,                                  5,  5 ;  6
 	map_const OAKS_LAB,                                    28,  6 ;  7
 	map_const PALLET_OAK_TV_SPEECH_HOUSE,                   5,  5 ;  8

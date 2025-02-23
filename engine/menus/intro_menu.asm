@@ -60,7 +60,7 @@ NewGame:
 	ld [wDebugFlags], a
 	call ResetWRAM
 	call NewGame_ClearTilemapEtc
-	call OakSpeech
+	call IntroSpeech
 	call InitializeWorld
 
 	ld a, LANDMARK_PALLET_TOWN
@@ -624,116 +624,25 @@ Continue_DisplayGameTime:
 	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
 	jp PrintNum
 
-OakSpeech:
-	farcall InitClock
-	call RotateFourPalettesLeft
-	call ClearTilemap
+IntroSpeech:
+	call NamePlayer
 
 	ld de, MUSIC_ROUTE_30
 	call PlayMusic
 
-	call RotateFourPalettesRight
-	call RotateThreePalettesRight
-	xor a
-; Bulbasaur
-	ld a, BULBASAUR
-	ld [wCurSpecies], a
-	ld [wCurPartySpecies], a
-	call GetBaseData
-	hlcoord 6, 4
-	call PrepMonFrontpic
-
-	xor a
-	ld [wTempMonDVs], a
-	ld [wTempMonDVs + 1], a
-
-	ld b, SCGB_TRAINER_OR_MON_FRONTPIC_PALS
-	call GetSGBLayout
-	call Intro_RotatePalettesLeftFrontpic
-
-	ld hl, IntroMenuText1
-	call PrintText
-	call RotateThreePalettesRight
-	call ClearTilemap
-
-; Squirtle
-	ld a, SQUIRTLE
-	ld [wCurSpecies], a
-	ld [wCurPartySpecies], a
-	call GetBaseData
-	hlcoord 6, 4
-	call PrepMonFrontpic
-
-	xor a
-	ld [wTempMonDVs], a
-	ld [wTempMonDVs + 1], a
-
-	ld b, SCGB_TRAINER_OR_MON_FRONTPIC_PALS
-	call GetSGBLayout
-	call Intro_RotatePalettesLeftFrontpic
-
-	ld hl, IntroMenuText2
-	call PrintText
-	call RotateThreePalettesRight
-	call ClearTilemap
-
-; Charmander
-	ld a, CHARMANDER
-	ld [wCurSpecies], a
-	ld [wCurPartySpecies], a
-	call GetBaseData
-	hlcoord 6, 4
-	call PrepMonFrontpic
-
-	xor a
-	ld [wTempMonDVs], a
-	ld [wTempMonDVs + 1], a
-
-	ld b, SCGB_TRAINER_OR_MON_FRONTPIC_PALS
-	call GetSGBLayout
-	call Intro_RotatePalettesLeftFrontpic
-
-	ld hl, IntroMenuText3
-	call PrintText
-	call RotateThreePalettesRight
-	call ClearTilemap
-
-; Show Player sprite
 	xor a
 	ld [wCurPartySpecies], a
 	farcall DrawIntroPlayerPic
 
 	ld b, SCGB_TRAINER_OR_MON_FRONTPIC_PALS
 	call GetSGBLayout
-	call Intro_RotatePalettesLeftFrontpic
 
-	ld hl, IntroMenuText4
-	call PrintText
-	call RotateThreePalettesRight
-	call NamePlayer
-
-	ld hl, IntroMenuText5
+	ld hl, IntroMenuMonologue
 	call PrintText
 	ret
 
-IntroMenuText1:
-	text_far _IntroMenuText1
-	text_end
-
-IntroMenuText2:
-	text_far _IntroMenuText2
-	text_end
-
-IntroMenuText3:
-	text_far _IntroMenuText3
-	text_end
-
-IntroMenuText4:
-	text_far _IntroMenuText4
-	text_end
-
-IntroMenuText5:
-	text_far _IntroMenuText5
+IntroMenuMonologue:
+	text_far _IntroMenuMonologue
 	text_end
 
 NamePlayer:
@@ -896,8 +805,8 @@ ShrinkFrame:
 	ret
 
 Intro_PlacePlayerSprite:
-	ld de, ChrisPJSpriteGFX
-	ld b, BANK(ChrisPJSpriteGFX)
+	ld de, ChrisSpriteGFX
+	ld b, BANK(ChrisSpriteGFX)
 	ld c, 12
 	ld hl, vTiles0
 	call Request2bpp
@@ -919,7 +828,7 @@ Intro_PlacePlayerSprite:
 	inc de
 	ld [hli], a ; tile id
 
-	ld b, PAL_OW_GREEN
+	ld b, PAL_OW_RED
 	ld a, [wPlayerGender]
 	bit PLAYERGENDER_FEMALE_F, a
 	jr z, .male

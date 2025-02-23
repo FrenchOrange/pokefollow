@@ -206,6 +206,8 @@
 
 	const_next 200
 ; Kanto story events
+	const EVENT_INVISIBLE_NPC
+	const EVENT_GOT_SCOLDED_BY_MOM
 	const EVENT_GOT_PROPER_CLOTHES
 	const EVENT_WATCHED_TV_ONCE
 	const EVENT_WATCHED_TV_TWICE
@@ -272,7 +274,7 @@
 	const EVENT_DANA_GAVE_THUNDERSTONE
 	const EVENT_TULLY_GAVE_WATER_STONE
 	const EVENT_TIFFANY_GAVE_PINK_BOW
-; Unused: next 335 events
+; Unused: next 333 events
 
 	const_next 600
 ; Kurt Apricorn events
@@ -1190,8 +1192,8 @@
 	const EVENT_RIVAL_SPROUT_TOWER
 	const EVENT_RIVAL_BURNED_TOWER
 	const EVENT_RIVAL_DRAGONS_DEN
-	const EVENT_PLAYERS_HOUSE_MOM_1
-	const EVENT_PLAYERS_HOUSE_MOM_2
+	const_skip ; unused
+	const_skip ; unused
 	const EVENT_MR_POKEMONS_HOUSE_OAK
 	const EVENT_VIOLET_CITY_EARL
 	const EVENT_EARLS_ACADEMY_EARL

@@ -3042,7 +3042,7 @@ wHallOfFameSceneID::                              db
 wRoute27SceneID::                                 db
 wNewBarkTownSceneID::                             db
 wElmsLabSceneID::                                 db
-wPlayersHouse1FSceneID::                          db
+wRedsHouse2FSceneID::                             db
 wRoute29SceneID::                                 db
 wCherrygroveCitySceneID::                         db
 wMrPokemonsHouseSceneID::                         db

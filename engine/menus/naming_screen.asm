@@ -156,7 +156,7 @@ NamingScreen:
 	db "YOUR NAME?@"
 
 .Rival:
-	ld de, RivalSpriteGFX
+	ld de, BlueSpriteGFX
 	ld b, BANK(RivalSpriteGFX)
 	call .LoadSprite
 	hlcoord 5, 2
