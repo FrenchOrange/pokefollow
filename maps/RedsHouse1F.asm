@@ -84,8 +84,8 @@ RedsHouse1F_MapEvents:
 	db 0, 0 ; filler
 
 	def_warp_events
-	warp_event  2,  9, PALLET_TOWN, 1
 	warp_event  3,  9, PALLET_TOWN, 1
+	warp_event  4,  9, PALLET_TOWN, 1
 	warp_event  9,  2, REDS_HOUSE_2F, 1
 
 	def_coord_events
