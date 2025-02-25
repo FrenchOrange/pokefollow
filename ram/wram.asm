@@ -3040,9 +3040,9 @@ wKarensRoomSceneID::                              db
 wLancesRoomSceneID::                              db
 wHallOfFameSceneID::                              db
 wRoute27SceneID::                                 db
-wNewBarkTownSceneID::                             db
 wElmsLabSceneID::                                 db
 wRedsHouse2FSceneID::                             db
+wPalletTownSceneID::                              db
 wRoute29SceneID::                                 db
 wCherrygroveCitySceneID::                         db
 wMrPokemonsHouseSceneID::                         db

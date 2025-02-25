@@ -1,45 +1,363 @@
 	object_const_def
-	const PALLETTOWN_DODRIO
+	const PALLETTOWN_BLUE
+	const PALLETTOWN_CHEERLEADER1
+	const PALLETTOWN_CHEERLEADER2
+	const PALLETTOWN_POKEFAN_F1
+	const PALLETTOWN_BUG_CATCHER1
+	const PALLETTOWN_BUG_CATCHER2
+	const PALLETTOWN_GYM_GUIDE
+	const PALLETTOWN_OAK
+	const PALLETTOWN_SALESMAN
+	const PALLETTOWN_POKEFAN_F2
+	const PALLETTOWN_TWIN
+	const PALLETTOWN_REDS_MOM
 	const PALLETTOWN_LASS
 	const PALLETTOWN_FISHER
+	const PALLETTOWN_DODRIO
 
 PalletTown_MapScripts:
 	def_scene_scripts
+	scene_script PalletTownNoop1Scene, SCENE_PALLETTOWN_HURRY_TO_LAB
+	scene_script PalletTownNoop2Scene, SCENE_PALLETTOWN_NOOP
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, PalletTownFlypointCallback
+
+PalletTownNoop1Scene:
+	end
+
+PalletTownNoop2Scene:
+	end
 
 PalletTownFlypointCallback:
 	setflag ENGINE_FLYPOINT_PALLET
 	endcallback
 
-PalletTownDodrioScript:
+PalletTown_HurryToLabScene:
+	applymovement PLAYER, PalletTownPlayerMovesBack
 	opentext
-	checktime MORN
-	iftrue .morn
-	checktime DAY | EVE
-	iftrue .day_eve
-.morn
-	writetext PalletTownDodrioMornText
-	cry DODRIO
-	cry DODRIO
+	writetext PalletTownPlayerWalkBackText
 	waitbutton
 	closetext
 	end
 
-.day_eve
-	writetext PalletTownDodrioDayEveText
-	cry DODRIO
-	waitbutton
-	closetext
-	end
+PalletTownPlayerMovesBack:
+	turn_head DOWN
+	fix_facing
+	big_step UP
+	remove_fixed_facing
+	step_end
 
-PalletTownDodrioMornText:
-	text "DODRIO: Doo! Do!"
+PalletTownPlayerWalkBackText:
+	text "PROF.OAK waits for"
+	line "me at the LAB."
+
+	para "I should hurry."
 	done
 
-PalletTownDodrioDayEveText:
-	text "DODRIO: Doo!"
+CheerleaderScript:
+	readvar VAR_XCOORD
+	ifequal 16, .TalkedToLeftGirl
+	ifequal 17, .TalkedToRightGirl
+.GetToGaryCont
+	applymovement PLAYER, PalletTownPlayerKnockback
+	playsound SFX_TACKLE
+	waitsfx
+	applymovement PALLETTOWN_BLUE, PalletTownRivalStepsDown
+	turnobject PALLETTOWN_CHEERLEADER1, UP
+	turnobject PALLETTOWN_CHEERLEADER2, UP
+	opentext
+	writetext PalletTownGaryOuchText
+	promptbutton
+	special NameRival
+	writetext PalletTownGaryWatchItText
+	promptbutton
+	closetext
+	showemote EMOTE_SHOCK, PALLETTOWN_BLUE, 15
+	opentext
+	writetext PalletTownGaryItsYouText
+	promptbutton
+	closetext
+	turnobject PALLETTOWN_BLUE, RIGHT
+	opentext
+	writetext PalletTownGaryPitifulStartText
+	promptbutton
+	closetext
+	turnobject PALLETTOWN_BLUE, DOWN
+	opentext
+	writetext PalletTownGaryGotAMonText
+	promptbutton
+	closetext
+
+	applymovement PALLETTOWN_CHEERLEADER1, PalletTownCheerleaderHop
+	pause 15
+	applymovement PALLETTOWN_CHEERLEADER2, PalletTownCheerleaderHop
+	pause 15
+	opentext
+	writetext PalletTownGaryCheerleaderText2
+	promptbutton
+	closetext
+
+	applymovement PALLETTOWN_BLUE, PalletTownPlayerRivalMovesDown
+	turnobject PLAYER, RIGHT
+	opentext
+	writetext PalletTownGaryMyFansText
+	promptbutton
+	closetext
+	applymovement PALLETTOWN_BLUE, PalletRivalStepsRight
+	opentext
+	writetext PalletTownGaryHistoryText
+	promptbutton
+	closetext
+	applymovement PALLETTOWN_BLUE, PalletRivalStepsRight
+	disappear PALLETTOWN_BLUE
+
+	pause 25
+	special FadeOutMusic
+	special FadeOutToBlack
+	special ReloadSpritesNoPalettes
+	disappear PALLETTOWN_CHEERLEADER1
+	disappear PALLETTOWN_CHEERLEADER2
+	disappear PALLETTOWN_POKEFAN_F1
+	disappear PALLETTOWN_BUG_CATCHER1
+	disappear PALLETTOWN_BUG_CATCHER2
+	disappear PALLETTOWN_GYM_GUIDE
+	pause 35
+	special FadeInFromBlack
+	special RestartMapMusic
+
+	appear PALLETTOWN_OAK
+	applymovement PALLETTOWN_OAK, PalletTownRivalStepsDown
+	turnobject PLAYER, UP	
+	opentext
+	writetext PalletTownOakYouShowedUpText
+	promptbutton
+	closetext
+	applymovement PLAYER, PalletTownPlayerMovesUp
+	opentext
+	writetext PalletTownOakAMonText
+	promptbutton
+	closetext
+	applymovement PALLETTOWN_OAK, PalletTownOakMovesLeft
+	disappear PALLETTOWN_OAK
+	pause 15
+	end
+
+.TalkedToLeftGirl:
+	applymovement PALLETTOWN_CHEERLEADER1, PalletTownCheerleaderHop
+	opentext
+	writetext PalletTownGaryCheerleaderText
+	promptbutton
+	closetext
+	applymovement PALLETTOWN_CHEERLEADER1, PalletTownCheerleader1ShovedAside
+	opentext
+	writetext PalletTownGaryCheerleaderHeyText
+	promptbutton
+	closetext
+	turnobject PALLETTOWN_CHEERLEADER1, RIGHT
+	applymovement PLAYER, PalletTownPlayerMovesToRival1
+	sjump .GetToGaryCont
+
+.TalkedToRightGirl:
+	applymovement PALLETTOWN_CHEERLEADER2, PalletTownCheerleaderHop
+	opentext
+	writetext PalletTownGaryCheerleaderText
+	promptbutton
+	closetext
+	applymovement PALLETTOWN_CHEERLEADER2, PalletTownCheerleader2ShovedAside
+	opentext
+	writetext PalletTownGaryCheerleaderHeyText
+	promptbutton
+	closetext
+	turnobject PALLETTOWN_CHEERLEADER2, LEFT
+	applymovement PLAYER, PalletTownPlayerMovesToRival2
+	sjump .GetToGaryCont
+
+PalletTownCheerleaderHop:
+	turn_head LEFT
+	turn_head RIGHT
+	jump_in_place
+	turn_head LEFT
+	turn_head RIGHT
+	jump_in_place
+	turn_head UP
+	step_end
+
+PalletTownCheerleader1ShovedAside:
+	fix_facing
+	big_step LEFT
+	remove_fixed_facing
+	step_end
+
+PalletTownCheerleader2ShovedAside:
+	fix_facing
+	big_step RIGHT
+	remove_fixed_facing
+	step_end
+
+PalletTownPlayerMovesToRival1:
+	step UP
+	step UP
+	step UP
+	step RIGHT
+	step RIGHT
+PalletTownPlayerMovesUp:
+	step UP
+	step UP
+	step_end
+
+PalletTownPlayerMovesToRival2:
+	step UP
+	step UP
+	step UP
+	step RIGHT
+	step UP
+	step UP
+	step_end
+
+PalletTownPlayerRivalMovesDown:
+	step RIGHT
+	step DOWN
+	step_end
+
+PalletTownPlayerKnockback:
+	fix_facing
+	jump_step DOWN
+	remove_fixed_facing
+	step_end
+
+PalletTownRivalStepsDown:
+	step DOWN
+	step DOWN
+	step_end
+
+PalletRivalStepsRight:
+	step RIGHT
+	step RIGHT
+	step RIGHT
+	turn_head LEFT
+	step_end
+
+PalletTownOakMovesUp:
+	step UP
+	step UP
+	step UP
+	step UP
+	step LEFT
+	turn_head RIGHT
+	step_end
+
+PalletTownOakMovesLeft:
+	step UP
+	step LEFT
+	step LEFT
+	step LEFT
+	step LEFT
+	step LEFT
+	step_end
+
+PalletTownGaryCheerleaderText:
+	text "Go! Go!"
+	line "You're our man!"
+
+	para "If you can't do it"
+	line "no one can!"
+	done
+
+PalletTownGaryCheerleaderHeyText:
+	text "H-hey!"
+	done
+
+PalletTownGaryOuchText:
+	text "Ah! Ouch…"
+	done
+
+PalletTownGaryWatchItText:
+	text "Hey, watch where"
+	line "you're going!"
+	done
+
+PalletTownGaryItsYouText:
+	text "Huh? Well if it"
+	line "isn't <PLAYER>!"
+
+	para "Yeah, I remember"
+	line "you. Little Mr."
+	cont "<PLAYER> himself!"
+
+	para "So you got a late"
+	line "start, didn't cha?"
+
+	para "Don't stand there"
+	line "looking all moppy."
+
+	para "You say 'Yes Mr."
+	line "<RIVAL>, please"
+	cont "forgive me.'"
+
+	para "To think you're"
+	line "already running"
+	cont "late. Ugh…"
+	done
+
+PalletTownGaryPitifulStartText:
+	text "My rival's getting"
+	line "off to such a"
+	cont "pitiful start."
+	done
+
+PalletTownGaryGotAMonText:
+	text "I've got a #MON"
+	line "and you don't."
+	done
+
+PalletTownGaryCheerleaderText2:
+	text "Let's go, <RIVAL>!"
+	line "Let's go!"
+	cont "Yeah, yeah!"
+	done
+
+PalletTownGaryMyFansText:
+	text "Thank you, fans."
+	line "Thank you for this"
+	cont "great honor."
+
+	para "I promise you that"
+	line "I will become a"
+	cont "#MON MASTER."
+
+	para "PALLET TOWN will"
+	line "be known all"
+	cont "around the world!"
+	done
+
+PalletTownGaryHistoryText:
+	text "Thank you for"
+	line "coming out to see"
+	cont "history in the"
+	cont "making!"
+	done
+
+PalletTownOakYouShowedUpText:
+	text "So you decided to"
+	line "show up after all."
+	done
+
+PalletTownOakAMonText:
+	text "Oh? A #MON?"
+
+	para "You look like you"
+	line "are ready for bed," 
+	cont "not for POKéMON"
+	cont "Training."
+
+	para "I hope you don't"
+	line "on on training in"
+	cont "your pajamas."
+
+	para "Well, well. I'll"
+	line "be waiting for you"
+	cont "at the LAB."
 	done
 
 PalletTownLassScript:
@@ -135,6 +453,35 @@ BluesHouseSignText:
 	text "OAK RESIDENCE"
 	done
 
+PalletTownDodrioScript:
+	opentext
+	checktime MORN
+	iftrue .morn
+	checktime DAY | EVE
+	iftrue .day_eve
+.morn
+	writetext PalletTownDodrioMornText
+	cry DODRIO
+	cry DODRIO
+	waitbutton
+	closetext
+	end
+
+.day_eve
+	writetext PalletTownDodrioDayEveText
+	cry DODRIO
+	waitbutton
+	closetext
+	end
+
+PalletTownDodrioMornText:
+	text "DODRIO: Doo! Do!"
+	done
+
+PalletTownDodrioDayEveText:
+	text "DODRIO: Doo!"
+	done
+
 PalletTown_MapEvents:
 	db 0, 0 ; filler
 
@@ -146,6 +493,8 @@ PalletTown_MapEvents:
 	warp_event 12, 29, PALLET_DODRIO_HOUSE, 1
 
 	def_coord_events
+	coord_event 18, 12, SCENE_PALLETTOWN_HURRY_TO_LAB, PalletTown_HurryToLabScene
+	coord_event 19, 12, SCENE_PALLETTOWN_HURRY_TO_LAB, PalletTown_HurryToLabScene
 
 	def_bg_events
 	bg_event 33, 29, BGEVENT_READ, PalletTownSign
@@ -154,6 +503,20 @@ PalletTown_MapEvents:
 	bg_event 41, 25, BGEVENT_READ, BluesHouseSign
 
 	def_object_events
-	object_event 11, 27, SPRITE_DODRIO_STATIC, SPRITEMOVEDATA_POKEMON, 0, 0, -1, MORN | DAY | EVE, 0, OBJECTTYPE_SCRIPT, 0, PalletTownDodrioScript, -1
-	object_event 30, 27, SPRITE_LASS, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, PalletTownLassScript, -1
+	object_event 18, 10, SPRITE_BLUE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_BLUE_CROWD
+	object_event 16, 15, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, CheerleaderScript, EVENT_BLUE_CROWD
+	object_event 17, 15, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, CheerleaderScript, EVENT_BLUE_CROWD
+	object_event 14, 13, SPRITE_POKEFAN_F, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_PINK, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_BLUE_CROWD
+	object_event 15, 12, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_BLUE_CROWD
+	object_event 20, 15, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_BLUE_CROWD
+	object_event 21, 14, SPRITE_GYM_GUIDE, SPRITEMOVEDATA_SPINRANDOM_SLOW , 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_BLUE_CROWD
+	object_event 18,  8, SPRITE_OAK, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_INVISIBLE_NPC
+
+	object_event  9, 12, SPRITE_SALESMAN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_PLAYER_CROWD
+	object_event  8, 12, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_PLAYER_CROWD
+	object_event  7, 12, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_PLAYER_CROWD
+	object_event  6, 12, SPRITE_REDS_MOM, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_PLAYER_CROWD
+
+	object_event 30, 27, SPRITE_LASS, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, PalletTownLassScript, -1
 	object_event 35, 32, SPRITE_FISHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 2, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, PalletTownFisherScript, -1
+	object_event 11, 27, SPRITE_DODRIO_STATIC, SPRITEMOVEDATA_POKEMON, 0, 0, -1, MORN | DAY | EVE, 0, OBJECTTYPE_SCRIPT, 0, PalletTownDodrioScript, -1

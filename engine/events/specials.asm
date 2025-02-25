@@ -93,7 +93,7 @@ NameRival:
 	ret
 
 .DefaultName:
-	db "SILVER@"
+	db "GARY@"
 
 NameRater:
 	farcall _NameRater

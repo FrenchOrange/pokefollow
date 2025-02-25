@@ -5,71 +5,14 @@
 
 NewBarkTown_MapScripts:
 	def_scene_scripts
-	scene_script NewBarkTownNoop1Scene, SCENE_NEWBARKTOWN_TEACHER_STOPS_YOU
-	scene_script NewBarkTownNoop2Scene, SCENE_NEWBARKTOWN_NOOP
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, NewBarkTownFlypointCallback
-
-NewBarkTownNoop1Scene:
-	end
-
-NewBarkTownNoop2Scene:
-	end
 
 NewBarkTownFlypointCallback:
 	setflag ENGINE_FLYPOINT_NEW_BARK
 	clearevent EVENT_FIRST_TIME_BANKING_WITH_MOM
 	endcallback
-
-NewBarkTown_TeacherStopsYouScene1:
-	playmusic MUSIC_MOM
-	turnobject NEWBARKTOWN_TEACHER, LEFT
-	opentext
-	writetext Text_WaitPlayer
-	waitbutton
-	closetext
-	turnobject PLAYER, RIGHT
-	applymovement NEWBARKTOWN_TEACHER, NewBarkTown_TeacherRunsToYouMovement1
-	applymovement FOLLOWER, NewBarkTown_FollowerMovesOutOfTheWay
-	applymovement NEWBARKTOWN_TEACHER, NewBarkTown_TeacherRunsToYouMovement1_2
-	opentext
-	writetext Text_WhatDoYouThinkYoureDoing
-	waitbutton
-	closetext
-	follow NEWBARKTOWN_TEACHER, PLAYER
-	applymovement NEWBARKTOWN_TEACHER, NewBarkTown_TeacherBringsYouBackMovement1
-	stopfollow
-	opentext
-	writetext Text_ItsDangerousToGoAlone
-	waitbutton
-	closetext
-	special RestartMapMusic
-	end
-
-NewBarkTown_TeacherStopsYouScene2:
-	playmusic MUSIC_MOM
-	turnobject NEWBARKTOWN_TEACHER, LEFT
-	opentext
-	writetext Text_WaitPlayer
-	waitbutton
-	closetext
-	turnobject PLAYER, RIGHT
-	applymovement NEWBARKTOWN_TEACHER, NewBarkTown_TeacherRunsToYouMovement2
-	turnobject PLAYER, UP
-	opentext
-	writetext Text_WhatDoYouThinkYoureDoing
-	waitbutton
-	closetext
-	follow NEWBARKTOWN_TEACHER, PLAYER
-	applymovement NEWBARKTOWN_TEACHER, NewBarkTown_TeacherBringsYouBackMovement2
-	stopfollow
-	opentext
-	writetext Text_ItsDangerousToGoAlone
-	waitbutton
-	closetext
-	special RestartMapMusic
-	end
 
 NewBarkTownTeacherScript:
 	faceplayer
@@ -155,42 +98,6 @@ NewBarkTown_FollowerMovesOutOfTheWay:
 	turn_head UP
 	step_end
 
-NewBarkTown_TeacherRunsToYouMovement1:
-	step LEFT
-	step LEFT
-	step LEFT
-	step_end
-
-NewBarkTown_TeacherRunsToYouMovement1_2:
-	step LEFT
-	step_end
-
-NewBarkTown_TeacherRunsToYouMovement2:
-	step LEFT
-	step LEFT
-	step LEFT
-	step LEFT
-	step LEFT
-	turn_head DOWN
-	step_end
-
-NewBarkTown_TeacherBringsYouBackMovement1:
-	step RIGHT
-	step RIGHT
-	step RIGHT
-	step RIGHT
-	turn_head LEFT
-	step_end
-
-NewBarkTown_TeacherBringsYouBackMovement2:
-	step RIGHT
-	step RIGHT
-	step RIGHT
-	step RIGHT
-	step RIGHT
-	turn_head LEFT
-	step_end
-
 NewBarkTown_FollowerMoveDown:
 	step DOWN
 	step_end
@@ -217,27 +124,6 @@ Text_GearIsImpressive:
 
 	para "Did your mom get"
 	line "it for you?"
-	done
-
-Text_WaitPlayer:
-	text "Wait, <PLAY_G>!"
-	done
-
-Text_WhatDoYouThinkYoureDoing:
-	text "What do you think"
-	line "you're doing?"
-	done
-
-Text_ItsDangerousToGoAlone:
-	text "It's dangerous to"
-	line "go out without a"
-	cont "#MON!"
-
-	para "Wild #MON"
-	line "jump out of the"
-
-	para "grass on the way"
-	line "to the next town."
 	done
 
 Text_YourMonIsAdorable:
@@ -314,8 +200,6 @@ NewBarkTown_MapEvents:
 	warp_event 11, 13, ELMS_HOUSE, 1
 
 	def_coord_events
-	coord_event  1,  8, SCENE_NEWBARKTOWN_TEACHER_STOPS_YOU, NewBarkTown_TeacherStopsYouScene1
-	coord_event  1,  9, SCENE_NEWBARKTOWN_TEACHER_STOPS_YOU, NewBarkTown_TeacherStopsYouScene2
 
 	def_bg_events
 	bg_event  8,  8, BGEVENT_READ, NewBarkTownSign

@@ -1555,7 +1555,7 @@ _IntroMenuMonologue::
 	line "#MON Trainer."
 
 	para "No, scratch that."
-	line "A #MON Master!"
+	line "A #MON MASTER!"
 
 	para "Yes, that'll be me!"
 	prompt

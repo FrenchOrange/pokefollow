@@ -11,12 +11,22 @@ RedsHouse2F_MapScripts:
 	scene_script RedsHouse2FNoop2Scene, SCENE_REDSHOUSE2F_NOOP
 
 	def_callbacks
+	callback MAPCALLBACK_NEWMAP, RedsHouse2FInitializeRoomCallback
 
 RedsHouse2FNoop1Scene:
 	end
 
 RedsHouse2FNoop2Scene:
 	end
+
+RedsHouse2FInitializeRoomCallback:
+	checkevent EVENT_INITIALIZED_EVENTS
+	iftrue .SkipInitialization
+	jumpstd InitializeEventsScript
+	endcallback
+
+.SkipInitialization:
+	endcallback
 
 GetToBedScript:
 	applymovement PLAYER, RedsHouse2FPlayerMovesBack

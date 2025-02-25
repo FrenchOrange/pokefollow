@@ -25,9 +25,9 @@ MapScenes::
 	scene_var LANCES_ROOM,                                 wLancesRoomSceneID
 	scene_var HALL_OF_FAME,                                wHallOfFameSceneID
 	scene_var ROUTE_27,                                    wRoute27SceneID
-	scene_var NEW_BARK_TOWN,                               wNewBarkTownSceneID
 	scene_var ELMS_LAB,                                    wElmsLabSceneID
 	scene_var REDS_HOUSE_2F,                               wRedsHouse2FSceneID
+	scene_var PALLET_TOWN,                                 wPalletTownSceneID
 	scene_var ROUTE_29,                                    wRoute29SceneID
 	scene_var CHERRYGROVE_CITY,                            wCherrygroveCitySceneID
 	scene_var MR_POKEMONS_HOUSE,                           wMrPokemonsHouseSceneID
