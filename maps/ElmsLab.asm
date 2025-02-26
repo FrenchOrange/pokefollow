@@ -183,7 +183,6 @@ CyndaquilPokeBallScript:
 	givepoke CYNDAQUIL, 5, BERRY
 	moveobject FOLLOWER, 6, 3
 	closetext
-	scall AddFollowing
 	cry CYNDAQUIL
 	disappear ELMSLAB_POKE_BALL1
 	readvar VAR_FACING
@@ -216,7 +215,6 @@ TotodilePokeBallScript:
 	givepoke TOTODILE, 5, BERRY
 	moveobject FOLLOWER, 7, 3
 	closetext
-	scall AddFollowing
 	cry TOTODILE
 	disappear ELMSLAB_POKE_BALL2
 	applymovement PLAYER, AfterTotodileMovement
@@ -247,7 +245,6 @@ ChikoritaPokeBallScript:
 	givepoke CHIKORITA, 5, BERRY
 	moveobject FOLLOWER, 8, 3
 	closetext
-	scall AddFollowing
 	cry CHIKORITA
 	disappear ELMSLAB_POKE_BALL3
 	applymovement PLAYER, AfterChikoritaMovement
@@ -289,13 +286,6 @@ endc
 	setevent EVENT_RIVAL_CHERRYGROVE_CITY
 	setscene SCENE_ELMSLAB_AIDE_GIVES_POTION
 	setmapscene PALLET_TOWN, SCENE_PALLETTOWN_NOOP
-	end
-
-AddFollowing:
-	loademote EMOTE_POKE_BALL
-	appearfollower
-	callasm RefreshFollowingCoords
-	closetext
 	end
 
 ElmDescribesMrPokemonScript:

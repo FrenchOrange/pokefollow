@@ -2,56 +2,201 @@
 	const OAKSLAB_OAK
 	const OAKSLAB_SCIENTIST1
 	const OAKSLAB_SCIENTIST2
+	const OAKSLAB_TEACHER
 	const OAKSLAB_BLANK
 
 OaksLab_MapScripts:
 	def_scene_scripts
 
 	def_callbacks
+	callback MAPCALLBACK_TILES, OaksLabStarterMachineCallback
 
-OaksLabNoopScene: ; unreferenced
-	end
+OaksLabStarterMachineCallback:
+	checkevent EVENT_GOT_STARTER_FROM_OAK
+	iftrue .Done
+	changeblock  8, 6, $3d ; machine
+.Done:
+	endcallback
 
-ProfOakScript:
+ProfOakCutsceneScript:
+	checkevent EVENT_GOT_STARTER_FROM_OAK
+	iftrue .AlreadyGotStarter
 	faceplayer
 	opentext
-	checkevent EVENT_OPENED_MT_SILVER
-	iftrue .CheckPokedex
-	checkevent EVENT_TALKED_TO_OAK_IN_KANTO
-	iftrue .CheckBadges
-	writetext OakWelcomeKantoText
+	writetext OaksLabOakThereYouAreText
 	promptbutton
-	setevent EVENT_TALKED_TO_OAK_IN_KANTO
-.CheckBadges:
-	readvar VAR_BADGES
-	ifequal NUM_BADGES, .OpenMtSilver
-	ifequal NUM_JOHTO_BADGES, .Complain
-	sjump .AhGood
+	closetext
+	readvar VAR_FACING
+	ifequal DOWN, .Position_Up
+	ifequal RIGHT, .Position_Left
+.ProfOakCutsceneCont:
+	turnobject OAKSLAB_OAK, DOWN
+	opentext
+	writetext OaksLabOakQuiteBothersomeText
+	promptbutton
+	closetext
+	turnobject OAKSLAB_OAK, RIGHT
+	opentext
+	writetext OaksLabStillOneLeftText
+	promptbutton
+	closetext
+	changeblock 8, 6, $3e ; machine
+	reloadmappart
+	playsound SFX_POKEBALLS_PLACED_ON_TABLE
+	pause 20
+	changeblock 8, 6, $3f ; machine
+	reloadmappart
+	turnobject OAKSLAB_OAK, DOWN
+	opentext
+	writetext OaksLabOakAProblemText
+	promptbutton
+	closetext
 
-.CheckPokedex:
-	writetext OakLabDexCheckText
-	waitbutton
-	special ProfOaksPCBoot
-	writetext OakLabGoodbyeText
-	waitbutton
+	turnobject OAKSLAB_OAK, LEFT
+	waitsfx
+	playsound SFX_BALL_POOF
+	waitsfx
+	givepoke PIKACHU, 5, NO_ITEM, GiftPikachuName, GiftPikachuOTName
+	moveobject FOLLOWER, 6, 6
+	loademote EMOTE_POKE_BALL
+	appearfollower
+;	callasm RefreshFollowingCoords
+	pause 30
+	applymovement FOLLOWER, OaksLabFollowerMovement
+	turnobject PLAYER, LEFT
+	pause 20
+	cry PIKACHU
+	opentext
+	writetext OaksLabOakThisisPikachuText
+	promptbutton
+	closetext
+
+	turnobject OAKSLAB_OAK, DOWN
+	turnobject PLAYER, UP
+	opentext
+	writetext OaksLabOakTakeThese
+	promptbutton
+	waitsfx
+	writetext OaksLabOakGetDexText
+	playsound SFX_ITEM
+	waitsfx
+	promptbutton
+	closetext
+	setflag ENGINE_POKEDEX
+	giveitem POKE_BALL, 6
+	setevent EVENT_GOT_STARTER_FROM_OAK
+	clearevent EVENT_PLAYER_CROWD
+.AlreadyGotStarter:
+	faceplayer
+	opentext
+	writetext OaksLabOakDexExplainText
+	promptbutton
 	closetext
 	end
 
-.OpenMtSilver:
-	writetext OakOpenMtSilverText
-	promptbutton
-	setevent EVENT_OPENED_MT_SILVER
-	sjump .CheckPokedex
+.Position_Up:
+	applymovement PLAYER, OaksLabPlayerUpFromOak
+	sjump .ProfOakCutsceneCont
 
-.Complain:
-	writetext OakNoKantoBadgesText
-	promptbutton
-	sjump .CheckPokedex
+.Position_Left:
+	applymovement PLAYER, OaksLabPlayerLeftFromOak
+	sjump .ProfOakCutsceneCont
 
-.AhGood:
-	writetext OakYesKantoBadgesText
-	promptbutton
-	sjump .CheckPokedex
+GiftPikachuName:
+	db "PIKACHU@"
+
+GiftPikachuOTName:
+	db "PROF.OAK@" 
+
+	db 0
+
+OaksLabPlayerUpFromOak:
+	step LEFT
+	step DOWN
+OaksLabPlayerLeftFromOak:
+	step DOWN
+	step RIGHT
+	turn_head UP
+	step_end
+
+OaksLabFollowerMovement:
+	step DOWN
+	turn_head RIGHT
+	step_end
+
+OaksLabOakThereYouAreText:
+	text "Ah, <PLAYER>. There"
+	line "you are."
+	done
+
+OaksLabOakQuiteBothersomeText:
+	text "Now this is quite"
+	line "bothersome. Three"
+	cont "boys came before"
+
+	para "you and picked the"
+	line "starter POKéMON I"
+	cont "had on hand."
+
+	para "The early bird"
+	line "gets the worm."
+
+	para "Or in this case,"
+	line "er, the #MON."
+	done
+
+OaksLabStillOneLeftText:
+	text "Well, there still"
+	line "is one left, but…"
+	done
+
+OaksLabOakAProblemText:
+	text "I think I should"
+	line "warn you, there is"
+	cont "a problem with"
+	cont "this last one."
+	done
+
+OaksLabOakThisisPikachuText:
+	text "This is PIKACHU."
+
+	para "Also known as the"
+	line "'Electric Mouse'"
+	cont "#MON."
+
+	para "It's usually shy,"
+	line "but can sometimes"
+	cont "have an electri-"
+	cont "fying personality."
+	done
+
+OaksLabOakTakeThese:
+	text "Now, take these."
+	done
+
+OaksLabOakGetDexText:
+	text "<PLAYER> received"
+	line "a #DEX and a"
+	cont "few # BALLS."
+	done
+
+OaksLabOakDexExplainText:
+	text "My greatest"
+	line "invention, the"
+	cont "#DEX!"
+
+	para "It automatically"
+	line "records data on"
+	cont "#MON you've"
+	cont "seen or caught."
+
+	para "It's a hi-tech"
+	line "encyclopedia!"
+
+	para "And I'm counting on"
+	line "trainers like you"
+	cont "to fill it up."
+	done
 
 OaksAssistant1Script:
 	jumptextfaceplayer OaksAssistant1Text
@@ -59,127 +204,41 @@ OaksAssistant1Script:
 OaksAssistant2Script:
 	jumptextfaceplayer OaksAssistant2Text
 
+OaksLabTeacherScript:
+	faceplayer 
+	opentext
+	writetext OaksLabTeacherText
+	waitbutton
+	closetext
+	turnobject OAKSLAB_TEACHER, UP
+	end
+
 OaksLabWindow:
 	jumptext OaksLabWindowText
 
 OaksLabBlackboard:
 	jumptext OaksLabBlackboardText
 
+OaksLabBookshelf1:
+	jumptext OaksLabBookshelf1Text
+
+OaksLabBookshelf2:
+	jumptext OaksLabBookshelf2Text
+
+OaksLabBookshelf3:
+	jumptext OaksLabBookshelf3Text
+
 OaksLabLockedDoor:
 	jumptext OaksLabDoorText
 
-OakWelcomeKantoText:
-	text "OAK: Ah, <PLAY_G>!"
-	line "It's good of you"
-
-	para "to come all this"
-	line "way to KANTO."
-
-	para "What do you think"
-	line "of the trainers"
-
-	para "out here?"
-	line "Pretty tough, huh?"
-	done
-
-OakLabDexCheckText:
-	text "How is your #-"
-	line "DEX coming?"
-
-	para "Let's see…"
-	done
-
-OakLabGoodbyeText:
-	text "If you're in the"
-	line "area, I hope you"
-	cont "come visit again."
-	done
-
-OakOpenMtSilverText:
-	text "OAK: Wow! That's"
-	line "excellent!"
-
-	para "You collected the"
-	line "BADGES of GYMS in"
-	cont "KANTO. Well done!"
-
-	para "I was right in my"
-	line "assessment of you."
-
-	para "Tell you what,"
-	line "<PLAY_G>. I'll make"
-
-	para "arrangements so"
-	line "that you can go to"
-	cont "MT.SILVER."
-
-	para "MT.SILVER is a big"
-	line "mountain that is"
-
-	para "home to many wild"
-	line "#MON."
-
-	para "It's too dangerous"
-	line "for your average"
-
-	para "trainer, so it's"
-	line "off limits. But"
-
-	para "we can make an"
-	line "exception in your"
-	cont "case, <PLAY_G>."
-
-	para "Go up to INDIGO"
-	line "PLATEAU. You can"
-
-	para "reach MT.SILVER"
-	line "from there."
-	done
-
-OakNoKantoBadgesText:
-	text "OAK: Hmm? You're"
-	line "not collecting"
-	cont "KANTO GYM BADGES?"
-
-	para "The GYM LEADERS in"
-	line "KANTO are as tough"
-
-	para "as any you battled"
-	line "in JOHTO."
-
-	para "I recommend that"
-	line "you challenge"
-	cont "them."
-	done
-
-OakYesKantoBadgesText:
-	text "OAK: Ah, you're"
-	line "collecting KANTO"
-	cont "GYM BADGES."
-
-	para "I imagine that"
-	line "it's hard, but the"
-
-	para "experience is sure"
-	line "to help you."
-
-	para "Come see me when"
-	line "you get them all."
-
-	para "I'll have a gift"
-	line "for you."
-
-	para "Keep trying hard,"
-	line "<PLAY_G>!"
-	done
-
 OaksAssistant1Text:
-	text "Thanks to your"
-	line "work on the #-"
-	cont "DEX, the PROF's"
+	text "It's thanks to"
+	line "young folks like"
+	cont "you that PROF.OAK's"
 
-	para "research is coming"
-	line "along great."
+	para "#DEX research"
+	line "is making such"
+	cont "great progress."
 	done
 
 OaksAssistant2Text:
@@ -188,6 +247,19 @@ OaksAssistant2Text:
 
 	para "#MON TALK isn't"
 	line "a live broadcast."
+	done
+
+OaksLabTeacherText:
+	text "Most of the books"
+	line "here must be a bit"
+	cont "too dense for you."
+
+	para "The last row of"
+	line "bookshelves here"
+
+	para "should have more"
+	line "beginner-friendly"
+	cont "resources."
 	done
 
 OaksLabWindowText:
@@ -204,6 +276,69 @@ OaksLabBlackboardText:
 	line "also like writing"
 	cont "haiku in his spare"
 	cont "time?"
+	done
+
+OaksLabBookshelf1Text:
+	text "When a wild"
+	line "#MON appears,"
+	cont "it's fair game."
+
+	para "Just throw a #"
+	line "BALL at it and try"
+	cont "to catch it."
+
+	para "This won't always"
+	line "work, though."
+
+	para "A healthy #MON"
+	line "is way more likely"
+	cont "to escape."
+
+	para "Weaken it before"
+	line "throwing a BALL!"
+	done
+
+OaksLabBookshelf2Text:
+	text "The #DEX can't"
+	line "get detailed data"
+	cont "on a #MON by"
+	cont "just seeing it."
+
+	para "A #MON has to"
+	line "be caught in a"
+	cont "# BALL before"
+
+	para "you can learn more"
+	line "about them."
+	done
+
+OaksLabBookshelf3Text:
+	text "To make a complete"
+	line "guide on all the"
+	cont "#MON in the"
+	cont "world…"
+
+	para "That was my dream."
+
+	para "But in my old age,"
+	line "this just isn't"
+	cont "viable anymore."
+
+	para "So I request of"
+	line "young trainers to"
+	cont "help me fill it"
+
+	para "up by catching all"
+	line "sorts of #MON."
+
+	para "This is a great"
+	line "undertaking in"
+	cont "#MON history!"
+
+	para "Hmm… …"
+
+	para "Someone misplaced"
+	line "PROF.OAK's memoir."
 	done
 
 OaksLabDoorText:
@@ -232,9 +367,13 @@ OaksLab_MapEvents:
 	bg_event 42,  2, BGEVENT_READ, OaksLabWindow
 	bg_event  3,  3, BGEVENT_READ, OaksLabBlackboard
 	bg_event  4,  3, BGEVENT_READ, OaksLabBlackboard
+	bg_event 43, 10, BGEVENT_READ, OaksLabBookshelf1
+	bg_event 44, 10, BGEVENT_READ, OaksLabBookshelf2
+	bg_event 45, 10, BGEVENT_READ, OaksLabBookshelf3
 
 	def_object_events
-	object_event  7,  6, SPRITE_OAK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ProfOakScript, -1
+	object_event  7,  6, SPRITE_OAK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ProfOakCutsceneScript, EVENT_GOT_PROPER_CLOTHES
 	object_event 44,  4, SPRITE_SCIENTIST, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OaksAssistant1Script, -1
-	object_event 51,  8, SPRITE_SCIENTIST, SPRITEMOVEDATA_WALK_UP_DOWN, 0, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OaksAssistant2Script, -1
-	object_event 30,  2, SPRITE_BLANK, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OaksLabLockedDoor, EVENT_GOT_STARTER_FROM_OAK
+	object_event 51,  8, SPRITE_SCIENTIST, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OaksAssistant2Script, -1
+	object_event 42,  7, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, OaksLabTeacherScript, -1
+	object_event 30,  2, SPRITE_BLANK, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OaksLabLockedDoor, EVENT_GOT_PROPER_CLOTHES

@@ -97,10 +97,6 @@ MrPokemonsHouse_OakScript:
 	writetext MrPokemonsHouse_OakText1_Part3
 	promptbutton
 	waitsfx
-	writetext MrPokemonsHouse_GetDexText
-	playsound SFX_ITEM
-	waitsfx
-	setflag ENGINE_POKEDEX
 	writetext MrPokemonsHouse_OakText2
 	waitbutton
 	closetext
@@ -326,37 +322,10 @@ MrPokemonsHouse_OakText1_Part3:
 
 	para "You seem to be"
 	line "dependable."
-
-	para "How would you like"
-	line "to help me out?"
-
-	para "See? This is the"
-	line "latest version of"
-	cont "#DEX."
-
-	para "It automatically"
-	line "records data on"
-
-	para "#MON you've"
-	line "seen or caught."
-
-	para "It's a hi-tech"
-	line "encyclopedia!"
-	done
-
-MrPokemonsHouse_GetDexText:
-	text "<PLAYER> received"
-	line "#DEX!"
 	done
 
 MrPokemonsHouse_OakText2:
-	text "Go meet many kinds"
-	line "of #MON and"
-
-	para "complete that"
-	line "#DEX!"
-
-	para "But I've stayed"
+	text "But I've stayed"
 	line "too long."
 
 	para "I have to get to"

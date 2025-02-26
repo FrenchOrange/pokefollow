@@ -34,11 +34,30 @@ PalletTownFlypointCallback:
 	endcallback
 
 PalletTown_HurryToLabScene:
+	checkevent EVENT_GOT_STARTER_FROM_OAK
+	iftrue .MomStarterScene
 	applymovement PLAYER, PalletTownPlayerMovesBack
 	opentext
 	writetext PalletTownPlayerWalkBackText
 	waitbutton
 	closetext
+	end
+
+.MomStarterScene:
+	opentext
+	writetext PalletTownTempText
+	waitbutton
+	closetext
+
+	special FadeOutMusic
+	special FadeOutToBlack
+	special ReloadSpritesNoPalettes
+	disappear PALLETTOWN_SALESMAN
+	disappear PALLETTOWN_POKEFAN_F2
+	disappear PALLETTOWN_TWIN
+	disappear PALLETTOWN_REDS_MOM
+	pause 35
+	warp REDS_HOUSE_2F, 3, 5
 	end
 
 PalletTownPlayerMovesBack:
@@ -98,7 +117,7 @@ CheerleaderScript:
 	promptbutton
 	closetext
 
-	applymovement PALLETTOWN_BLUE, PalletTownPlayerRivalMovesDown
+	applymovement PALLETTOWN_BLUE, PalletTownRivalMovesDown
 	turnobject PLAYER, RIGHT
 	opentext
 	writetext PalletTownGaryMyFansText
@@ -174,11 +193,11 @@ CheerleaderScript:
 	sjump .GetToGaryCont
 
 PalletTownCheerleaderHop:
-	turn_head LEFT
-	turn_head RIGHT
 	jump_in_place
-	turn_head LEFT
-	turn_head RIGHT
+	jump_in_place
+	step_sleep 8
+	step_sleep 8
+	jump_in_place
 	jump_in_place
 	turn_head UP
 	step_end
@@ -196,26 +215,26 @@ PalletTownCheerleader2ShovedAside:
 	step_end
 
 PalletTownPlayerMovesToRival1:
-	step UP
-	step UP
-	step UP
-	step RIGHT
-	step RIGHT
+	big_step UP
+	big_step UP
+	big_step UP
+	big_step RIGHT
+	big_step RIGHT
 PalletTownPlayerMovesUp:
-	step UP
-	step UP
+	big_step UP
+	big_step UP
 	step_end
 
 PalletTownPlayerMovesToRival2:
-	step UP
-	step UP
-	step UP
-	step RIGHT
-	step UP
-	step UP
+	big_step UP
+	big_step UP
+	big_step UP
+	big_step RIGHT
+	big_step UP
+	big_step UP
 	step_end
 
-PalletTownPlayerRivalMovesDown:
+PalletTownRivalMovesDown:
 	step RIGHT
 	step DOWN
 	step_end
@@ -307,14 +326,17 @@ PalletTownGaryPitifulStartText:
 	done
 
 PalletTownGaryGotAMonText:
-	text "I've got a #MON"
-	line "and you don't."
+	text "'Cause guess what?"
+
+	para "I've got a #MON"
+	line "and you don't!"
 	done
 
 PalletTownGaryCheerleaderText2:
 	text "Let's go, <RIVAL>!"
-	line "Let's go!"
-	cont "Yeah, yeah!"
+
+	para "Let's go!"
+	line "Yeah, yeah!"
 	done
 
 PalletTownGaryMyFansText:
@@ -352,12 +374,16 @@ PalletTownOakAMonText:
 	cont "Training."
 
 	para "I hope you don't"
-	line "on on training in"
-	cont "your pajamas."
+	line "plan on training"
+	cont "in your pajamas."
 
 	para "Well, well. I'll"
 	line "be waiting for you"
 	cont "at the LAB."
+	done
+
+PalletTownTempText:
+	text "TEMP."
 	done
 
 PalletTownLassScript:
@@ -436,8 +462,8 @@ PalletTownFisherText:
 PalletTownSignText:
 	text "PALLET TOWN"
 
-	para "A Tranquil Setting"
-	line "of Peace & Purity"
+	para "Shades of your"
+	line "journey await!"
 	done
 
 RedsHouseSignText:
@@ -512,10 +538,10 @@ PalletTown_MapEvents:
 	object_event 21, 14, SPRITE_GYM_GUIDE, SPRITEMOVEDATA_SPINRANDOM_SLOW , 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_BLUE_CROWD
 	object_event 18,  8, SPRITE_OAK, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_INVISIBLE_NPC
 
-	object_event  9, 12, SPRITE_SALESMAN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_PLAYER_CROWD
-	object_event  8, 12, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_PLAYER_CROWD
-	object_event  7, 12, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_PLAYER_CROWD
-	object_event  6, 12, SPRITE_REDS_MOM, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_PLAYER_CROWD
+	object_event 16, 13, SPRITE_SALESMAN, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_PLAYER_CROWD
+	object_event 17, 15, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_PLAYER_CROWD
+	object_event 18, 15, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_PLAYER_CROWD
+	object_event 19, 13, SPRITE_REDS_MOM, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_PLAYER_CROWD
 
 	object_event 30, 27, SPRITE_LASS, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, PalletTownLassScript, -1
 	object_event 35, 32, SPRITE_FISHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 2, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, PalletTownFisherScript, -1
