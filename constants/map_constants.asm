@@ -300,10 +300,11 @@ ENDM
 	map_const PALLET_TOWN,                                 24, 20 ;  3
 	map_const REDS_HOUSE_1F,                                5,  5 ;  4
 	map_const REDS_HOUSE_2F,                                7,  5 ;  5
-	map_const BLUES_HOUSE,                                  5,  5 ;  6
+	map_const BLUES_HOUSE,                                 12,  5 ;  6
 	map_const OAKS_LAB,                                    28,  6 ;  7
 	map_const PALLET_OAK_TV_SPEECH_HOUSE,                   5,  5 ;  8
 	map_const PALLET_DODRIO_HOUSE,                          5,  5 ;  9
+	map_const PALLET_EMPTY_HOUSE,                           5,  5 ; 10
 	endgroup
 
 	newgroup PEWTER                                               ; 14

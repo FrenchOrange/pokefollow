@@ -73,7 +73,7 @@ GetToBedScript:
 	end
 
 MomGoToBedText:
-	text "<PLAYER>!"
+	text "MOM: <PLAYER>!"
 	line "Get to bed!"
 	done
 

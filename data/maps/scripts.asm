@@ -485,6 +485,7 @@ INCLUDE "maps/SilverCaveOutside.asm"
 INCLUDE "maps/Route10North.asm"
 INCLUDE "maps/PalletOakTVSpeechHouse.asm"
 INCLUDE "maps/PalletDodrioHouse.asm"
+INCLUDE "maps/PalletEmptyHouse.asm"
 INCLUDE "maps/PalletLake.asm"
 
 ENDSECTION

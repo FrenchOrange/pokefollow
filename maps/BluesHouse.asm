@@ -1,5 +1,6 @@
 	object_const_def
-	const BLUESHOUSE_DAISY
+	const BLUESHOUSE_DAISY1
+	const BLUESHOUSE_DAISY2
 
 BluesHouse_MapScripts:
 	def_scene_scripts
@@ -7,20 +8,17 @@ BluesHouse_MapScripts:
 	def_callbacks
 
 DaisyScript:
+	jumptextfaceplayer DaisyHelloText
+
+DaisyTeaScript:
 	faceplayer
 	opentext
-	checkevent EVENT_GOT_STARTER_FROM_OAK
-	iftrue .CheckDaisyHour
-	writetext DaisyHelloText
-	waitbutton
-	closetext
-	end
-.CheckDaisyHour:
 	readvar VAR_HOUR
 	ifequal 15, .ThreePM
 	writetext DaisyHelloAfterText
 	waitbutton
 	closetext
+	turnobject BLUESHOUSE_DAISY2, RIGHT
 	end
 
 .ThreePM:
@@ -50,29 +48,33 @@ DaisyScript:
 	writetext DaisyAllDoneText
 	waitbutton
 	closetext
+	turnobject BLUESHOUSE_DAISY2, RIGHT
 	end
 
 .AlreadyGroomedMon:
 	writetext DaisyAlreadyGroomedText
 	waitbutton
 	closetext
+	turnobject BLUESHOUSE_DAISY2, RIGHT
 	end
 
 .Refused:
 	writetext DaisyRefusedText
 	waitbutton
 	closetext
+	turnobject BLUESHOUSE_DAISY2, RIGHT
 	end
 
 .CantGroomEgg:
 	writetext DaisyCantGroomEggText
 	waitbutton
 	closetext
+	turnobject BLUESHOUSE_DAISY2, RIGHT
 	end
 
 DaisyHelloText:
 	text "DAISY: Hi <PLAYER>!"
-	line "Where you looking"
+	line "Were you looking"
 	cont "for my brother?"
 
 	para "He should still be"
@@ -156,16 +158,29 @@ DaisyCantGroomEggText:
 	cont "groom an EGG."
 	done
 
+BluesHouseBookshelf:
+	jumptext BluesHouseBookshelfText
+
+BluesHouseBookshelfText:
+	text "It's crammed full"
+	line "of #MON books."
+	done
+
 BluesHouse_MapEvents:
 	db 0, 0 ; filler
 
 	def_warp_events
 	warp_event  3,  9, PALLET_TOWN, 2
 	warp_event  4,  9, PALLET_TOWN, 2
+	warp_event  0,  2, BLUES_HOUSE, 4
+	warp_event 19,  9, BLUES_HOUSE, 3
+	warp_event 20,  9, BLUES_HOUSE, 3
 
 	def_coord_events
 
 	def_bg_events
+	bg_event 23,  3, BGEVENT_READ, BluesHouseBookshelf
 
 	def_object_events
-	object_event  3,  5, SPRITE_DAISY, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DaisyScript, -1
+	object_event  1,  6, SPRITE_DAISY, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DaisyScript, EVENT_GOT_STARTER_FROM_OAK
+	object_event  3,  5, SPRITE_DAISY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DaisyTeaScript, EVENT_MOM_AND_OAK_INVISIBLE

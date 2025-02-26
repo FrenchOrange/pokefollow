@@ -540,6 +540,7 @@ BugContestResults_CopyContestantsToResults:
 InitializeEventsScript:
 	setevent EVENT_INVISIBLE_NPC
 	setevent EVENT_PLAYER_CROWD
+	setevent EVENT_MOM_AND_OAK_INVISIBLE
 	setevent EVENT_EARLS_ACADEMY_EARL
 	setevent EVENT_RADIO_TOWER_ROCKET_TAKEOVER
 	setevent EVENT_GOLDENROD_CITY_ROCKET_TAKEOVER

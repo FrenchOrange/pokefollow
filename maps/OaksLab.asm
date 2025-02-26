@@ -1,5 +1,9 @@
 	object_const_def
-	const OAKSLAB_OAK
+	const OAKSLAB_OAK1
+	const OAKSLAB_OAK2
+	const OAKSLAB_OAK3
+	const OAKSLAB_OAK4
+	const OAKSLAB_REDS_MOM
 	const OAKSLAB_SCIENTIST1
 	const OAKSLAB_SCIENTIST2
 	const OAKSLAB_TEACHER
@@ -30,12 +34,12 @@ ProfOakCutsceneScript:
 	ifequal DOWN, .Position_Up
 	ifequal RIGHT, .Position_Left
 .ProfOakCutsceneCont:
-	turnobject OAKSLAB_OAK, DOWN
+	turnobject OAKSLAB_OAK1, DOWN
 	opentext
 	writetext OaksLabOakQuiteBothersomeText
 	promptbutton
 	closetext
-	turnobject OAKSLAB_OAK, RIGHT
+	turnobject OAKSLAB_OAK1, RIGHT
 	opentext
 	writetext OaksLabStillOneLeftText
 	promptbutton
@@ -46,13 +50,13 @@ ProfOakCutsceneScript:
 	pause 20
 	changeblock 8, 6, $3f ; machine
 	reloadmappart
-	turnobject OAKSLAB_OAK, DOWN
+	turnobject OAKSLAB_OAK1, DOWN
 	opentext
 	writetext OaksLabOakAProblemText
 	promptbutton
 	closetext
 
-	turnobject OAKSLAB_OAK, LEFT
+	turnobject OAKSLAB_OAK1, LEFT
 	waitsfx
 	playsound SFX_BALL_POOF
 	waitsfx
@@ -71,7 +75,7 @@ ProfOakCutsceneScript:
 	promptbutton
 	closetext
 
-	turnobject OAKSLAB_OAK, DOWN
+	turnobject OAKSLAB_OAK1, DOWN
 	turnobject PLAYER, UP
 	opentext
 	writetext OaksLabOakTakeThese
@@ -106,7 +110,7 @@ GiftPikachuName:
 	db "PIKACHU@"
 
 GiftPikachuOTName:
-	db "PROF.OAK@" 
+	db "OAK@" 
 
 	db 0
 
@@ -125,8 +129,8 @@ OaksLabFollowerMovement:
 	step_end
 
 OaksLabOakThereYouAreText:
-	text "Ah, <PLAYER>. There"
-	line "you are."
+	text "OAK: Ah, <PLAYER>."
+	line "There you are."
 	done
 
 OaksLabOakQuiteBothersomeText:
@@ -345,6 +349,57 @@ OaksLabDoorText:
 	text "It's locked…"
 	done
 
+ProfOakScript:
+	faceplayer
+	opentext
+	writetext OakLabDexCheckText
+	waitbutton
+	special ProfOaksPCBoot
+	writetext OakLabGoodbyeText
+	waitbutton
+	closetext
+	end
+
+OakLabDexCheckText:
+	text "OAK: Good to see"
+	line "you, <PLAYER>!"
+
+	para "How is your #-"
+	line "DEX coming?"
+
+	para "Here, let me take"
+	line "a look!"
+	done
+
+OakLabGoodbyeText:
+	text "If you're in the"
+	line "area, I hope you"
+	cont "come visit again."
+
+	para "I want to know how"
+	line "your #DEX is"
+	cont "coming along."
+	done
+
+OaksLabRedsMomScript:
+	faceplayer
+	opentext
+	writetext OaksLabRedsMomText
+	waitbutton
+	closetext
+	turnobject OAKSLAB_REDS_MOM, RIGHT
+	end
+
+OaksLabRedsMomText:
+	text "MOM: Oh, <PLAYER>!"
+
+	para "I was paying OAK"
+	line "a little visit."
+
+	para "Stay safe, and"
+	line "brush your teeth!"
+	done
+
 OaksLab_MapEvents:
 	db 0, 0 ; filler
 
@@ -373,6 +428,11 @@ OaksLab_MapEvents:
 
 	def_object_events
 	object_event  7,  6, SPRITE_OAK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ProfOakCutsceneScript, EVENT_GOT_PROPER_CLOTHES
+	object_event 12,  8, SPRITE_OAK, SPRITEMOVEDATA_WANDER, 1, 1, -1, MORN, 0, OBJECTTYPE_SCRIPT, 0, ProfOakScript, EVENT_MOM_AND_OAK_INVISIBLE
+	object_event  7,  6, SPRITE_OAK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, DAY, 0, OBJECTTYPE_SCRIPT, 0, ProfOakScript, EVENT_MOM_AND_OAK_INVISIBLE
+	object_event  4, 10, SPRITE_OAK, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, NITE, 0, OBJECTTYPE_SCRIPT, 0, ProfOakScript, EVENT_MOM_AND_OAK_INVISIBLE
+	object_event 24,  5, SPRITE_OAK, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, EVE, 0, OBJECTTYPE_SCRIPT, 0, ProfOakScript, EVENT_MOM_AND_OAK_INVISIBLE
+	object_event 27,  5, SPRITE_REDS_MOM, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, EVE, 0, OBJECTTYPE_SCRIPT, 0, OaksLabRedsMomScript, EVENT_MOM_AND_OAK_INVISIBLE
 	object_event 44,  4, SPRITE_SCIENTIST, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OaksAssistant1Script, -1
 	object_event 51,  8, SPRITE_SCIENTIST, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OaksAssistant2Script, -1
 	object_event 42,  7, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, OaksLabTeacherScript, -1

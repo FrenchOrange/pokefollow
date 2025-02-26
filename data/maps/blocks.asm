@@ -135,7 +135,6 @@ GoldenrodNameRater_Blocks:
 VermilionFishingSpeechHouse_Blocks:
 VermilionMagnetTrainSpeechHouse_Blocks:
 VermilionDiglettsCaveSpeechHouse_Blocks:
-BluesHouse_Blocks:
 PewterNidoranSpeechHouse_Blocks:
 PewterSnoozeSpeechHouse_Blocks:
 BillsBrothersHouse_Blocks:
@@ -161,10 +160,11 @@ Route5CleanseTagHouse_Blocks:
 CherrygroveGymSpeechHouse_Blocks:
 GuideGentsHouse_Blocks:
 CherrygroveEvolutionSpeechHouse_Blocks:
+LavenderPokemonRefuge_Blocks:
 Route30BerryHouse_Blocks:
 PalletOakTVSpeechHouse_Blocks:
 PalletDodrioHouse_Blocks:
-LavenderPokemonRefuge_Blocks:
+PalletEmptyHouse_Blocks:
 	INCBIN "maps/House1.ablk"
 
 SafariZoneFuchsiaGateBeta_Blocks:
@@ -756,6 +756,9 @@ RedsHouse1F_Blocks:
 
 RedsHouse2F_Blocks:
 	INCBIN "maps/RedsHouse2F.ablk"
+
+BluesHouse_Blocks:
+	INCBIN "maps/BluesHouse.ablk"
 
 OaksLab_Blocks:
 	INCBIN "maps/OaksLab.ablk"
