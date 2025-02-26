@@ -79,7 +79,7 @@ DEF COLL_CAVE              EQU $7b
 DEF COLL_WARP_PANEL        EQU $7c
 DEF COLL_DOOR_7D           EQU $7d ; unused
 DEF COLL_WARP_CARPET_RIGHT EQU $7e
-DEF COLL_WARP_7F           EQU $7f ; unused
+DEF COLL_STOVE             EQU $7f
 DEF COLL_COUNTER           EQU $90
 DEF COLL_BOOKSHELF         EQU $91
 DEF COLL_PC                EQU $93

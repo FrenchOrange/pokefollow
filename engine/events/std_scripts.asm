@@ -16,6 +16,7 @@ StdScripts::
 	add_stdscript TVScript
 	add_stdscript TrashcanScript
 	add_stdscript ComputerScript
+	add_stdscript StoveScript
 	add_stdscript Radio1Script
 	add_stdscript Radio2Script
 	add_stdscript TrashCanScript
@@ -264,6 +265,9 @@ TrashcanScript:
 
 ComputerScript:
 	farjumptext ComputerText
+
+StoveScript:
+	farjumptext StoveText
 
 Radio1Script:
 	opentext

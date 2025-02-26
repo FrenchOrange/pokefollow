@@ -197,6 +197,12 @@ ComputerText:
 	cont "parse…"
 	done
 
+StoveText:
+	text "Someone was hard"
+	line "at work cooking"
+	cont "not too long ago."
+	done
+
 PokecenterSignText:
 	text "Heal Your #MON!"
 	line "#MON CENTER"

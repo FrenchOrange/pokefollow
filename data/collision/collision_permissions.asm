@@ -128,7 +128,7 @@ CollisionPermissionTable::
 	db LAND_TILE         ; COLL_WARP_PANEL
 	db LAND_TILE         ; COLL_DOOR_7D
 	db LAND_TILE         ; COLL_WARP_CARPET_RIGHT
-	db LAND_TILE         ; COLL_WARP_7F
+	db WALL_TILE         ; COLL_STOVE
 	db WALL_TILE         ; 80
 	db WALL_TILE         ; 81
 	db WALL_TILE         ; 82

@@ -18,4 +18,5 @@ TileCollisionStdScripts:
 	stdcoll COLL_TRASHCAN,       TrashcanScript
 	stdcoll COLL_COMPUTER,       ComputerScript
 	stdcoll COLL_BOOKSHELF_HARD, DifficultBookshelfScript
+	stdcoll COLL_STOVE,          StoveScript
 	db -1 ; end
