@@ -11,7 +11,21 @@ PalletOakTVSpeechHousePokefanFScript:
 	jumptextfaceplayer PalletOakTVSpeechHousePokefanFText
 
 PalletOakTVSpeechHouseTwinScript:
-	jumptextfaceplayer PalletOakTVSpeechHouseTwinText
+	faceplayer
+	opentext
+	checkevent EVENT_GOT_STARTER_FROM_OAK
+	iftrue .GotStarterTwin
+	writetext PalletOakTVSpeechHouseTwinText1
+	waitbutton
+	closetext
+	turnobject PALLETOAKTVSPEECHHOUSE_TWIN, UP
+	end
+.GotStarterTwin:
+	writetext PalletOakTVSpeechHouseTwinText2
+	waitbutton
+	closetext
+	turnobject PALLETOAKTVSPEECHHOUSE_TWIN, UP
+	end
 
 PalletOakTVSpeechHousePokefanFText:
 	text "My baby's so eager"
@@ -25,14 +39,27 @@ PalletOakTVSpeechHousePokefanFText:
 	cont "every evening."
 	done
 
-PalletOakTVSpeechHouseTwinText:
+PalletOakTVSpeechHouseTwinText1:
 	text "I'm so jealous,"
 	line "you're old enough"
 	cont "to start your"
-	cont "#MON JOURNEY."
+	cont "#MON journey."
 
 	para "I still have to"
 	line "wait a few years."
+	done
+
+PalletOakTVSpeechHouseTwinText2:
+	text "Go! <PLAYER>! Go!"
+
+	para "You go explore the"
+	line "world and catch"
+	cont "everything that"
+	cont "moves!"
+
+	para "Well, except other"
+	line "trainers' #MON."
+	cont "That's forbidden."
 	done
 
 PalletOakTVSpeechHouse_MapEvents:

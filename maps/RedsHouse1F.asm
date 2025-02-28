@@ -37,8 +37,10 @@ RedsMomHeal:
 	waitbutton
 	closetext
 	special FadeOutToBlack
+	special ReloadSpritesNoPalettes
 	playsound SFX_FULL_HEAL
 	special HealParty
+	pause 30
 	special FadeInFromBlack
 	opentext
 	writetext RedsHouse1FMomLookingGreatText

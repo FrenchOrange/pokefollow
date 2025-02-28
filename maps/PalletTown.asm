@@ -35,35 +35,12 @@ PalletTownFlypointCallback:
 
 PalletTown_HurryToLabScene:
 	checkevent EVENT_GOT_STARTER_FROM_OAK
-	iftrue .MomStarterScene
+	iftrue MomStarterScene
 	applymovement PLAYER, PalletTownPlayerMovesBack
 	opentext
 	writetext PalletTownPlayerWalkBackText
 	waitbutton
 	closetext
-	end
-
-.MomStarterScene:
-	opentext
-	writetext PalletTownTempText
-	waitbutton
-	closetext
-
-; got running shoes
-
-	clearevent EVENT_MOM_AND_OAK_INVISIBLE
-	setevent EVENT_GOT_PROPER_CLOTHES
-	setscene SCENE_PALLETTOWN_NOOP
-
-	special FadeOutMusic
-	special FadeOutToBlack
-	special ReloadSpritesNoPalettes
-	disappear PALLETTOWN_SALESMAN
-	disappear PALLETTOWN_POKEFAN_F2
-	disappear PALLETTOWN_TWIN
-	disappear PALLETTOWN_REDS_MOM
-	pause 35
-	warp REDS_HOUSE_2F, 3, 5
 	end
 
 PalletTownPlayerMovesBack:
@@ -78,6 +55,211 @@ PalletTownPlayerWalkBackText:
 	line "me at the LAB."
 
 	para "I should hurry."
+	done
+
+MomStarterScene:
+	readvar VAR_XCOORD
+	ifequal 18, .PlayerOnLeft
+	ifequal 19, .PlayerOnRight
+.MomStarterSceneCont
+	opentext
+	writetext PalletTownWeirdText
+	waitbutton
+	closetext
+
+	turnobject FOLLOWER, DOWN
+	showemote EMOTE_SAD, FOLLOWER, 15
+	waitsfx
+	followcry
+	waitsfx
+	special FadeOutToWhite
+	special FadeInFromWhite
+	special FadeOutToWhite
+	special FadeInFromWhite
+	playsound SFX_THUNDER
+	waitsfx
+	applymovement PALLETTOWN_SALESMAN, PalletTownCheerleader1ShovedAside
+	applymovement PALLETTOWN_POKEFAN_F2, PalletTownCheerleader2ShovedAside
+	applymovement PALLETTOWN_TWIN, PalletTownCheerleader1ShovedAside
+	applymovement PALLETTOWN_REDS_MOM, PalletTownCheerleader1ShovedAside
+	playsound SFX_TACKLE
+	waitsfx
+	turnobject PALLETTOWN_SALESMAN, UP
+	turnobject PALLETTOWN_TWIN, LEFT
+	turnobject PALLETTOWN_POKEFAN_F2, UP
+	turnobject PALLETTOWN_REDS_MOM, DOWN
+	pause 25
+	opentext
+	writetext PalletTownUndiesText
+	waitbutton
+	closetext
+
+	special FadeOutMusic
+	special FadeOutToBlack
+	special ReloadSpritesNoPalettes
+	disappear PALLETTOWN_SALESMAN
+	disappear PALLETTOWN_POKEFAN_F2
+	disappear PALLETTOWN_TWIN
+	disappear PALLETTOWN_REDS_MOM
+	clearevent EVENT_MOM_AND_OAK_INVISIBLE
+	setevent EVENT_GOT_PROPER_CLOTHES
+	setscene SCENE_PALLETTOWN_NOOP
+	pause 35
+	; change out of pajamas
+	special FadeInFromBlack
+	special RestartMapMusic
+	end
+
+.PlayerOnLeft:
+	applymovement FOLLOWER, PalletTownStarterLeft
+	applymovement PALLETTOWN_REDS_MOM, PalletTownMomMovesLeft
+
+	opentext
+	writetext PalletTownProudOfYouText
+	waitbutton
+	closetext
+	turnobject PALLETTOWN_REDS_MOM, DOWN
+	opentext
+	writetext PalletTownGoingToMissYouText
+	waitbutton
+	closetext
+	turnobject PALLETTOWN_REDS_MOM, UP
+	opentext
+	writetext PalletTownIPackedYouText
+	waitbutton
+	closetext
+	followcry
+	pause 15
+	turnobject PALLETTOWN_REDS_MOM, RIGHT
+	pause 15
+	applymovement PALLETTOWN_REDS_MOM, PalletTownMomMovesRight
+	opentext
+	writetext PalletTownThatsYourPokemonText
+	waitbutton
+	closetext
+	turnobject FOLLOWER, RIGHT
+	pause 15
+	showemote EMOTE_QUESTION, PALLETTOWN_REDS_MOM, 15
+	turnobject PALLETTOWN_REDS_MOM, LEFT
+	sjump .MomStarterSceneCont
+
+.PlayerOnRight:
+	applymovement FOLLOWER, PalletTownStarterRight
+
+	opentext
+	writetext PalletTownProudOfYouText
+	waitbutton
+	closetext
+	turnobject PALLETTOWN_REDS_MOM, DOWN
+	opentext
+	writetext PalletTownGoingToMissYouText
+	waitbutton
+	closetext
+	turnobject PALLETTOWN_REDS_MOM, UP
+	opentext
+	writetext PalletTownIPackedYouText
+	waitbutton
+	closetext
+	followcry
+	pause 15
+	turnobject PALLETTOWN_REDS_MOM, LEFT
+	pause 15
+	applymovement PALLETTOWN_REDS_MOM, PalletTownMomMovesLeft
+	opentext
+	writetext PalletTownThatsYourPokemonText
+	waitbutton
+	closetext
+	turnobject FOLLOWER, LEFT
+	pause 15
+	showemote EMOTE_QUESTION, PALLETTOWN_REDS_MOM, 15
+	turnobject PALLETTOWN_REDS_MOM, RIGHT
+	sjump .MomStarterSceneCont
+
+PalletTownStarterLeft:
+	step RIGHT
+	step DOWN
+	step_end
+
+PalletTownStarterRight:
+	step LEFT
+	step DOWN
+	step_end
+
+PalletTownMomMovesLeft:
+	step LEFT
+	turn_head UP
+	step_end
+
+PalletTownMomMovesRight:
+	step RIGHT
+	turn_head UP
+	step_end
+
+PalletTownProudOfYouText:
+	text "Oh, <PLAYER>, I'm"
+	line "so proud of you."
+
+	para "You're finally"
+	line "going to fulfill"
+	cont "your dream of"
+	cont "#MON training."
+	done
+
+PalletTownGoingToMissYouText:
+	text "But I'm going to"
+	line "miss you so much."
+	done
+
+PalletTownIPackedYouText:
+	text "I packed you"
+	line "some clean clothes"
+	cont "and a pair of"
+	cont "RUNNING SHOES."
+
+	para "…Your favorite"
+	line "snacks and some"
+	cont "hot chocolate in"
+
+	para "case you want"
+	line "something hot."
+
+	para "A pair of rubber"
+	line "gloves to do your"
+	cont "laundry."
+
+	para "And a new clothes-"
+	line "line to hang it"
+	cont "out to dry--"
+	done
+
+PalletTownThatsYourPokemonText:
+	text "Hmm? That's your"
+	line "POKéMON?"
+
+	para "I thought all #"
+	line "-MON stayed inside"
+	cont "their # BALL?"
+
+	para "Aww, it wants to"
+	line "stay by your side"
+
+	para "You are friends"
+	line "already!"
+	done
+
+PalletTownWeirdText:
+	text "But… Don't you"
+	line "think it looks a"
+	cont "little weird?"
+	done
+
+PalletTownUndiesText:
+	text "Gah… …"
+
+	para "Remember to change"
+	line "your underwear."
+
+	para "Every single day…"
 	done
 
 CheerleaderScript:
@@ -175,6 +357,8 @@ CheerleaderScript:
 	promptbutton
 	closetext
 	applymovement PALLETTOWN_CHEERLEADER1, PalletTownCheerleader1ShovedAside
+	playsound SFX_BUMP
+	waitsfx
 	opentext
 	writetext PalletTownGaryCheerleaderHeyText
 	promptbutton
@@ -190,6 +374,8 @@ CheerleaderScript:
 	promptbutton
 	closetext
 	applymovement PALLETTOWN_CHEERLEADER2, PalletTownCheerleader2ShovedAside
+	playsound SFX_BUMP
+	waitsfx
 	opentext
 	writetext PalletTownGaryCheerleaderHeyText
 	promptbutton
@@ -321,14 +507,14 @@ PalletTownGaryItsYouText:
 	cont "forgive me.'"
 
 	para "To think you're"
-	line "already running"
-	cont "late. Ugh…"
+	line "way behind right"
+	cont "from the start."
 	done
 
 PalletTownGaryPitifulStartText:
-	text "My rival's getting"
-	line "off to such a"
-	cont "pitiful start."
+	text "Ugh… My rival's off"
+	line "to such a pitiful"
+	cont "start."
 	done
 
 PalletTownGaryGotAMonText:
@@ -386,10 +572,6 @@ PalletTownOakAMonText:
 	para "Well, well. I'll"
 	line "be waiting for you"
 	cont "at the LAB."
-	done
-
-PalletTownTempText:
-	text "TEMP."
 	done
 
 PalletTownLassScript:
