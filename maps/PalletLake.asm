@@ -1,5 +1,7 @@
 	object_const_def
 	const ROUTE1_MISTY
+	const ROUTE1_MISTY_FISH
+	const ROUTE1_BIKE
 
 PalletLake_MapScripts:
 	def_scene_scripts
@@ -17,3 +19,5 @@ PalletLake_MapEvents:
 
 	def_object_events
 	object_event  8, 18, SPRITE_MISTY, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, -1
+	object_event  8, 18, SPRITE_MISTY_FISH, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, -1
+	object_event  6, 21, SPRITE_BIKE, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, -1

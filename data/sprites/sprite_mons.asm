@@ -26,6 +26,7 @@ SpriteMons:
 	db SLOWPOKE
 	db SLOWBRO
 	db DRATINI
+	db DRAGONITE
 	db POLIWRATH
 	db MEOWTH
 	db ZUBAT

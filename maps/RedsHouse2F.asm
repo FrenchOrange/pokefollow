@@ -407,6 +407,9 @@ DebugSign:
 	setflag ENGINE_POKEDEX
 ; useful items
 	giveitem BICYCLE
+	giveitem OLD_ROD
+	giveitem GOOD_ROD
+	giveitem SUPER_ROD
 	giveitem MASTER_BALL, 99
 	giveitem RARE_CANDY, 99
 	giveitem MAX_REPEL, 99
