@@ -78,7 +78,7 @@
 	const SPRITE_BIKER ; 4a
 	const SPRITE_PHARMACIST ; 4b
 	const SPRITE_MONSTER ; 4c
-	const SPRITE_FAIRY ; 4d
+	const SPRITE_CHRIS_SWIM ; 4d
 	const SPRITE_SALESMAN ; 4e
 	const SPRITE_MISTY_FISH ; 4f
 	const SPRITE_BIG_ONIX ; 50
