@@ -1,6 +1,7 @@
 TreeMons:
 ; entries correspond to TREEMON_SET_* constants
 	table_width 2, TreeMons
+	dw TreeMonSet_Unused
 	dw TreeMonSet_City
 	dw TreeMonSet_Canyon
 	dw TreeMonSet_Town
@@ -10,13 +11,30 @@ TreeMons:
 	dw TreeMonSet_Forest
 	dw TreeMonSet_Rock
 	assert_table_length NUM_TREEMON_SETS
-	dw TreeMonSet_City ; unused
 
 ; Two tables each (common, rare).
 ; Structure:
 ;	db  %, species, level
 
+TreeMonSet_Unused:
 TreeMonSet_City:
+; common
+	db 50, HOOTHOOT,   10
+	db 15, EKANS,      10
+	db 15, HOOTHOOT,   10
+	db 10, EXEGGCUTE,  10
+	db  5, EXEGGCUTE,  10
+	db  5, EXEGGCUTE,  10
+	db -1
+; rare
+	db 50, HOOTHOOT,   10
+	db 15, PINECO,     10
+	db 15, PINECO,     10
+	db 10, EXEGGCUTE,  10
+	db  5, EXEGGCUTE,  10
+	db  5, EXEGGCUTE,  10
+	db -1
+
 TreeMonSet_Canyon:
 ; common
 	db 50, SPEAROW,    10
@@ -73,20 +91,20 @@ TreeMonSet_Route:
 
 TreeMonSet_Kanto:
 ; common
-	db 50, HOOTHOOT,   10
-	db 15, EKANS,      10
-	db 15, HOOTHOOT,   10
-	db 10, EXEGGCUTE,  10
-	db  5, EXEGGCUTE,  10
-	db  5, EXEGGCUTE,  10
+	db 50, PIDGEY,     10
+	db 15, SPEAROW,    10
+	db 15, PIDGEY,     10
+	db 10, MANKEY,     10
+	db  5, MANKEY,     10
+	db  5, MANKEY,     10
 	db -1
 ; rare
-	db 50, HOOTHOOT,   10
-	db 15, PINECO,     10
-	db 15, PINECO,     10
-	db 10, EXEGGCUTE,  10
-	db  5, EXEGGCUTE,  10
-	db  5, EXEGGCUTE,  10
+	db 50, PIDGEOT,    10
+	db 15, SPEAROW,    10
+	db 15, PIDGEOT,    10
+	db 10, MANKEY,     10
+	db  5, MANKEY,     10
+	db  5, MANKEY,     10
 	db -1
 
 TreeMonSet_Lake:

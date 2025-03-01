@@ -175,27 +175,27 @@ KantoGrassWildMons:
 	; morn
 	db 2, PIDGEY
 	db 2, RATTATA
-	db 3, SENTRET
+	db 3, RATTATA
 	db 3, PIDGEY
-	db 6, FURRET
-	db 4, PIDGEY
-	db 4, PIDGEY
+	db 6, SPEAROW
+	db 4, SPEAROW
+	db 4, SANDSHREW
 	; day
 	db 2, PIDGEY
 	db 2, RATTATA
-	db 3, SENTRET
+	db 3, RATTATA
 	db 3, PIDGEY
-	db 6, FURRET
-	db 4, PIDGEY
-	db 4, PIDGEY
+	db 6, SPEAROW
+	db 4, SPEAROW
+	db 4, SANDSHREW
 	; nite
-	db 2, HOOTHOOT
+	db 6, SPEAROW
 	db 2, RATTATA
 	db 3, RATTATA
-	db 3, HOOTHOOT
-	db 6, RATICATE
-	db 4, HOOTHOOT
-	db 4, HOOTHOOT
+	db 3, PIDGEY
+	db 6, SPEAROW
+	db 4, SANDSHREW
+	db 4, SANDSHREW
 	end_grass_wildmons
 
 	def_grass_wildmons ROUTE_2
