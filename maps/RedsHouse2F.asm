@@ -396,15 +396,11 @@ NowEnteringText:
 
 DebugSign:
 	opentext
+; useful flags
 	special NameRival
-; full pokegear
-;	setflag ENGINE_POKEGEAR
-;	setflag ENGINE_PHONE_CARD
-;	setflag ENGINE_MAP_CARD
-;	setflag ENGINE_RADIO_CARD
-;	setflag ENGINE_EXPN_CARD
-; pokedex
 	setflag ENGINE_POKEDEX
+	setevent EVENT_GOT_PROPER_CLOTHES
+	setscene SCENE_REDSHOUSE2F_NOOP	
 ; useful items
 	giveitem BICYCLE
 	giveitem OLD_ROD

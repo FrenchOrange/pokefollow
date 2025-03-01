@@ -26,6 +26,39 @@ FollowerInteractionTable:
 	interaction -1,         -1,           -1,       -1,                      -1,                       -1,       (1 << BRN), -1,                          BurnInteraction
 	interaction -1,         -1,           -1,       -1,                      -1,                       -1,       (1 << FRZ), -1,                          FrozenInteraction
 	interaction -1,         -1,           -1,       -1,                      -1,                       -1,       (1 << PAR), -1,                          ParalyzeInteraction
+
+; Kanto interactions
+	interaction PIKACHU,    -1,           -1,       LANDMARK_PALLET_TOWN,    MAP_OAKS_LAB,             -1,       -1,         -1,                          OaksLabPikachuInteraction
+	interaction SPEAROW,    -1,           -1,       LANDMARK_ROUTE_1,        -1,                       -1,       -1,         -1,                          Route1SpearowInteraction
+	interaction HO_OH,      -1,           -1,       LANDMARK_ROUTE_1,        -1,                       -1,       -1,         -1,                          Route1HoOhInteraction
+;	interaction BULBASAUR,  -1,           -1,       LANDMARK_ROUTE_1,        -1,                       -1,       -1,         -1,                          Route1Interaction
+	interaction CHARMANDER, -1,           -1,       LANDMARK_ROUTE_2,        -1,                       -1,       -1,         -1,                          Route2CharmanderInteraction
+	interaction PICHU,      -1,           -1,       LANDMARK_ROUTE_2,        -1,                       -1,       -1,         -1,                          Route2PikachuInteraction
+	interaction PIKACHU,    -1,           -1,       LANDMARK_ROUTE_2,        -1,                       -1,       -1,         -1,                          Route2PikachuInteraction
+	interaction RAICHU,     -1,           -1,       LANDMARK_ROUTE_2,        -1,                       -1,       -1,         -1,                          Route2PikachuInteraction
+	interaction HERACROSS,  -1,           -1,       LANDMARK_ROUTE_2,        -1,                       -1,       -1,         -1,                          HeracrossInteraction
+	interaction SQUIRTLE,   -1,           -1,       LANDMARK_ROUTE_3,        -1,                       -1,       -1,         -1,                          Route3Interaction
+	interaction CLEFFA,     -1,           -1,       LANDMARK_MT_MOON,        -1,                       -1,       -1,         -1,                          MtMoonInteraction
+	interaction CLEFAIRY,   -1,           -1,       LANDMARK_MT_MOON,        -1,                       -1,       -1,         -1,                          MtMoonInteraction
+	interaction CLEFABLE,   -1,           -1,       LANDMARK_MT_MOON,        -1,                       -1,       -1,         -1,                          MtMoonInteraction
+	interaction PICHU,      -1,           -1,       LANDMARK_ROUTE_2,        -1,                       -1,       -1,         -1,                          PowerPlantPikachuInteraction
+	interaction PIKACHU,    -1,           -1,       LANDMARK_ROUTE_2,        -1,                       -1,       -1,         -1,                          PowerPlantPikachuInteraction
+	interaction RAICHU,     -1,           -1,       LANDMARK_ROUTE_2,        -1,                       -1,       -1,         -1,                          PowerPlantPikachuInteraction
+	interaction DITTO,      -1,           -1,       LANDMARK_ROUTE_15,       -1,                       -1,       -1,         -1,                          Route15DittoInteraction
+	interaction -1,         FLYING,       -1,       LANDMARK_ROUTE_18,       -1,                       -1,       -1,         -1,                          Route18FlyingInteraction
+	interaction ONIX,       -1,           -1,       LANDMARK_ROCK_TUNNEL,    -1,                       -1,       -1,         -1,                          RockTunnelOnixInteraction
+	interaction STEELIX,    -1,           -1,       LANDMARK_ROCK_TUNNEL,    -1,                       -1,       -1,         -1,                          RockTunnelOnixInteraction
+	interaction -1,         ROCK,         -1,       LANDMARK_ROCK_TUNNEL,    -1,                       -1,       -1,         -1,                          RockTunnelRockMonInteraction
+	interaction DIGLETT,    -1,           -1,       LANDMARK_DIGLETTS_CAVE,  -1,                       -1,       -1,         -1,                          DiglettsCaveInteraction
+	interaction DUGTRIO,    -1,           -1,       LANDMARK_DIGLETTS_CAVE,  -1,                       -1,       -1,         -1,                          DiglettsCaveInteraction
+	interaction -1,         PSYCHIC_TYPE, -1,       LANDMARK_SAFFRON_CITY,   MAP_MR_PSYCHICS_HOUSE,    -1,       -1,         -1,                          MrPsychicsHouseInteraction
+	interaction PORYGON,    -1,           -1,       LANDMARK_CELADON_CITY,   -1,                       -1,       -1,         -1,                          CeladonCityPorygonInteraction
+	interaction -1,         GHOST,        -1,       LANDMARK_LAVENDER_TOWN,  -1,                       -1,       -1,         -1,                          LavendarTownInteraction
+	interaction MEGANIUM,   -1,           -1,       LANDMARK_VICTORY_ROAD,   -1,                       -1,       -1,         -1,                          VictoryRoadMeganiumInteraction
+	interaction TYPHLOSION, -1,           -1,       LANDMARK_VICTORY_ROAD,   -1,                       -1,       -1,         -1,                          VictoryRoadTyphlosionInteraction
+	interaction FERALIGATR, -1,           -1,       LANDMARK_VICTORY_ROAD,   -1,                       -1,       -1,         -1,                          VictoryRoadFeraligatrInteraction
+
+; Johto interactions
 	interaction CHIKORITA,  -1,           -1,       LANDMARK_ROUTE_29,       -1,                       -1,       -1,         -1,                          ChikoritaRoute29Interaction
 	interaction TOTODILE,   -1,           -1,       LANDMARK_ROUTE_30,       -1,                       -1,       -1,         -1,                          TotodileRoute30Interaction
 	interaction CYNDAQUIL,  -1,           -1,       LANDMARK_ROUTE_31,       -1,                       -1,       -1,         -1,                          CyndaquilRoute31Interaction
@@ -49,9 +82,9 @@ FollowerInteractionTable:
 	interaction -1,         BUG,          -1,       LANDMARK_NATIONAL_PARK,  -1,                       -1,       -1,         -1,                          NationalParkInteraction
 	interaction PICHU,      -1,           -1,       LANDMARK_ECRUTEAK_CITY,  MAP_DANCE_THEATER,        -1,       -1,         -1,                          DanceTheaterPichuInteraction
 	interaction BELLOSSOM,  -1,           -1,       LANDMARK_ECRUTEAK_CITY,  MAP_DANCE_THEATER,        -1,       -1,         -1,                          DanceTheaterBellossomInteraction
-	interaction RAIKOU,     -1,           -1,       LANDMARK_BURNED_TOWER,   -1,                       -1,       -1,         -1,                          BurnedTowerLegendaryDogInteraction
-	interaction ENTEI,      -1,           -1,       LANDMARK_BURNED_TOWER,   -1,                       -1,       -1,         -1,                          BurnedTowerLegendaryDogInteraction
-	interaction SUICUNE,    -1,           -1,       LANDMARK_BURNED_TOWER,   -1,                       -1,       -1,         -1,                          BurnedTowerLegendaryDogInteraction
+	interaction RAIKOU,     -1,           -1,       LANDMARK_BURNED_TOWER,   -1,                       -1,       -1,         -1,                          BurnedTowerLegBeastInteraction
+	interaction ENTEI,      -1,           -1,       LANDMARK_BURNED_TOWER,   -1,                       -1,       -1,         -1,                          BurnedTowerLegBeastInteraction
+	interaction SUICUNE,    -1,           -1,       LANDMARK_BURNED_TOWER,   -1,                       -1,       -1,         -1,                          BurnedTowerLegBeastInteraction
 	interaction HO_OH,      -1,           -1,       LANDMARK_BURNED_TOWER,   -1,                       -1,       -1,         -1,                          BurnedTowerHoOhInteraction
 	interaction HO_OH,      -1,           -1,       LANDMARK_TIN_TOWER,      -1,                       -1,       -1,         -1,                          TinTowerInteraction
 	interaction TAUROS,     -1,           -1,       LANDMARK_ROUTE_39,       -1,                       -1,       -1,         -1,                          Route39TaurosInteraction
@@ -63,42 +96,16 @@ FollowerInteractionTable:
 	interaction LUGIA,      -1,           -1,       LANDMARK_WHIRL_ISLANDS,  -1,                       -1,       -1,         -1,                          WhirlIslandsLugiaInteraction
 	interaction -1,         WATER,        -1,       LANDMARK_WHIRL_ISLANDS,  -1,                       -1,       -1,         -1,                          WhirlIslandsWaterMonInteraction
 	interaction -1,         ROCK,         -1,       LANDMARK_ROUTE_42,       -1,                       -1,       -1,         -1,                          Route42Interaction
-	interaction DITTO,      -1,           -1,       LANDMARK_ROUTE_15,       -1,                       -1,       -1,         -1,                          Route15DittoInteraction
-	interaction -1,         FLYING,       -1,       LANDMARK_ROUTE_18,       -1,                       -1,       -1,         -1,                          Route18FlyingInteraction
 	interaction MAGIKARP,   -1,           -1,       LANDMARK_LAKE_OF_RAGE,   -1,                       -1,       -1,         -1,                          LakeOfRageMagikarpInteraction
 	interaction GYARADOS,   -1,           -1,       LANDMARK_LAKE_OF_RAGE,   -1,                       -1,       -1,         -1,                          LakeOfRageGyradosInteraction
 	interaction ELECTRODE,  -1,           -1,       LANDMARK_MAHOGANY_TOWN,  MAP_TEAM_ROCKET_BASE_B1F, -1,       -1,         -1,                          TeamRocketBaseInteraction
 	interaction ELECTRODE,  -1,           -1,       LANDMARK_MAHOGANY_TOWN,  MAP_TEAM_ROCKET_BASE_B2F, -1,       -1,         -1,                          TeamRocketBaseInteraction
 	interaction ELECTRODE,  -1,           -1,       LANDMARK_MAHOGANY_TOWN,  MAP_TEAM_ROCKET_BASE_B3F, -1,       -1,         -1,                          TeamRocketBaseInteraction
-	interaction -1,         ICE,          -1,       LANDMARK_ICE_PATH,       -1,                       -1,       -1,         -1,                          ColdIceMonInteraction
-	interaction -1,         GRASS,        -1,       LANDMARK_ICE_PATH,       -1,                       -1,       -1,         -1,                          ColdGrassMonInteraction
 	interaction -1,         ICE,          -1,       LANDMARK_MAHOGANY_TOWN,  MAP_MAHOGANY_GYM,         -1,       -1,         -1,                          ColdIceMonInteraction
 	interaction -1,         GRASS,        -1,       LANDMARK_MAHOGANY_TOWN,  MAP_MAHOGANY_GYM,         -1,       -1,         -1,                          ColdGrassMonInteraction
+	interaction -1,         ICE,          -1,       LANDMARK_ICE_PATH,       -1,                       -1,       -1,         -1,                          ColdIceMonInteraction
+	interaction -1,         GRASS,        -1,       LANDMARK_ICE_PATH,       -1,                       -1,       -1,         -1,                          ColdGrassMonInteraction
 	interaction -1,         DRAGON,       -1,       LANDMARK_DRAGONS_DEN,    -1,                       -1,       -1,         -1,                          DragonsDenInteraction
-	interaction MEGANIUM,   -1,           -1,       LANDMARK_VICTORY_ROAD,   -1,                       -1,       -1,         -1,                          VictoryRoadMeganiumInteraction
-	interaction TYPHLOSION, -1,           -1,       LANDMARK_VICTORY_ROAD,   -1,                       -1,       -1,         -1,                          VictoryRoadTyphlosionInteraction
-	interaction FERALIGATR, -1,           -1,       LANDMARK_VICTORY_ROAD,   -1,                       -1,       -1,         -1,                          VictoryRoadFeraligatrInteraction
-	interaction BULBASAUR,  -1,           -1,       LANDMARK_ROUTE_1,        -1,                       -1,       -1,         -1,                          Route1Interaction
-	interaction CHARMANDER, -1,           -1,       LANDMARK_ROUTE_2,        -1,                       -1,       -1,         -1,                          Route2CharmanderInteraction
-	interaction PICHU,      -1,           -1,       LANDMARK_ROUTE_2,        -1,                       -1,       -1,         -1,                          Route2PikachuInteraction
-	interaction PIKACHU,    -1,           -1,       LANDMARK_ROUTE_2,        -1,                       -1,       -1,         -1,                          Route2PikachuInteraction
-	interaction RAICHU,     -1,           -1,       LANDMARK_ROUTE_2,        -1,                       -1,       -1,         -1,                          Route2PikachuInteraction
-	interaction HERACROSS,  -1,           -1,       LANDMARK_ROUTE_2,        -1,                       -1,       -1,         -1,                          HeracrossInteraction
-	interaction SQUIRTLE,   -1,           -1,       LANDMARK_ROUTE_3,        -1,                       -1,       -1,         -1,                          Route3Interaction
-	interaction CLEFFA,     -1,           -1,       LANDMARK_MT_MOON,        -1,                       -1,       -1,         -1,                          MtMoonInteraction
-	interaction CLEFAIRY,   -1,           -1,       LANDMARK_MT_MOON,        -1,                       -1,       -1,         -1,                          MtMoonInteraction
-	interaction CLEFABLE,   -1,           -1,       LANDMARK_MT_MOON,        -1,                       -1,       -1,         -1,                          MtMoonInteraction
-	interaction PICHU,      -1,           -1,       LANDMARK_ROUTE_2,        -1,                       -1,       -1,         -1,                          PowerPlantPikachuInteraction
-	interaction PIKACHU,    -1,           -1,       LANDMARK_ROUTE_2,        -1,                       -1,       -1,         -1,                          PowerPlantPikachuInteraction
-	interaction RAICHU,     -1,           -1,       LANDMARK_ROUTE_2,        -1,                       -1,       -1,         -1,                          PowerPlantPikachuInteraction
-	interaction ONIX,       -1,           -1,       LANDMARK_ROCK_TUNNEL,    -1,                       -1,       -1,         -1,                          RockTunnelOnixInteraction
-	interaction STEELIX,    -1,           -1,       LANDMARK_ROCK_TUNNEL,    -1,                       -1,       -1,         -1,                          RockTunnelOnixInteraction
-	interaction -1,         ROCK,         -1,       LANDMARK_ROCK_TUNNEL,    -1,                       -1,       -1,         -1,                          RockTunnelRockMonInteraction
-	interaction DIGLETT,    -1,           -1,       LANDMARK_DIGLETTS_CAVE,  -1,                       -1,       -1,         -1,                          DiglettsCaveInteraction
-	interaction DUGTRIO,    -1,           -1,       LANDMARK_DIGLETTS_CAVE,  -1,                       -1,       -1,         -1,                          DiglettsCaveInteraction
-	interaction -1,         PSYCHIC_TYPE, -1,       LANDMARK_SAFFRON_CITY,   MAP_MR_PSYCHICS_HOUSE,    -1,       -1,         -1,                          MrPsychicsHouseInteraction
-	interaction PORYGON,    -1,           -1,       LANDMARK_CELADON_CITY,   -1,                       -1,       -1,         -1,                          CeladonCityPorygonInteraction
-	interaction -1,         GHOST,        -1,       LANDMARK_LAVENDER_TOWN,  -1,                       -1,       -1,         -1,                          LavendarTownInteraction
 	; Note: the Default Interaction should always be last!
 	interaction -1,         -1,           -1,       -1,                      -1,                       -1,       -1,         -1,                          DefaultInteraction
 
@@ -293,8 +300,8 @@ DancingHappilyText:
 
 DefaultInteraction:
 	applymovement FOLLOWER, .followerjumptest
-	opentext
 	followcry
+	opentext
 	random 50
 	ifequal 1, .give_item
 	writetext .text
@@ -408,6 +415,407 @@ ParalyzeInteraction:
 	line "looking a little"
 	cont "sluggish."
 	done
+
+
+
+
+OaksLabPikachuInteraction:
+	opentext
+	followcry
+	writetext .Text
+	closetext
+	end
+
+.Text:
+	text "@"
+	text_ram wStringBuffer1
+	text " looks"
+	line "around, and then"
+	cont "back at you."
+	done
+
+Route1SpearowInteraction:
+	opentext
+	followcry
+	writetext .Text
+	closetext
+	end
+
+.Text:
+	text "@"
+	text_ram wStringBuffer1
+	text " fluffs"
+	line "up its feathers"
+	cont "and scratches the"
+	cont "ground."
+	done
+
+Route1HoOhInteraction:
+	opentext
+	followcry
+	writetext .Text
+	closetext
+	end
+
+.Text:
+	text "@"
+	text_ram wStringBuffer1
+	text " looks"
+	line "at you with a"
+	cont "pensive, yet calm"
+	cont "look on its face."
+	done
+
+Route1Interaction: ; Test this
+	opentext
+	followcry
+	random 2
+	iftrue .interaction2
+	writetext .Text1
+	closetext
+	end
+
+.interaction2
+	writetext .Text2
+	closetext
+	end
+
+.Text1:
+	text "@"
+	text_ram wStringBuffer1
+	line "wiggled its vine!"
+	done
+
+.Text2:
+	text "@"
+	text_ram wStringBuffer1
+	line "snapped its vine!"
+	done
+
+
+Route2CharmanderInteraction:
+	opentext
+	followcry
+	writetext .Text
+	closetext
+	end
+
+.Text:
+	text "@"
+	text_ram wStringBuffer1
+	text " flared"
+	line "its fiery tail!"
+	done
+
+Route2PikachuInteraction:
+	opentext
+	followcry
+	writetext DancingHappilyText
+	closetext
+	end
+
+Route3Interaction:
+	opentext
+	followcry
+	writetext .Text
+	closetext
+	end
+
+.Text:
+	text "@"
+	text_ram wStringBuffer1
+	text " fell"
+	line "down and got a"
+	cont "little frustrated!"
+	done
+
+Route15DittoInteraction:
+	opentext
+	followcry
+	writetext .Text
+	closetext
+	end
+
+.Text: ; Test this
+	text "…Oh? @'s"
+	text_ram wStringBuffer1
+	line "appearance… didn't"
+	cont "change!"
+	done
+
+Route18FlyingInteraction:
+	opentext
+	followcry
+	writetext .Text
+	closetext
+	end
+
+.Text:
+	text "@"
+	text_ram wStringBuffer1
+	text " is"
+	line "flying through the"
+	cont "sky with grace!"
+	done
+
+MtMoonInteraction:
+	opentext
+	followcry
+	random 2
+	iftrue .interaction2
+	writetext .Text1
+	closetext
+	end
+
+.interaction2
+	writetext .Text2
+	closetext
+	end
+
+.Text1:
+	text "@"
+	text_ram wStringBuffer1
+	text " is"
+	line "looking up at the"
+	cont "sky!"
+	done
+
+.Text2
+	text "@"
+	text_ram wStringBuffer1
+	line "suddenly started"
+	cont "dancing!"
+	done
+
+PowerPlantPikachuInteraction:
+	opentext
+	followcry
+	random 3
+	ifequal 1, .interaction2
+	ifequal 2, .interaction3
+	writetext SeemsVeryHappyText
+	closetext
+	end
+
+.interaction2
+	writetext .HadFunDancingText
+	closetext
+	end
+
+.interaction3
+	writetext .IsSoHappyDanceText
+	closetext
+	end
+
+.HadFunDancingText
+	text "@"
+	text_ram wStringBuffer1
+	text " had"
+	line "fun dancing a"
+	cont "dance!"
+	done
+
+.IsSoHappyDanceText
+	text "@"
+	text_ram wStringBuffer1
+	text " is"
+	line "so happy,"
+	cont "it began to dance!"
+	done
+
+RockTunnelOnixInteraction:
+	opentext
+	followcry
+	writetext .Text
+	closetext
+	end
+
+.Text:
+	text "@"
+	text_ram wStringBuffer1
+	text " is"
+	line "happily digging"
+
+	para "itself into the"
+	line "ground!"
+	done
+
+RockTunnelRockMonInteraction:
+	opentext
+	followcry
+	random 4
+	ifequal 1, .interaction2
+	ifequal 2, .interaction3
+	ifequal 3, .interaction4
+	writetext .RollingAroundText
+	closetext
+	end
+
+.interaction2
+	writetext .StartedGrindingText
+	closetext
+	end
+
+.interaction3
+	writetext .HittingRocksText
+	closetext
+	end
+
+.interaction4
+	writetext .PoundingGroundText
+	closetext
+	end
+
+.RollingAroundText
+	text "@"
+	text_ram wStringBuffer1
+	text " is"
+	line "having fun"
+	cont "rolling around!"
+	done
+
+.StartedGrindingText
+	text "@"
+	text_ram wStringBuffer1
+	line "started grinding"
+	cont "at the rocks!"
+	done
+
+.HittingRocksText
+	text "@"
+	text_ram wStringBuffer1
+	text " is"
+	line "having fun hitting"
+	cont "rocks together!"
+	done
+
+.PoundingGroundText
+	text "@"
+	text_ram wStringBuffer1
+	line "started pounding"
+	cont "the ground flat!"
+	done
+
+DiglettsCaveInteraction:
+	opentext
+	followcry
+	random 2
+	iftrue .interaction2
+	writetext SeemsVeryHappyText
+	closetext
+	end
+
+.interaction2
+	writetext .Text2
+	closetext
+	end
+
+.Text2
+	text "@"
+	text_ram wStringBuffer1
+	line "stretched out it's"
+
+	para "body and is"
+	line "relaxing!"
+	done
+
+MrPsychicsHouseInteraction: ; Test this
+	opentext
+	followcry
+	writetext .Text
+	closetext
+	end
+
+.Text:
+	text "…… …… …… ……"
+	line "…… …… …… ……"
+
+	para "@"
+	text_ram wStringBuffer1
+	line "silently nodded!"
+	done
+
+CeladonCityPorygonInteraction:
+	opentext
+	followcry
+	writetext .Text
+	closetext
+	end
+
+.Text:
+	text "@"
+	text_ram wStringBuffer1
+	line "stammered"
+	cont "something…"
+	done
+
+LavendarTownInteraction:
+	opentext
+	followcry
+	writetext .Text
+	closetext
+	end
+
+.Text:
+	text "@"
+	text_ram wStringBuffer1
+	text " is "
+	line "having fun"
+
+	para "swaying back"
+	line "and forth."
+	done
+
+VictoryRoadMeganiumInteraction:
+	opentext
+	followcry
+	writetext .Text
+	closetext
+	end
+
+.Text:
+	text "@"
+	text_ram wStringBuffer1
+	text " turned"
+	line "its head and let"
+
+	para "out a fighting"
+	line "yell!"
+	done
+
+VictoryRoadTyphlosionInteraction: ; Test this
+	opentext
+	followcry
+	writetext .Text
+	closetext
+	end
+
+.Text:
+	text "@"
+	text_ram wStringBuffer1
+	line "emmited fire"
+	cont "and shouted!"
+	done
+
+VictoryRoadFeraligatrInteraction:
+	opentext
+	followcry
+	writetext .Text
+	closetext
+	end
+
+.Text:
+	text "@"
+	text_ram wStringBuffer1
+	text " is"
+	line "swinging its arms"
+
+	para "around and"
+	line "shouting!"
+	done
+
+
+
 
 ChikoritaRoute29Interaction:
 	opentext
@@ -879,7 +1287,7 @@ DanceTheaterBellossomInteraction:
 	cont "Kimono Girls!"
 	done
 
-BurnedTowerLegendaryDogInteraction:
+BurnedTowerLegBeastInteraction:
 	opentext
 	followcry
 	random 2
@@ -1052,35 +1460,6 @@ Route42Interaction:
 	para "mountain as if"
 	line "anticipating"
 	cont "climbing it."
-	done
-
-Route15DittoInteraction:
-	opentext
-	followcry
-	writetext .Text
-	closetext
-	end
-
-.Text: ; Test this
-	text "…Oh? @'s"
-	text_ram wStringBuffer1
-	line "appearance… didn't"
-	cont "change!"
-	done
-
-Route18FlyingInteraction:
-	opentext
-	followcry
-	writetext .Text
-	closetext
-	end
-
-.Text:
-	text "@"
-	text_ram wStringBuffer1
-	text " is"
-	line "flying through the"
-	cont "sky with grace!"
 	done
 
 LakeOfRageMagikarpInteraction:
@@ -1267,323 +1646,4 @@ DragonsDenInteraction: ; Test this
 	text_ram wStringBuffer1
 	text " is"
 	line "growling softly."
-	done
-
-VictoryRoadMeganiumInteraction:
-	opentext
-	followcry
-	writetext .Text
-	closetext
-	end
-
-.Text:
-	text "@"
-	text_ram wStringBuffer1
-	text " turned"
-	line "its head and let"
-
-	para "out a fighting"
-	line "yell!"
-	done
-
-VictoryRoadTyphlosionInteraction: ; Test this
-	opentext
-	followcry
-	writetext .Text
-	closetext
-	end
-
-.Text:
-	text "@"
-	text_ram wStringBuffer1
-	line "emmited fire"
-	cont "and shouted!"
-	done
-
-VictoryRoadFeraligatrInteraction:
-	opentext
-	followcry
-	writetext .Text
-	closetext
-	end
-
-.Text:
-	text "@"
-	text_ram wStringBuffer1
-	text " is"
-	line "swinging its arms"
-
-	para "around and"
-	line "shouting!"
-	done
-
-Route1Interaction: ; Test this
-	opentext
-	followcry
-	random 2
-	iftrue .interaction2
-	writetext .Text1
-	closetext
-	end
-
-.interaction2
-	writetext .Text2
-	closetext
-	end
-
-.Text1:
-	text "@"
-	text_ram wStringBuffer1
-	line "wiggled its vine!"
-	done
-
-.Text2:
-	text "@"
-	text_ram wStringBuffer1
-	line "snapped its vine!"
-	done
-
-
-Route2CharmanderInteraction:
-	opentext
-	followcry
-	writetext .Text
-	closetext
-	end
-
-.Text:
-	text "@"
-	text_ram wStringBuffer1
-	text " flared"
-	line "its fiery tail!"
-	done
-
-Route2PikachuInteraction:
-	opentext
-	followcry
-	writetext DancingHappilyText
-	closetext
-	end
-
-Route3Interaction:
-	opentext
-	followcry
-	writetext .Text
-	closetext
-	end
-
-.Text:
-	text "@"
-	text_ram wStringBuffer1
-	text " fell"
-	line "down and got a"
-	cont "little frustrated!"
-	done
-
-MtMoonInteraction:
-	opentext
-	followcry
-	random 2
-	iftrue .interaction2
-	writetext .Text1
-	closetext
-	end
-
-.interaction2
-	writetext .Text2
-	closetext
-	end
-
-.Text1:
-	text "@"
-	text_ram wStringBuffer1
-	text " is"
-	line "looking up at the"
-	cont "sky!"
-	done
-
-.Text2
-	text "@"
-	text_ram wStringBuffer1
-	line "suddenly started"
-	cont "dancing!"
-	done
-
-PowerPlantPikachuInteraction:
-	opentext
-	followcry
-	random 3
-	ifequal 1, .interaction2
-	ifequal 2, .interaction3
-	writetext SeemsVeryHappyText
-	closetext
-	end
-
-.interaction2
-	writetext .HadFunDancingText
-	closetext
-	end
-
-.interaction3
-	writetext .IsSoHappyDanceText
-	closetext
-	end
-
-.HadFunDancingText
-	text "@"
-	text_ram wStringBuffer1
-	text " had"
-	line "fun dancing a"
-	cont "dance!"
-	done
-
-.IsSoHappyDanceText
-	text "@"
-	text_ram wStringBuffer1
-	text " is"
-	line "so happy,"
-	cont "it began to dance!"
-	done
-
-RockTunnelOnixInteraction:
-	opentext
-	followcry
-	writetext .Text
-	closetext
-	end
-
-.Text:
-	text "@"
-	text_ram wStringBuffer1
-	text " is"
-	line "happily digging"
-
-	para "itself into the"
-	line "ground!"
-	done
-
-RockTunnelRockMonInteraction:
-	opentext
-	followcry
-	random 4
-	ifequal 1, .interaction2
-	ifequal 2, .interaction3
-	ifequal 3, .interaction4
-	writetext .RollingAroundText
-	closetext
-	end
-
-.interaction2
-	writetext .StartedGrindingText
-	closetext
-	end
-
-.interaction3
-	writetext .HittingRocksText
-	closetext
-	end
-
-.interaction4
-	writetext .PoundingGroundText
-	closetext
-	end
-
-.RollingAroundText
-	text "@"
-	text_ram wStringBuffer1
-	text " is"
-	line "having fun"
-	cont "rolling around!"
-	done
-
-.StartedGrindingText
-	text "@"
-	text_ram wStringBuffer1
-	line "started grinding"
-	cont "at the rocks!"
-	done
-
-.HittingRocksText
-	text "@"
-	text_ram wStringBuffer1
-	text " is"
-	line "having fun hitting"
-	cont "rocks together!"
-	done
-
-.PoundingGroundText
-	text "@"
-	text_ram wStringBuffer1
-	line "started pounding"
-	cont "the ground flat!"
-	done
-
-DiglettsCaveInteraction:
-	opentext
-	followcry
-	random 2
-	iftrue .interaction2
-	writetext SeemsVeryHappyText
-	closetext
-	end
-
-.interaction2
-	writetext .Text2
-	closetext
-	end
-
-.Text2
-	text "@"
-	text_ram wStringBuffer1
-	line "stretched out it's"
-
-	para "body and is"
-	line "relaxing!"
-	done
-
-MrPsychicsHouseInteraction: ; Test this
-	opentext
-	followcry
-	writetext .Text
-	closetext
-	end
-
-.Text:
-	text "…… …… …… ……"
-	line "…… …… …… ……"
-
-	para "@"
-	text_ram wStringBuffer1
-	line "silently nodded!"
-	done
-
-CeladonCityPorygonInteraction:
-	opentext
-	followcry
-	writetext .Text
-	closetext
-	end
-
-.Text:
-	text "@"
-	text_ram wStringBuffer1
-	line "stammered"
-	cont "something…"
-	done
-
-LavendarTownInteraction:
-	opentext
-	followcry
-	writetext .Text
-	closetext
-	end
-
-.Text:
-	text "@"
-	text_ram wStringBuffer1
-	text " is "
-	line "having fun"
-
-	para "swaying back"
-	line "and forth."
 	done
