@@ -487,5 +487,6 @@ INCLUDE "maps/PalletOakTVSpeechHouse.asm"
 INCLUDE "maps/PalletDodrioHouse.asm"
 INCLUDE "maps/PalletEmptyHouse.asm"
 INCLUDE "maps/PalletLake.asm"
+INCLUDE "maps/OakCorral.asm"
 
 ENDSECTION

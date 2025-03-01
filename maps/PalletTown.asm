@@ -75,6 +75,7 @@ MomStarterScene:
 	special FadeOutToWhite
 	special FadeInFromWhite
 	special FadeOutToWhite
+	special LoadMapPalettes
 	special FadeInFromWhite
 	playsound SFX_THUNDER
 	waitsfx

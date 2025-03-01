@@ -3,6 +3,7 @@
 	const OAKSLAB_OAK2
 	const OAKSLAB_OAK3
 	const OAKSLAB_OAK4
+	const OAKSLAB_OAK5
 	const OAKSLAB_REDS_MOM
 	const OAKSLAB_SCIENTIST1
 	const OAKSLAB_SCIENTIST2
@@ -387,7 +388,7 @@ OaksLabRedsMomScript:
 	writetext OaksLabRedsMomText
 	waitbutton
 	closetext
-	turnobject OAKSLAB_REDS_MOM, RIGHT
+	turnobject OAKSLAB_REDS_MOM, LEFT
 	end
 
 OaksLabRedsMomText:
@@ -412,6 +413,7 @@ OaksLab_MapEvents:
 	warp_event 33, 10, OAKS_LAB, 8
 	warp_event 40,  9, OAKS_LAB, 5
 	warp_event 40, 10, OAKS_LAB, 6
+	warp_event 30,  2, OAK_CORRAL, 1
 
 	def_coord_events
 

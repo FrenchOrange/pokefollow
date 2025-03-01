@@ -350,10 +350,12 @@ CeladonGameCornerPrizeRoom_Blocks:
 	INCBIN "maps/CeladonGameCornerPrizeRoom.ablk"
 
 Colosseum_Blocks:
+MobileBattleRoom_Blocks:
 	INCBIN "maps/Colosseum.ablk"
 
 TradeCenter_Blocks:
 TimeCapsule_Blocks:
+MobileTradeRoom_Blocks:
 	INCBIN "maps/TradeCenter.ablk"
 
 EcruteakLugiaSpeechHouse_Blocks:
@@ -884,12 +886,6 @@ BattleTowerBattleRoom_Blocks:
 PokecomCenterAdminOfficeMobile_Blocks:
 	INCBIN "maps/PokecomCenterAdminOfficeMobile.ablk"
 
-MobileTradeRoom_Blocks:
-	INCBIN "maps/MobileTradeRoom.ablk"
-
-MobileBattleRoom_Blocks:
-	INCBIN "maps/MobileBattleRoom.ablk"
-
 BattleTowerHallway_Blocks:
 	INCBIN "maps/BattleTowerHallway.ablk"
 
@@ -904,5 +900,8 @@ GoldenrodDeptStoreRoof_Blocks:
 
 PalletLake_Blocks:
 	INCBIN "maps/PalletLake.ablk"
+
+OakCorral_Blocks:
+	INCBIN "maps/OakCorral.ablk"
 
 ENDSECTION
