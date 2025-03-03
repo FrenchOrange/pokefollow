@@ -16,6 +16,7 @@ Some HUGE thanks to:
 * The awesome folks who wrote down the various tutorials for Pokecrystal.
 * Vulcandth, for the Pokémon follower code utilized by this hack.
 * Artist [kensuyjin33](https://www.deviantart.com/kensuyjin33) for some beautiful trainers sprites for Ash.
+* Artists [LuigiTKO](https://twitter.com/LuigiTKO) and [GuiAbel](https://twitter.com/guiabel/) for their gorgeous GSC-styled Pokémon icons.
 * Red++ v4 for some new overworld tiles.
 * Pokémon AshGray for a few overworld tiles and inspiration.
 * SoupPotato, creator of [Sourcrystal](https://github.com/SoupPotato/Sourcrystal), for some incredible new Pokémon sprites.
