@@ -97,180 +97,10 @@ _GrewToLevelText::
 	text_promptbutton
 	text_end
 
-	text_end ; unreferenced
-
 _CameToItsSensesText::
 	text_ram wStringBuffer1
 	text " came"
 	line "to its senses."
-	done
-
-_EnterNewPasscodeText::
-	text "Please enter any"
-	line "four-digit number."
-	done
-
-_ConfirmPasscodeText::
-	text "Enter the same"
-	line "number to confirm."
-	done
-
-_PasscodesNotSameText::
-	text "That's not the"
-	line "same number."
-	done
-
-_PasscodeSetText::
-	text "Your PASSCODE has"
-	line "been set."
-
-	para "Enter this number"
-	line "next time to open"
-	cont "the CARD FOLDER."
-
-	para ""
-	done
-
-_FourZerosInvalidText::
-	text "0000 is invalid!"
-
-	para ""
-	done
-
-_EnterPasscodeText::
-	text "Enter the CARD"
-	next "FOLDER PASSCODE."
-	done
-
-_IncorrectPasscodeText::
-	text "Incorrect"
-	line "PASSCODE!"
-
-	para ""
-	done
-
-_CardFolderOpenText::
-	text "CARD FOLDER open.@"
-	text_end
-
-_OakTimeWokeUpText::
-	text "<……><……><……><……><……><……>"
-	line "<……><……><……><……><……><……>"
-
-	para "Zzz… Hm? Wha…?"
-	line "You woke me up!"
-
-	para "Will you check the"
-	line "clock for me?"
-	prompt
-
-_OakTimeWhatTimeIsItText::
-	text "What time is it?"
-	done
-
-_OakTimeWhatHoursText::
-	text "What?@"
-	text_end
-
-_OakTimeHoursQuestionMarkText::
-	text "?"
-	done
-
-_OakTimeHowManyMinutesText::
-	text "How many minutes?"
-	done
-
-_OakTimeWhoaMinutesText::
-	text "Whoa!@"
-	text_end
-
-_OakTimeMinutesQuestionMarkText::
-	text "?"
-	done
-
-_OakTimeOversleptText::
-	text "!"
-	line "I overslept!"
-	done
-
-_OakTimeYikesText::
-	text "!"
-	line "Yikes! I over-"
-	cont "slept!"
-	done
-
-_OakTimeSoDarkText::
-	text "!"
-	line "No wonder it's so"
-	cont "dark!"
-	done
-
-_OakTimeNappedText::
-	text "!"
-	line "I napped for"
-	cont "too long!"
-	done
-
-_OakTimeWhatDayIsItText::
-	text "What day is it?"
-	done
-
-_OakTimeIsItText::
-	text ", is it?"
-	done
-
-; Mobile Adapter
-
-_ThereIsNothingConnectedText:: ; unreferenced
-	text "There is nothing"
-	line "connected."
-	done
-
-_CheckCellPhoneAdapterText:: ; unreferenced
-	text "Check cell phone"
-	line "adapter."
-	done
-
-_CheckCDMAAdapterText:: ; unreferenced
-	text "Check CDMA"
-	line "adapter."
-	done
-
-_CheckDOCOMOPHSAdapterText:: ; unreferenced
-	text "Check DOCOMO PHS"
-	line "adapter."
-	done
-
-_CheckDDIPHSAdapterText:: ; unreferenced
-	text "Check DDI PHS"
-	line "adapter."
-	done
-
-_CheckMobileAdapterText:: ; unreferenced
-	text "Check unlimited"
-	line "battle mobile"
-	cont "adapter."
-	done
-
-; Mobile Adapter End
-
-_ThePasswordIsText:: ; unreferenced
-	text "The password is:"
-	line ""
-	done
-
-_IsThisOKText:: ; unreferenced
-	text "Is this OK?"
-	done
-
-_EnterTheIDNoText:: ; unreferenced
-	text "Enter the"
-	line "ID no."
-	done
-
-_EnterTheAmountText:: ; unreferenced
-	text "Enter the"
-	line "amount."
 	done
 
 _NothingToChooseText::
@@ -440,8 +270,6 @@ _WillTradeText::
 	text_ram wOTTrademonSpeciesName
 	text_end
 
-	text_end ; unreferenced
-
 _ForYourMonWillTradeText::
 	text "for @"
 	text_ram wPlayerTrademonSenderName
@@ -457,8 +285,6 @@ _MobilePlayerWillTradeMonText::
 	line "trade @"
 	text_ram wPlayerTrademonSpeciesName
 	text_end
-
-	text_end ; unreferenced
 
 _MobileForPartnersMonText::
 	text "for @"
@@ -527,8 +353,6 @@ _OPT_OakText1::
 	line "OAK: @"
 	text_ram wMonOrItemNameBuffer
 	text_end
-
-	text_end ; unreferenced
 
 _OPT_OakText2::
 	text_start
@@ -719,8 +543,6 @@ _PokedexShowText::
 	text_ram wStringBuffer1
 	text_end
 
-	text_end ; unreferenced
-
 ; Pokémon Music Channel / Pokémusic
 
 _BenIntroText1::
@@ -870,8 +692,6 @@ _PnP_Text4::
 	text_ram wStringBuffer1
 	text_end
 
-	text_end ; unreferenced
-
 _PnP_CuteText::
 	text_start
 	line "is cute."
@@ -957,8 +777,6 @@ _PnP_Text5::
 	line "@"
 	text_ram wStringBuffer1
 	text_end
-
-	text_end ; unreferenced
 
 _RocketRadioText1::
 	text_start
@@ -1126,174 +944,6 @@ _EnemyUsedOnText::
 	text "!"
 	prompt
 
-_ThatCantBeUsedRightNowText:: ; unreferenced
-	text "That can't be used"
-	line "right now."
-	prompt
-
-_ThatItemCantBePutInThePackText:: ; unreferenced
-	text "That item can't be"
-	line "put in the PACK."
-	done
-
-_TheItemWasPutInThePackText:: ; unreferenced
-	text "The @"
-	text_ram wStringBuffer1
-	text_start
-	line "was put in the"
-	cont "PACK."
-	done
-
-_RemainingTimeText:: ; unreferenced
-	text "Remaining Time"
-	done
-
-_YourMonsHPWasHealedText:: ; unreferenced
-	text "Your #MON's HP"
-	line "was healed."
-	prompt
-
-_WarpingText:: ; unreferenced
-	text "Warping…"
-	done
-
-_ChangeWhichNumberText:: ; unreferenced
-	text "Which number"
-	line "should be changed?"
-	done
-
-_WillYouPlayWithMonText:: ; unreferenced
-	text "Will you play with"
-	line "@"
-	text_ram wStringBuffer2
-	text "?"
-	done
-
-_YouNeedTwoMonForBreedingText:: ; unreferenced
-	text "You need two #-"
-	line "MON for breeding."
-	prompt
-
-_BreedingIsNotPossibleText:: ; unreferenced
-	text "Breeding is not"
-	line "possible."
-	prompt
-
-_CompatibilityShouldTheyBreedText:: ; unreferenced
-	text "The compatibility"
-	line "is @"
-	text_decimal wBreedingCompatibility, 1, 3
-	text "."
-	cont "Should they breed?"
-	done
-
-_ThereIsNoEggText:: ; unreferenced
-	text "There is no EGG."
-	line ""
-	prompt
-
-_ItsGoingToHatchText:: ; unreferenced
-	text "It's going to"
-	line "hatch!"
-	prompt
-
-_TestEventText:: ; unreferenced
-	text "Test event"
-	line "@"
-	text_decimal wStringBuffer2, 1, 2
-	text "?"
-	done
-
-_StartText:: ; unreferenced
-	text "Start!"
-	done
-
-_EndText:: ; unreferenced
-	text "End!"
-	done
-
-_ForABoyText:: ; unreferenced
-	text "For a boy!"
-	done
-
-_ForAGirlText:: ; unreferenced
-	text "For a girl!"
-	done
-
-_DoesntConcernABoyText:: ; unreferenced
-	text "This doesn't"
-	line "concern a boy!"
-	done
-
-_TheBoxIsFullText:: ; unreferenced
-	text "The BOX is full!"
-	done
-
-; Mobile Adapter
-
-_NewCardArrivedText::
-	text "A new CARD arrived"
-	line "from @"
-	text_ram wStringBuffer2
-	text "."
-	done
-
-_PutCardInCardFolderText::
-	text "Put this CARD in"
-	line "the CARD FOLDER?"
-	done
-
-_CardWasListedText::
-	text_ram wStringBuffer2
-	text "'s CARD was"
-	line "listed as no.@"
-	text_decimal wStringBuffer1, 1, 2
-	text "."
-	prompt
-
-_StartingLinkText::
-	text "Starting link."
-	done
-
-_LinkTerminatedText::
-	text "Link terminated."
-	done
-
-_ClosingLinkText::
-	text "Closing link."
-	done
-
-_ClearTimeLimitText:: ; unreferenced
-	text "Clear the time"
-	line "limit?"
-	done
-
-_TimeLimitWasClearedText:: ; unreferenced
-	text "The time limit was"
-	line "cleared."
-	done
-
-_PickErrorPacketText:: ; unreferenced
-	text "Pick which packet"
-	line "as an error?"
-	done
-
-_TradingMonForOTMonText::
-	text "Trading @"
-	text_ram wStringBuffer2
-	text_start
-	line "for @"
-	text_ram wStringBuffer1
-	text "…"
-	done
-
-; Mobile Adapter End
-
-_ObtainedTheVoltorbBadgeText:: ; unreferenced
-	text "Obtained the"
-	line "VOLTORBBADGE!"
-	done
-
 _AskFloorElevatorText::
 	text "Which floor?"
 	done
@@ -1364,8 +1014,6 @@ _ReceiveItemText::
 	text_promptbutton
 	text_end
 
-	text_end ; unreferenced
-
 _NoCoinsText::
 	text "You have no coins."
 	prompt
@@ -1394,8 +1042,6 @@ _NPCTradeFanfareText::
 	sound_dex_fanfare_80_109
 	text_pause
 	text_end
-
-	text_end ; unreferenced
 
 _NPCTradeIntroText1::
 	text "I collect #MON."

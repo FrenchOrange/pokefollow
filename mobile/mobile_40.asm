@@ -2714,15 +2714,12 @@ Function10123d:
 
 Jumptable_101247:
 	dw Function101251
-	dw Function10127d
-	dw Function10127c
 	dw Function10126c
 	dw Function101265
 
 Function101251:
 	call UpdateSprites
 	call ReanchorMap
-	ld hl, ClosingLinkText
 	call Function1021e0
 	call Function1020ea
 	ret c
@@ -2730,21 +2727,13 @@ Function101251:
 	ret
 
 Function101265:
-	ld hl, LinkTerminatedText
 	call Function1021e0
 	ret
 
 Function10126c:
 	call UpdateSprites
 	farcall Script_refreshmap
-	ld hl, ClosingLinkText
 	call Function1021e0
-	ret
-
-Function10127c:
-	ret
-
-Function10127d:
 	ret
 
 Function10127e:
@@ -4746,24 +4735,16 @@ Function102112:
 Function102142:
 	call Function10218d
 	call Function102180
-	ld hl, NewCardArrivedText
-	call MenuTextbox
 	ld de, SFX_LEVEL_UP
 	call PlaySFX
 	call JoyWaitAorB
 	call ExitMenu
 	call Function10219f
-	ld hl, PutCardInCardFolderText
-	call MenuTextbox
-	call YesNoBox
-	call ExitMenu
 	jr c, .asm_10217c
 	call Function1021b8
 	jr c, .asm_10217c
 	call Function10218d
 	call Function102180
-	ld hl, CardWasListedText
-	call PrintText
 
 .asm_10217c
 	call Function1013d6
@@ -4807,35 +4788,11 @@ Function1021b8:
 	pop af
 	ret
 
-NewCardArrivedText:
-	text_far _NewCardArrivedText
-	text_end
-
-PutCardInCardFolderText:
-	text_far _PutCardInCardFolderText
-	text_end
-
-CardWasListedText:
-	text_far _CardWasListedText
-	text_end
-
 Function1021e0:
 	call MenuTextbox
 	call JoyWaitAorB
 	call ExitMenu
 	ret
-
-StartingLinkText: ; unreferenced
-	text_far _StartingLinkText
-	text_end
-
-LinkTerminatedText:
-	text_far _LinkTerminatedText
-	text_end
-
-ClosingLinkText:
-	text_far _ClosingLinkText
-	text_end
 
 Function1021f9:
 	call Function102233
@@ -6578,13 +6535,7 @@ Function102ea8:
 	ld a, [hl]
 	ld [wNamedObjectIndex], a
 	call GetPokemonName
-	ld hl, TradingMonForOTMonText
-	call PrintTextboxText
 	ret
-
-TradingMonForOTMonText:
-	text_far _TradingMonForOTMonText
-	text_end
 
 Function102ee7:
 	call Function102dc3
@@ -7350,8 +7301,6 @@ Mobile_SelectThreeMons:
 	farcall CheckMobileAdapterStatus
 	bit 7, c
 	jr z, .asm_10369b
-	ld hl, MobileBattleMustPickThreeMonText
-	call PrintText
 	call YesNoBox
 	jr c, .asm_103696
 	farcall CheckForMobileBattleRules
@@ -7374,8 +7323,6 @@ Mobile_SelectThreeMons:
 	bit 7, [hl]
 	set 7, [hl]
 	jr nz, .asm_1036b5
-	ld hl, MobileBattleMoreInfoText
-	call PrintText
 	call YesNoBox
 	jr c, .asm_1036b5
 	call Function1036f9
@@ -7420,8 +7367,6 @@ Mobile_SelectThreeMons:
 	ret
 
 Function1036f9:
-	ld hl, MobileBattleRulesText
-	call PrintText
 	ret
 
 Function103700:
@@ -7443,20 +7388,14 @@ Function103700:
 	jr .times_up
 
 .five_or_more_mins
-	ld hl, WouldYouLikeToMobileBattleText
-	call PrintText
 	and a
 	ret
 
 .two_to_five_mins
-	ld hl, WantAQuickMobileBattleText
-	call PrintText
 	and a
 	ret
 
 .one_min
-	ld hl, WantToRushThroughAMobileBattleText
-	call PrintText
 	and a
 	ret
 
@@ -7479,30 +7418,6 @@ MenuData_10374f:
 	db "はい@"
 	db "やめる@"
 	db "せつめい@"
-
-MobileBattleMustPickThreeMonText:
-	text_far _MobileBattleMustPickThreeMonText
-	text_end
-
-MobileBattleMoreInfoText:
-	text_far _MobileBattleMoreInfoText
-	text_end
-
-MobileBattleRulesText:
-	text_far _MobileBattleRulesText
-	text_end
-
-WouldYouLikeToMobileBattleText:
-	text_far _WouldYouLikeToMobileBattleText
-	text_end
-
-WantAQuickMobileBattleText:
-	text_far _WantAQuickMobileBattleText
-	text_end
-
-WantToRushThroughAMobileBattleText:
-	text_far _WantToRushThroughAMobileBattleText
-	text_end
 
 PleaseTryAgainTomorrowText:
 	text_far _PleaseTryAgainTomorrowText
@@ -7575,11 +7490,7 @@ TryAgainUsingSameSettingsText:
 Function1037eb:
 	call MobileCheckRemainingBattleTime
 	jr nc, .asm_103807
-	ld hl, MobileBattleLessThanOneMinuteLeftText
-	call PrintText
 	call JoyWaitAorB
-	ld hl, MobileBattleNoTimeLeftForLinkingText
-	call PrintText
 	call JoyWaitAorB
 	xor a
 	ld [wScriptVar], a
@@ -7631,8 +7542,6 @@ Function10383c:
 	ld [hli], a
 	ld [hli], a
 	ld [hl], a
-	ld hl, PickThreeMonForMobileBattleText
-	call PrintText
 	call JoyWaitAorB
 	farcall Script_refreshmap
 	farcall Function4a94e
@@ -7661,11 +7570,5 @@ Function10387b:
 	farcall MobileBattleGetRemainingTime
 	ld a, c
 	ld [wStringBuffer2], a
-	ld hl, MobileBattleRemainingTimeText
-	call PrintText
 	call JoyWaitAorB
 	ret
-
-MobileBattleRemainingTimeText:
-	text_far _MobileBattleRemainingTimeText
-	text_end

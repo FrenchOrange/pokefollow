@@ -41,10 +41,7 @@ InitClock:
 	call .ClearScreen
 	call WaitBGMap
 	call RotateFourPalettesRight
-if !DEF(_DEBUG)
-	ld hl, OakTimeWokeUpText
-	call PrintText
-endc
+
 	ld hl, wTimeSetBuffer
 	ld bc, wTimeSetBufferEnd - wTimeSetBuffer
 	xor a
@@ -53,8 +50,6 @@ endc
 	ld [wInitHourBuffer], a
 
 .loop
-	ld hl, OakTimeWhatTimeIsItText
-	call PrintText
 	hlcoord 3, 7
 	ld b, 2
 	ld c, 15
@@ -76,16 +71,12 @@ endc
 	ld a, [wInitHourBuffer]
 	ld [wStringBuffer2 + 1], a
 	call .ClearScreen
-	ld hl, OakTimeWhatHoursText
-	call PrintText
 	call YesNoBox
 	jr nc, .HourIsSet
 	call .ClearScreen
 	jr .loop
 
 .HourIsSet:
-	ld hl, OakTimeHowManyMinutesText
-	call PrintText
 	hlcoord 11, 7
 	lb bc, 2, 7
 	call Textbox
@@ -106,8 +97,6 @@ endc
 	ld a, [wInitMinuteBuffer]
 	ld [wStringBuffer2 + 2], a
 	call .ClearScreen
-	ld hl, OakTimeWhoaMinutesText
-	call PrintText
 	call YesNoBox
 	jr nc, .MinutesAreSet
 	call .ClearScreen
@@ -115,8 +104,6 @@ endc
 
 .MinutesAreSet:
 	call InitTimeOfDay
-	ld hl, OakText_ResponseToSetTime
-	call PrintText
 	call WaitPressAorB_BlinkCursor
 	pop af
 	ldh [hInMenu], a
@@ -198,32 +185,6 @@ DisplayHourOClock:
 	pop hl
 	ret
 
-DisplayHoursMinutesWithMinString: ; unreferenced
-	ld h, d
-	ld l, e
-	push hl
-	call DisplayHourOClock
-	pop de
-	inc de
-	inc de
-	ld a, ":"
-	ld [de], a
-	inc de
-	push de
-	ld hl, 3
-	add hl, de
-	ld a, [de]
-	inc de
-	ld [hli], a
-	ld a, [de]
-	ld [hl], a
-	pop hl
-	call DisplayMinutesWithMinString
-	inc hl
-	inc hl
-	inc hl
-	ret
-
 SetMinutes:
 	ldh a, [hJoyPressed]
 	and A_BUTTON
@@ -291,49 +252,11 @@ PrintTwoDigitNumberLeftAlign:
 	call PrintNum
 	ret
 
-OakTimeWokeUpText:
-	text_far _OakTimeWokeUpText
-	text_end
-
-OakTimeWhatTimeIsItText:
-	text_far _OakTimeWhatTimeIsItText
-	text_end
-
 String_oclock:
 	db "o'clock@"
 
-OakTimeWhatHoursText:
-	; What?@ @
-	text_far _OakTimeWhatHoursText
-	text_asm
-	hlcoord 1, 16
-	call DisplayHourOClock
-	ld hl, .OakTimeHoursQuestionMarkText
-	ret
-
-.OakTimeHoursQuestionMarkText:
-	text_far _OakTimeHoursQuestionMarkText
-	text_end
-
-OakTimeHowManyMinutesText:
-	text_far _OakTimeHowManyMinutesText
-	text_end
-
 String_min:
 	db "min.@"
-
-OakTimeWhoaMinutesText:
-	; Whoa!@ @
-	text_far _OakTimeWhoaMinutesText
-	text_asm
-	hlcoord 7, 14
-	call DisplayMinutesWithMinString
-	ld hl, .OakTimeMinutesQuestionMarkText
-	ret
-
-.OakTimeMinutesQuestionMarkText:
-	text_far _OakTimeMinutesQuestionMarkText
-	text_end
 
 OakText_ResponseToSetTime:
 	text_asm
@@ -349,42 +272,7 @@ OakText_ResponseToSetTime:
 	ld b, h
 	ld c, l
 	ld a, [wInitHourBuffer]
-	cp MORN_HOUR
-	jr c, .nite
-	cp DAY_HOUR + 1
-	jr c, .morn
-	cp EVE_HOUR
-	jr c, .day
-	cp NITE_HOUR
-	jr c, .eve
-.nite
-	ld hl, .OakTimeSoDarkText
 	ret
-.morn
-	ld hl, .OakTimeOversleptText
-	ret
-.day
-	ld hl, .OakTimeYikesText
-	ret
-.eve
-	ld hl, .OakTimeNappedText
-	ret
-
-.OakTimeOversleptText:
-	text_far _OakTimeOversleptText
-	text_end
-
-.OakTimeYikesText:
-	text_far _OakTimeYikesText
-	text_end
-
-.OakTimeSoDarkText:
-	text_far _OakTimeSoDarkText
-	text_end
-
-.OakTimeNappedText:
-	text_far _OakTimeNappedText
-	text_end
 
 TimeSetBackgroundGFX:
 INCBIN "gfx/new_game/timeset_bg.1bpp"
@@ -413,8 +301,6 @@ SetDayOfWeek:
 	lb bc, 4, 18
 	call Textbox
 	call LoadStandardMenuHeader
-	ld hl, .OakTimeWhatDayIsItText
-	call PrintText
 	hlcoord 9, 3
 	ld b, 2
 	ld c, 9
@@ -434,8 +320,6 @@ SetDayOfWeek:
 	jr nc, .loop2
 	call ExitMenu
 	call UpdateSprites
-	ld hl, .ConfirmWeekdayText
-	call PrintText
 	call YesNoBox
 	jr c, .loop
 	ld a, [wTempDayOfWeek]
@@ -535,21 +419,6 @@ SetDayOfWeek:
 .Friday:    db " FRIDAY@"
 .Saturday:  db "SATURDAY@"
 
-.OakTimeWhatDayIsItText:
-	text_far _OakTimeWhatDayIsItText
-	text_end
-
-.ConfirmWeekdayText:
-	text_asm
-	hlcoord 1, 14
-	call .PlaceWeekdayString
-	ld hl, .OakTimeIsItText
-	ret
-
-.OakTimeIsItText:
-	text_far _OakTimeIsItText
-	text_end
-
 InitialSetDSTFlag:
 	ld a, [wDST]
 	set 7, a
@@ -603,85 +472,6 @@ InitialClearDSTFlag:
 .TimeAskOkayText:
 	text_far _TimeAskOkayText
 	text_end
-
-MrChrono: ; unreferenced
-	hlcoord 1, 14
-	lb bc, 3, SCREEN_WIDTH - 2
-	call ClearBox
-	ld hl, .Text
-	call PrintTextboxTextAt
-	ret
-
-.Text:
-	text_asm
-	call UpdateTime
-
-	hlcoord 1, 14
-	ld [hl], "R"
-	inc hl
-	ld [hl], "T"
-	inc hl
-	ld [hl], " "
-	inc hl
-
-	ld de, hRTCDayLo
-	call .PrintTime
-
-	hlcoord 1, 16
-	ld [hl], "D"
-	inc hl
-	ld [hl], "F"
-	inc hl
-	ld [hl], " "
-	inc hl
-
-	ld de, wStartDay
-	call .PrintTime
-
-	ld [hl], " "
-	inc hl
-
-	ld a, [wDST]
-	bit 7, a
-	jr z, .off
-
-	ld [hl], "O"
-	inc hl
-	ld [hl], "N"
-	inc hl
-	jr .done
-
-.off
-	ld [hl], "O"
-	inc hl
-	ld [hl], "F"
-	inc hl
-	ld [hl], "F"
-	inc hl
-
-.done
-	ld hl, .NowOnDebug
-	ret
-
-.NowOnDebug:
-	text_start
-	para "Now on DEBUG…"
-	prompt
-
-.PrintTime:
-	lb bc, 1, 3
-	call PrintNum
-	ld [hl], "."
-	inc hl
-	inc de
-	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
-	call PrintNum
-	ld [hl], ":"
-	inc hl
-	inc de
-	lb bc, PRINTNUM_LEADINGZEROS | 1, 2
-	call PrintNum
-	ret
 
 PrintHour:
 	ld l, e

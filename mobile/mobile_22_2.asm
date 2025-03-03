@@ -406,8 +406,6 @@ Function8b539:
 
 Function8b555:
 .loop
-	ld hl, EnterNewPasscodeText
-	call PrintText
 	ld bc, wd017
 	call Function8b45c
 	jr c, .asm_8b5c8
@@ -417,13 +415,9 @@ Function8b555:
 	ld bc, wd017
 	call Function8b664
 	jr nz, .asm_8b57c
-	ld hl, FourZerosInvalidText
-	call PrintText
 	jr .loop
 
 .asm_8b57c
-	ld hl, ConfirmPasscodeText
-	call PrintText
 	ld bc, wd013
 	call Function8b45c
 	jr c, .loop
@@ -434,8 +428,6 @@ Function8b555:
 	call Function89448
 	ld bc, wd013
 	call Function8b493
-	ld hl, PasscodesNotSameText
-	call PrintText
 	jr .asm_8b57c
 
 .strings_equal
@@ -448,34 +440,12 @@ Function8b555:
 	call Function89448
 	ld bc, wd013
 	call Function8b493
-	ld hl, PasscodeSetText
-	call PrintText
 	and a
 .asm_8b5c8
 	push af
 	call Function89448
 	pop af
 	ret
-
-EnterNewPasscodeText:
-	text_far _EnterNewPasscodeText
-	text_end
-
-ConfirmPasscodeText:
-	text_far _ConfirmPasscodeText
-	text_end
-
-PasscodesNotSameText:
-	text_far _PasscodesNotSameText
-	text_end
-
-PasscodeSetText:
-	text_far _PasscodeSetText
-	text_end
-
-FourZerosInvalidText:
-	text_far _FourZerosInvalidText
-	text_end
 
 Function8b5e7:
 	ld bc, wd013
@@ -489,8 +459,6 @@ Function8b5e7:
 	ld e, $0
 	call Function89c44
 .asm_8b602
-	ld hl, EnterPasscodeText
-	call PrintText
 	ld bc, wd013
 	call Function8b45c
 	jr c, .asm_8b63c
@@ -502,14 +470,10 @@ Function8b5e7:
 	call Function8b3a4
 	call CloseSRAM
 	jr z, .asm_8b635
-	ld hl, IncorrectPasscodeText
-	call PrintText
 	ld bc, wd013
 	call Function8b36c
 	jr .asm_8b602
 .asm_8b635
-	ld hl, UnknownText_0x8b64c
-	call PrintText
 	and a
 .asm_8b63c
 	push af
@@ -517,28 +481,14 @@ Function8b5e7:
 	pop af
 	ret
 
-EnterPasscodeText:
-	text_far _EnterPasscodeText
-	text_end
-
-IncorrectPasscodeText:
-	text_far _IncorrectPasscodeText
-	text_end
-
 UnknownText_0x8b64c:
 	; CARD FOLDER open.@ @
-	text_far _CardFolderOpenText
-	text_asm
 	ld de, SFX_TWINKLE
 	call PlaySFX
 	call WaitSFX
 	ld c, $8
 	call DelayFrames
-	ld hl, .string_8b663
 	ret
-
-.string_8b663
-	text_end
 
 Function8b664:
 	push bc
