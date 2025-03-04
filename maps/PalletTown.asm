@@ -105,8 +105,11 @@ MomStarterScene:
 	clearevent EVENT_MOM_AND_OAK_INVISIBLE
 	setevent EVENT_GOT_PROPER_CLOTHES
 	setscene SCENE_PALLETTOWN_NOOP
+	setval (PAL_NPC_RED << 4)
+	special SetPlayerPalette
+	clearflag ENGINE_PLAYER_IS_FEMALE
+	special UpdatePlayerSprite
 	pause 35
-	; change out of pajamas
 	special FadeInFromBlack
 	special RestartMapMusic
 	end

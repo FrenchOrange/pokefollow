@@ -293,18 +293,6 @@ MagnetTrain_Jumptable:
 	ld a, [wMagnetTrainPlayerSpriteInitX]
 	ld e, a
 	ld b, SPRITE_ANIM_OBJ_MAGNET_TRAIN_RED
-	ldh a, [rSVBK]
-	push af
-	ld a, BANK(wPlayerGender)
-	ldh [rSVBK], a
-	ld a, [wPlayerGender]
-	bit PLAYERGENDER_FEMALE_F, a
-	jr z, .got_gender
-	ld b, SPRITE_ANIM_OBJ_MAGNET_TRAIN_BLUE
-.got_gender
-	pop af
-	ldh [rSVBK], a
-	ld a, b
 	call InitSpriteAnimStruct
 	ld hl, SPRITEANIMSTRUCT_TILE_ID
 	add hl, bc

@@ -8,15 +8,6 @@ BattleTowerOutside_MapScripts:
 	def_scene_scripts
 
 	def_callbacks
-	callback MAPCALLBACK_TILES, BattleTowerOutsideNoopCallback
-	callback MAPCALLBACK_OBJECTS, BattleTowerOutsideShowCiviliansCallback
-
-BattleTowerOutsideNoopCallback:
-	endcallback
-
-BattleTowerOutsideShowCiviliansCallback:
-	clearevent EVENT_BATTLE_TOWER_OPEN_CIVILIANS
-	endcallback
 
 BattleTowerOutsideYoungsterScript:
 	jumptextfaceplayer BattleTowerOutsideYoungsterText
@@ -104,27 +95,11 @@ BattleTowerOutsideSailorText:
 	line "all. That I must!"
 	done
 
-BattleTowerOutsideSignText_NotYetOpen: ; unreferenced
-; originally shown when the Battle Tower was closed
-	text "BATTLE TOWER"
-	done
-
 BattleTowerOutsideSignText:
 	text "BATTLE TOWER"
 
 	para "Take the Ultimate"
 	line "Trainer Challenge!"
-	done
-
-BattleTowerOutsideText_DoorsClosed: ; unreferenced
-; originally shown when the Battle Tower was closed
-	text "The BATTLE TOWER's"
-	line "doors are closed…"
-	done
-
-BattleTowerOutsideText_DoorsOpen: ; unreferenced
-; originally shown after the Battle Tower opened
-	text "It's open!"
 	done
 
 BattleTowerOutside_MapEvents:
@@ -144,5 +119,5 @@ BattleTowerOutside_MapEvents:
 	def_object_events
 	object_event  6, 12, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, BattleTowerOutsideYoungsterScript, -1
 	object_event 13, 11, SPRITE_BEAUTY, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, BattleTowerOutsideBeautyScript, -1
-	object_event 12, 18, SPRITE_SAILOR, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BattleTowerOutsideSailorScript, EVENT_BATTLE_TOWER_OPEN_CIVILIANS
+	object_event 12, 18, SPRITE_SAILOR, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, BattleTowerOutsideSailorScript, -1
 	object_event 12, 24, SPRITE_LASS, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, ObjectEvent, -1

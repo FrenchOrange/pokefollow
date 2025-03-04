@@ -9037,31 +9037,15 @@ GetTrainerBackpic:
 ; Load the player character's backpic (6x6) into VRAM starting from vTiles2 tile $31.
 
 ; Special exception for Dude.
-	ld b, BANK(DudeBackpic)
-	ld hl, DudeBackpic
+	ld hl, ChrisBackpic
 	ld a, [wBattleType]
 	cp BATTLETYPE_TUTORIAL
-	jr z, .Decompress
+	jr nz, .ok
+	ld hl, DudeBackpic
 
-; What gender are we?
-	ld a, [wPlayerSpriteSetupFlags]
-	bit PLAYERSPRITESETUP_FEMALE_TO_MALE_F, a
-	jr nz, .Chris
-	ld a, [wPlayerGender]
-	bit PLAYERGENDER_FEMALE_F, a
-	jr z, .Chris
-
-; It's a girl.
-	farcall GetKrisBackpic
-	ret
-
-.Chris:
-; It's a boy.
-	ld b, BANK(ChrisBackpic)
-	ld hl, ChrisBackpic
-
-.Decompress:
+.ok:
 	ld de, vTiles2 tile $31
+	ld b, BANK(ChrisBackpic)
 	ld c, 7 * 7
 	predef DecompressGet2bpp
 	ret

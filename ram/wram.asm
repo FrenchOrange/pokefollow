@@ -3043,7 +3043,8 @@ wRoute27SceneID::                                 db
 wElmsLabSceneID::                                 db
 wRedsHouse2FSceneID::                             db
 wPalletTownSceneID::                              db
-wRoute29SceneID::                                 db
+wRoute1SceneID::                                  db
+wPalletLakeSceneID::                              db
 wCherrygroveCitySceneID::                         db
 wMrPokemonsHouseSceneID::                         db
 wRoute32SceneID::                                 db
@@ -3068,7 +3069,6 @@ wBattleTower1FSceneID::                           db
 wBattleTowerBattleRoomSceneID::                   db
 wBattleTowerElevatorSceneID::                     db
 wBattleTowerHallwaySceneID::                      db
-wBattleTowerOutsideSceneID::                      db
 wRoute43GateSceneID::                             db
 wMountMoonSceneID::                               db
 wSproutTower3FSceneID::                           db

@@ -520,7 +520,13 @@ HOF_AnimatePlayerPic:
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	ld a, " "
 	call ByteFill
-	farcall GetPlayerBackpic
+
+	ld hl, ChrisBackpic
+	ld de, vTiles2 tile $31
+	ld b, BANK(ChrisBackpic)
+	ld c, 7 * 7
+	predef DecompressGet2bpp
+
 	ld a, $31
 	ldh [hGraphicStartTile], a
 	hlcoord 6, 6
@@ -544,7 +550,10 @@ HOF_AnimatePlayerPic:
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
 	ld a, " "
 	call ByteFill
-	farcall HOF_LoadTrainerFrontpic
+	ld a, CAL
+	ld [wTrainerClass], a
+	ld de, vTiles2
+	farcall GetTrainerPic
 	xor a
 	ldh [hGraphicStartTile], a
 	hlcoord 12, 5

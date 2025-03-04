@@ -28,7 +28,8 @@ MapScenes::
 	scene_var ELMS_LAB,                                    wElmsLabSceneID
 	scene_var REDS_HOUSE_2F,                               wRedsHouse2FSceneID
 	scene_var PALLET_TOWN,                                 wPalletTownSceneID
-	scene_var ROUTE_29,                                    wRoute29SceneID
+	scene_var ROUTE_1,                                     wRoute1SceneID
+	scene_var PALLET_LAKE,                                 wPalletLakeSceneID
 	scene_var CHERRYGROVE_CITY,                            wCherrygroveCitySceneID
 	scene_var MR_POKEMONS_HOUSE,                           wMrPokemonsHouseSceneID
 	scene_var ROUTE_32,                                    wRoute32SceneID
@@ -53,7 +54,6 @@ MapScenes::
 	scene_var BATTLE_TOWER_BATTLE_ROOM,                    wBattleTowerBattleRoomSceneID
 	scene_var BATTLE_TOWER_ELEVATOR,                       wBattleTowerElevatorSceneID
 	scene_var BATTLE_TOWER_HALLWAY,                        wBattleTowerHallwaySceneID
-	scene_var BATTLE_TOWER_OUTSIDE,                        wBattleTowerOutsideSceneID ; unused
 	scene_var ROUTE_43_GATE,                               wRoute43GateSceneID
 	scene_var MOUNT_MOON,                                  wMountMoonSceneID
 	scene_var SPROUT_TOWER_3F,                             wSproutTower3FSceneID
@@ -82,6 +82,6 @@ MapScenes::
 	scene_var FAST_SHIP_1F,                                wFastShip1FSceneID
 	scene_var FAST_SHIP_B1F,                               wFastShipB1FSceneID
 	scene_var MOUNT_MOON_SQUARE,                           wMountMoonSquareSceneID
-	scene_var MOBILE_TRADE_ROOM,                           wMobileTradeRoomSceneID
-	scene_var MOBILE_BATTLE_ROOM,                          wMobileBattleRoomSceneID
+	scene_var POKECENTER_2F,                               wMobileTradeRoomSceneID ; unused
+	scene_var POKECENTER_2F,                               wMobileBattleRoomSceneID ; unused
 	db -1 ; end

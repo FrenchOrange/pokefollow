@@ -605,7 +605,7 @@ IntroSpeech:
 
 	xor a
 	ld [wCurPartySpecies], a
-	farcall DrawIntroPlayerPic
+	call DrawIntroPlayerPic
 
 	ld b, SCGB_TRAINER_OR_MON_FRONTPIC_PALS
 	call GetSGBLayout
@@ -637,7 +637,7 @@ NamePlayer:
 
 	xor a
 	ld [wCurPartySpecies], a
-	farcall DrawIntroPlayerPic
+	call DrawIntroPlayerPic
 
 	ld b, SCGB_TRAINER_OR_MON_FRONTPIC_PALS
 	call GetSGBLayout
@@ -645,18 +645,11 @@ NamePlayer:
 
 	ld hl, wPlayerName
 	ld de, .Ash
-	ld a, [wPlayerGender]
-	bit PLAYERGENDER_FEMALE_F, a
-	jr z, .Male
-	ld de, .Kris
-.Male:
 	call InitName
 	ret
 
 .Ash:
 	db "ASH@@@@@@@@"
-.Kris:
-	db "KRIS@@@@@@@"
 
 StorePlayerName:
 	ld a, "@"
@@ -666,6 +659,20 @@ StorePlayerName:
 	ld hl, wPlayerName
 	ld de, wStringBuffer2
 	call CopyName2
+	ret
+
+DrawIntroPlayerPic:
+	ld de, ChrisPic
+	ld hl, vTiles2
+	ld b, BANK(ChrisPic)
+	ld c, 7 * 7 ; dimensions
+	call Get2bpp
+
+	xor a
+	ldh [hGraphicStartTile], a
+	hlcoord 6, 4
+	lb bc, 7, 7
+	predef PlaceGraphic
 	ret
 
 ShrinkPlayer:
@@ -807,11 +814,6 @@ Intro_PlacePlayerSprite:
 	ld [hli], a ; tile id
 
 	ld b, PAL_OW_RED
-	ld a, [wPlayerGender]
-	bit PLAYERGENDER_FEMALE_F, a
-	jr z, .male
-	ld b, PAL_OW_BLUE
-.male
 	ld a, b
 
 	ld [hli], a ; attributes

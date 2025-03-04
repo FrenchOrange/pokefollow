@@ -178,14 +178,7 @@ InitPartyMenuBGPal0:
 	ret
 
 _CGB_PokegearPals:
-	ld a, [wPlayerGender]
-	bit PLAYERGENDER_FEMALE_F, a
-	jr z, .male
-	ld hl, FemalePokegearPals
-	jr .got_pals
-
-.male
-	ld hl, MalePokegearPals
+	ld hl, PokegearPals
 .got_pals
 	ld de, wBGPals1
 	ld bc, 6 palettes
@@ -647,25 +640,15 @@ _CGB_TrainerCard:
 	ld a, BANK(wOBPals1)
 	call FarCopyWRAM
 
-	; fill screen with opposite-gender palette for the card border
+	; card border
 	hlcoord 0, 0, wAttrmap
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	ld a, [wPlayerGender]
-	and a
-	ld a, $1 ; kris
-	jr z, .got_gender
-	ld a, $0 ; chris
-.got_gender
+	ld a, $1 ; falkner
 	call ByteFill
-	; fill trainer sprite area with same-gender palette
+	; trainer sprite area
 	hlcoord 14, 1, wAttrmap
 	lb bc, 7, 5
-	ld a, [wPlayerGender]
-	and a
-	ld a, $0 ; chris
-	jr z, .got_gender2
-	ld a, $1 ; kris
-.got_gender2
+	xor a ; chris
 	call FillBoxCGB
 	hlcoord 3, 10, wAttrmap
 	lb bc, 3, 3
@@ -707,13 +690,11 @@ _CGB_TrainerCard:
 	ld a, $7 ; blue
 
 	call FillBoxCGB
-	; top-right corner still uses the border's palette
-	ld a, [wPlayerGender]
-	and a
-	ld a, $1 ; kris
-	jr z, .got_gender3
-	ld a, $0 ; chris
-.got_gender3
+	hlcoord 15, 13, wAttrmap
+	lb bc, 3, 3
+	ld a, $1
+
+	call FillBoxCGB
 	hlcoord 18, 1, wAttrmap
 	ld [hl], a
 	call ApplyAttrmap
@@ -756,25 +737,15 @@ _CGB_TrainerCardKanto:
 	ld a, BANK(wOBPals1)
 	call FarCopyWRAM
 
-	; fill screen with opposite-gender palette for the card border
+	; card border
 	hlcoord 0, 0, wAttrmap
 	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	ld a, [wPlayerGender]
-	and a
-	ld a, $1 ; kris
-	jr z, .got_gender
-	ld a, $0 ; chris
-.got_gender
+	ld a, $1 ; falkner
 	call ByteFill
 	; fill trainer sprite area with same-gender palette
 	hlcoord 14, 1, wAttrmap
 	lb bc, 7, 5
-	ld a, [wPlayerGender]
-	and a
-	ld a, $0 ; chris
-	jr z, .got_gender2
-	ld a, $1 ; kris
-.got_gender2
+	xor a ; chris
 	call FillBoxCGB
 	; top-right corner still uses the border's palette
 	hlcoord 18, 1, wAttrmap
@@ -782,47 +753,43 @@ _CGB_TrainerCardKanto:
 	hlcoord 3, 10, wAttrmap
 	lb bc, 3, 3
 	ld a, $1 ; falkner
+
 	call FillBoxCGB
 	hlcoord 7, 10, wAttrmap
 	lb bc, 3, 3
 	ld a, $2 ; bugsy
+
 	call FillBoxCGB
 	hlcoord 11, 10, wAttrmap
 	lb bc, 3, 3
 	ld a, $3 ; whitney
+
 	call FillBoxCGB
 	hlcoord 15, 10, wAttrmap
 	lb bc, 3, 3
 	ld a, $4 ; morty
+
 	call FillBoxCGB
 	hlcoord 3, 13, wAttrmap
 	lb bc, 3, 3
 	ld a, $5 ; chuck
+
 	call FillBoxCGB
 	hlcoord 7, 13, wAttrmap
 	lb bc, 3, 3
 	ld a, $6 ; jasmine
+
 	call FillBoxCGB
 	hlcoord 11, 13, wAttrmap
 	lb bc, 3, 3
 	ld a, $7 ; pryce
+
 	call FillBoxCGB
-	; clair uses kris's palette
-	ld a, [wPlayerGender]
-	and a
-	push af
-	jr z, .got_gender3
 	hlcoord 15, 13, wAttrmap
 	lb bc, 3, 3
 	ld a, $1
+
 	call FillBoxCGB
-.got_gender3
-	pop af
-	ld c, $0
-	jr nz, .got_gender4
-	inc c
-.got_gender4
-	ld a, c
 	hlcoord 18, 1, wAttrmap
 	ld [hl], a
 	call ApplyAttrmap
@@ -881,23 +848,8 @@ _CGB_PokedexSearchOption:
 	ret
 
 _CGB_PackPals:
-; pack pals
-	ld a, [wBattleType]
-	cp BATTLETYPE_TUTORIAL
-	jr z, .tutorial_male
-
-	ld a, [wPlayerGender]
-	bit PLAYERGENDER_FEMALE_F, a
-	jr z, .tutorial_male
-
-	ld hl, .KrisPackPals
-	jr .got_gender
-
-.tutorial_male
-	ld hl, .ChrisPackPals
-
-.got_gender
 	ld de, wBGPals1
+	ld hl, .PackPals
 	ld bc, 8 palettes ; 6 palettes?
 	ld a, BANK(wBGPals1)
 	call FarCopyWRAM
@@ -928,11 +880,8 @@ _CGB_PackPals:
 	ldh [hCGBPalUpdate], a
 	ret
 
-.ChrisPackPals:
+.PackPals:
 INCLUDE "gfx/pack/pack.pal"
-
-.KrisPackPals:
-INCLUDE "gfx/pack/pack_f.pal"
 
 _CGB_Pokepic:
 	call _CGB_MapPals

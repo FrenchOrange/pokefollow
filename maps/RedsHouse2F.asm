@@ -109,22 +109,26 @@ RedsHouse2FBedScript:
 	checkscene
 	iftrue .NoTimeToSleep
 	applymovement PLAYER, RedsHouse2FMovementData_PlayerSpinsClockwiseEndsFacingDown
-	; change into pajamas
-	pause 15
+	setflag ENGINE_PLAYER_IS_FEMALE
+	setval (PAL_NPC_GREEN << 4)
+	special SetPlayerPalette
+	special UpdatePlayerSprite
+	applymovement PLAYER, RedsHouse2FMovementData_PlayerSpinsClockwiseEndsFacingDown
+	pause 20
 
 	special FadeOutMusic
 	special FadeOutToBlack
 	special ReloadSpritesNoPalettes
 	pause 35
 	applymovement PLAYER, RedsHouse2FMoveToVoid
-	applymovement PLAYER, HideObjectMovement
+	applymovement PLAYER, RedsHouse2FHideObjectMovement
 	special FadeInFromBlack
 
 	opentext
 	writetext RedsHouse2FIChooseYouText
 	promptbutton
 	closetext
-	pause 15
+	pause 20
 
 	reanchormap
 	pokepic BULBASAUR
@@ -160,7 +164,7 @@ RedsHouse2FBedScript:
 	playsound SFX_BUMP
 	waitsfx
 	applymovement PLAYER, RedsHouse2FMoveBackFromVoid
-	applymovement PLAYER, ShowObjectMovement
+	applymovement PLAYER, RedsHouse2FShowObjectMovement
 	turnobject PLAYER, DOWN
 	special FadeInFromBlack
 
@@ -233,11 +237,11 @@ RedsHouse2FMovementData_PlayerSpinsClockwiseEndsFacingDown:
 	turn_head DOWN
 	step_end
 
-HideObjectMovement:
+RedsHouse2FHideObjectMovement:
 	hide_object
 	step_end
 
-ShowObjectMovement:
+RedsHouse2FShowObjectMovement:
 	show_object
 	step_end
 

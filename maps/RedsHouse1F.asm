@@ -74,32 +74,6 @@ RedsHouse1FMomLookingGreatText:
 RedsHouse1FBookshelf:
 	jumpstd PictureBookshelfScript
 
-RedsMomTestPJ:
-	applymovement PLAYER, RedsHouse1FMovementData_PlayerSpinsClockwiseEndsFacingDown
-	setval (PAL_NPC_GREEN << 4)
-	special SetPlayerPalette
-	loadvar VAR_MOVEMENT, PLAYER_PAJAMA
-	applymovement PLAYER, RedsHouse1FMovementData_PlayerSpinsClockwiseEndsFacingDown
-	special UpdatePlayerSprite
-	end
-
-RedsMomTestGoBack:
-	applymovement PLAYER, RedsHouse1FMovementData_PlayerSpinsClockwiseEndsFacingDown
-	setval (PAL_NPC_RED << 4)
-	special SetPlayerPalette
-	loadvar VAR_MOVEMENT, PLAYER_NORMAL
-	special UpdatePlayerSprite
-	setevent EVENT_GOT_PROPER_CLOTHES
-	end
-
-RedsHouse1FMovementData_PlayerSpinsClockwiseEndsFacingDown:
-	turn_head DOWN
-	turn_head LEFT
-	turn_head UP
-	turn_head RIGHT
-	turn_head DOWN
-	step_end
-
 RedsHouse1F_MapEvents:
 	db 0, 0 ; filler
 
@@ -117,6 +91,3 @@ RedsHouse1F_MapEvents:
 	object_event  6,  5, SPRITE_REDS_MOM, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, RedsMom, EVENT_GOT_PROPER_CLOTHES
 	object_event  6,  5, SPRITE_REDS_MOM, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, MORN | NITE, 0, OBJECTTYPE_SCRIPT, 0, RedsMomHeal, EVENT_MOM_AND_OAK_INVISIBLE
 	object_event  1,  4, SPRITE_REDS_MOM, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, DAY, 0, OBJECTTYPE_SCRIPT, 0, RedsMomHeal, EVENT_MOM_AND_OAK_INVISIBLE
-
-	object_event  6,  3, SPRITE_REDS_MOM, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, RedsMomTestPJ, -1
-	object_event  7,  3, SPRITE_REDS_MOM, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, RedsMomTestGoBack, -1

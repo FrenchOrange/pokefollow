@@ -350,12 +350,10 @@ CeladonGameCornerPrizeRoom_Blocks:
 	INCBIN "maps/CeladonGameCornerPrizeRoom.ablk"
 
 Colosseum_Blocks:
-MobileBattleRoom_Blocks:
 	INCBIN "maps/Colosseum.ablk"
 
 TradeCenter_Blocks:
 TimeCapsule_Blocks:
-MobileTradeRoom_Blocks:
 	INCBIN "maps/TradeCenter.ablk"
 
 EcruteakLugiaSpeechHouse_Blocks:
