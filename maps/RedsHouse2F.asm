@@ -401,7 +401,6 @@ NowEnteringText:
 DebugSign:
 	opentext
 ; useful flags
-	special NameRival
 	setflag ENGINE_POKEDEX
 	setevent EVENT_GOT_PROPER_CLOTHES
 	setscene SCENE_REDSHOUSE2F_NOOP	
@@ -483,10 +482,9 @@ DebugSign:
 	loadmem wPartyMon4Moves+0, FLASH
 	loadmem wPartyMon4Moves+1, HEADBUTT
 ; warp some place else
-	playsound SFX_WARP_TO
-	special ClearBGPalettesBufferScreen
-	waitsfx
-	warp NEW_BARK_TOWN, 13, 06
+;	playsound SFX_WARP_TO
+;	special ClearBGPalettesBufferScreen
+;	waitsfx
 ;	warp ROUTE_23, 11, 06
 	end
 

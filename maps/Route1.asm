@@ -34,7 +34,9 @@ Route1_SpearowCutscene:
 	applymovement PLAYER, Route1HideObjectMovement
 	playsound SFX_TACKLE ; find better splash
 	waitsfx
-	; change to swim sprite
+	setflag ENGINE_PLAYER_IS_FEMALE
+	loadvar VAR_MOVEMENT, PLAYER_SURF
+	special UpdatePlayerSprite
 	pause 15
 	applymovement PLAYER, Route1ShowObjectMovement
 	applymovement PLAYER, PlayerInRiverMovement1
@@ -42,6 +44,10 @@ Route1_SpearowCutscene:
 	applymovement PLAYER, PlayerInRiverMovement2
 	turnobject ROUTE1_GYARADOS, RIGHT	
 	applymovement PLAYER, PlayerInRiverMovement3
+	clearflag ENGINE_PLAYER_IS_FEMALE
+	loadvar VAR_MOVEMENT, PLAYER_NORMAL
+	special UpdatePlayerSprite
+	applymovement PLAYER, PlayerFallsOffWaterfallMovement
 	applymovement PLAYER, Route1HideObjectMovement
 	playsound SFX_TACKLE ; find better splash
 	waitsfx
@@ -108,14 +114,15 @@ PlayerInRiverMovement3:
 	step RIGHT
 	step RIGHT
 	step DOWN
-	step DOWN
-	step DOWN
-	step DOWN
-	step DOWN
 	step_end
 
-
-
+PlayerFallsOffWaterfallMovement:
+	jump_step DOWN
+	turn_head UP
+	slide_step DOWN
+	turn_head RIGHT
+	slide_step DOWN
+	step_end
 
 Route1FruitTree:
 	fruittree FRUITTREE_ROUTE_1

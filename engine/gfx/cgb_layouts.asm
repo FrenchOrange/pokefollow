@@ -611,30 +611,31 @@ _CGB_UnownPuzzle:
 
 _CGB_TrainerCard:
 	ld de, wBGPals1
-	xor a ; CHRIS & MISTY
+	xor a ; player
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
 	ld a, FALKNER
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
-	ld a, BROCK
+	ld a, FALKNER
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
-	ld a, LT_SURGE ; ERIKA
+	ld a, FALKNER
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
-	ld a, KOGA
+	ld a, FALKNER
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
-	ld a, SABRINA
+	ld a, FALKNER
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
-	ld a, BLAINE
+	ld a, FALKNER
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
-	ld a, BLUE
+	ld a, FALKNER
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
+
 	ld hl, .KantoBadgePalettes
 	ld bc, 8 palettes
 	ld a, BANK(wOBPals1)
@@ -649,45 +650,6 @@ _CGB_TrainerCard:
 	hlcoord 14, 1, wAttrmap
 	lb bc, 7, 5
 	xor a ; chris
-	call FillBoxCGB
-	hlcoord 3, 10, wAttrmap
-	lb bc, 3, 3
-	ld a, $2 ; brock
-
-	call FillBoxCGB
-	hlcoord 7, 10, wAttrmap
-	lb bc, 3, 3
-	ld a, $0 ; misty / chris
-
-	call FillBoxCGB
-	hlcoord 11, 10, wAttrmap
-	lb bc, 3, 3
-	ld a, $3 ; lt.surge / erika
-
-	call FillBoxCGB
-	hlcoord 15, 10, wAttrmap
-	lb bc, 3, 3
-	ld a, $5 ; sabrina
-
-	call FillBoxCGB
-	hlcoord 3, 13, wAttrmap
-	lb bc, 3, 3
-	ld a, $3 ; erika / lt.surge
-
-	call FillBoxCGB
-	hlcoord 7, 13, wAttrmap
-	lb bc, 3, 3
-	ld a, $4 ; koga
-
-	call FillBoxCGB
-	hlcoord 11, 13, wAttrmap
-	lb bc, 3, 3
-	ld a, $6 ; blaine
-
-	call FillBoxCGB
-	hlcoord 15, 13, wAttrmap
-	lb bc, 3, 3
-	ld a, $7 ; blue
 
 	call FillBoxCGB
 	hlcoord 15, 13, wAttrmap
@@ -708,81 +670,35 @@ INCLUDE "gfx/trainer_card/kanto_badges.pal"
 
 _CGB_TrainerCardKanto:
 	ld de, wBGPals1
-	xor a ; CHRIS
+	xor a ; player
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
 	ld a, FALKNER
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
-	ld a, BUGSY
+	ld a, FALKNER
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
-	ld a, WHITNEY
+	ld a, FALKNER
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
-	ld a, MORTY
+	ld a, FALKNER
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
-	ld a, CHUCK
+	ld a, FALKNER
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
-	ld a, JASMINE
+	ld a, FALKNER
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
-	ld a, PRYCE
+	ld a, FALKNER
 	call GetTrainerPalettePointer
 	call LoadPalette_White_Col1_Col2_Black
+
 	ld hl, .JohtoBadgePalettes
 	ld bc, 8 palettes
 	ld a, BANK(wOBPals1)
 	call FarCopyWRAM
-
-	; card border
-	hlcoord 0, 0, wAttrmap
-	ld bc, SCREEN_WIDTH * SCREEN_HEIGHT
-	ld a, $1 ; falkner
-	call ByteFill
-	; fill trainer sprite area with same-gender palette
-	hlcoord 14, 1, wAttrmap
-	lb bc, 7, 5
-	xor a ; chris
-	call FillBoxCGB
-	; top-right corner still uses the border's palette
-	hlcoord 18, 1, wAttrmap
-	ld [hl], $1
-	hlcoord 3, 10, wAttrmap
-	lb bc, 3, 3
-	ld a, $1 ; falkner
-
-	call FillBoxCGB
-	hlcoord 7, 10, wAttrmap
-	lb bc, 3, 3
-	ld a, $2 ; bugsy
-
-	call FillBoxCGB
-	hlcoord 11, 10, wAttrmap
-	lb bc, 3, 3
-	ld a, $3 ; whitney
-
-	call FillBoxCGB
-	hlcoord 15, 10, wAttrmap
-	lb bc, 3, 3
-	ld a, $4 ; morty
-
-	call FillBoxCGB
-	hlcoord 3, 13, wAttrmap
-	lb bc, 3, 3
-	ld a, $5 ; chuck
-
-	call FillBoxCGB
-	hlcoord 7, 13, wAttrmap
-	lb bc, 3, 3
-	ld a, $6 ; jasmine
-
-	call FillBoxCGB
-	hlcoord 11, 13, wAttrmap
-	lb bc, 3, 3
-	ld a, $7 ; pryce
 
 	call FillBoxCGB
 	hlcoord 15, 13, wAttrmap

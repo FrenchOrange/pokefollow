@@ -155,7 +155,7 @@ NamingScreen:
 .Rival:
 	ld de, BlueSpriteGFX
 	ld b, BANK(RivalSpriteGFX)
-	call .LoadSprite
+	call .LoadSpriteRival
 	hlcoord 5, 2
 	ld de, .RivalNameString
 	call PlaceString
@@ -221,6 +221,28 @@ NamingScreen:
 	ld [hl], a
 	depixel 4, 4, 4, 0
 	ld a, SPRITE_ANIM_OBJ_RED_WALK
+	call InitSpriteAnimStruct
+	ret
+
+.LoadSpriteRival:
+	push de
+	ld hl, vTiles0 tile $00
+	lb bc, BANK(ChrisSpriteGFX), 4
+	call Request2bpp
+	pop de
+	ld hl, 12 tiles
+	add hl, de
+	ld e, l
+	ld d, h
+	ld hl, vTiles0 tile $04
+	lb bc, BANK(ChrisSpriteGFX), 4
+	call Request2bpp
+	xor a ; SPRITE_ANIM_DICT_DEFAULT and tile offset $00
+	ld hl, wSpriteAnimDict
+	ld [hli], a
+	ld [hl], a
+	depixel 4, 4, 4, 0
+	ld a, SPRITE_ANIM_OBJ_BROWN_WALK
 	call InitSpriteAnimStruct
 	ret
 
