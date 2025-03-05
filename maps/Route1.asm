@@ -51,6 +51,7 @@ Route1_SpearowCutscene:
 	applymovement PLAYER, Route1HideObjectMovement
 	playsound SFX_TACKLE ; find better splash
 	waitsfx
+	pause 35
 	special FadeOutToBlack
 	special ReloadSpritesNoPalettes
 	special FadeOutMusic
@@ -74,16 +75,16 @@ PlayerJumpsInRiverMovement:
 PlayerInRiverMovement1:
 	step DOWN
 	step RIGHT
-	step RIGHT
-	step RIGHT
-	step RIGHT
-	step RIGHT
+	big_step RIGHT
+	big_step RIGHT
+	big_step RIGHT
+	big_step RIGHT
 	step DOWN
 	step RIGHT
 	step RIGHT
-	step RIGHT
-	step RIGHT
-	step RIGHT
+	big_step RIGHT
+	big_step RIGHT
+	big_step RIGHT
 	step RIGHT
 	step UP
 	step RIGHT
@@ -98,29 +99,27 @@ PlayerInRiverMovement2:
 
 PlayerInRiverMovement3:
 	step RIGHT
+	big_step RIGHT
+	big_step RIGHT
+	big_step RIGHT
+	big_step RIGHT
+	big_step RIGHT
+	big_step RIGHT
+	big_step RIGHT
+	big_step RIGHT
 	step RIGHT
-	step RIGHT
-	step RIGHT
-	step RIGHT
-	step RIGHT
-	step RIGHT
-	step RIGHT
-	step RIGHT
-	step RIGHT
+	big_step DOWN
 	step DOWN
-	step DOWN
 	step RIGHT
+	big_step RIGHT
+	big_step RIGHT
 	step RIGHT
-	step RIGHT
-	step RIGHT
-	step DOWN
+	big_step DOWN
 	step_end
 
 PlayerFallsOffWaterfallMovement:
 	jump_step DOWN
-	turn_head UP
 	slide_step DOWN
-	turn_head RIGHT
 	slide_step DOWN
 	step_end
 

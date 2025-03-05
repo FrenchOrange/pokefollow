@@ -49,16 +49,16 @@ TilesetJohtoModernAnim:
 	dw NULL,  DoneTileAnimation
 
 TilesetKantoAnim:
-	dw vTiles2 tile $14, AnimateWaterTile
-	dw vTiles2 tile $23, ReadTileToAnimBuffer
+	dw vTiles2 tile $04, AnimateWaterTile
+	dw vTiles2 tile $37, ReadTileToAnimBuffer
 	dw wTileAnimBuffer, ScrollTileDown
 	dw wTileAnimBuffer, ScrollTileDown
-	dw vTiles2 tile $23, WriteTileFromAnimBuffer
+	dw vTiles2 tile $37, WriteTileFromAnimBuffer
 	dw NULL,  AnimateFlowerTile
-	dw vTiles2 tile $23, ReadTileToAnimBuffer
+	dw vTiles2 tile $37, ReadTileToAnimBuffer
 	dw wTileAnimBuffer, ScrollTileDown
 	dw wTileAnimBuffer, ScrollTileDown
-	dw vTiles2 tile $23, WriteTileFromAnimBuffer
+	dw vTiles2 tile $37, WriteTileFromAnimBuffer
 	dw NULL,  AnimateWaterPalette
 	dw NULL,  StandingTileFrame8
 	dw NULL,  DoneTileAnimation
