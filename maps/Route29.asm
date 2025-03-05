@@ -1,10 +1,10 @@
 	object_const_def
-	const ROUTE29_COOLTRAINER_M1
+	const ROUTE29_GRAMPS
 	const ROUTE29_YOUNGSTER
 	const ROUTE29_TEACHER1
 	const ROUTE29_FRUIT_TREE
 	const ROUTE29_FISHER
-	const ROUTE29_COOLTRAINER_M2
+	const ROUTE29_COOLTRAINER_M
 	const ROUTE29_TUSCANY
 	const ROUTE29_POKE_BALL
 
@@ -34,8 +34,9 @@ CatchingTutorialDudeScript:
 	readvar VAR_BOXSPACE
 	ifequal 0, .BoxFull
 	checkevent EVENT_LEARNED_TO_CATCH_POKEMON
-	iftrue .BoxFull
-	writetext CatchingTutorialRepeatText
+	iftrue .LearnedAlready
+	writetext CatchingTutorialIntroText
+.CatchingTutorialCont
 	yesorno
 	iffalse .Declined
 	closetext
@@ -54,11 +55,60 @@ CatchingTutorialDudeScript:
 	closetext
 	end
 
+.LearnedAlready:
+	writetext CatchingTutorialRepeatText
+	sjump .CatchingTutorialCont
+
 .Declined:
 	writetext CatchingTutorialDeclinedText
 	waitbutton
 	closetext
 	end
+
+CatchingTutorialBoxFullText:
+	text "#MON hide in"
+	line "the grass. Who"
+
+	para "knows when they'll"
+	line "pop out…"
+	done
+
+CatchingTutorialIntroText:
+	text "You're new to #-"
+	line "MON training, uh?"
+
+	para "How many have you"
+	line "caught?"
+
+	para "Would you like me"
+	line "to show you how to"
+	cont "catch #MON?"
+	done
+
+CatchingTutorialDebriefText:
+	text "That's how you do"
+	line "it."
+
+	para "If you weaken them"
+	line "first, #MON are"
+	cont "easier to catch."
+	done
+
+CatchingTutorialDeclinedText:
+	text "Oh. Fine, then."
+
+	para "Anyway, if you"
+	line "want to catch"
+
+	para "#MON, you have"
+	line "to walk a lot."
+	done
+
+CatchingTutorialRepeatText:
+	text "Huh? You want me"
+	line "to show you how to"
+	cont "catch #MON?"
+	done
 
 Route29YoungsterScript:
 	jumptextfaceplayer Route29YoungsterText
@@ -135,51 +185,6 @@ Route29FruitTree:
 
 Route29Potion:
 	itemball POTION
-
-CatchingTutorialBoxFullText:
-	text "#MON hide in"
-	line "the grass. Who"
-
-	para "knows when they'll"
-	line "pop out…"
-	done
-
-CatchingTutorialIntroText:
-	text "I've seen you a"
-	line "couple times. How"
-
-	para "many #MON have"
-	line "you caught?"
-
-	para "Would you like me"
-	line "to show you how to"
-	cont "catch #MON?"
-	done
-
-CatchingTutorialDebriefText:
-	text "That's how you do"
-	line "it."
-
-	para "If you weaken them"
-	line "first, #MON are"
-	cont "easier to catch."
-	done
-
-CatchingTutorialDeclinedText:
-	text "Oh. Fine, then."
-
-	para "Anyway, if you"
-	line "want to catch"
-
-	para "#MON, you have"
-	line "to walk a lot."
-	done
-
-CatchingTutorialRepeatText:
-	text "Huh? You want me"
-	line "to show you how to"
-	cont "catch #MON?"
-	done
 
 Route29YoungsterText:
 	text "Yo. How are your"
@@ -308,7 +313,7 @@ Route29_MapEvents:
 	bg_event  3,  5, BGEVENT_READ, Route29Sign2
 
 	def_object_events
-	object_event 50, 12, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CatchingTutorialDudeScript, -1
+	object_event 50, 12, SPRITE_GRAMPS, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CatchingTutorialDudeScript, -1
 	object_event 27, 16, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WALK_UP_DOWN, 0, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, Route29YoungsterScript, -1
 	object_event 15, 11, SPRITE_TEACHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, Route29TeacherScript, -1
 	object_event 12,  2, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route29FruitTree, -1
