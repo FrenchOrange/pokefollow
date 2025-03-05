@@ -483,10 +483,10 @@ DebugSign:
 	loadmem wPartyMon4Moves+0, FLASH
 	loadmem wPartyMon4Moves+1, HEADBUTT
 ; warp some place else
-;	playsound SFX_WARP_TO
-;	special ClearBGPalettesBufferScreen
-;	waitsfx
-;	warp NEW_BARK_TOWN, 13, 06
+	playsound SFX_WARP_TO
+	special ClearBGPalettesBufferScreen
+	waitsfx
+	warp NEW_BARK_TOWN, 13, 06
 ;	warp ROUTE_23, 11, 06
 	end
 

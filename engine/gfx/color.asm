@@ -681,18 +681,18 @@ GetEnemyFrontpicPalettePointer:
 GetPlayerOrMonPalettePointer:
 	and a
 	jp nz, GetMonNormalOrShinyPalettePointer
-	ld a, [wPlayerSpriteSetupFlags]
-	bit PLAYERSPRITESETUP_FEMALE_TO_MALE_F, a
-	jr nz, .male
-	ld a, [wPlayerGender]
-	and a
-	jr z, .male
-	ld hl, KrisPalette
-	ret
-
-.male
+	ld a, [wBattleType]
+	cp BATTLETYPE_TUTORIAL
+	jr z, .dude
 	ld hl, PlayerPalette
 	ret
+
+.dude
+	ld hl, DudePalette
+	ret
+
+DudePalette:
+INCLUDE "gfx/battle/dude.pal"
 
 GetFrontpicPalettePointer:
 	and a

@@ -89,15 +89,7 @@ DanceTheaterSurfGuy:
 	sjump .GetSurf
 
 .KimonoGirlsUndefeated:
-	checkflag ENGINE_PLAYER_IS_FEMALE
-	iftrue .PlayerIsFemale
 	writetext SurfGuyLadGiftText
-	waitbutton
-	closetext
-	end
-
-.PlayerIsFemale:
-	writetext SurfGuyLassieGiftText
 	waitbutton
 	closetext
 	end
@@ -250,14 +242,6 @@ SurfGuyNeverLeftAScratchText:
 
 SurfGuyLadGiftText:
 	text "Lad! If you can"
-	line "defeat all the"
-
-	para "KIMONO GIRLS, I'll"
-	line "give you a gift."
-	done
-
-SurfGuyLassieGiftText:
-	text "Lassie, if you can"
 	line "defeat all the"
 
 	para "KIMONO GIRLS, I'll"

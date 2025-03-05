@@ -79,9 +79,6 @@ NamingScreen:
 	dw .Rival
 	dw .Mom
 	dw .Box
-	dw .Tomodachi
-	dw .Pokemon
-	dw .Pokemon
 
 .Pokemon:
 	ld a, [wCurPartySpecies]
@@ -205,45 +202,25 @@ NamingScreen:
 .BoxNameString:
 	db "BOX NAME?@"
 
-.Tomodachi:
-	hlcoord 3, 2
-	ld de, .oTomodachi_no_namae_sutoringu
-	call PlaceString
-	call .StoreSpriteIconParams
-	ret
-
-.oTomodachi_no_namae_sutoringu
-	db "おともだち　の　なまえは？@"
-
 .LoadSprite:
 	push de
 	ld hl, vTiles0 tile $00
-	ld c, 4
-	push bc
+	lb bc, BANK(ChrisSpriteGFX), 4
 	call Request2bpp
-	pop bc
+	pop de
 	ld hl, 12 tiles
 	add hl, de
 	ld e, l
 	ld d, h
 	ld hl, vTiles0 tile $04
+	lb bc, BANK(ChrisSpriteGFX), 4
 	call Request2bpp
 	xor a ; SPRITE_ANIM_DICT_DEFAULT and tile offset $00
 	ld hl, wSpriteAnimDict
 	ld [hli], a
 	ld [hl], a
-	pop de
-	ld b, SPRITE_ANIM_OBJ_RED_WALK
-	ld a, d
-	cp HIGH(KrisSpriteGFX)
-	jr nz, .not_kris
-	ld a, e
-	cp LOW(KrisSpriteGFX)
-	jr nz, .not_kris
-	ld b, SPRITE_ANIM_OBJ_BLUE_WALK
-.not_kris
-	ld a, b
 	depixel 4, 4, 4, 0
+	ld a, SPRITE_ANIM_OBJ_RED_WALK
 	call InitSpriteAnimStruct
 	ret
 

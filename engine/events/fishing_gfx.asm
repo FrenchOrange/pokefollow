@@ -5,11 +5,6 @@ LoadFishingGFX:
 	ldh [rVBK], a
 
 	ld de, FishingGFX
-	ld a, [wPlayerGender]
-	bit PLAYERGENDER_FEMALE_F, a
-	jr z, .got_gender
-	ld de, KrisFishingGFX
-.got_gender
 
 	ld hl, vTiles0 tile $02
 	call .LoadGFX
@@ -37,6 +32,3 @@ LoadFishingGFX:
 
 FishingGFX:
 INCBIN "gfx/overworld/chris_fish.2bpp"
-
-KrisFishingGFX:
-INCBIN "gfx/overworld/kris_fish.2bpp"

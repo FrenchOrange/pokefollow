@@ -30,6 +30,3 @@ INCBIN "gfx/trainer_card/trainer_card.2bpp"
 
 ChrisPic:
 INCBIN "gfx/player/chris.2bpp"
-
-KrisPic:
-INCBIN "gfx/player/kris.2bpp"

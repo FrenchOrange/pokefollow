@@ -3477,30 +3477,6 @@ Function8a765:
 	ret
 
 Function8a78c:
-	call Function891fe
-	ld de, wd002
-	ld b, NAME_FRIEND
-	farcall NamingScreen
-	call OpenSRAMBank4
-	call Function8931b
-	push bc
-	ld hl, $0
-	add hl, bc
-	ld d, h
-	ld e, l
-	ld hl, wd002
-	call InitName
-	call CloseSRAM
-	call DelayFrame
-	call JoyTextDelay
-	call Function891de
-	call ClearBGPalettes
-	call Function893cc
-	call OpenSRAMBank4
-	pop bc
-	call Function89844
-	call CloseSRAM
-	and a
 	ret
 
 Function8a7cb:

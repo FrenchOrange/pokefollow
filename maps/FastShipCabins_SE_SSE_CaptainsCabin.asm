@@ -60,20 +60,10 @@ SSAquaGranddaughterBefore:
 	showemote EMOTE_SHOCK, FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_GENTLEMAN, 15
 	applymovement FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_TWIN1, SSAquaGranddaughterEntersCabinMovement
 	turnobject FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_GENTLEMAN, RIGHT
-	checkflag ENGINE_PLAYER_IS_FEMALE
-	iftrue .PlayerIsFemale
 	opentext
 	writetext SSAquaGranddaughterWasPlayingMText
 	waitbutton
 	closetext
-	sjump .cont
-
-.PlayerIsFemale:
-	opentext
-	writetext SSAquaGranddaughterWasPlayingFText
-	waitbutton
-	closetext
-.cont:
 	turnobject FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_TWIN2, DOWN
 	applymovement FASTSHIPCABINS_SE_SSE_CAPTAINSCABIN_GENTLEMAN, SSAquaGrandpaApproachesPlayerMovement
 	opentext
@@ -326,14 +316,6 @@ SSAquaGranddaughterWasPlayingMText:
 
 	para "with the CAPTAIN"
 	line "and this guy!"
-	done
-
-SSAquaGranddaughterWasPlayingFText:
-	text "Grandpa, here I"
-	line "am! I was playing"
-
-	para "with the CAPTAIN"
-	line "and this big girl!"
 	done
 
 SSAquaGranddaughterHadFunText:
