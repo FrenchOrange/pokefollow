@@ -49,7 +49,6 @@ Function17a6a8:
 	farcall HDMATransferAttrmapAndTilemapToWRAMBank3
 	call Function17abcf
 	farcall LoadOW_BGPal7
-	farcall Function49420
 	call SetDefaultBGPAndOBP
 	call DelayFrame
 	ret

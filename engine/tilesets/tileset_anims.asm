@@ -192,12 +192,12 @@ TilesetTowerAnim:
 
 TilesetBattleTowerOutsideAnim:
 TilesetHouseAnim:
-TilesetPlayersHouseAnim:
+TilesetMartAnim:
 TilesetPokecenterAnim:
 TilesetGateAnim:
 TilesetLabAnim:
 TilesetFacilityAnim:
-TilesetMartAnim:
+TilesetDeptStoreAnim:
 TilesetMansionAnim:
 TilesetGameCornerAnim:
 TilesetTraditionalHouseAnim:

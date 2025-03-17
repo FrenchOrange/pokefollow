@@ -11,6 +11,7 @@ StdScripts::
 	add_stdscript TeamRocketOathScript
 	add_stdscript IncenseBurnerScript
 	add_stdscript MerchandiseShelfScript
+	add_stdscript MerchandiseShelfGlassScript
 	add_stdscript TownMapScript
 	add_stdscript WindowScript
 	add_stdscript TVScript
@@ -211,6 +212,9 @@ IncenseBurnerScript:
 
 MerchandiseShelfScript:
 	farjumptext MerchandiseShelfText
+
+MerchandiseShelfGlassScript:
+	farjumptext MerchandiseShelfGlassText
 
 TownMapScript:
 	opentext

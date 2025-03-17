@@ -15,13 +15,13 @@ Tilesets::
 	tileset TilesetKanto
 	tileset TilesetBattleTowerOutside
 	tileset TilesetHouse
-	tileset TilesetPlayersHouse
+	tileset TilesetMart
 	tileset TilesetPokecenter
 	tileset TilesetGate
 	tileset TilesetPort
 	tileset TilesetLab
 	tileset TilesetFacility
-	tileset TilesetMart
+	tileset TilesetDeptStore
 	tileset TilesetMansion
 	tileset TilesetGameCorner
 	tileset TilesetEliteFourRoom

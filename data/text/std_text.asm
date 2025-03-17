@@ -148,8 +148,13 @@ IncenseBurnerText:
 	done
 
 MerchandiseShelfText:
-	text "Lots of #MON"
-	line "merchandise!"
+	text "Wow! Tons of"
+	line "#MON stuff!"
+	done
+
+MerchandiseShelfGlassText:
+	text "All sorts of items"
+	line "neatly lined up."
 	done
 
 LookTownMapText:

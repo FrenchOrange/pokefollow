@@ -45,14 +45,14 @@ INCBIN "data/tilesets/port_metatiles.bin"
 TilesetPortColl::
 INCLUDE "data/tilesets/port_collision.asm"
 
-TilesetPlayersHouseGFX::
-INCBIN "gfx/tilesets/players_house.2bpp.lz"
+TilesetMartGFX::
+INCBIN "gfx/tilesets/mart.2bpp.lz"
 
-TilesetPlayersHouseMeta::
-INCBIN "data/tilesets/players_house_metatiles.bin"
+TilesetMartMeta::
+INCBIN "data/tilesets/mart_metatiles.bin"
 
-TilesetPlayersHouseColl::
-INCLUDE "data/tilesets/players_house_collision.asm"
+TilesetMartColl::
+INCLUDE "data/tilesets/mart_collision.asm"
 
 TilesetMansionGFX::
 INCBIN "gfx/tilesets/mansion.2bpp.lz"
@@ -95,14 +95,14 @@ INCBIN "data/tilesets/lab_metatiles.bin"
 TilesetLabColl::
 INCLUDE "data/tilesets/lab_collision.asm"
 
-TilesetMartGFX::
-INCBIN "gfx/tilesets/mart.2bpp.lz"
+TilesetDeptStoreGFX::
+INCBIN "gfx/tilesets/dept_store.2bpp.lz"
 
-TilesetMartMeta::
-INCBIN "data/tilesets/mart_metatiles.bin"
+TilesetDeptStoreMeta::
+INCBIN "data/tilesets/dept_store_metatiles.bin"
 
-TilesetMartColl::
-INCLUDE "data/tilesets/mart_collision.asm"
+TilesetDeptStoreColl::
+INCLUDE "data/tilesets/dept_store_collision.asm"
 
 TilesetGameCornerGFX::
 INCBIN "gfx/tilesets/game_corner.2bpp.lz"
@@ -297,8 +297,8 @@ INCBIN "data/tilesets/battle_tower_outside_attributes.bin"
 TilesetHouseAttr::
 INCBIN "data/tilesets/house_attributes.bin"
 
-TilesetPlayersHouseAttr::
-INCBIN "data/tilesets/players_house_attributes.bin"
+TilesetMartAttr::
+INCBIN "data/tilesets/mart_attributes.bin"
 
 TilesetPokecenterAttr::
 INCBIN "data/tilesets/pokecenter_attributes.bin"
@@ -318,8 +318,8 @@ SECTION "Tileset Data 9", ROMX
 TilesetFacilityAttr::
 INCBIN "data/tilesets/facility_attributes.bin"
 
-TilesetMartAttr::
-INCBIN "data/tilesets/mart_attributes.bin"
+TilesetDeptStoreAttr::
+INCBIN "data/tilesets/dept_store_attributes.bin"
 
 TilesetMansionAttr::
 INCBIN "data/tilesets/mansion_attributes.bin"
