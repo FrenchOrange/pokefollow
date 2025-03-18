@@ -414,6 +414,7 @@ DebugSign:
 	giveitem MAX_REPEL, 99
 	giveitem ESCAPE_ROPE, 99
 	giveitem BERRY, 99
+	giveitem EON_MAIL, 5
 ; useful moves
 	giveitem HM_CUT
 	giveitem HM_FLY

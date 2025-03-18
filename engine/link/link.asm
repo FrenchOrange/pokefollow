@@ -322,7 +322,7 @@ Gen2ToGen2LinkComms:
 	dec hl
 
 	ld de, wLinkOTMail
-	ld bc, wLinkDataEnd - wLinkOTMail ; should be wLinkOTMailEnd - wLinkOTMail
+	ld bc, wLinkOTMailEnd - wLinkOTMail
 	call CopyBytes
 
 ; Replace SERIAL_MAIL_REPLACEMENT_BYTE with SERIAL_NO_DATA_BYTE across all mail
@@ -391,23 +391,6 @@ Gen2ToGen2LinkComms:
 	ld de, wLinkReceivedMail
 .fix_mail_loop
 	push bc
-	push de
-	farcall ParseMailLanguage
-	ld a, c
-	or a
-	jr z, .next
-	sub $3
-	jr nc, .skip
-	farcall ConvertEnglishMailToFrenchGerman
-	jr .next
-
-.skip
-	cp $2
-	jr nc, .next
-	farcall ConvertEnglishMailToSpanishItalian
-
-.next
-	pop de
 	ld hl, MAIL_STRUCT_LENGTH
 	add hl, de
 	ld d, h
@@ -918,31 +901,13 @@ Link_PrepPartyData_Gen2:
 	dec b
 	jr nz, .metadata_loop
 
-; Translate the messages if necessary
 	ld b, PARTY_LENGTH
 	ld de, sPartyMail
 	ld hl, wLinkPlayerMailMessages
 .translate_loop
 	push bc
 	push hl
-	push de
-	push hl
-	farcall ParseMailLanguage
-	pop de
-	ld a, c
-	or a ; MAIL_LANG_ENGLISH
-	jr z, .translate_next
-	sub MAIL_LANG_ITALIAN
-	jr nc, .italian_spanish
-	farcall ConvertFrenchGermanMailToEnglish
-	jr .translate_next
-.italian_spanish
-	cp (MAIL_LANG_SPANISH + 1) - MAIL_LANG_ITALIAN
-	jr nc, .translate_next
-	farcall ConvertSpanishItalianMailToEnglish
-.translate_next
-	pop de
-	ld hl, MAIL_STRUCT_LENGTH
+	ld de, MAIL_STRUCT_LENGTH
 	add hl, de
 	ld d, h
 	ld e, l
