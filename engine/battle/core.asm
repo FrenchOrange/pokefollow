@@ -5746,6 +5746,10 @@ MoveInfoBox:
 	ld de, .Type
 	call PlaceString
 
+	hlcoord 1, 11
+	ld de, .PP
+	call PlaceString
+
 	hlcoord 7, 11
 	ld [hl], "/"
 
@@ -5762,6 +5766,8 @@ MoveInfoBox:
 	db "Disabled!@"
 .Type:
 	db "TYPE/@"
+.PP:
+	db "BOLD_PBOLD_P@"
 
 .PrintPP:
 	hlcoord 5, 11
