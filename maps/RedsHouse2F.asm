@@ -472,6 +472,7 @@ DebugSign:
 	givepoke PIDGEOT, 100
 	givepoke LAPRAS, 100
 	givepoke PIKACHU, 100
+	givepoke UNOWN, 5
 	closetext
 ; debug hm
 	loadmem wPartyMon1Moves+0, SURF
