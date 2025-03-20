@@ -2428,7 +2428,6 @@ WinTrainerBattle:
 	ld c, 40
 	call DelayFrames
 	ld c, $4 ; win
-	farcall Mobile_PrintOpponentBattleMessage
 	ret
 
 .battle_tower
@@ -3048,7 +3047,6 @@ LostBattle:
 	call DelayFrames
 
 	ld c, $3 ; lost
-	farcall Mobile_PrintOpponentBattleMessage
 	scf
 	ret
 
@@ -9188,11 +9186,4 @@ BattleStartMessage:
 	farcall BattleStart_TrainerHuds
 	pop hl
 	call StdBattleTextbox
-
-	call IsMobileBattle2
-	ret nz
-
-	ld c, $2 ; start
-	farcall Mobile_PrintOpponentBattleMessage
-
 	ret

@@ -1524,7 +1524,6 @@ Function89a0c:
 	jr c, .asm_89a1c
 	ld d, h
 	ld e, l
-	farcall Function11c08f
 	ret
 
 .asm_89a1c

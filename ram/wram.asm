@@ -2692,7 +2692,7 @@ wEveEncounterRate::   db
 wWaterEncounterRate:: db
 wListMoves_MoveIndicesBuffer:: ds NUM_MOVES
 wPutativeTMHMMove:: db
-wInitListType:: db
+wUnusedInitListType:: db
 wBattleHasJustStarted:: db
 
 wNamedObjectIndex::

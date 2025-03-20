@@ -876,9 +876,6 @@ LinkTradeOTPartymonMenuLoop:
 	jp z, LinkTradePartiesMenuMasterLoop
 	bit A_BUTTON_F, a
 	jr z, .not_a_button
-	ld a, INIT_ENEMYOT_LIST
-	ld [wInitListType], a
-	callfar InitList
 	ld hl, wOTPartyMon1Species
 	farcall LinkMonStatsScreen
 	jp LinkTradePartiesMenuMasterLoop
@@ -1066,9 +1063,6 @@ LinkTrade_TradeStatsMenu:
 .show_stats
 	pop af
 	ld [wMenuCursorY], a
-	ld a, INIT_PLAYEROT_LIST
-	ld [wInitListType], a
-	callfar InitList
 	farcall LinkMonStatsScreen
 	call SafeLoadTempTilemapToTilemap
 	hlcoord 6, 1
@@ -1159,6 +1153,55 @@ LinkTrade_TradeStatsMenu:
 .LinkAbnormalMonText:
 	text_far _LinkAbnormalMonText
 	text_end
+
+ValidateOTTrademon:
+; Returns carry if level isn't within 1-100.
+	ld a, [wCurOTTradePartyMon]
+	ld hl, wOTPartyMon1Level
+	call GetPartyLocation
+	ld a, [hl]
+
+	; Only allow level 1-100.
+	dec a
+	cp MAX_LEVEL
+	ccf
+	ret
+
+CheckAnyOtherAliveMonsForTrade:
+	ld a, [wCurTradePartyMon]
+	ld d, a
+	ld a, [wPartyCount]
+	ld b, a
+	ld c, 0
+.loop
+	ld a, c
+	cp d
+	jr z, .next
+	push bc
+	ld a, c
+	ld hl, wPartyMon1HP
+	call GetPartyLocation
+	pop bc
+	ld a, [hli]
+	or [hl]
+	jr nz, .done
+
+.next
+	inc c
+	dec b
+	jr nz, .loop
+	ld a, [wCurOTTradePartyMon]
+	ld hl, wOTPartyMon1HP
+	call GetPartyLocation
+	ld a, [hli]
+	or [hl]
+	jr nz, .done
+	scf
+	ret
+
+.done
+	and a
+	ret
 
 LinkTradeOTPartymonMenuCheckCancel:
 	ld a, [wMenuCursorY]

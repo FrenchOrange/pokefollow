@@ -72,7 +72,7 @@
 	const SPRITE_JAMES             ; 44
 	const SPRITE_ROCKET_SLOWPOKE   ; 45
 	const SPRITE_CAPTAIN           ; 46
-	const SPRITE_BIG_LAPRAS        ; 47
+	const SPRITE_BIG_LAPRAS        ; 47 (unused)
 	const SPRITE_GYM_GUIDE         ; 48
 	const SPRITE_SAILOR            ; 49
 	const SPRITE_BIKER             ; 4a
@@ -81,7 +81,7 @@
 	const SPRITE_CHRIS_SWIM        ; 4d
 	const SPRITE_SALESMAN          ; 4e
 	const SPRITE_MISTY_FISH        ; 4f
-	const SPRITE_BIG_ONIX          ; 50
+	const SPRITE_BIG_ONIX          ; 50 (unused)
 	const SPRITE_N64               ; 51
 	const SPRITE_SUDOWOODO         ; 52
 	const SPRITE_SURF_LAPRAS       ; 53
