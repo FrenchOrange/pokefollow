@@ -13,13 +13,13 @@ EcruteakPokecenter1F_MapScripts:
 	def_callbacks
 
 EcruteakPokecenter1FMeetBillScene:
-	sdefer EcruteakPokcenter1FBillActivatesTimeCapsuleScript
+	sdefer EcruteakPokcenter1FBillScript
 	end
 
 EcruteakPokecenter1FNoopScene:
 	end
 
-EcruteakPokcenter1FBillActivatesTimeCapsuleScript:
+EcruteakPokcenter1FBillScript:
 	pause 30
 	playsound SFX_EXIT_BUILDING
 	appear ECRUTEAKPOKECENTER1F_BILL
@@ -50,7 +50,6 @@ EcruteakPokcenter1FBillActivatesTimeCapsuleScript:
 	playsound SFX_EXIT_BUILDING
 	disappear ECRUTEAKPOKECENTER1F_BILL
 	clearevent EVENT_MET_BILL
-	setflag ENGINE_TIME_CAPSULE
 	setscene SCENE_ECRUTEAKPOKECENTER1F_NOOP
 	waitsfx
 	end
@@ -107,51 +106,9 @@ EcruteakPokecenter1F_BillText1:
 	done
 
 EcruteakPokecenter1F_BillText2:
-	text "I just finished"
-	line "adjustments on my"
-	cont "TIME CAPSULE."
-
-	para "You know that"
+	text "You know that"
 	line "#MON can be"
 	cont "traded, right?"
-
-	para "My TIME CAPSULE"
-	line "was developed to"
-
-	para "enable trades with"
-	line "the past."
-
-	para "But you can't send"
-	line "anything that"
-
-	para "didn't exist in"
-	line "the past."
-
-	para "If you did, the PC"
-	line "in the past would"
-	cont "have a breakdown."
-
-	para "So you have to"
-	line "remove anything"
-
-	para "that wasn't around"
-	line "in the past."
-
-	para "Put simply, no"
-	line "sending new moves"
-
-	para "or new #MON in"
-	line "the TIME CAPSULE."
-
-	para "Don't you worry."
-	line "I'm done with the"
-	cont "adjustments."
-
-	para "Tomorrow, TIME"
-	line "CAPSULES will be"
-
-	para "running at all"
-	line "#MON CENTERS."
 
 	para "I have to hurry on"
 	line "back to GOLDENROD"

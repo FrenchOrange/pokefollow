@@ -3023,7 +3023,7 @@ wFarfetchdPosition:: db
 wPokecenter2FSceneID::                            db
 wTradeCenterSceneID::                             db
 wColosseumSceneID::                               db
-wTimeCapsuleSceneID::                             db
+wViridianCitySceneID::                            db
 wPowerPlantSceneID::                              db
 wCeruleanGymSceneID::                             db
 wRoute25SceneID::                                 db

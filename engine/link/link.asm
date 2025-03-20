@@ -28,169 +28,10 @@ LinkCommunications:
 	call SetTradeRoomBGPals
 	call WaitBGMap2
 	ld hl, wLinkByteTimeout
-	assert LOW(SERIAL_LINK_BYTE_TIMEOUT) == 0
-	xor a ; LOW(SERIAL_LINK_BYTE_TIMEOUT)
+	xor a
 	ld [hli], a
-	ld [hl], HIGH(SERIAL_LINK_BYTE_TIMEOUT)
-	ld a, [wLinkMode]
-	cp LINK_TIMECAPSULE
-	jp nz, Gen2ToGen2LinkComms
-
-Gen2ToGen1LinkComms:
-	call ClearLinkData
-	call Link_PrepPartyData_Gen1
-	call FixDataForLinkTransfer
-	xor a
-	ld [wPlayerLinkAction], a
-	call WaitLinkTransfer
-	ldh a, [hSerialConnectionStatus]
-	cp USING_INTERNAL_CLOCK
-	jr nz, .player_1
-
-	ld c, 3
-	call DelayFrames
-	xor a
-	ldh [hSerialSend], a
-	ld a, (0 << rSC_ON) | (1 << rSC_CLOCK)
-	ldh [rSC], a
-	ld a, (1 << rSC_ON) | (1 << rSC_CLOCK)
-	ldh [rSC], a
-
-	call DelayFrame
-	xor a
-	ldh [hSerialSend], a
-	ld a, (0 << rSC_ON) | (1 << rSC_CLOCK)
-	ldh [rSC], a
-	ld a, (1 << rSC_ON) | (1 << rSC_CLOCK)
-	ldh [rSC], a
-
-.player_1
-	ld de, MUSIC_NONE
-	call PlayMusic
-	ld c, 3
-	call DelayFrames
-	xor a
-	ldh [rIF], a
-	ld a, 1 << SERIAL
-	ldh [rIE], a
-
-	ld hl, wLinkBattleRNPreamble
-	ld de, wEnemyMon
-	ld bc, SERIAL_RN_PREAMBLE_LENGTH + SERIAL_RNS_LENGTH
-	call Serial_ExchangeBytes
-	ld a, SERIAL_NO_DATA_BYTE
-	ld [de], a
-
-	ld hl, wLinkData
-	ld de, wOTPartyData
-	ld bc, SERIAL_PREAMBLE_LENGTH + NAME_LENGTH + (1 + PARTY_LENGTH + 1) + (REDMON_STRUCT_LENGTH + NAME_LENGTH * 2) * PARTY_LENGTH + 3
-	call Serial_ExchangeBytes
-	ld a, SERIAL_NO_DATA_BYTE
-	ld [de], a
-
-	ld hl, wPlayerPatchLists
-	ld de, wOTPatchLists
-	ld bc, SERIAL_PATCH_LIST_LENGTH
-	call Serial_ExchangeBytes
-
-	xor a
-	ldh [rIF], a
-	ld a, (1 << JOYPAD) | (1 << SERIAL) | (1 << TIMER) | (1 << VBLANK)
-	ldh [rIE], a
-
-	call Link_CopyRandomNumbers
-
-	ld hl, wOTPartyData
-	call Link_FindFirstNonControlCharacter_SkipZero
-	push hl
-	ld bc, NAME_LENGTH
-	add hl, bc
-	ld a, [hl]
-	pop hl
-	and a
-	jp z, ExitLinkCommunications
-	cp $7
-	jp nc, ExitLinkCommunications
-
-	ld de, wLinkData
-	ld bc, NAME_LENGTH + (1 + PARTY_LENGTH + 1) + (REDMON_STRUCT_LENGTH + NAME_LENGTH * 2) * PARTY_LENGTH + 3
-	call Link_CopyOTData
-
-	ld de, wOTPatchLists
-	ld hl, wTimeCapsulePlayerData
-	ld c, 2
-.loop
-	ld a, [de]
-	inc de
-	and a
-	jr z, .loop
-	cp SERIAL_PREAMBLE_BYTE
-	jr z, .loop
-	cp SERIAL_NO_DATA_BYTE
-	jr z, .loop
-	cp SERIAL_PATCH_LIST_PART_TERMINATOR
-	jr z, .next
-	push hl
-	push bc
-	ld b, 0
-	dec a
-	ld c, a
-	add hl, bc
-	ld a, SERIAL_NO_DATA_BYTE
-	ld [hl], a
-	pop bc
-	pop hl
-	jr .loop
-
-.next
-	ld hl, wTimeCapsulePlayerData + SERIAL_PATCH_DATA_SIZE
-	dec c
-	jr nz, .loop
-
-	ld hl, wLinkData
-	ld de, wOTPlayerName
-	ld bc, NAME_LENGTH
-	call CopyBytes
-
-	ld de, wOTPartyCount
-	ld a, [hli]
-	ld [de], a
-	inc de
-
-.party_loop
-	ld a, [hli]
-	cp -1
-	jr z, .done_party
-	ld [wTempSpecies], a
-	push hl
-	push de
-	callfar ConvertMon_1to2
-	pop de
-	pop hl
-	ld a, [wTempSpecies]
-	ld [de], a
-	inc de
-	jr .party_loop
-
-.done_party
-	ld [de], a
-	ld hl, wTimeCapsulePlayerData
-	call Link_ConvertPartyStruct1to2
-
-	ld a, LOW(wOTPartyMonOTs)
-	ld [wUnusedNamesPointer], a
-	ld a, HIGH(wOTPartyMonOTs)
-	ld [wUnusedNamesPointer + 1], a
-
-	ld de, MUSIC_NONE
-	call PlayMusic
-	ldh a, [hSerialConnectionStatus]
-	cp USING_INTERNAL_CLOCK
-	ld c, 66
-	call z, DelayFrames
-	ld de, MUSIC_ROUTE_30
-	call PlayMusic
-	jp InitTradeMenuDisplay
+	ld [hl], $50
+	;fallthrough
 
 Gen2ToGen2LinkComms:
 	call ClearLinkData
@@ -584,8 +425,6 @@ FixDataForLinkTransfer:
 	dec b
 	jr nz, .preamble_loop
 
-; Initialize random seed, making sure special bytes are omitted
-	assert wLinkBattleRNPreamble + SERIAL_RN_PREAMBLE_LENGTH == wLinkBattleRNs
 	ld b, SERIAL_RNS_LENGTH
 .rn_loop
 	call Random
@@ -598,10 +437,10 @@ FixDataForLinkTransfer:
 ; Clear the patch list
 	ld hl, wPlayerPatchLists
 	ld a, SERIAL_PREAMBLE_BYTE
-rept SERIAL_PATCH_PREAMBLE_LENGTH
 	ld [hli], a
-endr
-	ld b, SERIAL_PATCH_LIST_LENGTH
+	ld [hli], a
+	ld [hli], a
+	ld b, 200
 	xor a
 .clear_loop
 	ld [hli], a
@@ -624,12 +463,7 @@ endr
 	dec a
 	jr nz, .process
 	push bc
-	ld a, [wLinkMode]
-	cp LINK_TIMECAPSULE
-	ld b, REDMON_STRUCT_LENGTH * PARTY_LENGTH - SERIAL_PATCH_DATA_SIZE + 1
-	jr z, .got_size
-	ld b, 2 + PARTYMON_STRUCT_LENGTH * PARTY_LENGTH - SERIAL_PATCH_DATA_SIZE + 1
-.got_size
+	ld b, 2 + PARTYMON_STRUCT_LENGTH * PARTY_LENGTH - SERIAL_PATCH_LIST_LENGTH + 1
 	ld a, c
 	cp b
 	pop bc
@@ -657,176 +491,6 @@ endr
 .data2_done
 	ld a, SERIAL_PATCH_LIST_PART_TERMINATOR
 	ld [de], a
-	ret
-
-Link_PrepPartyData_Gen1:
-	ld de, wLinkData
-	ld a, SERIAL_PREAMBLE_BYTE
-	ld b, SERIAL_PREAMBLE_LENGTH
-.loop1
-	ld [de], a
-	inc de
-	dec b
-	jr nz, .loop1
-
-	ld hl, wPlayerName
-	ld bc, NAME_LENGTH
-	call CopyBytes
-
-	push de
-	ld hl, wPartyCount
-	ld a, [hli]
-	ld [de], a
-	inc de
-.loop2
-	ld a, [hli]
-	cp -1
-	jr z, .done_party
-	ld [wTempSpecies], a
-	push hl
-	push de
-	callfar ConvertMon_2to1
-	pop de
-	pop hl
-	ld a, [wTempSpecies]
-	ld [de], a
-	inc de
-	jr .loop2
-.done_party
-	ld [de], a
-	pop de
-	ld hl, 1 + PARTY_LENGTH + 1
-	add hl, de
-
-	ld d, h
-	ld e, l
-	ld hl, wPartyMon1Species
-	ld c, PARTY_LENGTH
-.mon_loop
-	push bc
-	call .ConvertPartyStruct2to1
-	ld bc, PARTYMON_STRUCT_LENGTH
-	add hl, bc
-	pop bc
-	dec c
-	jr nz, .mon_loop
-
-	ld hl, wPartyMonOTs
-	call .copy_ot_nicks
-
-	ld hl, wPartyMonNicknames
-.copy_ot_nicks
-	ld bc, PARTY_LENGTH * NAME_LENGTH
-	jp CopyBytes
-
-.ConvertPartyStruct2to1:
-	ld b, h
-	ld c, l
-	push de
-	push bc
-	ld a, [hl]
-	ld [wTempSpecies], a
-	callfar ConvertMon_2to1
-	pop bc
-	pop de
-	ld a, [wTempSpecies]
-	ld [de], a
-	inc de
-	ld hl, MON_HP
-	add hl, bc
-	ld a, [hli]
-	ld [de], a
-	inc de
-	ld a, [hl]
-	ld [de], a
-	inc de
-	xor a
-	ld [de], a
-	inc de
-	ld hl, MON_STATUS
-	add hl, bc
-	ld a, [hl]
-	ld [de], a
-	inc de
-	ld a, [bc]
-	cp MAGNEMITE
-	jr z, .steel_type
-	cp MAGNETON
-	jr nz, .skip_steel
-
-.steel_type
-	ld a, ELECTRIC
-	ld [de], a
-	inc de
-	ld [de], a
-	inc de
-	jr .done_steel
-
-.skip_steel
-	push bc
-	dec a
-	ld hl, BaseData + BASE_TYPES
-	ld bc, BASE_DATA_SIZE
-	call AddNTimes
-	ld bc, BASE_CATCH_RATE - BASE_TYPES
-	ld a, BANK(BaseData)
-	call FarCopyBytes
-	pop bc
-
-.done_steel
-	push bc
-	ld hl, MON_ITEM
-	add hl, bc
-	ld bc, MON_HAPPINESS - MON_ITEM
-	call CopyBytes
-	pop bc
-
-	ld hl, MON_LEVEL
-	add hl, bc
-	ld a, [hl]
-	ld [de], a
-	ld [wCurPartyLevel], a
-	inc de
-
-	push bc
-	ld hl, MON_MAXHP
-	add hl, bc
-	ld bc, MON_SAT - MON_MAXHP
-	call CopyBytes
-	pop bc
-
-	push de
-	push bc
-
-	ld a, [bc]
-	dec a
-	push bc
-	ld b, 0
-	ld c, a
-	ld hl, KantoMonSpecials
-	add hl, bc
-	ld a, BANK(KantoMonSpecials)
-	call GetFarByte
-	ld [wBaseSpecialAttack], a
-	pop bc
-
-	ld hl, MON_STAT_EXP - 1
-	add hl, bc
-	ld c, STAT_SATK
-	ld b, TRUE
-	predef CalcMonStatC
-
-	pop bc
-	pop de
-
-	ldh a, [hQuotient + 2]
-	ld [de], a
-	inc de
-	ldh a, [hQuotient + 3]
-	ld [de], a
-	inc de
-	ld h, b
-	ld l, c
 	ret
 
 Link_PrepPartyData_Gen2:
@@ -1001,7 +665,6 @@ Link_ConvertPartyStruct1to2:
 	push bc
 	push de
 	ld [wTempSpecies], a
-	callfar ConvertMon_1to2
 	pop de
 	pop bc
 	ld a, [wTempSpecies]
@@ -1045,7 +708,6 @@ Link_ConvertPartyStruct1to2:
 	push bc
 	ld a, [hli]
 	ld b, a
-	call TimeCapsule_ReplaceTeruSama
 	ld a, b
 	ld [de], a
 	inc de
@@ -1113,30 +775,6 @@ Link_ConvertPartyStruct1to2:
 	inc de
 	inc de
 	ret
-
-TimeCapsule_ReplaceTeruSama:
-	ld a, b
-	and a
-	ret z
-	push hl
-	ld hl, TimeCapsule_CatchRateItems
-.loop
-	ld a, [hli]
-	and a
-	jr z, .end
-	cp b
-	jr z, .found
-	inc hl
-	jr .loop
-
-.found
-	ld b, [hl]
-
-.end
-	pop hl
-	ret
-
-INCLUDE "data/items/catch_rate_items.asm"
 
 Link_CopyOTData:
 .loop
@@ -1966,9 +1604,6 @@ LinkTrade:
 	push bc
 	call Serial_PlaceWaitingTextAndSyncAndExchangeNybble
 	pop bc
-	ld a, [wLinkMode]
-	cp LINK_TIMECAPSULE
-	jr z, .save
 	ld a, b
 	and a
 	jr z, .save
@@ -1978,8 +1613,6 @@ LinkTrade:
 
 .save
 	farcall SaveAfterLinkTrade
-	farcall StubbedTrainerRankings_Trades
-	farcall BackupGSBallFlag
 	ld c, 40
 	call DelayFrames
 	hlcoord 0, 12
@@ -1992,9 +1625,6 @@ LinkTrade:
 	farcall Link_WaitBGMap
 	ld c, 50
 	call DelayFrames
-	ld a, [wLinkMode]
-	cp LINK_TIMECAPSULE
-	jp z, Gen2ToGen1LinkComms
 	jp Gen2ToGen2LinkComms
 
 InitTradeMenuDisplay_Delay:
@@ -2032,127 +1662,7 @@ SetTradeRoomBGPals:
 	call SetDefaultBGPAndOBP
 	ret
 
-PlaceTradeScreenTextbox: ; unreferenced
-	hlcoord 0, 0
-	ld b, 6
-	ld c, 18
-	call LinkTextboxAtHL
-	hlcoord 0, 8
-	ld b, 6
-	ld c, 18
-	call LinkTextboxAtHL
-	farcall PlaceTradePartnerNamesAndParty
-	ret
-
 INCLUDE "engine/movie/trade_animation.asm"
-
-CheckTimeCapsuleCompatibility:
-; Checks to see if your party is compatible with the Gen 1 games.
-; Returns the following in wScriptVar:
-; 0: Party is okay
-; 1: At least one Pokémon was introduced in Gen 2
-; 2: At least one Pokémon has a move that was introduced in Gen 2
-; 3: At least one Pokémon is holding mail
-
-; If any party Pokémon was introduced in the Gen 2 games, don't let it in.
-	ld hl, wPartySpecies
-	ld b, PARTY_LENGTH
-.loop
-	ld a, [hli]
-	cp -1
-	jr z, .checkitem
-	cp JOHTO_POKEMON
-	jr nc, .mon_too_new
-	dec b
-	jr nz, .loop
-
-; If any party Pokémon is holding mail, don't let it in.
-.checkitem
-	ld a, [wPartyCount]
-	ld b, a
-	ld hl, wPartyMon1Item
-.itemloop
-	push hl
-	push bc
-	ld d, [hl]
-	farcall ItemIsMail
-	pop bc
-	pop hl
-	jr c, .mon_has_mail
-	ld de, PARTYMON_STRUCT_LENGTH
-	add hl, de
-	dec b
-	jr nz, .itemloop
-
-; If any party Pokémon has a move that was introduced in the Gen 2 games, don't let it in.
-	ld hl, wPartyMon1Moves
-	ld a, [wPartyCount]
-	ld b, a
-.move_loop
-	ld c, NUM_MOVES
-.move_next
-	ld a, [hli]
-	cp STRUGGLE + 1
-	jr nc, .move_too_new
-	dec c
-	jr nz, .move_next
-	ld de, PARTYMON_STRUCT_LENGTH - NUM_MOVES
-	add hl, de
-	dec b
-	jr nz, .move_loop
-	xor a
-	jr .done
-
-.mon_too_new
-	ld [wNamedObjectIndex], a
-	call GetPokemonName
-	ld a, $1
-	jr .done
-
-.move_too_new
-	push bc
-	ld [wNamedObjectIndex], a
-	call GetMoveName
-	call CopyName1
-	pop bc
-	call GetIncompatibleMonName
-	ld a, $2
-	jr .done
-
-.mon_has_mail
-	call GetIncompatibleMonName
-	ld a, $3
-
-.done
-	ld [wScriptVar], a
-	ret
-
-GetIncompatibleMonName:
-; Calulate which pokemon is incompatible, and get that pokemon's name
-	ld a, [wPartyCount]
-	sub b
-	ld c, a
-	inc c
-	ld b, 0
-	ld hl, wPartyCount
-	add hl, bc
-	ld a, [hl]
-	ld [wNamedObjectIndex], a
-	call GetPokemonName
-	ret
-
-EnterTimeCapsule:
-	ld c, 10
-	call DelayFrames
-	ld a, $4
-	call Link_EnsureSync
-	ld c, 40
-	call DelayFrames
-	xor a
-	ldh [hVBlank], a
-	inc a ; LINK_TIMECAPSULE
-	ld [wLinkMode], a
-	ret
 
 WaitForOtherPlayerToExit:
 	ld c, 3
@@ -2209,20 +1719,6 @@ SetBitsForLinkTradeRequest:
 
 SetBitsForBattleRequest:
 	ld a, LINK_COLOSSEUM - 1
-	ld [wPlayerLinkAction], a
-	ld [wChosenCableClubRoom], a
-	ret
-
-SetBitsForTimeCapsuleRequest:
-	ld a, USING_INTERNAL_CLOCK
-	ldh [rSB], a
-	xor a
-	ldh [hSerialReceive], a
-	ld a, (0 << rSC_ON) | (0 << rSC_CLOCK)
-	ldh [rSC], a
-	ld a, (1 << rSC_ON) | (0 << rSC_CLOCK)
-	ldh [rSC], a
-	xor a ; LINK_TIMECAPSULE - 1
 	ld [wPlayerLinkAction], a
 	ld [wChosenCableClubRoom], a
 	ret
@@ -2476,16 +1972,6 @@ CheckBothSelectedSameRoom:
 .fail
 	xor a ; FALSE
 	ld [wScriptVar], a
-	ret
-
-TimeCapsule:
-	ld a, LINK_TIMECAPSULE
-	ld [wLinkMode], a
-	call DisableSpriteUpdates
-	callfar LinkCommunications
-	call EnableSpriteUpdates
-	xor a
-	ldh [hVBlank], a
 	ret
 
 TradeCenter:

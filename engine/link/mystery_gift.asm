@@ -1573,7 +1573,7 @@ InitMysteryGiftLayout:
 	ret
 
 MysteryGiftGFX:
-INCBIN "gfx/mystery_gift/mystery_gift.2bpp"
+	ret
 
 DoNameCardSwap:
 	call ClearTilemap

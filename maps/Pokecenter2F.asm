@@ -1,7 +1,6 @@
 	object_const_def
 	const POKECENTER2F_TRADE_RECEPTIONIST
 	const POKECENTER2F_BATTLE_RECEPTIONIST
-	const POKECENTER2F_TIME_CAPSULE_RECEPTIONIST
 	const POKECENTER2F_OFFICER
 
 Pokecenter2F_MapScripts:
@@ -9,7 +8,6 @@ Pokecenter2F_MapScripts:
 	scene_script Pokecenter2FCheckMysteryGiftScene,      SCENE_POKECENTER2F_CHECK_MYSTERY_GIFT
 	scene_script Pokecenter2FLeaveTradeCenterScene,      SCENE_POKECENTER2F_LEAVE_TRADE_CENTER
 	scene_script Pokecenter2FLeaveColosseumScene,        SCENE_POKECENTER2F_LEAVE_COLOSSEUM
-	scene_script Pokecenter2FLeaveTimeCapsuleScene,      SCENE_POKECENTER2F_LEAVE_TIME_CAPSULE
 
 	def_callbacks
 
@@ -29,10 +27,6 @@ Pokecenter2FLeaveTradeCenterScene:
 
 Pokecenter2FLeaveColosseumScene:
 	sdefer Script_LeftCableColosseum
-	end
-
-Pokecenter2FLeaveTimeCapsuleScene:
-	sdefer Script_LeftTimeCapsule
 	end
 
 Pokecenter2F_AppearMysteryGiftDeliveryGuy:
@@ -156,88 +150,6 @@ LinkReceptionistScript_Battle:
 	closetext
 	end
 
-Script_TimeCapsuleClosed:
-	faceplayer
-	opentext
-	writetext Text_TimeCapsuleClosed
-	waitbutton
-	closetext
-	end
-
-LinkReceptionistScript_TimeCapsule:
-	checkevent EVENT_MET_BILL
-	iftrue Script_TimeCapsuleClosed
-	checkflag ENGINE_TIME_CAPSULE
-	iftrue Script_TimeCapsuleClosed
-	special SetBitsForTimeCapsuleRequest
-	faceplayer
-	opentext
-	writetext Text_TimeCapsuleReceptionistIntro
-	yesorno
-	iffalse .Cancel
-	special CheckTimeCapsuleCompatibility
-	ifequal $1, .MonTooNew
-	ifequal $2, .MonMoveTooNew
-	ifequal $3, .MonHasMail
-	writetext Text_PleaseWait
-	special WaitForLinkedFriend
-	iffalse .FriendNotReady
-	writetext Text_MustSaveGame
-	yesorno
-	iffalse .DidNotSave
-	special TryQuickSave
-	iffalse .DidNotSave
-	writetext Text_PleaseWait
-	special CheckLinkTimeout_Receptionist
-	iffalse .LinkTimedOut
-	readmem wOtherPlayerLinkMode
-	iffalse .OK
-	special CheckBothSelectedSameRoom
-	writetext Text_IncompatibleRooms
-	special CloseLink
-	closetext
-	end
-
-.OK:
-	special EnterTimeCapsule
-	writetext Text_PleaseComeIn
-	waitbutton
-	closetext
-	warpcheck
-	end
-
-.FriendNotReady:
-	special WaitForOtherPlayerToExit
-	writetext YourFriendIsNotReadyText
-	closetext
-	end
-
-.LinkTimedOut:
-	writetext Text_LinkTimedOut
-	sjump .Cancel
-
-.DidNotSave:
-	writetext Text_PleaseComeAgain
-.Cancel:
-	special WaitForOtherPlayerToExit
-	closetext
-	end
-
-.MonTooNew:
-	writetext Text_RejectNewMon
-	closetext
-	end
-
-.MonMoveTooNew:
-	writetext Text_RejectMonWithNewMove
-	closetext
-	end
-
-.MonHasMail:
-	writetext Text_RejectMonWithMail
-	closetext
-	end
-
 Script_LeftCableTradeCenter:
 	special WaitForOtherPlayerToExit
 	scall Script_WalkOutOfLinkTradeRoom
@@ -253,24 +165,15 @@ Script_LeftCableColosseum:
 	end
 
 Script_WalkOutOfLinkTradeRoom:
-	applymovement POKECENTER2F_TRADE_RECEPTIONIST, Pokecenter2FMovementData_ReceptionistStepsRightLooksDown_Link
+	applymovement POKECENTER2F_TRADE_RECEPTIONIST, Pokecenter2FMovementData_ReceptionistStepsRightLooksDown
 	applymovement PLAYER, Pokecenter2FMovementData_PlayerTakesThreeStepsDown
 	applymovement POKECENTER2F_TRADE_RECEPTIONIST, Pokecenter2FMovementData_ReceptionistStepsRightAndDown
 	end
 
 Script_WalkOutOfLinkBattleRoom:
-	applymovement POKECENTER2F_BATTLE_RECEPTIONIST, Pokecenter2FMovementData_ReceptionistStepsRightLooksDown_Link
+	applymovement POKECENTER2F_BATTLE_RECEPTIONIST, Pokecenter2FMovementData_ReceptionistStepsRightLooksDown
 	applymovement PLAYER, Pokecenter2FMovementData_PlayerTakesThreeStepsDown
 	applymovement POKECENTER2F_BATTLE_RECEPTIONIST, Pokecenter2FMovementData_ReceptionistStepsRightAndDown
-	end
-
-Script_LeftTimeCapsule:
-	special WaitForOtherPlayerToExit
-	applymovement POKECENTER2F_TIME_CAPSULE_RECEPTIONIST, Pokecenter2FMovementData_ReceptionistStepsLeftLooksRight
-	applymovement PLAYER, Pokecenter2FMovementData_PlayerTakesTwoStepsDown
-	applymovement POKECENTER2F_TIME_CAPSULE_RECEPTIONIST, Pokecenter2FMovementData_ReceptionistStepsRightLooksDown_Time
-	setscene SCENE_POKECENTER2F_CHECK_MYSTERY_GIFT
-	setmapscene TIME_CAPSULE, SCENE_TIMECAPSULE_INITIALIZE
 	end
 
 Pokecenter2FLinkRecordSign:
@@ -318,28 +221,13 @@ Pokecenter2FMovementData_PlayerTakesThreeStepsDown:
 	step DOWN
 	step_end
 
-Pokecenter2FMovementData_PlayerTakesTwoStepsDown:
-	step DOWN
-	step DOWN
-	step_end
-
 Pokecenter2FMovementData_ReceptionistStepsRightAndDown:
 	slow_step RIGHT
 	slow_step DOWN
 	step_end
 
-Pokecenter2FMovementData_ReceptionistStepsRightLooksDown_Time:
-	slow_step RIGHT
-	turn_head DOWN
-	step_end
-
-Pokecenter2FMovementData_ReceptionistStepsRightLooksDown_Link:
+Pokecenter2FMovementData_ReceptionistStepsRightLooksDown:
 	slow_step UP
-	slow_step LEFT
-	turn_head RIGHT
-	step_end
-
-Pokecenter2FMovementData_ReceptionistStepsLeftLooksRight:
 	slow_step LEFT
 	turn_head RIGHT
 	step_end
@@ -365,18 +253,6 @@ Text_TradeReceptionistIntro:
 
 	para "Would you like to"
 	line "trade?"
-	done
-
-Text_TimeCapsuleReceptionistIntro:
-	text "Welcome to CABLE"
-	line "CLUB TIME CAPSULE."
-
-	para "You can travel to"
-	line "the past and trade"
-	cont "your #MON."
-
-	para "Would you like to"
-	line "trade across time?"
 	done
 
 YourFriendIsNotReadyText:
@@ -447,12 +323,6 @@ Text_RejectMonWithMail:
 	cont "has MAIL with you."
 	prompt
 
-Text_TimeCapsuleClosed:
-	text "I'm sorry--the"
-	line "TIME CAPSULE is"
-	cont "being adjusted."
-	done
-
 Text_MysteryGiftDeliveryGuy_Intro:
 	text "Hello! You're"
 	line "<PLAYER>, right?"
@@ -513,7 +383,6 @@ Pokecenter2F_MapEvents:
 	warp_event  0,  7, POKECENTER_2F, -1
 	warp_event  5,  0, TRADE_CENTER, 1
 	warp_event  9,  0, COLOSSEUM, 1
-	warp_event 13,  2, TIME_CAPSULE, 1
 
 	def_coord_events
 
@@ -523,5 +392,4 @@ Pokecenter2F_MapEvents:
 	def_object_events
 	object_event  5,  2, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, LinkReceptionistScript_Trade, -1
 	object_event  9,  2, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, LinkReceptionistScript_Battle, -1
-	object_event 13,  3, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, LinkReceptionistScript_TimeCapsule, -1
 	object_event  1,  1, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Pokecenter2FOfficerScript, EVENT_MYSTERY_GIFT_DELIVERY_GUY

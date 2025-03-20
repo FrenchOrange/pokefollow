@@ -102,4 +102,5 @@ DisplayAlreadyCaughtText:
 DummyPredef2F:
 DummyPredef38:
 DummyPredef39:
+DummyPredef42:
 	ret
