@@ -25,12 +25,6 @@ TrainerHouse1FYoungsterScript:
 TrainerHouse1FGentlemanScript:
 	jumptextfaceplayer TrainerHouse1FGentlemanText
 
-TrainerHouseSign1:
-	jumptext TrainerHouseSign1Text
-
-TrainerHouseSign2:
-	jumptext TrainerHouseSign2Text
-
 TrainerHouseIllegibleBook:
 	jumptext TrainerHouseIllegibleText
 
@@ -101,29 +95,6 @@ TrainerHouse1FGentlemanText:
 	cont "battles."
 	done
 
-TrainerHouseSign1Text:
-	text "Practice battles"
-	line "are held in the"
-
-	para "TRAINING HALL"
-	line "downstairs."
-
-	para "Skilled trainers"
-	line "are invited to"
-	cont "participate."
-	done
-
-TrainerHouseSign2Text:
-	text "There are no rules"
-	line "or regulations for"
-
-	para "practice matches."
-	line "Just like in field"
-
-	para "battles, anything"
-	line "goes!"
-	done
-
 TrainerHouseIllegibleText:
 	text "…What's this?"
 	line "A strategy memo?"
@@ -141,13 +112,10 @@ TrainerHouse1F_MapEvents:
 	def_warp_events
 	warp_event  2, 13, VIRIDIAN_CITY, 3
 	warp_event  3, 13, VIRIDIAN_CITY, 3
-	warp_event  8,  2, TRAINER_HOUSE_B1F, 1
 
 	def_coord_events
 
 	def_bg_events
-	bg_event  5,  0, BGEVENT_READ, TrainerHouseSign1
-	bg_event  7,  0, BGEVENT_READ, TrainerHouseSign2
 	bg_event  7, 10, BGEVENT_READ, TrainerHouseIllegibleBook
 
 	def_object_events
