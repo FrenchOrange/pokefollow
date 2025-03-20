@@ -35,7 +35,6 @@ DoMysteryGift:
 	call WaitBGMap
 
 	; Prepare the first of two messages for wMysteryGiftPartnerData
-	farcall StageDataForMysteryGift
 	call ClearMysteryGiftTrainer
 	ld a, 2
 	ld [wMysteryGiftMessageCount], a
@@ -101,7 +100,6 @@ DoMysteryGift:
 ; sent decoration
 	ld a, [wMysteryGiftPartnerWhichDeco]
 	ld c, a
-	farcall MysteryGiftGetDecoration
 	push bc
 	call CheckAndSetMysteryGiftDecorationAlreadyReceived
 	pop bc
@@ -120,7 +118,6 @@ DoMysteryGift:
 	call GetMysteryGiftBank
 	ld a, [wMysteryGiftPartnerWhichItem]
 	ld c, a
-	farcall MysteryGiftGetItem
 	ld a, c
 	ld [sBackupMysteryGiftItem], a
 	ld [wNamedObjectIndex], a
@@ -1887,7 +1884,5 @@ InitNameCardLayout:
 	dbsprite 14,  1, 4, 1, $07, 0
 
 CardTradeGFX:
-	ret
-
 CardTradeSpriteGFX:
 	ret
