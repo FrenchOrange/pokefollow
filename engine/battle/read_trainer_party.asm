@@ -19,13 +19,6 @@ ReadTrainerParty:
 	call ByteFill
 
 	ld a, [wOtherTrainerClass]
-	cp CAL
-	jr nz, .not_cal2
-	ld a, [wOtherTrainerID]
-	cp CAL2
-	jr z, .cal2
-	ld a, [wOtherTrainerClass]
-.not_cal2
 
 	dec a
 	ld c, a
@@ -71,14 +64,6 @@ ReadTrainerParty:
 
 .done
 	jp ComputeTrainerReward
-
-.cal2
-	ld a, BANK(sMysteryGiftTrainer)
-	call OpenSRAM
-	ld de, sMysteryGiftTrainer
-	call TrainerType2
-	call CloseSRAM
-	jr .done
 
 TrainerTypes:
 ; entries correspond to TRAINERTYPE_* constants
@@ -333,24 +318,6 @@ Battle_GetTrainerName::
 	ld c, a
 
 GetTrainerName::
-	ld a, c
-	cp CAL
-	jr nz, .not_cal2
-
-	ld a, BANK(sMysteryGiftTrainerHouseFlag)
-	call OpenSRAM
-	ld a, [sMysteryGiftTrainerHouseFlag]
-	and a
-	call CloseSRAM
-	jr z, .not_cal2
-
-	ld a, BANK(sMysteryGiftPartnerName)
-	call OpenSRAM
-	ld hl, sMysteryGiftPartnerName
-	call CopyTrainerName
-	jp CloseSRAM
-
-.not_cal2
 	dec c
 	push bc
 	ld b, 0

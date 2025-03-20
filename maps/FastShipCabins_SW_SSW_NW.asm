@@ -47,17 +47,8 @@ TrainerGuitaristClyde:
 
 .Script:
 	endifjustbattled
-	special CheckMobileAdapterStatusSpecial
-	iftrue .mobile
 	opentext
 	writetext GuitaristClydeAfterBattleText
-	waitbutton
-	closetext
-	end
-
-.mobile
-	opentext
-	writetext GuitaristClydeAfterBattleMobileText
 	waitbutton
 	closetext
 	end
@@ -69,7 +60,6 @@ FastShipBed:
 	closetext
 	special FadeOutToBlack
 	special ReloadSpritesNoPalettes
-	special StubbedTrainerRankings_Healings
 	special HealParty
 	playmusic MUSIC_HEAL
 	pause 60
@@ -180,7 +170,7 @@ GuitaristClydeBeatenText:
 	line "Total distortion!"
 	done
 
-GuitaristClydeAfterBattleMobileText:
+GuitaristClydeAfterBattleMobileText: ; unreferenced
 	text "I was going to"
 	line "make my debut at"
 	cont "the BATTLE TOWER…"

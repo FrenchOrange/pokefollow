@@ -91,7 +91,6 @@ DoMysteryGift:
 	jr z, .skip_append_save
 	call .SaveMysteryGiftTrainerName
 	farcall RestoreGSBallFlag
-	farcall StubbedTrainerRankings_MysteryGift
 	farcall BackupGSBallFlag
 .skip_append_save
 	ld a, [wMysteryGiftPartnerSentDeco]
@@ -191,7 +190,6 @@ DoMysteryGift:
 .CheckAlreadyGotFiveGiftsToday:
 	call GetMysteryGiftBank
 	ld a, [sNumDailyMysteryGiftPartnerIDs]
-	cp MAX_MYSTERY_GIFT_PARTNERS
 	jp CloseSRAM
 
 .CheckAlreadyGotAGiftFromThatPerson:
@@ -1519,7 +1517,6 @@ InitMysteryGiftLayout:
 	ld [hl], $41
 	call EnableLCD
 	call WaitBGMap
-	ld b, SCGB_MYSTERY_GIFT
 	call GetSGBLayout
 	call SetDefaultBGPAndOBP
 	ret

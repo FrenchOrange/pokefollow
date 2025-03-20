@@ -51,21 +51,7 @@ Crystal_WipeAttrmap:
 	call ByteFill
 	ret
 
-MG_Mobile_Layout_LoadPals:
-	ld de, wBGPals1
-	ld hl, Palette_MysteryGiftMobile
-	ld bc, 5 palettes
-	ld a, BANK(wBGPals1)
-	call FarCopyWRAM
-	ld de, wBGPals1 palette PAL_BG_TEXT
-	ld hl, Palette_TextBG7
-	ld bc, 1 palettes
-	ld a, BANK(wBGPals1)
-	call FarCopyWRAM
-	ret
-
 _CrystalCGB_MobileLayout0:
-	call MG_Mobile_Layout_LoadPals
 	call Crystal_WipeAttrmap
 	call MG_Mobile_Layout_CreatePalBoxes
 	farcall ApplyAttrmap
@@ -109,9 +95,6 @@ MG_Mobile_Layout_CreatePalBoxes:
 	call ByteFill
 	ret
 
-Palette_MysteryGiftMobile:
-	ret
-
 LoadOW_BGPal7::
 	ld hl, Palette_TextBG7
 	ld de, wBGPals1 palette PAL_BG_TEXT
@@ -124,7 +107,6 @@ Palette_TextBG7:
 INCLUDE "gfx/font/bg_text.pal"
 
 _CrystalCGB_MobileLayout1:
-	call MG_Mobile_Layout_LoadPals
 	ld de, wBGPals1 palette PAL_BG_TEXT
 	ld hl, .TextPalette
 	ld bc, 1 palettes

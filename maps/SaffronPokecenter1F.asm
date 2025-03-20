@@ -13,12 +13,7 @@ SaffronPokecenter1FNurseScript:
 	jumpstd PokecenterNurseScript
 
 SaffronPokecenter1FTeacherScript:
-	special CheckMobileAdapterStatusSpecial
-	iftrue .mobile
 	jumptextfaceplayer SaffronPokecenter1FTeacherText
-
-.mobile
-	jumptextfaceplayer SaffronPokecenter1FTeacherMobileText
 
 SaffronPokecenter1FFisherScript:
 	faceplayer
@@ -55,7 +50,7 @@ SaffronPokecenter1FTeacherText:
 	cont "then!"
 	done
 
-SaffronPokecenter1FTeacherMobileText:
+SaffronPokecenter1FTeacherMobileText: ; unreferenced
 	text "What are JOHTO's"
 	line "#MON CENTERS"
 	cont "like?"

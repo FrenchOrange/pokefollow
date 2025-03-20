@@ -5,21 +5,10 @@
 
 Pokecenter2F_MapScripts:
 	def_scene_scripts
-	scene_script Pokecenter2FCheckMysteryGiftScene,      SCENE_POKECENTER2F_CHECK_MYSTERY_GIFT
 	scene_script Pokecenter2FLeaveTradeCenterScene,      SCENE_POKECENTER2F_LEAVE_TRADE_CENTER
 	scene_script Pokecenter2FLeaveColosseumScene,        SCENE_POKECENTER2F_LEAVE_COLOSSEUM
 
 	def_callbacks
-
-Pokecenter2FCheckMysteryGiftScene:
-	special CheckMysteryGift
-	ifequal $0, .done
-	clearevent EVENT_MYSTERY_GIFT_DELIVERY_GUY
-	checkevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
-	iftrue .done
-	sdefer Pokecenter2F_AppearMysteryGiftDeliveryGuy
-.done
-	end
 
 Pokecenter2FLeaveTradeCenterScene:
 	sdefer Script_LeftCableTradeCenter
@@ -153,14 +142,12 @@ LinkReceptionistScript_Battle:
 Script_LeftCableTradeCenter:
 	special WaitForOtherPlayerToExit
 	scall Script_WalkOutOfLinkTradeRoom
-	setscene SCENE_POKECENTER2F_CHECK_MYSTERY_GIFT
 	setmapscene TRADE_CENTER, SCENE_TRADECENTER_INITIALIZE
 	end
 
 Script_LeftCableColosseum:
 	special WaitForOtherPlayerToExit
 	scall Script_WalkOutOfLinkBattleRoom
-	setscene SCENE_POKECENTER2F_CHECK_MYSTERY_GIFT
 	setmapscene COLOSSEUM, SCENE_COLOSSEUM_INITIALIZE
 	end
 
@@ -193,7 +180,7 @@ Pokecenter2FOfficerScript:
 	writetext Text_MysteryGiftDeliveryGuy_HereYouGo
 	promptbutton
 	waitsfx
-	special GetMysteryGiftItem
+; special GetMysteryGiftItem
 	iffalse .BagIsFull
 	itemnotify
 	setevent EVENT_MYSTERY_GIFT_DELIVERY_GUY

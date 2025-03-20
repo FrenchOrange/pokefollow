@@ -61,9 +61,9 @@ HandlePlayerStep:
 .Jumptable:
 	dw GetMovementPermissions
 	dw BufferScreen
-	dw .mobile
-	dw .fail2
 ; The rest are never used.  Ever.
+	dw .fail1
+	dw .fail1
 	dw .fail1
 	dw .fail1
 	dw .fail1
@@ -73,13 +73,6 @@ HandlePlayerStep:
 	dw .fail1
 
 .fail1
-	ret
-
-.mobile
-	farcall StubbedTrainerRankings_StepCount
-	ret
-
-.fail2
 	ret
 
 UpdatePlayerCoords:

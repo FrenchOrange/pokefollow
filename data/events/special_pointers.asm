@@ -22,9 +22,6 @@ SpecialsPointers::
 	add_special TradeCenter
 	add_special Colosseum
 	add_special CableClubCheckWhichChris
-	add_special CheckMysteryGift
-	add_special GetMysteryGiftItem
-	add_special UnlockMysteryGift
 
 ; Map events
 	add_special BugContestJudging
@@ -110,7 +107,6 @@ SpecialsPointers::
 	add_special PlayCurMonCry
 	add_special ProfOaksPCBoot
 	add_special GameboyCheck
-	add_special TrainerHouse
 	add_special PhotoStudio
 	add_special InitRoamMons
 	add_special FadeOutMusic
@@ -165,10 +161,8 @@ SpecialsPointers::
 	add_special Mobile_SelectThreeMons
 	add_special Function1037eb
 	add_special Function10383c
-	add_special StubbedTrainerRankings_Healings
 	add_special RefreshSprites
 	add_special Function1037c2
-	add_special CheckMobileAdapterStatusSpecial
 	add_special Function103780
 	add_special Function10387b
 	add_special AskRememberPassword

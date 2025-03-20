@@ -1686,7 +1686,6 @@ Function89a57:
 	ret
 
 Function89b00:
-	farcall MG_Mobile_Layout_LoadPals
 	ret
 
 Function89b07:

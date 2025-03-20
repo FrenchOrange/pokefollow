@@ -161,7 +161,6 @@ Function4a098:
 	call LoadStandardMenuHeader
 	farcall Function89de0
 	call Call_ExitMenu
-	call MG_Mobile_Layout_LoadPals
 	call Function4a485
 	pop bc
 	jp Function49f16

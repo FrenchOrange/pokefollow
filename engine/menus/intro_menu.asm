@@ -47,7 +47,6 @@ NewGame_ClearTilemapEtc:
 
 MysteryGift:
 	call UpdateTime
-	farcall DoMysteryGiftIfDayHasPassed
 	farcall DoMysteryGift
 	ret
 
@@ -74,13 +73,7 @@ NewGame:
 	jp FinishContinueFunction
 
 PlayerProfileSetup:
-	farcall CheckMobileAdapterStatus
-	jr c, .ok
 	farcall InitGender
-	ret
-.ok
-	ld c, 0
-	farcall InitMobileProfile
 	ret
 
 if DEF(_DEBUG)

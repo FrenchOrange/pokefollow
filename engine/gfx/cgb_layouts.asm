@@ -61,7 +61,6 @@ CGBLayoutJumptable:
 	dw _CGB_PlayerOrMonFrontpicPals
 	dw _CGB_TradeTube
 	dw _CGB_TrainerOrMonFrontpicPals
-	dw _CGB_MysteryGift
 	dw _CGB_Unused1E
 	assert_table_length NUM_SCGB_LAYOUTS
 
@@ -914,7 +913,4 @@ _CGB_TrainerOrMonFrontpicPals:
 	call WipeAttrmap
 	call ApplyAttrmap
 	call ApplyPals
-	ret
-
-_CGB_MysteryGift:
 	ret

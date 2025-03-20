@@ -5102,7 +5102,6 @@ Function102423:
 	call Function102921
 	ret nc
 	farcall SaveAfterLinkTrade
-	farcall StubbedTrainerRankings_Trades
 	farcall BackupGSBallFlag
 	ld hl, wcd4b
 	set 1, [hl]
@@ -7283,22 +7282,9 @@ MenuData_103648:
 	db "ケーブル@"
 
 Function103654:
-	farcall CheckMobileAdapterStatus
-	bit 7, c
-	jr nz, .asm_103666
-	ld hl, wcd2a
-	res 5, [hl]
-	ld c, $02
-	ret
-
-.asm_103666
-	ld hl, wcd2a
-	set 5, [hl]
-	ld c, $01
 	ret
 
 Mobile_SelectThreeMons:
-	farcall CheckMobileAdapterStatus
 	bit 7, c
 	jr z, .asm_10369b
 	call YesNoBox
@@ -7518,7 +7504,6 @@ MobileBattleNoTimeLeftForLinkingText:
 	text_end
 
 MobileCheckRemainingBattleTime:
-	farcall CheckMobileAdapterStatus
 	bit 7, c
 	jr nz, .ok
 	farcall MobileBattleGetRemainingTime
@@ -7564,11 +7549,4 @@ PickThreeMonForMobileBattleText:
 	text_end
 
 Function10387b:
-	farcall CheckMobileAdapterStatus
-	bit 7, c
-	ret nz
-	farcall MobileBattleGetRemainingTime
-	ld a, c
-	ld [wStringBuffer2], a
-	call JoyWaitAorB
 	ret

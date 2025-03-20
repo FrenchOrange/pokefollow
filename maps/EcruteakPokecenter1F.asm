@@ -58,12 +58,7 @@ EcruteakPokecenter1FNurseScript:
 	jumpstd PokecenterNurseScript
 
 EcruteakPokecenter1FPokefanMScript:
-	special CheckMobileAdapterStatusSpecial
-	iftrue .mobile
 	jumptextfaceplayer EcruteakPokecenter1FPokefanMText
-
-.mobile
-	jumptextfaceplayer EcruteakPokecenter1FPokefanMTextMobile
 
 EcruteakPokecenter1FCooltrainerFScript:
 	jumptextfaceplayer EcruteakPokecenter1FCooltrainerFText
@@ -126,7 +121,7 @@ EcruteakPokecenter1FPokefanMText:
 	cont "use their #MON."
 	done
 
-EcruteakPokecenter1FPokefanMTextMobile:
+EcruteakPokecenter1FPokefanMTextMobile: ; unreferenced
 	text "You must be hoping"
 	line "to battle more"
 

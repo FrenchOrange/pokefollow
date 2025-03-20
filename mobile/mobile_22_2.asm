@@ -32,20 +32,6 @@ Function8b342::
 .two
 	ret
 
-Function8b35d: ; unreferenced
-	ld a, h
-	cp d
-	ret nz
-	ld a, l
-	cp e
-	ret
-
-Function8b363: ; unreferenced
-	push bc
-	farcall CheckMobileAdapterStatus
-	pop bc
-	ret
-
 Function8b36c:
 	; [bc + (0:4)] = -1
 	push bc

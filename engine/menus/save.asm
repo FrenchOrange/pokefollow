@@ -26,7 +26,6 @@ SaveMenu:
 SaveAfterLinkTrade:
 	call PauseGameLogic
 	farcall StageRTCTimeForSave
-	farcall BackupMysteryGift
 	call SavePokemonData
 	call SaveChecksum
 	call SaveBackupPokemonData
@@ -92,7 +91,6 @@ MoveMonWOMail_InsertMon_SaveGame:
 	ld a, TRUE
 	ld [wSaveFileExists], a
 	farcall StageRTCTimeForSave
-	farcall BackupMysteryGift
 	call ValidateSave
 	call SaveOptions
 	call SavePlayerData
@@ -256,7 +254,6 @@ _SaveGameData:
 	ld a, TRUE
 	ld [wSaveFileExists], a
 	farcall StageRTCTimeForSave
-	farcall BackupMysteryGift
 	call ValidateSave
 	call SaveOptions
 	call SavePlayerData
@@ -350,7 +347,6 @@ ErasePreviousSave:
 	call EraseBoxes
 	call EraseHallOfFame
 	call EraseLinkBattleStats
-	call EraseMysteryGift
 	call SaveData
 	call EraseBattleTowerStatus
 	ld a, BANK(sStackTop)
@@ -368,15 +364,6 @@ EraseLinkBattleStats:
 	call OpenSRAM
 	ld hl, sLinkBattleStats
 	ld bc, sLinkBattleStatsEnd - sLinkBattleStats
-	xor a
-	call ByteFill
-	jp CloseSRAM
-
-EraseMysteryGift:
-	ld a, BANK(sBackupMysteryGiftItem)
-	call OpenSRAM
-	ld hl, sBackupMysteryGiftItem
-	ld bc, sBackupMysteryGiftItemEnd - sBackupMysteryGiftItem
 	xor a
 	call ByteFill
 	jp CloseSRAM
@@ -567,7 +554,6 @@ TryLoadSaveFile:
 	call LoadBox
 	farcall RestorePartyMonMail
 	farcall RestoreGSBallFlag
-	farcall RestoreMysteryGift
 	call ValidateBackupSave
 	call SaveBackupOptions
 	call SaveBackupPlayerData
@@ -584,7 +570,6 @@ TryLoadSaveFile:
 	call LoadBox
 	farcall RestorePartyMonMail
 	farcall RestoreGSBallFlag
-	farcall RestoreMysteryGift
 	call ValidateSave
 	call SaveOptions
 	call SavePlayerData
