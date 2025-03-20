@@ -218,31 +218,30 @@ ScriptCommandTable:
 	dw Script_askforphonenumber          ; 97
 	dw Script_phonecall                  ; 98
 	dw Script_hangup                     ; 99
-	dw Script_describedecoration         ; 9a
-	dw Script_fruittree                  ; 9b
-	dw Script_specialphonecall           ; 9c
-	dw Script_checkphonecall             ; 9d
-	dw Script_verbosegiveitem            ; 9e
-	dw Script_verbosegiveitemvar         ; 9f
-	dw Script_swarm                      ; a0
-	dw Script_halloffame                 ; a1
-	dw Script_credits                    ; a2
-	dw Script_warpfacing                 ; a3
-	dw Script_battletowertext            ; a4
-	dw Script_getlandmarkname            ; a5
-	dw Script_gettrainerclassname        ; a6
-	dw Script_getname                    ; a7
-	dw Script_wait                       ; a8
-	dw Script_checksave                  ; a9
-	dw Script_freezefollower             ; aa
-	dw Script_unfreezefollower           ; ab
-	dw Script_getfollowerdirection       ; ac
-	dw Script_followcry                  ; ad
-	dw Script_stowfollower               ; ae
-	dw Script_appearfollower             ; af
-	dw Script_appearfolloweronestep      ; b0
-	dw Script_savefollowercoords         ; b1
-	dw Script_silentstowfollower         ; b2
+	dw Script_fruittree                  ; 9a
+	dw Script_specialphonecall           ; 9b
+	dw Script_checkphonecall             ; 9c
+	dw Script_verbosegiveitem            ; 9d
+	dw Script_verbosegiveitemvar         ; 9e
+	dw Script_swarm                      ; 9f
+	dw Script_halloffame                 ; a0
+	dw Script_credits                    ; a1
+	dw Script_warpfacing                 ; a2
+	dw Script_battletowertext            ; a3
+	dw Script_getlandmarkname            ; a4
+	dw Script_gettrainerclassname        ; a5
+	dw Script_getname                    ; a6
+	dw Script_wait                       ; a7
+	dw Script_checksave                  ; a8
+	dw Script_freezefollower             ; a9
+	dw Script_unfreezefollower           ; aa
+	dw Script_getfollowerdirection       ; ab
+	dw Script_followcry                  ; ac
+	dw Script_stowfollower               ; ad
+	dw Script_appearfollower             ; ae
+	dw Script_appearfolloweronestep      ; af
+	dw Script_savefollowercoords         ; b0
+	dw Script_silentstowfollower         ; b1
 	assert_table_length NUM_EVENT_COMMANDS
 
 StartScript:
@@ -643,14 +642,6 @@ Script_askforphonenumber:
 .done
 	ld [wScriptVar], a
 	ret
-
-Script_describedecoration:
-	call GetScriptByte
-	ld b, a
-	farcall DescribeDecoration
-	ld h, d
-	ld l, e
-	jp ScriptJump
 
 Script_fruittree:
 	call GetScriptByte

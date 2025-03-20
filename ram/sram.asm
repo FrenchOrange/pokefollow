@@ -43,7 +43,7 @@ sMysteryGiftUnlocked:: db
 sBackupMysteryGiftItem:: db
 sNumDailyMysteryGiftPartnerIDs:: db
 sDailyMysteryGiftPartnerIDs::
-sMysteryGiftDecorationsReceived:: flag_array NUM_NON_TROPHY_DECOS
+sMysteryGiftDecorationsReceived::
 	ds 4
 sMysteryGiftTimer:: dw
 	ds 1

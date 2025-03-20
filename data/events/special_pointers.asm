@@ -33,7 +33,6 @@ SpecialsPointers::
 	add_special MagikarpHouseSign
 	add_special HealParty ; this is both a special and a predef
 	add_special PokemonCenterPC
-	add_special PlayersHousePC
 	add_special DayCareMan
 	add_special DayCareLady
 	add_special DayCareManOutside
@@ -77,8 +76,6 @@ SpecialsPointers::
 	add_special DayCareMon2
 	add_special SelectRandomBugContestContestants
 	add_special ActivateFishingSwarm
-	add_special ToggleMaptileDecorations
-	add_special ToggleDecorationsVisibility
 	add_special GiveShuckle
 	add_special ReturnShuckie
 	add_special BillsGrandfather

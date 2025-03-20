@@ -103,88 +103,6 @@ _CameToItsSensesText::
 	line "to its senses."
 	done
 
-_NothingToChooseText::
-	text "There's nothing to"
-	line "choose."
-	prompt
-
-_WhichSidePutOnText::
-	text "Which side do you"
-	line "want to put it on?"
-	done
-
-_WhichSidePutAwayText::
-	text "Which side do you"
-	line "want to put away?"
-	done
-
-_PutAwayTheDecoText::
-	text "Put away the"
-	line "@"
-	text_ram wStringBuffer3
-	text "."
-	prompt
-
-_NothingToPutAwayText::
-	text "There's nothing to"
-	line "put away."
-	prompt
-
-_SetUpTheDecoText::
-	text "Set up the"
-	line "@"
-	text_ram wStringBuffer3
-	text "."
-	prompt
-
-_PutAwayAndSetUpText::
-	text "Put away the"
-	line "@"
-	text_ram wStringBuffer3
-	text_start
-
-	para "and set up the"
-	line "@"
-	text_ram wStringBuffer4
-	text "."
-	prompt
-
-_AlreadySetUpText::
-	text "That's already set"
-	line "up."
-	prompt
-
-_LookTownMapText::
-	text "It's the TOWN MAP."
-	done
-
-_LookPikachuPosterText::
-	text "It's a poster of a"
-	line "cute PIKACHU."
-	done
-
-_LookClefairyPosterText::
-	text "It's a poster of a"
-	line "cute CLEFAIRY."
-	done
-
-_LookJigglypuffPosterText::
-	text "It's a poster of a"
-	line "cute JIGGLYPUFF."
-	done
-
-_LookAdorableDecoText::
-	text "It's an adorable"
-	line "@"
-	text_ram wStringBuffer3
-	text "."
-	done
-
-_LookGiantDecoText::
-	text "A giant doll! It's"
-	line "fluffy and cuddly."
-	done
-
 _MomHiHowAreYouText::
 	text "Hi, <PLAYER>!"
 	line "How are you?"
@@ -203,17 +121,6 @@ _MomBoughtWithYourMoneyText::
 _MomItsInPCText::
 	text "It's in your PC."
 	line "You'll like it!"
-	done
-
-_MomFoundADollText::
-	text "While shopping"
-	line "today, I saw this"
-	cont "adorable doll, so"
-	prompt
-
-_MomItsInYourRoomText::
-	text "It's in your room."
-	line "You'll love it!"
 	done
 
 _MonWasSentToText::

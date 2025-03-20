@@ -16,7 +16,7 @@ MomTriesToBuySomething::
 	ld [wWhichMomItemSet], a
 	call CheckBalance_MomItem2
 	ret nc
-	call Mom_GiveItemOrDoll
+	call Mom_GiveItem
 	ret nc
 	ld b, BANK(.Script)
 	ld de, .Script
@@ -128,18 +128,13 @@ MomBuysItem_DeductFunds:
 	farcall TakeMoney
 	ret
 
-Mom_GiveItemOrDoll:
+Mom_GiveItem:
 	call GetItemFromMom
 	ld de, 6 ; item type
 	add hl, de
 	ld a, [hli]
 	cp MOM_ITEM
 	jr z, .not_doll
-	ld a, [hl]
-	ld c, a
-	ld b, 1
-	farcall DecorationFlagAction_c
-	scf
 	ret
 
 .not_doll
@@ -157,9 +152,6 @@ Mom_GetScriptPointer:
 	add hl, de
 	ld a, [hli]
 	ld de, .ItemScript
-	cp MOM_ITEM
-	ret z
-	ld de, .DollScript
 	ret
 
 .ItemScript:
@@ -167,13 +159,6 @@ Mom_GetScriptPointer:
 	writetext MomFoundAnItemText
 	writetext MomBoughtWithYourMoneyText
 	writetext MomItsInPCText
-	end
-
-.DollScript:
-	writetext MomHiHowAreYouText
-	writetext MomFoundADollText
-	writetext MomBoughtWithYourMoneyText
-	writetext MomItsInYourRoomText
 	end
 
 GetItemFromMom:
@@ -220,20 +205,5 @@ MomItsInPCText:
 	text_far _MomItsInPCText
 	text_end
 
-MomFoundADollText:
-	text_far _MomFoundADollText
-	text_end
-
-MomItsInYourRoomText:
-	text_far _MomItsInYourRoomText
-	text_end
-
-
-DummyPredef3A_DummyData: ; unreferenced
-	db 0
-
 DummyPredef3A:
-	ret
-
-DummyPredef3A_DummyFunction: ; unreferenced
 	ret

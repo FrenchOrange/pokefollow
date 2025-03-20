@@ -189,8 +189,6 @@ endc
 
 	call InitializeNPCNames
 
-	farcall InitDecorations
-
 	farcall DeletePartyMonMail
 
 	farcall ClearGSBallFlag

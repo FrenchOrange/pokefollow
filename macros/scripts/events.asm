@@ -959,12 +959,6 @@ MACRO hangup
 	db hangup_command
 ENDM
 
-	const describedecoration_command ; $9a
-MACRO describedecoration
-	db describedecoration_command
-	db \1 ; byte
-ENDM
-
 	const fruittree_command ; $9b
 MACRO fruittree
 	db fruittree_command

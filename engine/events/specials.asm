@@ -117,14 +117,6 @@ DisplayLinkRecord:
 	call ExitAllMenus
 	ret
 
-PlayersHousePC:
-	xor a
-	ld [wScriptVar], a
-	farcall _PlayersHousePC
-	ld a, c
-	ld [wScriptVar], a
-	ret
-
 BugContestJudging:
 	farcall _BugContestJudging
 	ld a, b
