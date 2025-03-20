@@ -3041,7 +3041,7 @@ wLancesRoomSceneID::                              db
 wHallOfFameSceneID::                              db
 wRoute27SceneID::                                 db
 wElmsLabSceneID::                                 db
-wRedsHouse2FSceneID::                             db
+wPlayersHouse2FSceneID::                          db
 wPalletTownSceneID::                              db
 wRoute1SceneID::                                  db
 wPalletLakeSceneID::                              db

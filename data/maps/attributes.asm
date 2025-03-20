@@ -569,8 +569,8 @@ ENDM
 	map_attributes VermilionGym, VERMILION_GYM, $00, 0
 	map_attributes Route6SaffronGate, ROUTE_6_SAFFRON_GATE, $00, 0
 	map_attributes Route6UndergroundPathEntrance, ROUTE_6_UNDERGROUND_PATH_ENTRANCE, $00, 0
-	map_attributes RedsHouse1F, REDS_HOUSE_1F, $00, 0
-	map_attributes RedsHouse2F, REDS_HOUSE_2F, $00, 0
+	map_attributes PlayersHouse1F, PLAYERS_HOUSE_1F, $00, 0
+	map_attributes PlayersHouse2F, PLAYERS_HOUSE_2F, $00, 0
 	map_attributes BluesHouse, BLUES_HOUSE, $00, 0
 	map_attributes OaksLab, OAKS_LAB, $00, 0
 	map_attributes PewterNidoranSpeechHouse, PEWTER_NIDORAN_SPEECH_HOUSE, $00, 0
@@ -588,7 +588,7 @@ ENDM
 	map_attributes FastShipB1F, FAST_SHIP_B1F, $00, 0
 	map_attributes OlivinePortPassage, OLIVINE_PORT_PASSAGE, $00, 0
 	map_attributes VermilionPortPassage, VERMILION_PORT_PASSAGE, $00, 0
-	map_attributes MountMoonSquare, MOUNT_MOON_SQUARE, $2d, 0
+	map_attributes MountMoonSquare, MOUNT_MOON_SQUARE, $7a, 0
 	map_attributes MountMoonGiftShop, MOUNT_MOON_GIFT_SHOP, $00, 0
 	map_attributes TinTowerRoof, TIN_TOWER_ROOF, $00, 0
 	map_attributes IndigoPlateauPokecenter1F, INDIGO_PLATEAU_POKECENTER_1F, $00, 0
@@ -667,9 +667,9 @@ ENDM
 	map_attributes Route2Gate, ROUTE_2_GATE, $00, 0
 	map_attributes VictoryRoadGate, VICTORY_ROAD_GATE, $00, 0
 	map_attributes ElmsLab, ELMS_LAB, $00, 0
-	map_attributes PlayersHouse1F, PLAYERS_HOUSE_1F, $00, 0
-	map_attributes PlayersHouse2F, PLAYERS_HOUSE_2F, $00, 0
-	map_attributes PlayersNeighborsHouse, PLAYERS_NEIGHBORS_HOUSE, $00, 0
+	map_attributes JimmysHouse1F, JIMMYS_HOUSE_1F, $00, 0
+	map_attributes JimmysHouse2F, JIMMYS_HOUSE_2F, $00, 0
+	map_attributes JimmysNeighborsHouse, JIMMYS_NEIGHBORS_HOUSE, $00, 0
 	map_attributes ElmsHouse, ELMS_HOUSE, $00, 0
 	map_attributes Route26HealHouse, ROUTE_26_HEAL_HOUSE, $00, 0
 	map_attributes DayOfWeekSiblingsHouse, DAY_OF_WEEK_SIBLINGS_HOUSE, $00, 0

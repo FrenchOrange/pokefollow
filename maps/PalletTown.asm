@@ -10,7 +10,7 @@
 	const PALLETTOWN_SALESMAN
 	const PALLETTOWN_POKEFAN_F2
 	const PALLETTOWN_TWIN
-	const PALLETTOWN_REDS_MOM
+	const PALLETTOWN_PLAYERS_MOM
 	const PALLETTOWN_LASS
 	const PALLETTOWN_FISHER
 	const PALLETTOWN_DODRIO
@@ -82,13 +82,13 @@ MomStarterScene:
 	applymovement PALLETTOWN_SALESMAN, PalletTownCheerleader1ShovedAside
 	applymovement PALLETTOWN_POKEFAN_F2, PalletTownCheerleader2ShovedAside
 	applymovement PALLETTOWN_TWIN, PalletTownCheerleader1ShovedAside
-	applymovement PALLETTOWN_REDS_MOM, PalletTownCheerleader1ShovedAside
+	applymovement PALLETTOWN_PLAYERS_MOM, PalletTownCheerleader1ShovedAside
 	playsound SFX_TACKLE
 	waitsfx
 	turnobject PALLETTOWN_SALESMAN, UP
 	turnobject PALLETTOWN_TWIN, LEFT
 	turnobject PALLETTOWN_POKEFAN_F2, UP
-	turnobject PALLETTOWN_REDS_MOM, DOWN
+	turnobject PALLETTOWN_PLAYERS_MOM, DOWN
 	pause 25
 	opentext
 	writetext PalletTownUndiesText
@@ -101,7 +101,7 @@ MomStarterScene:
 	disappear PALLETTOWN_SALESMAN
 	disappear PALLETTOWN_POKEFAN_F2
 	disappear PALLETTOWN_TWIN
-	disappear PALLETTOWN_REDS_MOM
+	disappear PALLETTOWN_PLAYERS_MOM
 	clearevent EVENT_MOM_AND_OAK_INVISIBLE
 	setevent EVENT_GOT_PROPER_CLOTHES
 	setscene SCENE_PALLETTOWN_NOOP
@@ -116,35 +116,35 @@ MomStarterScene:
 
 .PlayerOnLeft:
 	applymovement FOLLOWER, PalletTownStarterLeft
-	applymovement PALLETTOWN_REDS_MOM, PalletTownMomMovesLeft
+	applymovement PALLETTOWN_PLAYERS_MOM, PalletTownMomMovesLeft
 
 	opentext
 	writetext PalletTownProudOfYouText
 	waitbutton
 	closetext
-	turnobject PALLETTOWN_REDS_MOM, DOWN
+	turnobject PALLETTOWN_PLAYERS_MOM, DOWN
 	opentext
 	writetext PalletTownGoingToMissYouText
 	waitbutton
 	closetext
-	turnobject PALLETTOWN_REDS_MOM, UP
+	turnobject PALLETTOWN_PLAYERS_MOM, UP
 	opentext
 	writetext PalletTownIPackedYouText
 	waitbutton
 	closetext
 	followcry
 	pause 15
-	turnobject PALLETTOWN_REDS_MOM, RIGHT
+	turnobject PALLETTOWN_PLAYERS_MOM, RIGHT
 	pause 15
-	applymovement PALLETTOWN_REDS_MOM, PalletTownMomMovesRight
+	applymovement PALLETTOWN_PLAYERS_MOM, PalletTownMomMovesRight
 	opentext
 	writetext PalletTownThatsYourPokemonText
 	waitbutton
 	closetext
 	turnobject FOLLOWER, RIGHT
 	pause 15
-	showemote EMOTE_QUESTION, PALLETTOWN_REDS_MOM, 15
-	turnobject PALLETTOWN_REDS_MOM, LEFT
+	showemote EMOTE_QUESTION, PALLETTOWN_PLAYERS_MOM, 15
+	turnobject PALLETTOWN_PLAYERS_MOM, LEFT
 	sjump .MomStarterSceneCont
 
 .PlayerOnRight:
@@ -154,29 +154,29 @@ MomStarterScene:
 	writetext PalletTownProudOfYouText
 	waitbutton
 	closetext
-	turnobject PALLETTOWN_REDS_MOM, DOWN
+	turnobject PALLETTOWN_PLAYERS_MOM, DOWN
 	opentext
 	writetext PalletTownGoingToMissYouText
 	waitbutton
 	closetext
-	turnobject PALLETTOWN_REDS_MOM, UP
+	turnobject PALLETTOWN_PLAYERS_MOM, UP
 	opentext
 	writetext PalletTownIPackedYouText
 	waitbutton
 	closetext
 	followcry
 	pause 15
-	turnobject PALLETTOWN_REDS_MOM, LEFT
+	turnobject PALLETTOWN_PLAYERS_MOM, LEFT
 	pause 15
-	applymovement PALLETTOWN_REDS_MOM, PalletTownMomMovesLeft
+	applymovement PALLETTOWN_PLAYERS_MOM, PalletTownMomMovesLeft
 	opentext
 	writetext PalletTownThatsYourPokemonText
 	waitbutton
 	closetext
 	turnobject FOLLOWER, LEFT
 	pause 15
-	showemote EMOTE_QUESTION, PALLETTOWN_REDS_MOM, 15
-	turnobject PALLETTOWN_REDS_MOM, RIGHT
+	showemote EMOTE_QUESTION, PALLETTOWN_PLAYERS_MOM, 15
+	turnobject PALLETTOWN_PLAYERS_MOM, RIGHT
 	sjump .MomStarterSceneCont
 
 PalletTownStarterLeft:
@@ -599,8 +599,8 @@ PalletTownFisherScript:
 PalletTownSign:
 	jumptext PalletTownSignText
 
-RedsHouseSign:
-	jumptext RedsHouseSignText
+PlayersHouseSign:
+	jumptext PlayersHouseSignText
 
 OaksLabSign:
 	jumptext OaksLabSignText
@@ -658,7 +658,7 @@ PalletTownSignText:
 	line "journey await!"
 	done
 
-RedsHouseSignText:
+PlayersHouseSignText:
 	text "KETCHUM RESIDENCE"
 	done
 
@@ -704,7 +704,7 @@ PalletTown_MapEvents:
 	db 0, 0 ; filler
 
 	def_warp_events
-	warp_event 32, 23, REDS_HOUSE_1F, 1
+	warp_event 32, 23, PLAYERS_HOUSE_1F, 1
 	warp_event 42, 23, BLUES_HOUSE, 1
 	warp_event 10,  5, OAKS_LAB, 1
 	warp_event 12, 23, PALLET_OAK_TV_SPEECH_HOUSE, 1
@@ -717,7 +717,7 @@ PalletTown_MapEvents:
 
 	def_bg_events
 	bg_event 33, 29, BGEVENT_READ, PalletTownSign
-	bg_event 31, 25, BGEVENT_READ, RedsHouseSign
+	bg_event 31, 25, BGEVENT_READ, PlayersHouseSign
 	bg_event 21, 12, BGEVENT_READ, OaksLabSign
 	bg_event 41, 25, BGEVENT_READ, BluesHouseSign
 
@@ -734,7 +734,7 @@ PalletTown_MapEvents:
 	object_event 16, 13, SPRITE_SALESMAN, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_PLAYER_CROWD
 	object_event 17, 15, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_PLAYER_CROWD
 	object_event 18, 15, SPRITE_TWIN, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_PLAYER_CROWD
-	object_event 19, 13, SPRITE_REDS_MOM, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_PLAYER_CROWD
+	object_event 19, 13, SPRITE_PLAYERS_MOM, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_PLAYER_CROWD
 
 	object_event 30, 27, SPRITE_LASS, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, PalletTownLassScript, -1
 	object_event 35, 32, SPRITE_FISHER, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 2, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, PalletTownFisherScript, -1

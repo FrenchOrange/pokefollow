@@ -18,9 +18,9 @@ OverworldSprites:
 	overworld_sprite ElderSpriteGFX, 12, WALKING_SPRITE, PAL_OW_BROWN
 	overworld_sprite ChrisPJSpriteGFX, 12, WALKING_SPRITE, PAL_OW_GREEN
 	overworld_sprite KurtSpriteGFX, 12, WALKING_SPRITE, PAL_OW_BLUE
-	overworld_sprite MomSpriteGFX, 12, WALKING_SPRITE, PAL_OW_RED
+	overworld_sprite JimmysMomSpriteGFX, 12, WALKING_SPRITE, PAL_OW_RED
 	overworld_sprite BlaineSpriteGFX, 12, WALKING_SPRITE, PAL_OW_BROWN
-	overworld_sprite RedsMomSpriteGFX, 12, WALKING_SPRITE, PAL_OW_BROWN
+	overworld_sprite PlayersMomSpriteGFX, 12, WALKING_SPRITE, PAL_OW_BROWN
 	overworld_sprite DaisySpriteGFX, 12, WALKING_SPRITE, PAL_OW_BLUE
 	overworld_sprite ElmSpriteGFX, 12, WALKING_SPRITE, PAL_OW_BROWN
 	overworld_sprite WillSpriteGFX, 12, STANDING_SPRITE, PAL_OW_RED
@@ -92,7 +92,7 @@ OverworldSprites:
 	overworld_sprite SurfLaprasSpriteGFX, 12, WALKING_SPRITE, PAL_OW_BLUE
 	overworld_sprite PokeBallSpriteGFX, 4, STILL_SPRITE, PAL_OW_RED
 	overworld_sprite PokedexSpriteGFX, 4, STILL_SPRITE, PAL_OW_BROWN
-	overworld_sprite PaperSpriteGFX, 4, STILL_SPRITE, PAL_OW_BROWN
+	overworld_sprite ReportSpriteGFX, 4, STILL_SPRITE, PAL_OW_BROWN
 	overworld_sprite VirtualBoySpriteGFX, 4, STILL_SPRITE, PAL_OW_RED
 	overworld_sprite BikeSpriteGFX, 4, STILL_SPRITE, PAL_OW_RED
 	overworld_sprite RockSpriteGFX, 4, STILL_SPRITE, PAL_OW_ROCK

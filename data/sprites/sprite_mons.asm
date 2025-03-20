@@ -51,6 +51,7 @@ SpriteMons:
 	db MURKROW
 	db GROWLITHE
 	db MOLTRES
+	db AMPHAROS
 	db HO_OH
 	db LUGIA
 	assert_table_length NUM_POKEMON_SPRITES

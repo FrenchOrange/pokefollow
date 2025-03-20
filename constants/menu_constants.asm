@@ -106,7 +106,6 @@ DEF NUM_PARTYMENUACTIONS EQU const_value
 	const NAME_MON
 	const NAME_PLAYER
 	const NAME_RIVAL
-	const NAME_MOM
 	const NAME_BOX
 DEF NUM_NAME_TYPES EQU const_value
 

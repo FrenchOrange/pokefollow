@@ -77,7 +77,6 @@ NamingScreen:
 	dw .Pokemon
 	dw .Player
 	dw .Rival
-	dw .Mom
 	dw .Box
 
 .Pokemon:
@@ -164,19 +163,6 @@ NamingScreen:
 
 .RivalNameString:
 	db "RIVAL'S NAME?@"
-
-.Mom:
-	ld de, MomSpriteGFX
-	ld b, BANK(MomSpriteGFX)
-	call .LoadSprite
-	hlcoord 5, 2
-	ld de, .MomNameString
-	call PlaceString
-	call .StoreSpriteIconParams
-	ret
-
-.MomNameString:
-	db "MOTHER'S NAME?@"
 
 .Box:
 	ld de, PokeBallSpriteGFX

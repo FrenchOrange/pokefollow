@@ -151,7 +151,7 @@ CianwoodLugiaSpeechHouse_Blocks:
 PokeSeersHouse_Blocks:
 ViridianNicknameSpeechHouse_Blocks:
 Route2NuggetHouse_Blocks:
-PlayersNeighborsHouse_Blocks:
+JimmysNeighborsHouse_Blocks:
 Route26HealHouse_Blocks:
 DayOfWeekSiblingsHouse_Blocks:
 Route27SandstormHouse_Blocks:
@@ -217,8 +217,8 @@ Route43_Blocks:
 Route39_Blocks:
 	INCBIN "maps/Route39.ablk"
 
-PlayersHouse1F_Blocks:
-	INCBIN "maps/PlayersHouse1F.ablk"
+JimmysHouse1F_Blocks:
+	INCBIN "maps/JimmysHouse1F.ablk"
 
 Route38EcruteakGate_Blocks:
 Route42EcruteakGate_Blocks:
@@ -714,8 +714,8 @@ OlivineCafe_Blocks:
 SafariZoneMainOffice_Blocks:
 	INCBIN "maps/OlivineCafe.ablk"
 
-PlayersHouse2F_Blocks:
-	INCBIN "maps/PlayersHouse2F.ablk"
+JimmysHouse2F_Blocks:
+	INCBIN "maps/JimmysHouse2F.ablk"
 
 SaffronMagnetTrainStation_Blocks:
 	INCBIN "maps/SaffronMagnetTrainStation.ablk"
@@ -751,11 +751,11 @@ TrainerHouse1F_Blocks:
 TrainerHouseB1F_Blocks:
 	INCBIN "maps/TrainerHouseB1F.ablk"
 
-RedsHouse1F_Blocks:
-	INCBIN "maps/RedsHouse1F.ablk"
+PlayersHouse1F_Blocks:
+	INCBIN "maps/PlayersHouse1F.ablk"
 
-RedsHouse2F_Blocks:
-	INCBIN "maps/RedsHouse2F.ablk"
+PlayersHouse2F_Blocks:
+	INCBIN "maps/PlayersHouse2F.ablk"
 
 BluesHouse_Blocks:
 	INCBIN "maps/BluesHouse.ablk"

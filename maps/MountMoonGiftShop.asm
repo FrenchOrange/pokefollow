@@ -1,8 +1,8 @@
 	object_const_def
-	const MOUNTMOONGIFTSHOP_GRAMPS1 ; morning only
-	const MOUNTMOONGIFTSHOP_GRAMPS2 ; day only
-	const MOUNTMOONGIFTSHOP_LASS1 ; morning only
-	const MOUNTMOONGIFTSHOP_LASS2 ; day only
+	const MOUNTMOONGIFTSHOP_GRAMPS1
+	const MOUNTMOONGIFTSHOP_GRAMPS2
+	const MOUNTMOONGIFTSHOP_LASS1
+	const MOUNTMOONGIFTSHOP_LASS2
 
 MountMoonGiftShop_MapScripts:
 	def_scene_scripts

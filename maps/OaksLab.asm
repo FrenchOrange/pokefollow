@@ -4,7 +4,7 @@
 	const OAKSLAB_OAK3
 	const OAKSLAB_OAK4
 	const OAKSLAB_OAK5
-	const OAKSLAB_REDS_MOM
+	const OAKSLAB_PLAYERS_MOM
 	const OAKSLAB_SCIENTIST1
 	const OAKSLAB_SCIENTIST2
 	const OAKSLAB_TEACHER
@@ -382,16 +382,16 @@ OakLabGoodbyeText:
 	cont "coming along."
 	done
 
-OaksLabRedsMomScript:
+OaksLabPlayersMomScript:
 	faceplayer
 	opentext
-	writetext OaksLabRedsMomText
+	writetext OaksLabPlayersMomText
 	waitbutton
 	closetext
-	turnobject OAKSLAB_REDS_MOM, LEFT
+	turnobject OAKSLAB_PLAYERS_MOM, LEFT
 	end
 
-OaksLabRedsMomText:
+OaksLabPlayersMomText:
 	text "MOM: Oh, <PLAYER>!"
 
 	para "I was paying OAK"
@@ -434,7 +434,7 @@ OaksLab_MapEvents:
 	object_event  7,  6, SPRITE_OAK, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, DAY, 0, OBJECTTYPE_SCRIPT, 0, ProfOakScript, EVENT_MOM_AND_OAK_INVISIBLE
 	object_event  4, 10, SPRITE_OAK, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, NITE, 0, OBJECTTYPE_SCRIPT, 0, ProfOakScript, EVENT_MOM_AND_OAK_INVISIBLE
 	object_event 24,  5, SPRITE_OAK, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, EVE, 0, OBJECTTYPE_SCRIPT, 0, ProfOakScript, EVENT_MOM_AND_OAK_INVISIBLE
-	object_event 27,  5, SPRITE_REDS_MOM, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, EVE, 0, OBJECTTYPE_SCRIPT, 0, OaksLabRedsMomScript, EVENT_MOM_AND_OAK_INVISIBLE
+	object_event 27,  5, SPRITE_PLAYERS_MOM, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, EVE, 0, OBJECTTYPE_SCRIPT, 0, OaksLabPlayersMomScript, EVENT_MOM_AND_OAK_INVISIBLE
 	object_event 44,  4, SPRITE_SCIENTIST, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OaksAssistant1Script, -1
 	object_event 51,  8, SPRITE_SCIENTIST, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, OaksAssistant2Script, -1
 	object_event 42,  7, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, OaksLabTeacherScript, -1

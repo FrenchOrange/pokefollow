@@ -86,3 +86,10 @@
 	tilecoll WALL, WINDOW, TRASHCAN, FLOOR ; 55
 	tilecoll WINDOW, WALL, FLOOR, TV ; 56
 	tilecoll WALL, WALL, WALL, BOOKSHELF ; 57
+	tilecoll WALL, FLOOR, WALL, FLOOR ; 58
+	tilecoll WALL, WALL, FLOOR, PC ; 59
+	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 5a
+	tilecoll WALL, WALL, FLOOR, FLOOR ; 5b
+	tilecoll WALL, WALL, TV, FLOOR ; 5c
+	tilecoll WALL, STAIRCASE, FLOOR, FLOOR ; 5d
+	tilecoll WALL, WALL, BOOKSHELF, FLOOR ; 5e
