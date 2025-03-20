@@ -1574,13 +1574,8 @@ GetVarAction:
 	farcall _GetVarAction
 	ret
 
-Script_checkver:
-	ld a, [.gs_version]
-	ld [wScriptVar], a
+Script_checkver: ; unused
 	ret
-
-.gs_version:
-	db GS_VERSION
 
 Script_getmonname:
 	call GetScriptByte

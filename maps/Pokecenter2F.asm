@@ -18,11 +18,6 @@ Pokecenter2FLeaveColosseumScene:
 	sdefer Script_LeftCableColosseum
 	end
 
-Pokecenter2F_AppearMysteryGiftDeliveryGuy:
-	appear POKECENTER2F_OFFICER
-	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
-	end
-
 LinkReceptionistScript_Trade:
 	opentext
 	writetext Text_TradeReceptionistIntro
@@ -172,32 +167,32 @@ Pokecenter2FLinkRecordSign:
 Pokecenter2FOfficerScript:
 	faceplayer
 	opentext
-	checkevent EVENT_MYSTERY_GIFT_DELIVERY_GUY
+	checkevent EVENT_POKECENTER_DELIVERY_GUY
 	iftrue .AlreadyGotGift
-	writetext Text_MysteryGiftDeliveryGuy_Intro
+	writetext Text_DeliveryGuy_Intro
 	yesorno
 	iffalse .RefusedGift
-	writetext Text_MysteryGiftDeliveryGuy_HereYouGo
+	writetext Text_DeliveryGuy_HereYouGo
 	promptbutton
 	waitsfx
-; special GetMysteryGiftItem
+; get item
 	iffalse .BagIsFull
 	itemnotify
-	setevent EVENT_MYSTERY_GIFT_DELIVERY_GUY
+	setevent EVENT_POKECENTER_DELIVERY_GUY
 .AlreadyGotGift:
-	writetext Text_MysteryGiftDeliveryGuy_Outro
+	writetext Text_DeliveryGuy_Outro
 	waitbutton
 	closetext
 	end
 
 .BagIsFull:
-	writetext Text_MysteryGiftDeliveryGuy_NoRoom
+	writetext Text_DeliveryGuy_NoRoom
 	waitbutton
 	closetext
 	end
 
 .RefusedGift:
-	writetext Text_MysteryGiftDeliveryGuy_SaidNo
+	writetext Text_DeliveryGuy_SaidNo
 	waitbutton
 	closetext
 	end
@@ -310,7 +305,7 @@ Text_RejectMonWithMail:
 	cont "has MAIL with you."
 	prompt
 
-Text_MysteryGiftDeliveryGuy_Intro:
+Text_DeliveryGuy_Intro:
 	text "Hello! You're"
 	line "<PLAYER>, right?"
 
@@ -318,16 +313,16 @@ Text_MysteryGiftDeliveryGuy_Intro:
 	line "thing for you."
 	done
 
-Text_MysteryGiftDeliveryGuy_HereYouGo:
+Text_DeliveryGuy_HereYouGo:
 	text "Here you go!"
 	done
 
-Text_MysteryGiftDeliveryGuy_Outro:
+Text_DeliveryGuy_Outro:
 	text "We hope to serve"
 	line "you again."
 	done
 
-Text_MysteryGiftDeliveryGuy_NoRoom:
+Text_DeliveryGuy_NoRoom:
 	text "Oh, you have no"
 	line "space for this."
 
@@ -338,7 +333,7 @@ Text_MysteryGiftDeliveryGuy_NoRoom:
 	line "to pick it up."
 	done
 
-Text_MysteryGiftDeliveryGuy_SaidNo:
+Text_DeliveryGuy_SaidNo:
 	text "No? That's very"
 	line "strange…"
 	done
@@ -379,4 +374,4 @@ Pokecenter2F_MapEvents:
 	def_object_events
 	object_event  5,  2, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, LinkReceptionistScript_Trade, -1
 	object_event  9,  2, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, LinkReceptionistScript_Battle, -1
-	object_event  1,  1, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Pokecenter2FOfficerScript, EVENT_MYSTERY_GIFT_DELIVERY_GUY
+	object_event  1,  1, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Pokecenter2FOfficerScript, EVENT_POKECENTER_DELIVERY_GUY

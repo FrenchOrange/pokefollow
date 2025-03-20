@@ -977,6 +977,7 @@ for n, 1, PARTY_LENGTH + 1
 wLinkPlayerPartyMon{d:n}Nickname:: ds MON_NAME_LENGTH
 endr
 
+; Time Capsule. Unused.
 NEXTU
 ; time capsule party data
 wTimeCapsulePlayerData::
@@ -1043,7 +1044,7 @@ wLinkReceivedMailEnd:: db
 
 SECTION UNION "Overworld Map", WRAM0
 
-; mystery gift data
+; Mystery Gift. Unused.
 wMysteryGiftStaging:: ds 80
 
 UNION
