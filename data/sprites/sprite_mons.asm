@@ -22,6 +22,7 @@ SpriteMons:
 	db TENTACOOL	; Doll
 	db UNOWN	; Doll
 	db PIDGEY       ; OW onward
+	db RATTATA
 	db SPEAROW
 	db SLOWPOKE
 	db SLOWBRO

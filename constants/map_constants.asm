@@ -435,7 +435,7 @@ ENDM
 	map_const ROUTE_22,                                    20,  9 ;  2
 	map_const VIRIDIAN_CITY,                               20, 18 ;  3
 	map_const VIRIDIAN_GYM,                                 5,  9 ;  4
-	map_const VIRIDIAN_NICKNAME_SPEECH_HOUSE,               4,  4 ;  5
+	map_const VIRIDIAN_NICKNAME_SPEECH_HOUSE,               5,  5 ;  5
 	map_const VIRIDIAN_SCHOOL,                              6,  6 ;  6
 	map_const VIRIDIAN_MART,                                6,  4 ;  7
 	map_const VIRIDIAN_POKECENTER_1F,                       5,  4 ;  8

@@ -136,6 +136,7 @@ DEF SPRITE_POKEMON EQU const_value
 	const SPRITE_TENTACOOL	; Doll
 	const SPRITE_UNOWN	; Doll
 	const SPRITE_PIDGEY     ; OW onward
+	const SPRITE_RATTATA
 	const SPRITE_SPEAROW
 	const SPRITE_SLOWPOKE
 	const SPRITE_SLOWBRO
