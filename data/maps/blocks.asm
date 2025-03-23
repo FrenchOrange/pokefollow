@@ -291,7 +291,8 @@ CherrygrovePokecenter1F_Blocks:
 	INCBIN "maps/Pokecenter1F.ablk"
 
 EarlsPokemonAcademy_Blocks:
-	INCBIN "maps/EarlsPokemonAcademy.ablk"
+ViridianSchool_Blocks:
+	INCBIN "maps/PokemonSchool.ablk"
 
 GoldenrodDeptStore1F_Blocks:
 CeladonDeptStore1F_Blocks:
@@ -733,9 +734,6 @@ SilphCo1F_Blocks:
 
 ViridianGym_Blocks:
 	INCBIN "maps/ViridianGym.ablk"
-
-TrainerHouse1F_Blocks:
-	INCBIN "maps/TrainerHouse1F.ablk"
 
 PlayersHouse1F_Blocks:
 	INCBIN "maps/PlayersHouse1F.ablk"

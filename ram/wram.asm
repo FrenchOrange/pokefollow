@@ -3028,7 +3028,7 @@ wViridianCitySceneID::                            db
 wPowerPlantSceneID::                              db
 wCeruleanGymSceneID::                             db
 wRoute25SceneID::                                 db
-wTrainerHouse1FSceneID::                          db
+wViridianSchoolSceneID::                          db
 wVictoryRoadGateSceneID::                         db
 wSaffronMagnetTrainStationSceneID::               db
 wRoute16GateSceneID::                             db
