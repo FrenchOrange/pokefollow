@@ -10,7 +10,8 @@
 Route1_MapScripts:
 	def_scene_scripts
 	scene_script Route1Noop1Scene, SCENE_ROUTE1_SPEAROW_FLOCK
-	scene_script Route1Noop2Scene, SCENE_ROUTE1_NOOP
+	scene_script Route1Noop2Scene, SCENE_ROUTE1_HOOH_APPEARS
+	scene_script Route1Noop3Scene, SCENE_ROUTE1_NOOP
 
 	def_callbacks
 
@@ -18,6 +19,9 @@ Route1Noop1Scene:
 	end
 
 Route1Noop2Scene:
+	end
+
+Route1Noop3Scene:
 	end
 
 Route1_SpearowCutscene:
@@ -57,7 +61,7 @@ Route1_SpearowCutscene:
 	special FadeOutMusic
 	pause 35
 	disappear ROUTE1_GYARADOS
-	warp PALLET_LAKE, 8, 13
+	warp PALLET_LAKE, 7, 12
 	end
 
 Route1HideObjectMovement:
@@ -90,6 +94,7 @@ PlayerInRiverMovement1:
 	step RIGHT
 	step RIGHT
 	step UP
+PlayerWalksUpMovement:
 	step UP
 	step_end
 
@@ -124,8 +129,43 @@ PlayerFallsOffWaterfallMovement:
 	step_end
 
 Route1_HoOhCutscene:
-	; walk back
+	applymovement PLAYER, PlayerWalksUpMovement
+	checkevent EVENT_MET_HOOH_ROUTE_1
+	iftrue HurryToViridianScene
+	appear ROUTE1_HO_OH
+	applymovement ROUTE1_HO_OH, HoOhFlyAcrossMovement
+	applymovement ROUTE1_HO_OH, HoOhFlyAcrossMovement
+	pause 15
+	cry HO_OH
+	disappear ROUTE1_HO_OH
+	pause 15
+	setevent EVENT_MET_HOOH_ROUTE_1
 	end
+
+HurryToViridianScene:
+	opentext
+	writetext Route1PlayerWalkBackText
+	waitbutton
+	closetext
+	end
+
+HoOhFlyAcrossMovement:
+	step RIGHT
+	step RIGHT
+	step RIGHT
+	step RIGHT
+	step RIGHT
+	step RIGHT
+	step_end
+
+Route1PlayerWalkBackText:
+	text "It's too dangerous"
+	line "to head back to"
+	cont "PALLET TOWN."
+
+	para "There should be a"
+	line "#MON CENTER in"
+	cont "VIRIDIAN CITY."
 
 Route1FruitTree:
 	fruittree FRUITTREE_ROUTE_1
@@ -147,10 +187,10 @@ Route1_MapEvents:
 
 	def_coord_events
 	coord_event  6, 18, SCENE_ROUTE1_SPEAROW_FLOCK, Route1_SpearowCutscene
-	coord_event 30, 29, SCENE_ROUTE1_SPEAROW_FLOCK, Route1_SpearowCutscene
-	coord_event 30, 28, SCENE_ROUTE1_SPEAROW_FLOCK, Route1_SpearowCutscene
-	coord_event 25, 10, SCENE_ROUTE1_SPEAROW_FLOCK, Route1_SpearowCutscene
-	coord_event 24, 10, SCENE_ROUTE1_SPEAROW_FLOCK, Route1_SpearowCutscene
+	coord_event 29, 28, SCENE_ROUTE1_SPEAROW_FLOCK, Route1_SpearowCutscene
+	coord_event 29, 29, SCENE_ROUTE1_SPEAROW_FLOCK, Route1_SpearowCutscene
+	coord_event 24, 11, SCENE_ROUTE1_HOOH_APPEARS, Route1_HoOhCutscene
+	coord_event 25, 11, SCENE_ROUTE1_HOOH_APPEARS, Route1_HoOhCutscene
 
 	def_bg_events
 	bg_event 23,  3, BGEVENT_READ, Route1Sign
@@ -162,4 +202,4 @@ Route1_MapEvents:
 	object_event 18, 30, SPRITE_SPEAROW, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_INVISIBLE_NPC
 	object_event 19, 29, SPRITE_SPEAROW, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_INVISIBLE_NPC
 	object_event 18, 29, SPRITE_SPEAROW, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_INVISIBLE_NPC
-	object_event 34,  7, SPRITE_HO_OH, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_INVISIBLE_NPC
+	object_event 32,  7, SPRITE_HO_OH, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_INVISIBLE_NPC
