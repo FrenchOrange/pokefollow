@@ -102,7 +102,7 @@ CollisionPermissionTable::
 	db WALL_TILE         ; 62
 	db LAND_TILE         ; 63
 	db LAND_TILE         ; COLL_64
-	db LAND_TILE         ; COLL_65
+	db WALL_TILE         ; COLL_MART
 	db LAND_TILE         ; 66
 	db LAND_TILE         ; 67
 	db LAND_TILE         ; COLL_PIT_68

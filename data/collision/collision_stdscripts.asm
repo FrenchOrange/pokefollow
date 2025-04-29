@@ -20,4 +20,5 @@ TileCollisionStdScripts:
 	stdcoll COLL_COMPUTER,         ComputerScript
 	stdcoll COLL_BOOKSHELF_HARD,   DifficultBookshelfScript
 	stdcoll COLL_STOVE,            StoveScript
+	stdcoll COLL_MART,             MartSignScript
 	db -1 ; end

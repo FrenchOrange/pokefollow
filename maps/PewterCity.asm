@@ -57,9 +57,6 @@ PewterCityWelcomeSign:
 PewterCityPokecenterSign:
 	jumpstd PokecenterSignScript
 
-PewterCityMartSign:
-	jumpstd MartSignScript
-
 PewterCityFruitTree1:
 	fruittree FRUITTREE_PEWTER_CITY_1
 
@@ -169,7 +166,6 @@ PewterCity_MapEvents:
 	bg_event 33, 19, BGEVENT_READ, PewterCityMtMoonGiftShopSign
 	bg_event 19, 29, BGEVENT_READ, PewterCityWelcomeSign
 	bg_event 14, 25, BGEVENT_READ, PewterCityPokecenterSign
-	bg_event 24, 17, BGEVENT_READ, PewterCityMartSign
 
 	def_object_events
 	object_event 19, 11, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, PewterCityCooltrainerFScript, -1

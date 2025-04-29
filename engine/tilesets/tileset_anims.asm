@@ -58,6 +58,10 @@ TilesetKantoAnim:
 	dw wTileAnimBuffer, ScrollTileDown
 	dw wTileAnimBuffer, ScrollTileDown
 	dw vTiles2 tile $37, WriteTileFromAnimBuffer
+	dw ReefFrames1, AnimateWhirlpoolTile
+	dw ReefFrames2, AnimateWhirlpoolTile
+	dw ReefFrames3, AnimateWhirlpoolTile
+	dw ReefFrames4, AnimateWhirlpoolTile
 	dw NULL,  StandingTileFrame8
 	dw NULL,  DoneTileAnimation
 
@@ -757,12 +761,14 @@ AnimateWhirlpoolTile:
 	ld d, [hl]
 	inc hl
 
-; A cycle of 4 frames, updating every tick
+; A cycle of 4 frames, updating every other tick
 	ld a, [wTileAnimationTimer]
-	and %11
+	and %110
 
 ; hl = the source tile frames + a * 16
-	swap a
+	add a
+	add a
+	add a
 	add [hl]
 	inc hl
 	ld h, [hl]
@@ -909,3 +915,13 @@ WhirlpoolTiles1: INCBIN "gfx/tilesets/whirlpool/1.2bpp"
 WhirlpoolTiles2: INCBIN "gfx/tilesets/whirlpool/2.2bpp"
 WhirlpoolTiles3: INCBIN "gfx/tilesets/whirlpool/3.2bpp"
 WhirlpoolTiles4: INCBIN "gfx/tilesets/whirlpool/4.2bpp"
+
+ReefFrames1: dw vTiles2 tile $42, ReefTiles1
+ReefFrames2: dw vTiles2 tile $43, ReefTiles2
+ReefFrames3: dw vTiles2 tile $52, ReefTiles3
+ReefFrames4: dw vTiles2 tile $53, ReefTiles4
+
+ReefTiles1: INCBIN "gfx/tilesets/reef/1.2bpp"
+ReefTiles2: INCBIN "gfx/tilesets/reef/2.2bpp"
+ReefTiles3: INCBIN "gfx/tilesets/reef/3.2bpp"
+ReefTiles4: INCBIN "gfx/tilesets/reef/4.2bpp"

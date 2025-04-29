@@ -44,9 +44,6 @@ NoLitteringSign:
 FuchsiaCityPokecenterSign:
 	jumpstd PokecenterSignScript
 
-FuchsiaCityMartSign:
-	jumpstd MartSignScript
-
 FuchsiaCityFruitTree:
 	fruittree FRUITTREE_FUCHSIA_CITY
 
@@ -148,7 +145,6 @@ FuchsiaCity_MapEvents:
 	bg_event 17,  5, BGEVENT_READ, SafariZoneClosedSign
 	bg_event 13, 15, BGEVENT_READ, NoLitteringSign
 	bg_event 20, 27, BGEVENT_READ, FuchsiaCityPokecenterSign
-	bg_event  6, 13, BGEVENT_READ, FuchsiaCityMartSign
 
 	def_object_events
 	object_event 23, 18, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, FuchsiaCityYoungster, -1

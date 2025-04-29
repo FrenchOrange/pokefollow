@@ -35,9 +35,6 @@ KantoRadioStationSign:
 LavenderPokecenterSignText:
 	jumpstd PokecenterSignScript
 
-LavenderMartSignText:
-	jumpstd MartSignScript
-
 LavenderTownPokefanMText:
 	text "That's quite some"
 	line "building, eh?"
@@ -102,7 +99,6 @@ LavenderTown_MapEvents:
 	bg_event 11,  3, BGEVENT_READ, LavenderTownSign
 	bg_event 15,  7, BGEVENT_READ, KantoRadioStationSign
 	bg_event  6,  5, BGEVENT_READ, LavenderPokecenterSignText
-	bg_event  2,  5, BGEVENT_READ, LavenderMartSignText
 
 	def_object_events
 	object_event 12,  7, SPRITE_POKEFAN_M, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, LavenderTownPokefanMScript, -1

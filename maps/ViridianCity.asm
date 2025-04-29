@@ -82,9 +82,6 @@ ViridianSchoolSign:
 ViridianCityPokecenterSign:
 	jumpstd PokecenterSignScript
 
-ViridianCityMartSign:
-	jumpstd MartSignScript
-
 ViridianCityCoffeeGrampsQuestionText:
 	text "Hey, kid! I just"
 	line "had a double shot"
@@ -229,7 +226,6 @@ ViridianCity_MapEvents:
 	bg_event 19,  1, BGEVENT_READ, ViridianCityWelcomeSign
 	bg_event 21, 15, BGEVENT_READ, ViridianSchoolSign
 	bg_event 24, 25, BGEVENT_READ, ViridianCityPokecenterSign
-	bg_event 30, 19, BGEVENT_READ, ViridianCityMartSign
 
 	def_object_events
 	object_event 18,  5, SPRITE_GRAMPS, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ViridianCityCoffeeGramps, -1

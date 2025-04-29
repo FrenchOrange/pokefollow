@@ -62,7 +62,7 @@ DEF COLL_5B                EQU $5b ; garbage
 DEF COLL_PIT               EQU $60
 DEF COLL_VIRTUAL_BOY       EQU $61 ; garbage
 DEF COLL_64                EQU $64 ; garbage
-DEF COLL_65                EQU $65 ; garbage
+DEF COLL_MART              EQU $65
 DEF COLL_PIT_68            EQU $68 ; unused
 DEF COLL_WARP_CARPET_DOWN  EQU $70
 DEF COLL_DOOR              EQU $71

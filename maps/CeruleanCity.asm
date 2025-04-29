@@ -141,9 +141,6 @@ CeruleanLockedDoor:
 CeruleanCityPokecenterSign:
 	jumpstd PokecenterSignScript
 
-CeruleanCityMartSign:
-	jumpstd MartSignScript
-
 CeruleanCityHiddenBerserkGene:
 	hiddenitem BERSERK_GENE, EVENT_FOUND_BERSERK_GENE_IN_CERULEAN_CITY
 
@@ -294,7 +291,6 @@ CeruleanCity_MapEvents:
 	bg_event 23,  7, BGEVENT_READ, CeruleanCapeSign
 	bg_event 14, 29, BGEVENT_READ, CeruleanLockedDoor
 	bg_event 20, 21, BGEVENT_READ, CeruleanCityPokecenterSign
-	bg_event 26, 29, BGEVENT_READ, CeruleanCityMartSign
 	bg_event  2, 12, BGEVENT_ITEM, CeruleanCityHiddenBerserkGene
 
 	def_object_events

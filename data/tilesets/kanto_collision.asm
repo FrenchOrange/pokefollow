@@ -187,7 +187,7 @@
 	tilecoll WALL, WALL, WALL, WALL ; ba
 	tilecoll WALL, WALL, WALL, WALL ; bb
 	tilecoll WALL, WALL, WALL, DOOR ; bc
-	tilecoll WALL, WALL, WALL, WALL ; bd
-	tilecoll WALL, WALL, WALL, WALL ; be
+	tilecoll WALL, WALL, MART, MART ; bd
+	tilecoll WALL, WALL, WALL, DOOR ; be
 	tilecoll WALL, WALL, WALL, WALL ; bf
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; c0
