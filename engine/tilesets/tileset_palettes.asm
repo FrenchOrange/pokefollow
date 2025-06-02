@@ -122,15 +122,28 @@ HousePalette:
 INCLUDE "gfx/tilesets/house.pal"
 
 LoadMartPalette:
+	ld a, [wMapNumber]
+	cp MAP_PEWTER_MUSEUM
+	jr z, .museum
 	ld a, BANK(wBGPals1)
 	ld de, wBGPals1
 	ld hl, MartPalette
 	ld bc, 8 palettes
 	call FarCopyWRAM
 	ret
+.museum
+	ld a, BANK(wBGPals1)
+	ld de, wBGPals1
+	ld hl, MuseumPalette
+	ld bc, 8 palettes
+	call FarCopyWRAM
+	ret
 
 MartPalette:
 INCLUDE "gfx/tilesets/mart.pal"
+
+MuseumPalette:
+INCLUDE "gfx/tilesets/museum.pal"
 
 LoadRadioTowerPalette:
 	ld a, BANK(wBGPals1)

@@ -886,4 +886,7 @@ PalletLake_Blocks:
 OakCorral_Blocks:
 	INCBIN "maps/OakCorral.ablk"
 
+PewterMuseum_Blocks:
+	INCBIN "maps/PewterMuseum.ablk"
+
 ENDSECTION

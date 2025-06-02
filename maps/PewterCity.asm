@@ -13,6 +13,8 @@ PewterCity_MapScripts:
 
 PewterCityFlypointCallback:
 	setflag ENGINE_FLYPOINT_PEWTER
+	clearevent EVENT_PEWTER_MUSEUM_BOUGHT_TICKET
+	setmapscene PEWTER_MUSEUM, SCENE_DEFAULT
 	endcallback
 
 PewterCityCooltrainerFScript:
@@ -126,12 +128,8 @@ PewterGymSignText:
 	done
 
 PewterMuseumSignText:
-	text "There's a notice"
-	line "here…"
-
-	para "PEWTER MUSEUM OF"
-	line "SCIENCE is closed"
-	cont "for renovations…"
+	text "PEWTER MUSEUM"
+	line "OF SCIENCE"
 	done
 
 PewterCityMtMoonGiftShopSignText:
@@ -152,17 +150,18 @@ PewterCity_MapEvents:
 
 	def_warp_events
 	warp_event 29, 13, PEWTER_NIDORAN_SPEECH_HOUSE, 1
-	warp_event 16, 17, PEWTER_GYM, 1
+	warp_event 14,  7, PEWTER_GYM, 1
 	warp_event 23, 17, PEWTER_MART, 2
 	warp_event 13, 25, PEWTER_POKECENTER_1F, 1
 	warp_event  7, 29, PEWTER_SNOOZE_SPEECH_HOUSE, 1
+	warp_event  8, 17, PEWTER_MUSEUM, 1
 
 	def_coord_events
 
 	def_bg_events
 	bg_event 25, 23, BGEVENT_READ, PewterCitySign
-	bg_event 11, 17, BGEVENT_READ, PewterGymSign
-	bg_event 15,  9, BGEVENT_READ, PewterMuseumSign
+	bg_event 15,  9, BGEVENT_READ, PewterGymSign
+	bg_event  5, 17, BGEVENT_READ, PewterMuseumSign
 	bg_event 33, 19, BGEVENT_READ, PewterCityMtMoonGiftShopSign
 	bg_event 19, 29, BGEVENT_READ, PewterCityWelcomeSign
 	bg_event 14, 25, BGEVENT_READ, PewterCityPokecenterSign

@@ -688,3 +688,4 @@ ENDM
 	map_attributes PalletOakTVSpeechHouse, PALLET_OAK_TV_SPEECH_HOUSE, $00, 0
 	map_attributes PalletDodrioHouse, PALLET_DODRIO_HOUSE, $00, 0
 	map_attributes PalletEmptyHouse, PALLET_EMPTY_HOUSE, $00, 0
+	map_attributes PewterMuseum, PEWTER_MUSEUM, $00, 0
