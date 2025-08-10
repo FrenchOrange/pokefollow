@@ -190,4 +190,3 @@
 	tilecoll WALL, WALL, MART, MART ; bd
 	tilecoll WALL, WALL, WALL, DOOR ; be
 	tilecoll WALL, WALL, WALL, WALL ; bf
-	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; c0

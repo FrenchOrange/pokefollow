@@ -25,6 +25,22 @@ Route1Noop3Scene:
 	end
 
 Route1_SpearowCutscene:
+	pause 5
+	turnobject PLAYER, DOWN
+	showemote EMOTE_QUESTION, PLAYER, 15
+	showemote EMOTE_SAD, FOLLOWER, 15
+	pause 5
+	applymovement FOLLOWER, Route1FollowerRun1
+	applymovement PLAYER, Route1PlayerSpin
+	playsound SFX_GRASS_RUSTLE
+	waitsfx
+	pause 15
+	end
+
+
+
+
+TEMP:
 	; early on follower runs up a tree and player has to talk to them to continue (wildoff?)
 	; init: follower runs into tree?
 
@@ -61,8 +77,30 @@ Route1_SpearowCutscene:
 	special FadeOutMusic
 	pause 35
 	disappear ROUTE1_GYARADOS
-	warp PALLET_LAKE, 7, 12
+	warp PALLET_LAKE, 8, 18
 	end
+
+Route1FollowerRun1:
+	big_step UP
+	big_step UP
+	turn_head DOWN
+	step_end
+
+Route1FollowerRun2:
+	big_step UP
+	big_step UP
+	big_step UP
+	big_step UP
+	step_end
+
+Route1PlayerSpin:
+	turn_head LEFT
+	turn_head UP
+	turn_head RIGHT
+	turn_head DOWN
+	turn_head LEFT
+	turn_head UP
+	step_end
 
 Route1HideObjectMovement:
 	hide_object
@@ -186,7 +224,12 @@ Route1_MapEvents:
 	def_warp_events
 
 	def_coord_events
-	coord_event  6, 18, SCENE_ROUTE1_SPEAROW_FLOCK, Route1_SpearowCutscene
+	coord_event 20, 47, SCENE_ROUTE1_SPEAROW_FLOCK, Route1_SpearowCutscene
+	coord_event 21, 47, SCENE_ROUTE1_SPEAROW_FLOCK, Route1_SpearowCutscene
+	coord_event 22, 47, SCENE_ROUTE1_SPEAROW_FLOCK, Route1_SpearowCutscene
+	coord_event 23, 47, SCENE_ROUTE1_SPEAROW_FLOCK, Route1_SpearowCutscene
+	coord_event 25, 47, SCENE_ROUTE1_SPEAROW_FLOCK, Route1_SpearowCutscene
+
 	coord_event 29, 28, SCENE_ROUTE1_SPEAROW_FLOCK, Route1_SpearowCutscene
 	coord_event 29, 29, SCENE_ROUTE1_SPEAROW_FLOCK, Route1_SpearowCutscene
 	coord_event 24, 11, SCENE_ROUTE1_HOOH_APPEARS, Route1_HoOhCutscene

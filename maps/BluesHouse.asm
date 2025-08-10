@@ -1,6 +1,8 @@
 	object_const_def
 	const BLUESHOUSE_DAISY1
 	const BLUESHOUSE_DAISY2
+	const BLUESHOUSE_SQUIRTLE
+	const BLUESHOUSE_BOOK
 
 BluesHouse_MapScripts:
 	def_scene_scripts
@@ -158,6 +160,30 @@ DaisyCantGroomEggText:
 	cont "groom an EGG."
 	done
 
+RivalSquirtleDollScript:
+	jumptext RivalSquirtleDollText
+
+RivalSquirtleDollText:
+	text "A truly well-loved"
+	line "SQUIRTLE doll."
+	done
+
+RivalBookScript:
+	jumptext RivalBookScriptText
+
+RivalBookScriptText:
+	text "A book on #MON"
+	line "with some passages"
+	cont "highlighted."
+
+	para "A BLASTOISE eraser"
+	line "serves as a make-"
+	cont "shift bookmark."
+
+	para "Talk about an"
+	line "over-achiever…"
+	done
+
 BluesHouseBookshelf:
 	jumptext BluesHouseBookshelfText
 
@@ -184,3 +210,5 @@ BluesHouse_MapEvents:
 	def_object_events
 	object_event  1,  6, SPRITE_DAISY, SPRITEMOVEDATA_WALK_UP_DOWN, 1, 1, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DaisyScript, EVENT_GOT_STARTER_FROM_OAK
 	object_event  3,  5, SPRITE_DAISY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, DaisyTeaScript, EVENT_MOM_AND_OAK_INVISIBLE
+	object_event 22,  4, SPRITE_SQUIRTLE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, RivalSquirtleDollScript, -1
+	object_event 23,  6, SPRITE_POKEDEX, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, RivalBookScript, -1

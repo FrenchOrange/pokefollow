@@ -2,7 +2,9 @@
 	const VIRIDIANCITY_GRAMPS1
 	const VIRIDIANCITY_GRAMPS2
 	const VIRIDIANCITY_FISHER
-	const VIRIDIANCITY_YOUNGSTER
+	const VIRIDIANCITY_YOUNGSTER1
+	const VIRIDIANCITY_YOUNGSTER2
+	const VIRIDIANCITY_LASS
 
 ViridianCity_MapScripts:
 	def_scene_scripts
@@ -14,34 +16,99 @@ ViridianCityFlypointCallback:
 	setflag ENGINE_FLYPOINT_VIRIDIAN
 	endcallback
 
-ViridianCityCoffeeGramps:
+CatchingTutorialGrampsScript:
 	faceplayer
 	opentext
-	writetext ViridianCityCoffeeGrampsQuestionText
+	readvar VAR_BOXSPACE
+	ifequal 0, .BoxFull
+	checkevent EVENT_LEARNED_TO_CATCH_POKEMON
+	iftrue .LearnedAlready
+	writetext CatchingTutorialIntroText
+.CatchingTutorialCont
 	yesorno
-	iffalse .no
-	writetext ViridianCityCoffeeGrampsBelievedText
+	iffalse .Declined
+	closetext
+	loadwildmon RATTATA, 5
+	catchtutorial BATTLETYPE_TUTORIAL
+	opentext
+	writetext CatchingTutorialDebriefText
+	waitbutton
+	closetext
+	setevent EVENT_LEARNED_TO_CATCH_POKEMON
+	end
+
+.BoxFull:
+	writetext CatchingTutorialBoxFullText
 	waitbutton
 	closetext
 	end
 
-.no:
-	writetext ViridianCityCoffeeGrampsDoubtedText
+.LearnedAlready:
+	writetext CatchingTutorialRepeatText
+	sjump .CatchingTutorialCont
+
+.Declined:
+	writetext CatchingTutorialDeclinedText
 	waitbutton
 	closetext
 	end
+
+CatchingTutorialBoxFullText:
+	text "#MON hide in"
+	line "the grass. Who"
+
+	para "knows when they'll"
+	line "pop out…"
+	done
+
+CatchingTutorialIntroText:
+	text "You're new to #-"
+	line "MON training, uh?"
+
+	para "How many have you"
+	line "caught?"
+
+	para "Would you like me"
+	line "to show you how to"
+	cont "catch #MON?"
+	done
+
+CatchingTutorialDebriefText:
+	text "That's how you do"
+	line "it."
+
+	para "If you weaken them"
+	line "first, #MON are"
+	cont "easier to catch."
+	done
+
+CatchingTutorialDeclinedText:
+	text "Oh. Fine, then."
+
+	para "Anyway, if you"
+	line "want to catch"
+
+	para "#MON, you have"
+	line "to walk a lot."
+	done
+
+CatchingTutorialRepeatText:
+	text "Huh? You want me"
+	line "to show you how to"
+	cont "catch #MON?"
+	done
 
 ViridianCityGrampsNearGym:
 	faceplayer
 	opentext
-	checkevent EVENT_BLUE_IN_CINNABAR
-	iftrue .BlueReturned
+	checkevent EVENT_CAN_ACCESS_VIRIDIAN_GYM
+	iftrue .LeaderReturned
 	writetext ViridianCityGrampsNearGymText
 	waitbutton
 	closetext
 	end
 
-.BlueReturned:
+.LeaderReturned:
 	writetext ViridianCityGrampsNearGymBlueReturnedText
 	waitbutton
 	closetext
@@ -64,8 +131,28 @@ ViridianCityDreamEaterFisher:
 	closetext
 	end
 
-ViridianCityYoungsterScript:
-	jumptextfaceplayer ViridianCityYoungsterText
+ViridianCityYoungster1Script:
+	jumptextfaceplayer ViridianCityYoungster1Text
+
+ViridianCityYoungster2Script:
+	faceplayer
+	opentext
+	writetext ViridianCityYoungster2YouWantToKnowAboutText
+	yesorno
+	iffalse .no
+	writetext ViridianCityYoungster2CaterpieAndWeedleDescriptionText
+	waitbutton
+	closetext
+	end
+
+.no:
+	writetext ViridianCityYoungster2OkThenText
+	waitbutton
+	closetext
+	end
+
+ViridianCityLassScript:
+	jumptextfaceplayer ViridianCityLassText
 
 ViridianCitySign:
 	jumptext ViridianCitySignText
@@ -73,8 +160,11 @@ ViridianCitySign:
 ViridianGymSign:
 	jumptext ViridianGymSignText
 
-ViridianCityWelcomeSign:
-	jumptext ViridianCityWelcomeSignText
+ViridianCityTrainerTips1:
+	jumptext ViridianCityTrainerTips1Text
+
+ViridianCityTrainerTips2:
+	jumptext ViridianCityTrainerTips2Text
 
 ViridianSchoolSign:
 	jumptext ViridianSchoolSignText
@@ -82,55 +172,14 @@ ViridianSchoolSign:
 ViridianCityPokecenterSign:
 	jumpstd PokecenterSignScript
 
-ViridianCityCoffeeGrampsQuestionText:
-	text "Hey, kid! I just"
-	line "had a double shot"
-
-	para "of espresso, and"
-	line "I am wired!"
-
-	para "I need to talk to"
-	line "someone, so you'll"
-	cont "have to do!"
-
-	para "I might not look"
-	line "like much now, but"
-
-	para "I was an expert at"
-	line "catching #MON."
-
-	para "Do you believe me?"
-	done
-
-ViridianCityCoffeeGrampsBelievedText:
-	text "Good, good. Yes, I"
-	line "was something out"
-
-	para "of the ordinary,"
-	line "let me tell you!"
-	done
-
-ViridianCityCoffeeGrampsDoubtedText:
-	text "What? You little"
-	line "whelp!"
-
-	para "If I were just a"
-	line "bit younger, I'd"
-
-	para "show you a thing"
-	line "or two. Humph!"
-	done
-
 ViridianCityGrampsNearGymText:
-	text "This GYM didn't"
-	line "have a LEADER"
-	cont "until recently."
+	text "This #MON GYM"
+	line "is always closed."
 
-	para "A young man from"
-	line "PALLET became the"
-
-	para "LEADER, but he's"
-	line "often away."
+	para "Its LEADER is a"
+	line "mysterious figure,"
+	cont "who only comes by"
+	cont "rarely."
 	done
 
 ViridianCityGrampsNearGymBlueReturnedText:
@@ -171,12 +220,50 @@ ViridianCityDreamEaterFisherGotDreamEaterText:
 	para "…Zzzzz…"
 	done
 
-ViridianCityYoungsterText:
-	text "I heard that there"
-	line "are many items on"
+ViridianCityYoungster1Text:
+	text "Those # BALLs"
+	line "at your waist…"
+	cont "You're a TRAINER!"
 
-	para "the ground in"
+	para "It's great that"
+	line "you can carry and"
+	cont "use #MON any"
+	cont "time, anywhere!"
+	done
+
+ViridianCityYoungster2YouWantToKnowAboutText:
+	text "You want to know"
+	line "about the 2 kinds"
+	cont "of caterpillar"
+	cont "#MON?"
+	done
+
+ViridianCityYoungster2OkThenText:
+	text "Oh, okay then!"
+	done
+
+ViridianCityYoungster2CaterpieAndWeedleDescriptionText:
+	text "CATERPIE has no"
+	line "poison, but"
+	cont "WEEDLE does."
+
+	para "Watch out for its"
+	line "POISON STING!"
+	done
+
+ViridianCityLassText:
+	text "When I go shop in"
+	line "PEWTER CITY, I"
+	cont "have to take the"
+
+	para "winding trail in"
 	line "VIRIDIAN FOREST."
+
+	para "Sigh…"
+
+	para "If my POKéMON knew"
+	line "CUT, I could take"
+	cont "the side path."
 	done
 
 ViridianCitySignText:
@@ -195,12 +282,30 @@ ViridianGymSignText:
 	line "text is illegible…"
 	done
 
-ViridianCityWelcomeSignText:
-	text "WELCOME TO"
-	line "VIRIDIAN CITY,"
+ViridianCityTrainerTips1Text:
+	text "TRAINER TIPS"
 
-	para "THE GATEWAY TO"
-	line "INDIGO PLATEAU"
+	para "Catch #MON"
+	line "and expand your"
+	cont "collection!"
+
+	para "The more you have,"
+	line "the easier it is"
+	cont "to fight!"
+	done
+
+ViridianCityTrainerTips2Text:
+	text "TRAINER TIPS"
+
+	para "The battle moves"
+	line "of #MON are"
+	cont "limited by their"
+	cont "POWER POINTs, PP."
+
+	para "To replenish PP,"
+	line "rest your tired"
+	cont "#MON at a"
+	cont "#MON CENTER!"
 	done
 
 ViridianSchoolSignText:
@@ -223,12 +328,15 @@ ViridianCity_MapEvents:
 	def_bg_events
 	bg_event 17, 17, BGEVENT_READ, ViridianCitySign
 	bg_event 27,  7, BGEVENT_READ, ViridianGymSign
-	bg_event 19,  1, BGEVENT_READ, ViridianCityWelcomeSign
+	bg_event 19,  1, BGEVENT_READ, ViridianCityTrainerTips1
+	bg_event 27, 25, BGEVENT_READ, ViridianCityTrainerTips2
 	bg_event 21, 15, BGEVENT_READ, ViridianSchoolSign
 	bg_event 24, 25, BGEVENT_READ, ViridianCityPokecenterSign
 
 	def_object_events
-	object_event 18,  5, SPRITE_GRAMPS, SPRITEMOVEDATA_WANDER, 2, 2, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ViridianCityCoffeeGramps, -1
+	object_event 17,  5, SPRITE_GRAMPS, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CatchingTutorialGrampsScript, -1
 	object_event 30,  8, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ViridianCityGrampsNearGym, -1
 	object_event  6, 23, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, ViridianCityDreamEaterFisher, -1
-	object_event 17, 21, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WANDER, 3, 3, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, ViridianCityYoungsterScript, -1
+	object_event 17, 21, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WANDER, 3, 3, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, ViridianCityYoungster1Script, -1
+	object_event 30, 25, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, ViridianCityYoungster2Script, -1
+	object_event 17,  9, SPRITE_LASS, SPRITEMOVEDATA_SPINRANDOM_SLOW, 3, 3, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ViridianCityLassScript, -1

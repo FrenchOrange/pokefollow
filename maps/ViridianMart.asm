@@ -23,7 +23,10 @@ ViridianMartCooltrainerMScript:
 ViridianMartLassText:
 	text "The GYM LEADER"
 	line "here is totally"
-	cont "cool."
+	cont "weird."
+
+	para "Who puts guards in"
+	line "front of a GYM?"
 	done
 
 ViridianMartCooltrainerMText:

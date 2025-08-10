@@ -12,7 +12,6 @@ PalletLake_MapScripts:
 	scene_script PalletLakeMeetNoopScene, SCENE_PALLETLAKE_NOOP
 
 	def_callbacks
-	callback MAPCALLBACK_TILES, PalletLakeWaterCallback
 
 PalletLakeMeetMistyScene:
 	sdefer MeetMisty
@@ -20,22 +19,8 @@ PalletLakeMeetMistyScene:
 PalletLakeMeetNoopScene:
 	end
 
-PalletLakeWaterCallback:
-	checkevent EVENT_MET_MISTY_PALLET_LAKE
-	iftrue .Done
-	changeblock 6, 10, $c0 ; water
-	changeblock 6, 12, $c0 ; water
-	changeblock 6, 14, $c0 ; water
-	changeblock 6, 16, $c0 ; water
-.Done:
-	endcallback
-
 MeetMisty:
 	applymovement PLAYER, PalletLakeHideObjectMovement
-	follow PLAYER, FOLLOWER
-	applymovement PLAYER, PalletLakePlayerWalkDownMovement1
-	silentstowfollower
-	applymovement PLAYER, PalletLakePlayerWalkDownMovement2
 	pause 30
 	turnobject PALLETLAKE_ROD, LEFT
 	turnobject PALLETLAKE_ROD, DOWN
@@ -77,7 +62,6 @@ MeetMisty:
 	stopfollow
 	playsound SFX_TACKLE
 	applymovement PLAYER, PalletLakeMistySlapsPlayer
-	applymovement FOLLOWER, PalletLakeFollowerStepsLeft
 	opentext
 	writetext PalletLakeMistyPoorLittleThingtext
 	promptbutton
@@ -129,15 +113,6 @@ PalletLakeShowObjectMovement:
 	show_object
 	step_end
 
-PalletLakePlayerWalkDownMovement2:
-	step DOWN
-	step DOWN	
-	step DOWN
-	step DOWN
-PalletLakePlayerWalkDownMovement1:
-	step DOWN
-	step_end
-
 PalletLakeMistyJumps:
 	jump_in_place
 	step_end
@@ -148,8 +123,6 @@ PalletLakePlayerMovesIntoPlace:
 	big_step RIGHT
 	big_step RIGHT
 	big_step RIGHT
-	big_step RIGHT
-PalletLakeFollowerStepsLeft:
 	step LEFT
 	step_end
 
@@ -158,7 +131,7 @@ PalletLakeMistyMovesToPlayer:
 	step DOWN
 	step RIGHT
 	step_end
-
+ 
 PalletLakeMistySlapsPlayer:
 	turn_head UP
 	fix_facing
