@@ -474,6 +474,7 @@ INCLUDE "maps/PalletDodrioHouse.asm"
 INCLUDE "maps/PalletEmptyHouse.asm"
 INCLUDE "maps/PalletLake.asm"
 INCLUDE "maps/OakCorral.asm"
+INCLUDE "maps/ViridianTVSpeechHouse.asm"
 INCLUDE "maps/PewterMuseum.asm"
 
 ENDSECTION

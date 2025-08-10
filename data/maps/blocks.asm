@@ -155,6 +155,7 @@ Route30BerryHouse_Blocks:
 PalletOakTVSpeechHouse_Blocks:
 PalletDodrioHouse_Blocks:
 PalletEmptyHouse_Blocks:
+ViridianTVSpeechHouse_Blocks:
 	INCBIN "maps/House1.ablk"
 
 SafariZoneFuchsiaGateBeta_Blocks:

@@ -5,6 +5,7 @@
 	const VIRIDIANCITY_YOUNGSTER1
 	const VIRIDIANCITY_YOUNGSTER2
 	const VIRIDIANCITY_LASS
+	const VIRIDIANCITY_OFFICER_JENNY
 
 ViridianCity_MapScripts:
 	def_scene_scripts
@@ -154,6 +155,9 @@ ViridianCityYoungster2Script:
 ViridianCityLassScript:
 	jumptextfaceplayer ViridianCityLassText
 
+ViridianCityOfficerJennyScript:
+	jumptextfaceplayer ViridianCityOfficerJennyText
+
 ViridianCitySign:
 	jumptext ViridianCitySignText
 
@@ -266,6 +270,10 @@ ViridianCityLassText:
 	cont "the side path."
 	done
 
+ViridianCityOfficerJennyText:
+	text "Move over kid."
+	done
+
 ViridianCitySignText:
 	text "VIRIDIAN CITY"
 
@@ -322,6 +330,7 @@ ViridianCity_MapEvents:
 	warp_event 23, 15, VIRIDIAN_SCHOOL, 1
 	warp_event 29, 19, VIRIDIAN_MART, 2
 	warp_event 23, 25, VIRIDIAN_POKECENTER_1F, 1
+	warp_event 21,  5, VIRIDIAN_TV_SPEECH_HOUSE, 1
 
 	def_coord_events
 
@@ -340,3 +349,4 @@ ViridianCity_MapEvents:
 	object_event 17, 21, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WANDER, 3, 3, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, ViridianCityYoungster1Script, -1
 	object_event 30, 25, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, ViridianCityYoungster2Script, -1
 	object_event 17,  9, SPRITE_LASS, SPRITEMOVEDATA_SPINRANDOM_SLOW, 3, 3, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ViridianCityLassScript, -1
+	object_event 15, 27, SPRITE_OFFICER_JENNY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ViridianCityOfficerJennyScript, -1

@@ -437,12 +437,13 @@ ENDM
 	map_const VIRIDIAN_CITY,                               20, 18 ;  3
 	map_const VIRIDIAN_GYM,                                 5,  9 ;  4
 	map_const VIRIDIAN_NICKNAME_SPEECH_HOUSE,               5,  5 ;  5
-	map_const VIRIDIAN_SCHOOL,                              6,  6 ;  6
-	map_const VIRIDIAN_MART,                                6,  4 ;  7
-	map_const VIRIDIAN_POKECENTER_1F,                       5,  4 ;  8
-	map_const ROUTE_2_NUGGET_HOUSE,                         4,  4 ;  9
-	map_const ROUTE_2_GATE,                                 5,  4 ; 10
-	map_const VICTORY_ROAD_GATE,                           10,  9 ; 11
+	map_const VIRIDIAN_TV_SPEECH_HOUSE,                     5,  5 ;  6
+	map_const VIRIDIAN_SCHOOL,                              6,  6 ;  7
+	map_const VIRIDIAN_MART,                                6,  4 ;  8
+	map_const VIRIDIAN_POKECENTER_1F,                       5,  4 ;  9
+	map_const ROUTE_2_NUGGET_HOUSE,                         4,  4 ; 10
+	map_const ROUTE_2_GATE,                                 5,  4 ; 11
+	map_const VICTORY_ROAD_GATE,                           10,  9 ; 12
 	endgroup
 
 	newgroup NEW_BARK                                             ; 24
