@@ -156,6 +156,7 @@ PalletOakTVSpeechHouse_Blocks:
 PalletDodrioHouse_Blocks:
 PalletEmptyHouse_Blocks:
 ViridianTVSpeechHouse_Blocks:
+ViridianThiefSpeechHouse_Blocks:
 	INCBIN "maps/House1.ablk"
 
 SafariZoneFuchsiaGateBeta_Blocks:

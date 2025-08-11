@@ -173,6 +173,9 @@ ViridianCityTrainerTips2:
 ViridianSchoolSign:
 	jumptext ViridianSchoolSignText
 
+ViridianPoliceStationSign:
+	jumptext ViridianPoliceStationText
+
 ViridianCityPokecenterSign:
 	jumpstd PokecenterSignScript
 
@@ -321,32 +324,57 @@ ViridianSchoolSignText:
 	line "SCHOOL"
 	done
 
+ViridianPoliceStationText:
+	text "VIRIDIAN CITY"
+	line "POLICE STATION"
+
+	para "There's a wanted"
+	line "poster stuck here"
+	cont "as well."
+	done
+
+ViridianPoliceStation_NoPosterText:
+	text "VIRIDIAN CITY"
+	line "POLICE STATION"
+
+	para "Uh?"
+
+	para "The wanted poster"
+	line "was torn off!"
+	done
+
+ViridianCityHiddenPotion:
+	hiddenitem POTION, EVENT_VIRIDIAN_CITY_HIDDEN_POTION
+
 ViridianCity_MapEvents:
 	db 0, 0 ; filler
 
 	def_warp_events
-	warp_event 32,  7, VIRIDIAN_GYM, 1
-	warp_event 21,  9, VIRIDIAN_NICKNAME_SPEECH_HOUSE, 1
-	warp_event 23, 15, VIRIDIAN_SCHOOL, 1
-	warp_event 29, 19, VIRIDIAN_MART, 2
-	warp_event 23, 25, VIRIDIAN_POKECENTER_1F, 1
-	warp_event 21,  5, VIRIDIAN_TV_SPEECH_HOUSE, 1
+	warp_event 38,  9, VIRIDIAN_GYM, 1
+	warp_event 33, 21, VIRIDIAN_NICKNAME_SPEECH_HOUSE, 1
+	warp_event  9, 21, VIRIDIAN_SCHOOL, 1
+	warp_event 33, 17, VIRIDIAN_MART, 2
+	warp_event 19, 15, VIRIDIAN_POKECENTER_1F, 1
+	warp_event 37, 21, VIRIDIAN_TV_SPEECH_HOUSE, 1
+	warp_event 13, 15, VIRIDIAN_THIEF_SPEECH_HOUSE, 1
 
 	def_coord_events
 
 	def_bg_events
-	bg_event 17, 17, BGEVENT_READ, ViridianCitySign
-	bg_event 27,  7, BGEVENT_READ, ViridianGymSign
-	bg_event 19,  1, BGEVENT_READ, ViridianCityTrainerTips1
-	bg_event 27, 25, BGEVENT_READ, ViridianCityTrainerTips2
-	bg_event 21, 15, BGEVENT_READ, ViridianSchoolSign
-	bg_event 24, 25, BGEVENT_READ, ViridianCityPokecenterSign
+	bg_event 17, 21, BGEVENT_READ, ViridianCitySign
+	bg_event 33,  9, BGEVENT_READ, ViridianGymSign
+	bg_event 25,  1, BGEVENT_READ, ViridianCityTrainerTips1
+	bg_event 33, 35, BGEVENT_READ, ViridianCityTrainerTips2
+	bg_event  7, 21, BGEVENT_READ, ViridianSchoolSign
+	bg_event 20, 15, BGEVENT_READ, ViridianCityPokecenterSign
+	bg_event 17, 27, BGEVENT_READ, ViridianPoliceStationSign
+	bg_event 12,  2, BGEVENT_ITEM, ViridianCityHiddenPotion
 
 	def_object_events
-	object_event 17,  5, SPRITE_GRAMPS, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CatchingTutorialGrampsScript, -1
-	object_event 30,  8, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ViridianCityGrampsNearGym, -1
-	object_event  6, 23, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, ViridianCityDreamEaterFisher, -1
-	object_event 17, 21, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WANDER, 3, 3, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, ViridianCityYoungster1Script, -1
-	object_event 30, 25, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, ViridianCityYoungster2Script, -1
-	object_event 17,  9, SPRITE_LASS, SPRITEMOVEDATA_SPINRANDOM_SLOW, 3, 3, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ViridianCityLassScript, -1
-	object_event 15, 27, SPRITE_OFFICER_JENNY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ViridianCityOfficerJennyScript, -1
+	object_event 22,  5, SPRITE_GRAMPS, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CatchingTutorialGrampsScript, -1
+	object_event 32,  5, SPRITE_GRAMPS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ViridianCityGrampsNearGym, -1
+	object_event  6, 34, SPRITE_FISHER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, ViridianCityDreamEaterFisher, -1
+	object_event 29, 14, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WANDER, 3, 3, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, ViridianCityYoungster1Script, -1
+	object_event 32, 26, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, ViridianCityYoungster2Script, -1
+	object_event  9,  9, SPRITE_LASS, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ViridianCityLassScript, -1
+	object_event 14, 28, SPRITE_OFFICER_JENNY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ViridianCityOfficerJennyScript, -1

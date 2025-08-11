@@ -12,7 +12,7 @@ SpawnPoints:
 	spawn VIRIDIAN_POKECENTER_1F,      5,  3
 
 	spawn PALLET_TOWN,                32, 24
-	spawn VIRIDIAN_CITY,              23, 26
+	spawn VIRIDIAN_CITY,              19, 16
 	spawn PEWTER_CITY,                13, 26
 	spawn CERULEAN_CITY,              19, 22
 	spawn ROUTE_10_NORTH,             11,  2

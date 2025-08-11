@@ -235,18 +235,18 @@ ENDM
 
 	map_attributes Route2, ROUTE_2, $0f, NORTH | SOUTH
 	connection north, PewterCity, PEWTER_CITY, -5
-	connection south, ViridianCity, VIRIDIAN_CITY, -5
+	connection south, ViridianCity, VIRIDIAN_CITY, -7
 
 	map_attributes ViridianCity, VIRIDIAN_CITY, $0f, NORTH | SOUTH | WEST
-	connection north, Route2, ROUTE_2, 5
-	connection south, Route1, ROUTE_1, 0
+	connection north, Route2, ROUTE_2, 7
+	connection south, Route1, ROUTE_1, 1
 	connection west, Route22, ROUTE_22, 4
 
 	map_attributes Route22, ROUTE_22, $2c, EAST
 	connection east, ViridianCity, VIRIDIAN_CITY, -4
 
 	map_attributes Route1, ROUTE_1, $0f, NORTH | SOUTH | EAST
-	connection north, ViridianCity, VIRIDIAN_CITY, 0
+	connection north, ViridianCity, VIRIDIAN_CITY, -1
 	connection south, PalletTown, PALLET_TOWN, -5
 	connection east, PalletLake, PALLET_LAKE, 6
 
@@ -689,4 +689,5 @@ ENDM
 	map_attributes PalletDodrioHouse, PALLET_DODRIO_HOUSE, $00, 0
 	map_attributes PalletEmptyHouse, PALLET_EMPTY_HOUSE, $00, 0
 	map_attributes ViridianTVSpeechHouse, VIRIDIAN_TV_SPEECH_HOUSE, $00, 0
+	map_attributes ViridianThiefSpeechHouse, VIRIDIAN_THIEF_SPEECH_HOUSE, $00, 0
 	map_attributes PewterMuseum, PEWTER_MUSEUM, $00, 0

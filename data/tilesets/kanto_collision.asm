@@ -190,3 +190,17 @@
 	tilecoll WALL, WALL, MART, MART ; bd
 	tilecoll WALL, WALL, WALL, DOOR ; be
 	tilecoll WALL, WALL, WALL, WALL ; bf
+	tilecoll WALL, WALL, WALL, WATER ; c0
+	tilecoll WALL, WALL, WATER, WALL ; c1
+	tilecoll WALL, WATER, WALL, WALL ; c2
+	tilecoll WATER, WALL, WALL, WALL ; c3
+	tilecoll UP_WALL, UP_WALL, FLOOR, FLOOR ; c4
+	tilecoll TRASHCAN, FLOOR, FLOOR, FLOOR ; c5
+	tilecoll FLOOR, FLOOR, FLOOR, WALL ; c6
+	tilecoll HOP_DOWN, HOP_DOWN, WALL, WALL ; c7
+	tilecoll HOP_DOWN, HOP_DOWN, WALL, WALL ; c8
+	tilecoll HOP_DOWN, HOP_DOWN, WALL, WALL ; c9
+	tilecoll WALL, WALL, WALL, WALL ; ca
+	tilecoll WALL, WALL, WALL, WALL ; cb
+	tilecoll WALL, WALL, WALL, WALL ; cc
+	tilecoll WALL, WALL, WALL, WALL ; cd
