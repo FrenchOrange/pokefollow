@@ -6,9 +6,14 @@
 	const VIRIDIANCITY_YOUNGSTER2
 	const VIRIDIANCITY_LASS
 	const VIRIDIANCITY_OFFICER_JENNY
+	const VIRIDIANCITY_ROCKET1
+	const VIRIDIANCITY_ROCKET2
 
 ViridianCity_MapScripts:
 	def_scene_scripts
+	scene_script ViridianCityNoop1Scene, SCENE_VIRIDIAN_CITY_POKECENTER
+	scene_script ViridianCityNoop2Scene, SCENE_VIRIDIAN_CITY_GYM_GUARD
+	scene_script ViridianCityNoop3Scene, SCENE_VIRIDIAN_CITY_NOOP
 
 	def_callbacks
 	callback MAPCALLBACK_NEWMAP, ViridianCityFlypointCallback
@@ -16,6 +21,15 @@ ViridianCity_MapScripts:
 ViridianCityFlypointCallback:
 	setflag ENGINE_FLYPOINT_VIRIDIAN
 	endcallback
+
+ViridianCityNoop1Scene:
+	end
+
+ViridianCityNoop2Scene:
+	end
+
+ViridianCityNoop3Scene:
+	end
 
 CatchingTutorialGrampsScript:
 	faceplayer
@@ -158,6 +172,16 @@ ViridianCityLassScript:
 ViridianCityOfficerJennyScript:
 	jumptextfaceplayer ViridianCityOfficerJennyText
 
+ViridianCityGruntScript:
+	faceplayer
+	opentext
+	writetext ViridianCityGruntText
+	waitbutton
+	closetext
+	turnobject VIRIDIANCITY_ROCKET1, DOWN
+	turnobject VIRIDIANCITY_ROCKET2, DOWN
+	end
+
 ViridianCitySign:
 	jumptext ViridianCitySignText
 
@@ -174,7 +198,18 @@ ViridianSchoolSign:
 	jumptext ViridianSchoolSignText
 
 ViridianPoliceStationSign:
-	jumptext ViridianPoliceStationText
+	opentext
+	checkevent EVENT_MET_TEAM_ROCKET_VIRIDIAN
+	iftrue .NoPoster
+	writetext ViridianPoliceStationText
+	waitbutton
+	closetext
+	end
+.NoPoster:
+	writetext ViridianPoliceStation_NoPosterText
+	waitbutton
+	closetext
+	end
 
 ViridianCityPokecenterSign:
 	jumpstd PokecenterSignScript
@@ -277,6 +312,13 @@ ViridianCityOfficerJennyText:
 	text "Move over kid."
 	done
 
+ViridianCityGruntText:
+	text "Move over kid."
+
+	para "Nothing to see"
+	line "around here."
+	done
+
 ViridianCitySignText:
 	text "VIRIDIAN CITY"
 
@@ -346,11 +388,85 @@ ViridianPoliceStation_NoPosterText:
 ViridianCityHiddenPotion:
 	hiddenitem POTION, EVENT_VIRIDIAN_CITY_HIDDEN_POTION
 
+ViridianCity_PokeCenterCutscene1:
+	applymovement PLAYER, ViridianCityPlayerMovesBackRight
+	opentext
+	writetext ViridianCityWalkBackText
+	waitbutton
+	closetext
+	end
+
+ViridianCity_PokeCenterCutscene2:
+	applymovement PLAYER, ViridianCityPlayerMovesBackDown
+	opentext
+	writetext ViridianCityWalkBackText
+	waitbutton
+	closetext
+	end
+
+ViridianCityPlayerMovesBackRight:
+	turn_head LEFT
+	fix_facing
+	big_step RIGHT
+	remove_fixed_facing
+	step_end
+
+ViridianCityPlayerMovesBackDown:
+	turn_head UP
+	fix_facing
+	big_step DOWN
+	remove_fixed_facing
+	step_end
+
+ViridianCityWalkBackText:
+	text "It's too dangerous"
+	line "to head this way."
+
+	para "There should be a"
+	line "#MON CENTER in"
+	cont "VIRIDIAN CITY."
+	done
+
+ViridianCity_GymGuardCutscene:
+	turnobject VIRIDIANCITY_ROCKET1, RIGHT
+	opentext
+	writetext ViridianCityGymGuardText1
+	waitbutton
+	closetext
+	turnobject VIRIDIANCITY_ROCKET2, LEFT
+	opentext
+	writetext ViridianCityGymGuardText2
+	waitbutton
+	closetext
+	applymovement PLAYER, ViridianCityPlayerMovesBackDown
+	playsound SFX_TACKLE
+	waitsfx
+	turnobject VIRIDIANCITY_ROCKET1, DOWN
+	turnobject VIRIDIANCITY_ROCKET2, DOWN
+	end
+
+ViridianCityGymGuardText1:
+	text "Now what do we"
+	line "have here?"
+
+	para "Little baby boy"
+	line "thinks he can take"
+	cont "on the BOSS?"
+	done
+
+ViridianCityGymGuardText2:
+	text "Hey, don't spill"
+	line "the beans, man."
+
+	para "Just send him back"
+	line "to his mommy."
+	done
+
 ViridianCity_MapEvents:
 	db 0, 0 ; filler
 
 	def_warp_events
-	warp_event 38,  9, VIRIDIAN_GYM, 1
+	warp_event 37,  9, VIRIDIAN_GYM, 1
 	warp_event 33, 21, VIRIDIAN_NICKNAME_SPEECH_HOUSE, 1
 	warp_event  9, 21, VIRIDIAN_SCHOOL, 1
 	warp_event 33, 17, VIRIDIAN_MART, 2
@@ -359,6 +475,15 @@ ViridianCity_MapEvents:
 	warp_event 13, 15, VIRIDIAN_THIEF_SPEECH_HOUSE, 1
 
 	def_coord_events
+	coord_event  2, 12, SCENE_VIRIDIAN_CITY_POKECENTER, ViridianCity_PokeCenterCutscene1
+	coord_event  2, 13, SCENE_VIRIDIAN_CITY_POKECENTER, ViridianCity_PokeCenterCutscene1
+	coord_event  2, 14, SCENE_VIRIDIAN_CITY_POKECENTER, ViridianCity_PokeCenterCutscene1
+	coord_event  2, 15, SCENE_VIRIDIAN_CITY_POKECENTER, ViridianCity_PokeCenterCutscene1
+	coord_event 22,  1, SCENE_VIRIDIAN_CITY_POKECENTER, ViridianCity_PokeCenterCutscene2
+	coord_event 23,  1, SCENE_VIRIDIAN_CITY_POKECENTER, ViridianCity_PokeCenterCutscene2
+	coord_event 24,  1, SCENE_VIRIDIAN_CITY_POKECENTER, ViridianCity_PokeCenterCutscene2
+	coord_event 37, 10, SCENE_VIRIDIAN_CITY_POKECENTER, ViridianCity_GymGuardCutscene
+	coord_event 37, 10, SCENE_VIRIDIAN_CITY_GYM_GUARD, ViridianCity_GymGuardCutscene
 
 	def_bg_events
 	bg_event 17, 21, BGEVENT_READ, ViridianCitySign
@@ -378,3 +503,5 @@ ViridianCity_MapEvents:
 	object_event 32, 26, SPRITE_YOUNGSTER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, ViridianCityYoungster2Script, -1
 	object_event  9,  9, SPRITE_LASS, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ViridianCityLassScript, -1
 	object_event 14, 28, SPRITE_OFFICER_JENNY, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ViridianCityOfficerJennyScript, -1
+	object_event 36, 10, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ViridianCityGruntScript, EVENT_VIRIDIAN_CITY_GYM_GUARDS
+	object_event 38, 10, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ViridianCityGruntScript, EVENT_VIRIDIAN_CITY_GYM_GUARDS

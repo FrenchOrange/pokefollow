@@ -15,8 +15,8 @@
 	tilecoll WALL, WALL, WALL, WALL ; 0e
 	tilecoll HEADBUTT_TREE, HEADBUTT_TREE, HEADBUTT_TREE, HEADBUTT_TREE ; 0f
 	tilecoll WALL, WALL, WALL, WALL ; 10
-	tilecoll WALL, WALL, WALL, WALL ; 11
-	tilecoll WALL, WALL, DOOR, WALL ; 12
+	tilecoll WALL, WALL, WALL, DOOR ; 11
+	tilecoll WALL, WALL, WALL, WALL ; 12
 	tilecoll HOP_DOWN, HOP_DOWN, WALL, WALL ; 13
 	tilecoll WALL, WATER, WALL, WALL ; 14
 	tilecoll WATER, WALL, WALL, WALL ; 15
