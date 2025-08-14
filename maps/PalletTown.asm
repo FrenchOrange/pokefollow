@@ -709,7 +709,7 @@ PalletTown_MapEvents:
 	warp_event 10,  5, OAKS_LAB, 1
 	warp_event 12, 23, PALLET_OAK_TV_SPEECH_HOUSE, 1
 	warp_event 12, 29, PALLET_DODRIO_HOUSE, 1
-	warp_event 42, 29, PALLET_EMPTY_HOUSE, 1
+	warp_event 42, 29, PALLET_WORRIED_MOM_HOUSE, 1
 
 	def_coord_events
 	coord_event 18, 12, SCENE_PALLETTOWN_HURRY_TO_LAB, PalletTown_HurryToLabScene

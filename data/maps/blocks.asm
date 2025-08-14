@@ -154,7 +154,7 @@ LavenderPokemonRefuge_Blocks:
 Route30BerryHouse_Blocks:
 PalletOakTVSpeechHouse_Blocks:
 PalletDodrioHouse_Blocks:
-PalletEmptyHouse_Blocks:
+PalletWorriedMomHouse_Blocks:
 ViridianTVSpeechHouse_Blocks:
 ViridianThiefSpeechHouse_Blocks:
 	INCBIN "maps/House1.ablk"

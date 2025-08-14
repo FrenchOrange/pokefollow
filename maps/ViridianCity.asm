@@ -34,6 +34,8 @@ ViridianCityNoop3Scene:
 CatchingTutorialGrampsScript:
 	faceplayer
 	opentext
+	checkevent EVENT_MET_TEAM_ROCKET_VIRIDIAN
+	iffalse .IsYourPokemonHurt
 	readvar VAR_BOXSPACE
 	ifequal 0, .BoxFull
 	checkevent EVENT_LEARNED_TO_CATCH_POKEMON
@@ -52,6 +54,12 @@ CatchingTutorialGrampsScript:
 	setevent EVENT_LEARNED_TO_CATCH_POKEMON
 	end
 
+.IsYourPokemonHurt:
+	writetext CatchingTutorialPokemonHurtText
+	waitbutton
+	closetext
+	end
+
 .BoxFull:
 	writetext CatchingTutorialBoxFullText
 	waitbutton
@@ -67,6 +75,16 @@ CatchingTutorialGrampsScript:
 	waitbutton
 	closetext
 	end
+
+CatchingTutorialPokemonHurtText:
+	text "Oh dear, your"
+	line "#MON is in bad"
+	cont "shape."
+
+	para "Don't worry, lad."
+	line "NURSE JOY does"
+	cont "wonderful work."
+	done
 
 CatchingTutorialBoxFullText:
 	text "#MON hide in"
@@ -170,7 +188,186 @@ ViridianCityLassScript:
 	jumptextfaceplayer ViridianCityLassText
 
 ViridianCityOfficerJennyScript:
-	jumptextfaceplayer ViridianCityOfficerJennyText
+	faceplayer
+	checkevent EVENT_MET_TEAM_ROCKET_VIRIDIAN
+	iftrue .PostPokecenterJenny
+	checkevent EVENT_TALKED_TO_VIRIDIAN_JENNY
+	iftrue .TalkedToViridianJenny
+	showemote EMOTE_SHOCK, VIRIDIANCITY_OFFICER_JENNY, 15
+	opentext
+	writetext ViridianCityOfficerJenny_FirstTime1
+	waitbutton
+	closetext
+	showemote EMOTE_QUESTION, VIRIDIANCITY_OFFICER_JENNY, 15
+	opentext
+	writetext ViridianCityOfficerJenny_FirstTime2
+	waitbutton
+	closetext
+	turnobject VIRIDIANCITY_OFFICER_JENNY, UP
+	pause 15
+	showemote EMOTE_SHOCK, VIRIDIANCITY_OFFICER_JENNY, 15
+	faceplayer
+	opentext
+	writetext ViridianCityOfficerJenny_FirstTime3
+	waitbutton
+	closetext
+	closetext
+	follow VIRIDIANCITY_OFFICER_JENNY, PLAYER
+	applymovement VIRIDIANCITY_OFFICER_JENNY, OfficerJennyWalkToPokecenter1
+	stopfollow
+	opentext
+	writetext ViridianCityOfficerJenny_WeveArrivedText1
+	waitbutton
+	closetext
+	turnobject VIRIDIANCITY_OFFICER_JENNY, RIGHT
+	turnobject PLAYER, LEFT
+	opentext
+	writetext ViridianCityOfficerJenny_WeveArrivedText2
+	waitbutton
+	closetext
+	applymovement VIRIDIANCITY_OFFICER_JENNY, OfficerJennyWalkToPokecenter2
+	pause 5
+	disappear VIRIDIANCITY_OFFICER_JENNY
+	appear VIRIDIANCITY_OFFICER_JENNY
+	turnobject PLAYER, UP
+	setevent EVENT_TALKED_TO_VIRIDIAN_JENNY
+	end
+
+.PostPokecenterJenny:
+	opentext
+	writetext ViridianCityOfficerJenny_PostPokecenterText
+	waitbutton
+	closetext
+	end
+
+.TalkedToViridianJenny
+	opentext
+	writetext ViridianCityOfficerJenny_TalkedToText
+	waitbutton
+	closetext
+	follow VIRIDIANCITY_OFFICER_JENNY, PLAYER
+	applymovement VIRIDIANCITY_OFFICER_JENNY, OfficerJennyWalkToPokecenter1
+	stopfollow
+	opentext
+	writetext ViridianCityOfficerJenny_WeveArrivedText1
+	waitbutton
+	closetext
+	turnobject VIRIDIANCITY_OFFICER_JENNY, RIGHT
+	turnobject PLAYER, LEFT
+	opentext
+	writetext ViridianCityOfficerJenny_WeveArrivedText2
+	closetext
+	applymovement VIRIDIANCITY_OFFICER_JENNY, OfficerJennyWalkToPokecenter2
+	pause 5
+	disappear VIRIDIANCITY_OFFICER_JENNY
+	appear VIRIDIANCITY_OFFICER_JENNY
+	turnobject PLAYER, UP
+	end
+
+ViridianCityOfficerJenny_FirstTime1:
+	text "Hold it! And just"
+	line "where do you think"
+	cont "you're going with"
+
+	para "that #MON,"
+	line "young man?"
+	done
+
+ViridianCityOfficerJenny_FirstTime2:
+	text "Oh, your #MON"
+	line "is hurt?"
+
+	para "I'm sorry, I"
+	line "thought you might"
+	cont "be stealing it."
+
+	para "Let me see your"
+	line "TRAINER CARD, hmm."
+	done
+
+ViridianCityOfficerJenny_FirstTime3:
+	text "Everything is in"
+	line "order! Now, we"
+	cont "should take your"
+
+	para "@"
+	text_ram wPartyMon1Nickname
+	text " to the"
+	line "#MON CENTER."
+
+	para "I'll get you there"
+	line "in no time at all."
+	done
+
+ViridianCityOfficerJenny_TalkedToText:
+	text "<PLAYER>!"
+	line "Did you get lost"
+	cont "on the way?"
+
+	para "It's alright. Let"
+	line "me take you to the"
+	cont "#MON CENTER."
+	done
+
+ViridianCityOfficerJenny_WeveArrivedText1:
+	text "We've arrived!"
+	line "Pretty neat, don't"
+	cont "you think?"
+	done
+
+ViridianCityOfficerJenny_WeveArrivedText2:
+	text "The staff will"
+	line "take good care of"
+	cont "@"
+	text_ram wPartyMon1Nickname
+	text ", I just"
+	cont "know it."
+	done
+
+ViridianCityOfficerJenny_PostPokecenterText:
+	text "You know, you're"
+	line "the fourth person"
+	cont "I've seen today"
+	cont "from PALLET TOWN."
+
+	para "But things didn't"
+	line "get as explosive"
+	cont "with them."
+
+	para "Stay safe and out"
+	line "of trouble on your"
+	cont "travel, young man!"
+	done
+
+OfficerJennyWalkToPokecenter1:
+	step RIGHT
+	step RIGHT
+	step RIGHT
+	step RIGHT
+	step RIGHT
+	step UP
+	step UP
+	step UP
+	step UP
+	step UP
+	step UP
+	step UP
+	step UP
+	step UP
+	step UP
+	step UP
+	step UP
+	step LEFT
+	turn_head UP
+	step_end
+
+OfficerJennyWalkToPokecenter2:
+	step DOWN
+	step DOWN
+	step DOWN
+	step DOWN
+	step DOWN
+	step_end
 
 ViridianCityGruntScript:
 	faceplayer
@@ -306,10 +503,6 @@ ViridianCityLassText:
 	para "If my POKéMON knew"
 	line "CUT, I could take"
 	cont "the side path."
-	done
-
-ViridianCityOfficerJennyText:
-	text "Move over kid."
 	done
 
 ViridianCityGruntText:
