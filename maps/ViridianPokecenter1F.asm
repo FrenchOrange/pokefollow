@@ -59,7 +59,8 @@ ViridianPokecenter1FGentlemanText:
 	line "PC in the corner."
 
 	para "The receptionist"
-	line "told me. So kind!"
+	line "told me. It's so"
+	cont "kind of her!"
 	done
 
 ViridianPokecenter1FBugCatcherText:

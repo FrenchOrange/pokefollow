@@ -112,7 +112,7 @@
 	tilecoll WATERFALL, WATERFALL, WATERFALL, WATERFALL ; 6f
 	tilecoll DOWN_WALL, WALL, CAVE, WALL ; 70
 	tilecoll WALL, WALL, WALL, WALL ; 71
-	tilecoll WALL, WALL, WALL, WALL ; 72
+	tilecoll WALL, WALL, DOOR, WALL ; 72
 	tilecoll WALL, WALL, WALL, WALL ; 73
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 74
 	tilecoll WALL, WALL, WALL, DOOR ; 75
