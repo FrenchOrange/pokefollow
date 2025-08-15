@@ -88,7 +88,7 @@
 	const SPRITE_POKE_BALL         ; 54
 	const SPRITE_POKEDEX           ; 55
 	const SPRITE_REPORT            ; 56
-	const SPRITE_VIRTUAL_BOY       ; 57 (unused)
+	const SPRITE_NURSE_CHANSEY     ; 57
 	const SPRITE_BIKE              ; 58
 	const SPRITE_ROCK              ; 59
 	const SPRITE_BOULDER           ; 5a

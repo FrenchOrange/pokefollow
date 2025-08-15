@@ -20,6 +20,8 @@ LoadSpecialMapPalette:
 	jr z, .house
 	cp TILESET_MART
 	jr z, .mart
+	cp TILESET_POKECENTER
+	jr z, .pokecenter
 	cp TILESET_RADIO_TOWER
 	jr z, .radio_tower
 	jr .do_nothing
@@ -55,6 +57,11 @@ LoadSpecialMapPalette:
 
 .mart
 	call LoadMartPalette
+	scf
+	ret
+
+.pokecenter
+	call LoadPokecenterPalette
 	scf
 	ret
 
@@ -144,6 +151,17 @@ INCLUDE "gfx/tilesets/mart.pal"
 
 MuseumPalette:
 INCLUDE "gfx/tilesets/museum.pal"
+
+LoadPokecenterPalette:
+	ld a, BANK(wBGPals1)
+	ld de, wBGPals1
+	ld hl, PokemonCenterPalette
+	ld bc, 8 palettes
+	call FarCopyWRAM
+	ret
+
+PokemonCenterPalette:
+INCLUDE "gfx/tilesets/pokemon_center.pal"
 
 LoadRadioTowerPalette:
 	ld a, BANK(wBGPals1)

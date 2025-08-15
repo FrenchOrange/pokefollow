@@ -368,16 +368,16 @@ Pokecenter2F_MapEvents:
 	db 0, 0 ; filler
 
 	def_warp_events
-	warp_event  0,  7, POKECENTER_2F, -1
-	warp_event  5,  0, TRADE_CENTER, 1
-	warp_event  9,  0, COLOSSEUM, 1
+	warp_event  1,  7, POKECENTER_2F, -1
+	warp_event 10,  2, TRADE_CENTER, 1
+	warp_event  6,  2, COLOSSEUM, 1
 
 	def_coord_events
 
 	def_bg_events
-	bg_event  7,  3, BGEVENT_READ, Pokecenter2FLinkRecordSign
+	bg_event 13,  4, BGEVENT_READ, Pokecenter2FLinkRecordSign
 
 	def_object_events
-	object_event  5,  2, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, LinkReceptionistScript_Trade, -1
-	object_event  9,  2, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, LinkReceptionistScript_Battle, -1
-	object_event  1,  1, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Pokecenter2FOfficerScript, EVENT_POKECENTER_DELIVERY_GUY
+	object_event 11,  3, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, LinkReceptionistScript_Trade, -1
+	object_event  7,  3, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, LinkReceptionistScript_Battle, -1
+	object_event  3,  3, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Pokecenter2FOfficerScript, EVENT_POKECENTER_DELIVERY_GUY

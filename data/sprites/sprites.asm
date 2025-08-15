@@ -93,7 +93,7 @@ OverworldSprites:
 	overworld_sprite PokeBallSpriteGFX, 4, STILL_SPRITE, PAL_OW_RED
 	overworld_sprite PokedexSpriteGFX, 4, STILL_SPRITE, PAL_OW_BROWN
 	overworld_sprite ReportSpriteGFX, 4, STILL_SPRITE, PAL_OW_BROWN
-	overworld_sprite VirtualBoySpriteGFX, 4, STILL_SPRITE, PAL_OW_RED
+	overworld_sprite NurseChanseySpriteGFX, 4, STILL_SPRITE, PAL_OW_PINK
 	overworld_sprite BikeSpriteGFX, 4, STILL_SPRITE, PAL_OW_RED
 	overworld_sprite RockSpriteGFX, 4, STILL_SPRITE, PAL_OW_ROCK
 	overworld_sprite BoulderSpriteGFX, 4, STILL_SPRITE, PAL_OW_ROCK

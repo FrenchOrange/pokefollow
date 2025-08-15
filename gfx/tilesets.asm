@@ -24,6 +24,9 @@ INCBIN "data/tilesets/johto_metatiles.bin"
 TilesetJohtoColl::
 INCLUDE "data/tilesets/johto_collision.asm"
 
+TilesetMartGFX::
+INCBIN "gfx/tilesets/mart.2bpp.lz"
+
 
 SECTION "Tileset Data 2", ROMX
 
@@ -44,9 +47,6 @@ INCBIN "data/tilesets/port_metatiles.bin"
 
 TilesetPortColl::
 INCLUDE "data/tilesets/port_collision.asm"
-
-TilesetMartGFX::
-INCBIN "gfx/tilesets/mart.2bpp.lz"
 
 TilesetMartMeta::
 INCBIN "data/tilesets/mart_metatiles.bin"
@@ -279,6 +279,9 @@ INCBIN "data/tilesets/ruins_of_alph_metatiles.bin"
 TilesetRuinsOfAlphColl::
 INCLUDE "data/tilesets/ruins_of_alph_collision.asm"
 
+TilesetPokecenterAttr::
+INCBIN "data/tilesets/pokecenter_attributes.bin"
+
 
 SECTION "Tileset Data 8", ROMX
 
@@ -299,9 +302,6 @@ INCBIN "data/tilesets/house_attributes.bin"
 
 TilesetMartAttr::
 INCBIN "data/tilesets/mart_attributes.bin"
-
-TilesetPokecenterAttr::
-INCBIN "data/tilesets/pokecenter_attributes.bin"
 
 TilesetGateAttr::
 INCBIN "data/tilesets/gate_attributes.bin"
