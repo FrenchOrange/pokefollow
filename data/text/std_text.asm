@@ -24,29 +24,6 @@ NurseEveText:
 	cont "#MON CENTER."
 	done
 
-PokeComNurseMornText:
-PokeComNurseDayText:
-	text "Hello!"
-
-	para "This is the #-"
-	line "MON COMMUNICATION"
-
-	para "CENTER--or the"
-	line "#COM CENTER."
-	done
-
-PokeComNurseEveText:
-PokeComNurseNiteText:
-	text "Good to see you"
-	line "working so late."
-
-	para "This is the #-"
-	line "MON COMMUNICATION"
-
-	para "CENTER--or the"
-	line "#COM CENTER."
-	done
-
 NurseAskHealText:
 	text "We can heal your"
 	line "#MON to perfect"
@@ -86,25 +63,12 @@ NursePokerusText:
 	cont "to be fine."
 
 	para "But we can't tell"
-	line "you anything more"
-
-	para "at a #MON"
-	line "CENTER."
+	line "you anything more."
 	done
 
-PokeComNursePokerusText:
-	text "Your #MON"
-	line "appear to be"
-
-	para "infected by tiny"
-	line "life forms."
-
-	para "Your #MON are"
-	line "healthy and seem"
-	cont "to be fine."
-
-	para "But we can't tell"
-	line "you anything more."
+ChanseyNurseText:
+	text "CHANSEY is helping"
+	line "NURSE JOY!"
 	done
 
 DifficultBookshelfText:

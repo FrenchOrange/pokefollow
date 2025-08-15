@@ -87,7 +87,7 @@
 	tilecoll WINDOW, WALL, FLOOR, TV ; 56
 	tilecoll WALL, WALL, WALL, BOOKSHELF ; 57
 	tilecoll WALL, FLOOR, WALL, FLOOR ; 58
-	tilecoll WALL, WALL, FLOOR, PC ; 59
+	tilecoll WALL, WALL, RADIO, PC ; 59
 	tilecoll FLOOR, FLOOR, FLOOR, FLOOR ; 5a
 	tilecoll WALL, WALL, FLOOR, FLOOR ; 5b
 	tilecoll WALL, WALL, TV, FLOOR ; 5c

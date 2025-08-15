@@ -1,6 +1,7 @@
 ; HealMachineAnim.Jumptable indexes
 	const_def
 	const HEALMACHINESTATE_LOADGFX
+	const HEALMACHINESTATE_LABLOADBALLS
 	const HEALMACHINESTATE_PCLOADBALLS
 	const HEALMACHINESTATE_HOFLOADBALLS
 	const HEALMACHINESTATE_PLAYMUSIC
@@ -69,13 +70,14 @@ ENDM
 .Pokecenter:
 	healmachineanimseq LOADGFX, PCLOADBALLS, PLAYMUSIC, FINISH
 .ElmsLab:
-	healmachineanimseq LOADGFX, PCLOADBALLS, PLAYMUSIC, FINISH
+	healmachineanimseq LOADGFX, LABLOADBALLS, PLAYMUSIC, FINISH
 .HallOfFame:
 	healmachineanimseq LOADGFX, HOFLOADBALLS, HOFPLAYSFX, FINISH
 
 .Jumptable:
 ; entries correspond to HEALMACHINESTATE_* constants
 	dw .LoadGFX
+	dw .Lab_LoadBallsOntoMachine
 	dw .PC_LoadBallsOntoMachine
 	dw .HOF_LoadBallsOntoMachine
 	dw .PlayHealMusic
@@ -90,9 +92,16 @@ ENDM
 	call Request2bpp
 	ret
 
+.Lab_LoadBallsOntoMachine
+	ld hl, wShadowOAMSprite32
+	ld de, .ElmsLab_OAM
+	call .PlaceHealingMachineTile
+	call .PlaceHealingMachineTile
+	jr .LoadBallsOntoMachine
+
 .PC_LoadBallsOntoMachine:
 	ld hl, wShadowOAMSprite32
-	ld de, .PC_ElmsLab_OAM
+	ld de, .PC_OAM
 	call .PlaceHealingMachineTile
 	call .PlaceHealingMachineTile
 	jr .LoadBallsOntoMachine
@@ -133,7 +142,7 @@ ENDM
 .dummy_5
 	ret
 
-.PC_ElmsLab_OAM:
+.ElmsLab_OAM:
 	dbsprite   4,   4, 2, 0, $7c, PAL_OW_TREE | OBP_NUM
 	dbsprite   4,   4, 6, 0, $7c, PAL_OW_TREE | OBP_NUM
 	dbsprite   4,   4, 0, 6, $7d, PAL_OW_TREE | OBP_NUM
@@ -142,6 +151,16 @@ ENDM
 	dbsprite   5,   5, 0, 3, $7d, PAL_OW_TREE | OBP_NUM | X_FLIP
 	dbsprite   4,   6, 0, 0, $7d, PAL_OW_TREE | OBP_NUM
 	dbsprite   5,   6, 0, 0, $7d, PAL_OW_TREE | OBP_NUM | X_FLIP
+
+.PC_OAM:
+	dbsprite   6,   4, 2, 0, $7c, PAL_OW_TREE | OBP_NUM
+	dbsprite   6,   4, 6, 0, $7c, PAL_OW_TREE | OBP_NUM
+	dbsprite   6,   4, 0, 6, $7d, PAL_OW_TREE | OBP_NUM
+	dbsprite   7,   4, 0, 6, $7d, PAL_OW_TREE | OBP_NUM | X_FLIP
+	dbsprite   6,   5, 0, 3, $7d, PAL_OW_TREE | OBP_NUM
+	dbsprite   7,   5, 0, 3, $7d, PAL_OW_TREE | OBP_NUM | X_FLIP
+	dbsprite   6,   6, 0, 0, $7d, PAL_OW_TREE | OBP_NUM
+	dbsprite   7,   6, 0, 0, $7d, PAL_OW_TREE | OBP_NUM | X_FLIP
 
 .HealMachineGFX:
 INCBIN "gfx/overworld/heal_machine.2bpp"

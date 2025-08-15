@@ -5,6 +5,7 @@ ENDM
 
 StdScripts::
 	add_stdscript PokecenterNurseScript
+	add_stdscript PokecenterChanseyNurseScript
 	add_stdscript DifficultBookshelfScript
 	add_stdscript PictureBookshelfScript
 	add_stdscript MagazineBookshelfScript
@@ -68,60 +69,26 @@ PokecenterNurseScript:
 	iftrue .morn
 	checktime DAY
 	iftrue .day
-	checktime EVE
-	iftrue .eve
 	checktime NITE
 	iftrue .nite
 	sjump .ok
 
 .morn
-	checkevent EVENT_WELCOMED_TO_POKECOM_CENTER
-	iftrue .morn_comcenter
 	farwritetext NurseMornText
-	promptbutton
-	sjump .ok
-.morn_comcenter
-	farwritetext PokeComNurseMornText
 	promptbutton
 	sjump .ok
 
 .day
-	checkevent EVENT_WELCOMED_TO_POKECOM_CENTER
-	iftrue .day_comcenter
 	farwritetext NurseDayText
-	promptbutton
-	sjump .ok
-.day_comcenter
-	farwritetext PokeComNurseDayText
-	promptbutton
-	sjump .ok
-
-.eve
-	checkevent EVENT_WELCOMED_TO_POKECOM_CENTER
-	iftrue .eve_comcenter
-	farwritetext NurseEveText
-	promptbutton
-	sjump .ok
-.eve_comcenter
-	farwritetext PokeComNurseEveText
 	promptbutton
 	sjump .ok
 
 .nite
-	checkevent EVENT_WELCOMED_TO_POKECOM_CENTER
-	iftrue .nite_comcenter
 	farwritetext NurseNiteText
-	promptbutton
-	sjump .ok
-.nite_comcenter
-	farwritetext PokeComNurseNiteText
 	promptbutton
 	sjump .ok
 
 .ok
-	; only do this once
-	clearevent EVENT_WELCOMED_TO_POKECOM_CENTER
-
 	farwritetext NurseAskHealText
 	yesorno
 	iffalse .done
@@ -176,22 +143,20 @@ PokecenterNurseScript:
 	end
 
 .pokerus
-	; already cleared earlier in the script
-	checkevent EVENT_WELCOMED_TO_POKECOM_CENTER
-	iftrue .pokerus_comcenter
 	farwritetext NursePokerusText
 	waitbutton
 	closetext
-	sjump .pokerus_done
-
-.pokerus_comcenter
-	farwritetext PokeComNursePokerusText
-	waitbutton
-	closetext
-
-.pokerus_done
 	setflag ENGINE_CAUGHT_POKERUS
 	specialphonecall SPECIALCALL_POKERUS
+	end
+
+PokecenterChanseyNurseScript:
+	cry CHANSEY
+	waitsfx
+	opentext
+	farwritetext ChanseyNurseText
+	waitbutton
+	closetext
 	end
 
 DifficultBookshelfScript:
