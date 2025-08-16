@@ -1,7 +1,7 @@
 	object_const_def
 	const POKECENTER2F_TRADE_RECEPTIONIST
 	const POKECENTER2F_BATTLE_RECEPTIONIST
-	const POKECENTER2F_OFFICER
+	const POKECENTER2F_RULES_RECEPTIONIST
 
 Pokecenter2F_MapScripts:
 	def_scene_scripts
@@ -10,9 +10,24 @@ Pokecenter2F_MapScripts:
 	scene_script Pokecenter2FLeaveColosseumScene,   SCENE_POKECENTER2F_LEAVE_COLOSSEUM
 
 	def_callbacks
+	callback MAPCALLBACK_TILES, Pokecenter2FTileCallback
 
 Pokecenter2FNoopScene:
 	end
+
+Pokecenter2FTileCallback:
+	checkscene
+	ifequal SCENE_POKECENTER2F_LEAVE_TRADE_CENTER, .LeaveTradeCenter
+	ifequal SCENE_POKECENTER2F_LEAVE_COLOSSEUM, .LeaveColosseum
+	endcallback
+
+.LeaveTradeCenter:
+	changeblock 10, 4, $3d ; open gate
+	endcallback
+
+.LeaveColosseum:
+	changeblock 6, 4, $3c ; open gate
+	endcallback
 
 Pokecenter2FLeaveTradeCenterScene:
 	sdefer Script_LeftCableTradeCenter
@@ -46,6 +61,14 @@ LinkReceptionistScript_Trade:
 	writetext Text_PleaseComeIn
 	waitbutton
 	closetext
+	applymovementlasttalked PokecenterMovementData_ReceptionistOpenGate
+	waitsfx
+	playsound SFX_ENTER_DOOR
+	changeblock 10, 4, $3d ; open gate
+	reloadmappart
+	pause 15
+	applymovementlasttalked PokecenterMovementData_ReceptionistBackInPlace
+	applymovement PLAYER, PokecenterMovementData_PlayerWalksToWarp
 	warpcheck
 	end
 
@@ -104,6 +127,14 @@ LinkReceptionistScript_Battle:
 	writetext Text_PleaseComeIn
 	waitbutton
 	closetext
+	applymovementlasttalked PokecenterMovementData_ReceptionistOpenGate
+	waitsfx
+	playsound SFX_ENTER_DOOR
+	changeblock 6, 4, $3c ; open gate
+	reloadmappart
+	pause 15
+	applymovementlasttalked PokecenterMovementData_ReceptionistBackInPlace
+	applymovement PLAYER, PokecenterMovementData_PlayerWalksToWarp
 	warpcheck
 	end
 
@@ -153,15 +184,90 @@ Script_LeftCableColosseum:
 	end
 
 Script_WalkOutOfLinkTradeRoom:
-	applymovement POKECENTER2F_TRADE_RECEPTIONIST, Pokecenter2FMovementData_ReceptionistStepsRightLooksDown
-	applymovement PLAYER, Pokecenter2FMovementData_PlayerTakesThreeStepsDown
-	applymovement POKECENTER2F_TRADE_RECEPTIONIST, Pokecenter2FMovementData_ReceptionistStepsRightAndDown
+	applymovement PLAYER, Pokecenter2FMovementData_PlayerMovesDownToDesk
+	applymovement POKECENTER2F_TRADE_RECEPTIONIST, Pokecenter2FMovementData_ReceptionistMovesToGate
+	waitsfx
+	playsound SFX_ENTER_DOOR
+	refreshscreen
+	changeblock 10, 4, $3b ; close gate
+	reloadmappart
+	pause 15
+	applymovement POKECENTER2F_TRADE_RECEPTIONIST, Pokecenter2FMovementData_ReceptionistBackInPlace
 	end
 
 Script_WalkOutOfLinkBattleRoom:
-	applymovement POKECENTER2F_BATTLE_RECEPTIONIST, Pokecenter2FMovementData_ReceptionistStepsRightLooksDown
-	applymovement PLAYER, Pokecenter2FMovementData_PlayerTakesThreeStepsDown
-	applymovement POKECENTER2F_BATTLE_RECEPTIONIST, Pokecenter2FMovementData_ReceptionistStepsRightAndDown
+	applymovement PLAYER, Pokecenter2FMovementData_PlayerMovesDownToDesk
+	applymovement POKECENTER2F_BATTLE_RECEPTIONIST, Pokecenter2FMovementData_ReceptionistMovesToGate
+	waitsfx
+	playsound SFX_ENTER_DOOR
+	refreshscreen
+	changeblock 6, 4, $2b ; close gate
+	reloadmappart
+	pause 15
+	applymovement POKECENTER2F_BATTLE_RECEPTIONIST, Pokecenter2FMovementData_ReceptionistBackInPlace
+	end
+
+PokecenterMovementData_ReceptionistOpenGate:
+	slow_step LEFT
+	turn_head DOWN
+	step_end
+
+PokecenterMovementData_ReceptionistBackInPlace:
+	slow_step RIGHT
+	turn_head LEFT
+	step_end
+
+PokecenterMovementData_PlayerWalksToWarp:
+	step LEFT
+	step UP
+	step UP
+	step UP
+	step_end
+
+Pokecenter2FMovementData_PlayerMovesDownToDesk:
+	step DOWN
+	step DOWN
+	step DOWN
+	step RIGHT
+	turn_head UP
+	step_end
+
+Pokecenter2FMovementData_ReceptionistMovesToGate:
+	slow_step LEFT
+	turn_head DOWN
+	step_end
+
+Pokecenter2FMovementData_ReceptionistBackInPlace:
+	slow_step RIGHT
+	turn_head DOWN
+	step_end
+
+RulesReceptionistScript:
+	opentext
+	checkevent EVENT_TALKED_TO_POKECENTER_RULES_RECEPTIONIST
+	iftrue .AlreadyTalkedTo
+	farwritetext Text_RulesReceptionist_Hello
+	waitbutton
+	farwritetext Text_RulesReceptionist_Repeat
+	waitbutton
+	farwritetext Text_RulesReceptionist_Enjoy
+	waitbutton
+	closetext
+	setevent EVENT_TALKED_TO_POKECENTER_RULES_RECEPTIONIST
+	end
+
+.AlreadyTalkedTo:
+	farwritetext Text_RulesReceptionist_HelloAgain
+	yesorno
+	iffalse .SaidNoToReceptionist
+	farwritetext Text_RulesReceptionist_ExplainAgain
+	waitbutton
+	farwritetext Text_RulesReceptionist_Repeat
+	waitbutton
+.SaidNoToReceptionist:
+	farwritetext Text_RulesReceptionist_Enjoy
+	waitbutton
+	closetext
 	end
 
 Pokecenter2FLinkRecordSign:
@@ -170,55 +276,6 @@ Pokecenter2FLinkRecordSign:
 	closetext
 	end
 
-Pokecenter2FOfficerScript:
-	faceplayer
-	opentext
-	checkevent EVENT_POKECENTER_DELIVERY_GUY
-	iftrue .AlreadyGotGift
-	writetext Text_DeliveryGuy_Intro
-	yesorno
-	iffalse .RefusedGift
-	writetext Text_DeliveryGuy_HereYouGo
-	promptbutton
-	waitsfx
-; get item
-	iffalse .BagIsFull
-	itemnotify
-	setevent EVENT_POKECENTER_DELIVERY_GUY
-.AlreadyGotGift:
-	writetext Text_DeliveryGuy_Outro
-	waitbutton
-	closetext
-	end
-
-.BagIsFull:
-	writetext Text_DeliveryGuy_NoRoom
-	waitbutton
-	closetext
-	end
-
-.RefusedGift:
-	writetext Text_DeliveryGuy_SaidNo
-	waitbutton
-	closetext
-	end
-
-Pokecenter2FMovementData_PlayerTakesThreeStepsDown:
-	step DOWN
-	step DOWN
-	step DOWN
-	step_end
-
-Pokecenter2FMovementData_ReceptionistStepsRightAndDown:
-	slow_step RIGHT
-	slow_step DOWN
-	step_end
-
-Pokecenter2FMovementData_ReceptionistStepsRightLooksDown:
-	slow_step UP
-	slow_step LEFT
-	turn_head RIGHT
-	step_end
 
 Text_BattleReceptionistIntro:
 	text "Welcome to CABLE"
@@ -311,37 +368,75 @@ Text_RejectMonWithMail:
 	cont "has MAIL with you."
 	prompt
 
-Text_DeliveryGuy_Intro:
-	text "Hello! You're"
-	line "<PLAYER>, right?"
+Text_RulesReceptionist_Hello:
+	text "Hello!"
 
-	para "I have some-"
-	line "thing for you."
+	para "Is this your first"
+	line "time up here?"
+
+	para "I'll show you how"
+	line "the CABLE CLUB"
+	cont "works."
+
+	para "First, I need to"
+	line "show you this"
+	cont "floor of our"
+	cont "#MON CENTER."
 	done
 
-Text_DeliveryGuy_HereYouGo:
-	text "Here you go!"
+Text_RulesReceptionist_Repeat:
+	text "On the top floor,"
+	line "there are two"
+	cont "rooms."
+
+	para "First, the room on"
+	line "the left. It's the"
+	cont "CABLE COLOSSEUM."
+
+	para "You may link up"
+	line "with TRAINERS"
+	cont "around you who"
+
+	para "also entered the"
+	line "COLOSSEUM."
+
+	para "There you may"
+	line "engage in battles"
+	cont "with one another."
+
+	para "Second, the room"
+	line "on the right is"
+	cont "the CABLE TRADE"
+	cont "CENTER."
+
+	para "You may trade"
+	line "#MON with your"
+	cont "friends in this"
+	cont "room."
+
+	para "To link up, you"
+	line "need to have a"
+	cont "GAME LINK CABLE"
+	cont "connected."
 	done
 
-Text_DeliveryGuy_Outro:
-	text "We hope to serve"
-	line "you again."
+Text_RulesReceptionist_Enjoy:
+	text "I hope you enjoy"
+	line "the CABLE CLUB."
 	done
 
-Text_DeliveryGuy_NoRoom:
-	text "Oh, you have no"
-	line "space for this."
+Text_RulesReceptionist_HelloAgain:
+	text "Hello again!"
 
-	para "Stop in at any"
-	line "#MON CENTER"
-
-	para "across the country"
-	line "to pick it up."
+	para "Is there anything"
+	line "you need to ask me"
+	cont "about linking?"
 	done
 
-Text_DeliveryGuy_SaidNo:
-	text "No? That's very"
-	line "strange…"
+Text_RulesReceptionist_ExplainAgain:
+	text "Let me explain how"
+	line "the CABLE CLUB"
+	cont "works."
 	done
 
 Text_BrokeStadiumRules:
@@ -380,4 +475,4 @@ Pokecenter2F_MapEvents:
 	def_object_events
 	object_event 11,  3, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, LinkReceptionistScript_Trade, -1
 	object_event  7,  3, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, LinkReceptionistScript_Battle, -1
-	object_event  3,  3, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Pokecenter2FOfficerScript, EVENT_POKECENTER_DELIVERY_GUY
+	object_event  3,  3, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, RulesReceptionistScript, -1

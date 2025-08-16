@@ -60,3 +60,4 @@
 	tilecoll WALL, COUNTER, FLOOR, FLOOR ; 3b
 	tilecoll FLOOR, COUNTER, FLOOR, FLOOR ; 3c
 	tilecoll FLOOR, COUNTER, FLOOR, FLOOR ; 3d
+	tilecoll DOOR, WALL, FLOOR, FLOOR ; 3e
