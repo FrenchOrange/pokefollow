@@ -1,5 +1,6 @@
 	object_const_def
 	const VIOLETPOKECENTER1F_NURSE
+	const VIOLETPOKECENTER1F_VIOLET
 	const VIOLETPOKECENTER1F_GAMEBOY_KID
 	const VIOLETPOKECENTER1F_GENTLEMAN
 	const VIOLETPOKECENTER1F_YOUNGSTER
@@ -12,6 +13,9 @@ VioletPokecenter1F_MapScripts:
 
 VioletPokecenterNurse:
 	jumpstd PokecenterNurseScript
+
+VioletPokecenter1FChanseyScript:
+	jumpstd PokecenterChanseyNurseScript
 
 VioletPokecenter1F_ElmsAideScript:
 	faceplayer
@@ -172,29 +176,6 @@ VioletPokecenterElmsAideAskEggText:
 	line "take the EGG?"
 	done
 
-VioletPokecenterFarawayLinkText: ; unreferenced
-	text "I've been thinking"
-	line "it'd be great to"
-
-	para "be able to link up"
-	line "and battle with my"
-
-	para "friends who live"
-	line "far away."
-	done
-
-VioletPokecenterMobileAdapterText: ; unreferenced
-	text "I just battled a"
-	line "friend in CIANWOOD"
-	cont "over a link."
-
-	para "If you connect a"
-	line "MOBILE ADAPTER,"
-
-	para "you can link with"
-	line "a friend far away."
-	done
-
 VioletPokecenter1FGameboyKidText:
 	text "A guy named BILL"
 	line "made the #MON"
@@ -232,17 +213,17 @@ VioletPokecenter1F_MapEvents:
 	db 0, 0 ; filler
 
 	def_warp_events
-	warp_event  3,  7, VIOLET_CITY, 5
-	warp_event  4,  7, VIOLET_CITY, 5
-	warp_event  0,  7, POKECENTER_2F, 1
+	warp_event  8,  9, VIOLET_CITY, 5
+	warp_event  1,  7, POKECENTER_2F, 1
 
 	def_coord_events
 
 	def_bg_events
 
 	def_object_events
-	object_event  3,  1, SPRITE_NURSE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, VioletPokecenterNurse, -1
-	object_event  7,  6, SPRITE_GAMEBOY_KID, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, VioletPokecenter1FGameboyKidScript, -1
+	object_event  8,  3, SPRITE_NURSE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, VioletPokecenterNurse, -1
+	object_event  9,  3, SPRITE_NURSE_CHANSEY, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, VioletPokecenter1FChanseyScript, -1
+	object_event  5,  8, SPRITE_GAMEBOY_KID, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, VioletPokecenter1FGameboyKidScript, -1
 	object_event  1,  4, SPRITE_GENTLEMAN, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, VioletPokecenter1FGentlemanScript, -1
-	object_event  8,  1, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, VioletPokecenter1FYoungsterScript, -1
-	object_event  4,  3, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, VioletPokecenter1F_ElmsAideScript, EVENT_ELMS_AIDE_IN_VIOLET_POKEMON_CENTER
+	object_event 13,  6, SPRITE_YOUNGSTER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, VioletPokecenter1FYoungsterScript, -1
+	object_event  9,  5, SPRITE_SCIENTIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, VioletPokecenter1F_ElmsAideScript, EVENT_ELMS_AIDE_IN_VIOLET_POKEMON_CENTER

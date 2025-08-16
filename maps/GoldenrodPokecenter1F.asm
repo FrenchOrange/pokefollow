@@ -1,5 +1,6 @@
 	object_const_def
 	const GOLDENRODPOKECENTER1F_NURSE
+	const GOLDENRODPOKECENTER1F_CHANSEY
 	const GOLDENRODPOKECENTER1F_PCC_TRADE_CORNER_RECEPTIONIST
 	const GOLDENRODPOKECENTER1F_GAMEBOY_KID
 	const GOLDENRODPOKECENTER1F_LASS
@@ -14,7 +15,10 @@ GoldenrodPokecenter1F_MapScripts:
 GoldenrodPokecenter1FNurseScript:
 	jumpstd PokecenterNurseScript
 
-GoldenrodPokecenter1F_GSBallSceneLeft:
+GoldenrodPokecenter1FChanseyScript:
+	jumpstd PokecenterChanseyNurseScript
+
+GoldenrodPokecenter1F_GSBallScene:
 	setval BATTLETOWERACTION_GSBALL
 	special BattleTowerAction
 	ifequal GS_BALL_AVAILABLE, .gsball
@@ -40,38 +44,6 @@ GoldenrodPokecenter1F_GSBallSceneLeft:
 	waitbutton
 	closetext
 	applymovement GOLDENRODPOKECENTER1F_PCC_TRADE_CORNER_RECEPTIONIST, GoldenrodPokeCenter1FLinkReceptionistWalkToStairsFromLeftDoorwayTileMovement
-	special RestartMapMusic
-	disappear GOLDENRODPOKECENTER1F_PCC_TRADE_CORNER_RECEPTIONIST
-	playsound SFX_EXIT_BUILDING
-.cancel
-	end
-
-GoldenrodPokecenter1F_GSBallSceneRight:
-	setval BATTLETOWERACTION_GSBALL
-	special BattleTowerAction
-	ifequal GS_BALL_AVAILABLE, .gsball
-	end
-
-.gsball
-	checkevent EVENT_GOT_GS_BALL_FROM_GOLDENROD_POKEMON_CENTER
-	iftrue .cancel
-	playsound SFX_EXIT_BUILDING
-	moveobject GOLDENRODPOKECENTER1F_PCC_TRADE_CORNER_RECEPTIONIST, 0, 7
-	disappear GOLDENRODPOKECENTER1F_PCC_TRADE_CORNER_RECEPTIONIST
-	appear GOLDENRODPOKECENTER1F_PCC_TRADE_CORNER_RECEPTIONIST
-	playmusic MUSIC_SHOW_ME_AROUND
-	applymovement GOLDENRODPOKECENTER1F_PCC_TRADE_CORNER_RECEPTIONIST, GoldenrodPokeCenter1FLinkReceptionistApproachPlayerAtRightDoorwayTileMovement
-	turnobject PLAYER, UP
-	opentext
-	writetext GoldenrodPokeCenter1FLinkReceptionistPleaseAcceptGSBallText
-	waitbutton
-	verbosegiveitem GS_BALL
-	setevent EVENT_GOT_GS_BALL_FROM_GOLDENROD_POKEMON_CENTER
-	setevent EVENT_CAN_GIVE_GS_BALL_TO_KURT
-	writetext GoldenrodPokeCenter1FLinkReceptionistPleaseDoComeAgainText
-	waitbutton
-	closetext
-	applymovement GOLDENRODPOKECENTER1F_PCC_TRADE_CORNER_RECEPTIONIST, GoldenrodPokeCenter1FLinkReceptionistWalkToStairsFromRightDoorwayTileMovement
 	special RestartMapMusic
 	disappear GOLDENRODPOKECENTER1F_PCC_TRADE_CORNER_RECEPTIONIST
 	playsound SFX_EXIT_BUILDING
@@ -806,20 +778,18 @@ GoldenrodPokecenter1F_MapEvents:
 	db 0, 0 ; filler
 
 	def_warp_events
-	warp_event  3,  7, GOLDENROD_CITY, 15
-	warp_event  4,  7, GOLDENROD_CITY, 15
-	warp_event  0,  6, POKECOM_CENTER_ADMIN_OFFICE_MOBILE, 1
-	warp_event  0,  7, POKECENTER_2F, 1
+	warp_event  8,  9, GOLDENROD_CITY, 15
+	warp_event  1,  7, POKECENTER_2F, 1
 
 	def_coord_events
-	coord_event  3,  7, SCENE_GOLDENRODPOKECENTER1F_GS_BALL, GoldenrodPokecenter1F_GSBallSceneLeft
-	coord_event  4,  7, SCENE_GOLDENRODPOKECENTER1F_GS_BALL, GoldenrodPokecenter1F_GSBallSceneRight
+	coord_event  8,  9, SCENE_GOLDENRODPOKECENTER1F_GS_BALL, GoldenrodPokecenter1F_GSBallScene
 
 	def_bg_events
 
 	def_object_events
-	object_event  3,  1, SPRITE_NURSE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodPokecenter1FNurseScript, -1
-	object_event 16,  8, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ObjectEvent, -1
-	object_event  6,  1, SPRITE_GAMEBOY_KID, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, GoldenrodPokecenter1FGameboyKidScript, -1
-	object_event  1,  4, SPRITE_LASS, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodPokecenter1FLassScript, -1
-	object_event  7,  5, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, GoldenrodPokecenter1FPokefanF, -1
+	object_event  8,  3, SPRITE_NURSE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodPokecenter1FNurseScript, -1
+	object_event  9,  3, SPRITE_NURSE_CHANSEY, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodPokecenter1FChanseyScript, -1
+	object_event 21,  9, SPRITE_LINK_RECEPTIONIST, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BLUE, OBJECTTYPE_SCRIPT, 0, ObjectEvent, -1
+	object_event 12,  6, SPRITE_GAMEBOY_KID, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, GoldenrodPokecenter1FGameboyKidScript, -1
+	object_event  3,  4, SPRITE_LASS, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, GoldenrodPokecenter1FLassScript, -1
+	object_event 14,  8, SPRITE_POKEFAN_F, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, GoldenrodPokecenter1FPokefanF, -1

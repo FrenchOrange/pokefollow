@@ -1,61 +1,20 @@
 	object_const_def
 	const ECRUTEAKPOKECENTER1F_NURSE
+	const ECRUTEAKPOKECENTER1F_CHANSEY
 	const ECRUTEAKPOKECENTER1F_POKEFAN_M
 	const ECRUTEAKPOKECENTER1F_COOLTRAINER_F
 	const ECRUTEAKPOKECENTER1F_GYM_GUIDE
-	const ECRUTEAKPOKECENTER1F_BILL
 
 EcruteakPokecenter1F_MapScripts:
 	def_scene_scripts
-	scene_script EcruteakPokecenter1FMeetBillScene, SCENE_ECRUTEAKPOKECENTER1F_MEET_BILL
-	scene_script EcruteakPokecenter1FNoopScene,     SCENE_ECRUTEAKPOKECENTER1F_NOOP
 
 	def_callbacks
 
-EcruteakPokecenter1FMeetBillScene:
-	sdefer EcruteakPokcenter1FBillScript
-	end
-
-EcruteakPokecenter1FNoopScene:
-	end
-
-EcruteakPokcenter1FBillScript:
-	pause 30
-	playsound SFX_EXIT_BUILDING
-	appear ECRUTEAKPOKECENTER1F_BILL
-	waitsfx
-	applymovement ECRUTEAKPOKECENTER1F_BILL, EcruteakPokecenter1FBillMovement1
-	applymovement PLAYER, EcruteakPokecenter1FPlayerMovement1
-	turnobject ECRUTEAKPOKECENTER1F_NURSE, UP
-	pause 10
-	turnobject ECRUTEAKPOKECENTER1F_NURSE, DOWN
-	pause 30
-	turnobject ECRUTEAKPOKECENTER1F_NURSE, UP
-	pause 10
-	turnobject ECRUTEAKPOKECENTER1F_NURSE, DOWN
-	pause 20
-	turnobject ECRUTEAKPOKECENTER1F_BILL, DOWN
-	pause 10
-	opentext
-	writetext EcruteakPokecenter1F_BillText1
-	promptbutton
-	sjump .PointlessJump
-
-.PointlessJump:
-	writetext EcruteakPokecenter1F_BillText2
-	waitbutton
-	closetext
-	turnobject PLAYER, DOWN
-	applymovement ECRUTEAKPOKECENTER1F_BILL, EcruteakPokecenter1FBillMovement2
-	playsound SFX_EXIT_BUILDING
-	disappear ECRUTEAKPOKECENTER1F_BILL
-	clearevent EVENT_MET_BILL
-	setscene SCENE_ECRUTEAKPOKECENTER1F_NOOP
-	waitsfx
-	end
-
 EcruteakPokecenter1FNurseScript:
 	jumpstd PokecenterNurseScript
+
+EcruteakPokecenter1FChanseyScript:
+	jumpstd PokecenterChanseyNurseScript
 
 EcruteakPokecenter1FPokefanMScript:
 	jumptextfaceplayer EcruteakPokecenter1FPokefanMText
@@ -66,52 +25,6 @@ EcruteakPokecenter1FCooltrainerFScript:
 EcruteakPokecenter1FGymGuideScript:
 	jumptextfaceplayer EcruteakPokecenter1FGymGuideText
 
-EcruteakPokecenter1FBillMovement1:
-	step UP
-	step UP
-	step UP
-	step UP
-	step RIGHT
-	step RIGHT
-	step RIGHT
-	turn_head UP
-	step_end
-
-EcruteakPokecenter1FBillMovement2:
-	step RIGHT
-	step DOWN
-	step DOWN
-	step DOWN
-	step DOWN
-	step_end
-
-EcruteakPokecenter1FPlayerMovement1:
-	step UP
-	step UP
-	step UP
-	step_end
-
-EcruteakPokecenter1F_BillText1:
-	text "Hi, I'm BILL. And"
-	line "who are you?"
-
-	para "Hmm, <PLAYER>, huh?"
-	line "You've come at the"
-	cont "right time."
-	done
-
-EcruteakPokecenter1F_BillText2:
-	text "You know that"
-	line "#MON can be"
-	cont "traded, right?"
-
-	para "I have to hurry on"
-	line "back to GOLDENROD"
-	cont "and see my folks."
-
-	para "Buh-bye!"
-	done
-
 EcruteakPokecenter1FPokefanMText:
 	text "The way the KIMONO"
 	line "GIRLS dance is"
@@ -119,22 +32,6 @@ EcruteakPokecenter1FPokefanMText:
 	para "marvelous. Just"
 	line "like the way they"
 	cont "use their #MON."
-	done
-
-EcruteakPokecenter1FPokefanMTextMobile: ; unreferenced
-	text "You must be hoping"
-	line "to battle more"
-
-	para "people, right?"
-	line "There's apparently"
-
-	para "some place where"
-	line "trainers gather."
-
-	para "Where, you ask?"
-
-	para "It's a little past"
-	line "OLIVINE CITY."
 	done
 
 EcruteakPokecenter1FCooltrainerFText:
@@ -160,17 +57,16 @@ EcruteakPokecenter1F_MapEvents:
 	db 0, 0 ; filler
 
 	def_warp_events
-	warp_event  3,  7, ECRUTEAK_CITY, 6
-	warp_event  4,  7, ECRUTEAK_CITY, 6
-	warp_event  0,  7, POKECENTER_2F, 1
+	warp_event  8,  9, ECRUTEAK_CITY, 6
+	warp_event  1,  7, POKECENTER_2F, 1
 
 	def_coord_events
 
 	def_bg_events
 
 	def_object_events
-	object_event  3,  1, SPRITE_NURSE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, EcruteakPokecenter1FNurseScript, -1
-	object_event  7,  6, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, EcruteakPokecenter1FPokefanMScript, -1
-	object_event  1,  4, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, EcruteakPokecenter1FCooltrainerFScript, -1
-	object_event  7,  1, SPRITE_GYM_GUIDE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, EcruteakPokecenter1FGymGuideScript, -1
-	object_event  0,  7, SPRITE_BILL, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_ECRUTEAK_POKE_CENTER_BILL
+	object_event  8,  3, SPRITE_NURSE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, EcruteakPokecenter1FNurseScript, -1
+	object_event  9,  3, SPRITE_NURSE_CHANSEY, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, EcruteakPokecenter1FChanseyScript, -1
+	object_event 14,  8, SPRITE_POKEFAN_M, SPRITEMOVEDATA_SPINRANDOM_FAST, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, EcruteakPokecenter1FPokefanMScript, -1
+	object_event  3,  5, SPRITE_COOLTRAINER_F, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, EcruteakPokecenter1FCooltrainerFScript, -1
+	object_event 12,  6, SPRITE_GYM_GUIDE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, EcruteakPokecenter1FGymGuideScript, -1
