@@ -9,6 +9,12 @@ ViridianPokecenter1F_MapScripts:
 	def_scene_scripts
 
 	def_callbacks
+	callback MAPCALLBACK_TILES, .SetUpStoneSlab
+
+.SetUpStoneSlab:
+	changeblock  4, 0, $3f ; slab
+	changeblock  4, 2, $40 ; slab
+	endcallback
 
 ViridianPokecenter1FNurseScript:
 	jumpstd PokecenterNurseScript
@@ -37,6 +43,9 @@ ViridianPokecenter1FGentlemanScript:
 
 ViridianPokecenter1FBugCatcherScript:
 	jumptextfaceplayer ViridianPokecenter1FBugCatcherText
+
+ViridianPokecenter1FStoneSlab:
+	jumptext ViridianStoneSlabText
 
 ViridianPokecenter1FCooltrainerMText:
 	text "Where in the world"
@@ -76,6 +85,17 @@ ViridianPokecenter1FBugCatcherText:
 	cont "two first…"
 	done
 
+ViridianStoneSlabText:
+	text "An old-looking"
+	line "slab with #MON"
+	cont "engravings."
+
+	para "Hey! One of them"
+	line "looks like the"
+	cont "golden bird you"
+	cont "saw on ROUTE 1."
+	done
+
 ViridianPokecenter1F_MapEvents:
 	db 0, 0 ; filler
 
@@ -86,6 +106,7 @@ ViridianPokecenter1F_MapEvents:
 	def_coord_events
 
 	def_bg_events
+	bg_event  4,  2, BGEVENT_READ, ViridianPokecenter1FStoneSlab
 
 	def_object_events
 	object_event  8,  3, SPRITE_NURSE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ViridianPokecenter1FNurseScript, -1
