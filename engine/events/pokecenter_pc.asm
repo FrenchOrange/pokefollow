@@ -1,8 +1,7 @@
 	; PokemonCenterPC.WhichPC indexes
 	const_def
-	const PCPC_BEFORE_POKEDEX ; 0
-	const PCPC_BEFORE_HOF     ; 1
-	const PCPC_POSTGAME       ; 2
+	const PCPC_BEFORE_HOF     ; 0
+	const PCPC_POSTGAME       ; 1
 
 	; PokemonCenterPC.Jumptable indexes
 	const_def
@@ -70,13 +69,6 @@ PokemonCenterPC:
 .WhichPC:
 ; entries correspond to PCPC_* constants
 
-	; PCPC_BEFORE_POKEDEX
-	db 3
-	db PCPCITEM_BILLS_PC
-	db PCPCITEM_PLAYERS_PC
-	db PCPCITEM_TURN_OFF
-	db -1 ; end
-
 	; PCPC_BEFORE_HOF
 	db 4
 	db PCPCITEM_BILLS_PC
@@ -95,12 +87,6 @@ PokemonCenterPC:
 	db -1 ; end
 
 .ChooseWhichPCListToUse:
-	call CheckReceivedDex
-	jr nz, .got_dex
-	ld a, PCPC_BEFORE_POKEDEX
-	ret
-
-.got_dex
 	ld a, [wHallOfFameCount]
 	and a
 	ld a, PCPC_BEFORE_HOF

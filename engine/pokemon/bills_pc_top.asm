@@ -84,14 +84,14 @@ _BillsPC:
 	db "DEPOSIT <PK><MN>@"
 	db "CHANGE BOX@"
 	db "MOVE <PK><MN> W/O MAIL@"
-	db "SEE YA!@"
+	db "LOG OFF@"
 
 .Jumptable:
 	dw BillsPC_WithdrawMenu
 	dw BillsPC_DepositMenu
 	dw BillsPC_ChangeBoxMenu
 	dw BillsPC_MovePKMNMenu
-	dw BillsPC_SeeYa
+	dw BillsPC_LogOff
 
 .items
 	db 5 ; # items
@@ -99,10 +99,10 @@ _BillsPC:
 	db 1 ; DEPOSIT
 	db 2 ; CHANGE BOX
 	db 3 ; MOVE PKMN
-	db 4 ; SEE YA!
+	db 4 ; LOG OFF
 	db -1
 
-BillsPC_SeeYa:
+BillsPC_LogOff:
 	scf
 	ret
 
