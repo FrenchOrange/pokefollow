@@ -1,3 +1,18 @@
+NurseFirstTimeText:
+	text "Welcome to our"
+	line "POKEMON CENTER."
+
+	para "Oh? Are you a new"
+	line "trainer by chance?"
+
+	para "Aww, your POKEMON"
+	line "is in bad shape,"
+	cont "but do not worry."
+
+	para "We'll heal them"
+	line "in no time."
+	done
+
 NurseMornText:
 	text "Good morning!"
 	line "Welcome to our"

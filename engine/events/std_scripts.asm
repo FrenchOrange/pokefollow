@@ -62,8 +62,8 @@ StdScripts::
 	add_stdscript HappinessCheckScript
 
 PokecenterNurseScript:
-; EVENT_WELCOMED_TO_POKECOM_CENTER is never set
-
+	checkevent EVENT_MET_TEAM_ROCKET_VIRIDIAN
+	iffalse .firsttimehealing
 	opentext
 	checktime MORN
 	iftrue .morn
@@ -140,6 +140,28 @@ PokecenterNurseScript:
 	pause 10
 	savefollowercoords
 	appearfollower
+	end
+
+.firsttimehealing
+	opentext
+	farwritetext NurseFirstTimeText
+	promptbutton
+	closetext
+	turnobject LAST_TALKED, LEFT
+	pause 10
+	special HealParty
+	playmusic MUSIC_NONE
+	setval HEALMACHINE_POKECENTER
+	special HealMachineAnim
+	pause 30
+	special RestartMapMusic
+	turnobject LAST_TALKED, DOWN
+	pause 10
+	opentext
+	farwritetext NurseGoodbyeText
+	promptbutton
+	closetext
+	setevent EVENT_MET_TEAM_ROCKET_VIRIDIAN
 	end
 
 .pokerus

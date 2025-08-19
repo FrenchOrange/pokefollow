@@ -578,8 +578,8 @@ ViridianPoliceStation_NoPosterText:
 	line "was torn off!"
 	done
 
-ViridianCityHiddenPotion:
-	hiddenitem POTION, EVENT_VIRIDIAN_CITY_HIDDEN_POTION
+ViridianCityHiddenAntidote:
+	hiddenitem ANTIDOTE, EVENT_VIRIDIAN_CITY_HIDDEN_ANTIDOTE
 
 ViridianCity_PokeCenterCutscene1:
 	applymovement PLAYER, ViridianCityPlayerMovesBackRight
@@ -686,7 +686,7 @@ ViridianCity_MapEvents:
 	bg_event  7, 21, BGEVENT_READ, ViridianSchoolSign
 	bg_event 20, 15, BGEVENT_READ, ViridianCityPokecenterSign
 	bg_event 17, 27, BGEVENT_READ, ViridianPoliceStationSign
-	bg_event 12,  2, BGEVENT_ITEM, ViridianCityHiddenPotion
+	bg_event 12,  2, BGEVENT_ITEM, ViridianCityHiddenAntidote
 
 	def_object_events
 	object_event 22,  5, SPRITE_GRAMPS, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, CatchingTutorialGrampsScript, -1
