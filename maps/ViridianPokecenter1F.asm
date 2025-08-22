@@ -7,6 +7,8 @@
 
 ViridianPokecenter1F_MapScripts:
 	def_scene_scripts
+	scene_script ViridianPokecenterNoop1Scene, SCENE_VIRIDIAN_POKECENTER_NOOP
+	scene_script ViridianPokecenterNoop2Scene, SCENE_VIRIDIAN_POKECENTER_TEAM_ROCKET
 
 	def_callbacks
 	callback MAPCALLBACK_TILES, .SetUpStoneSlab
@@ -15,6 +17,12 @@ ViridianPokecenter1F_MapScripts:
 	changeblock  4, 0, $3f ; slab
 	changeblock  4, 2, $40 ; slab
 	endcallback
+
+ViridianPokecenterNoop1Scene:
+	end
+
+ViridianPokecenterNoop2Scene:
+	end
 
 ViridianPokecenter1FNurseScript:
 	jumpstd PokecenterNurseScript
@@ -96,6 +104,26 @@ ViridianStoneSlabText:
 	cont "saw on ROUTE 1."
 	done
 
+ViridianPokeCenterCutscene:
+	applymovement PLAYER, ViridianPokecenterPlayerMovesBackDown
+	applymovement FOLLOWER, ViridianPokecenterPlayerMovesBackDown
+	opentext
+	writetext ViridianStoneSlabText
+	waitbutton
+	closetext
+
+	setevent EVENT_MET_TEAM_ROCKET_VIRIDIAN
+	setscene SCENE_VIRIDIAN_POKECENTER_NOOP
+	setmapscene VIRIDIAN_CITY, SCENE_VIRIDIAN_CITY_GYM_GUARD
+	end
+
+ViridianPokecenterPlayerMovesBackDown:
+	turn_head DOWN
+	fix_facing
+	big_step UP
+	remove_fixed_facing
+	step_end
+
 ViridianPokecenter1F_MapEvents:
 	db 0, 0 ; filler
 
@@ -104,6 +132,7 @@ ViridianPokecenter1F_MapEvents:
 	warp_event  1,  7, POKECENTER_2F, 1
 
 	def_coord_events
+	coord_event  8,  9, SCENE_VIRIDIAN_POKECENTER_TEAM_ROCKET, ViridianPokeCenterCutscene
 
 	def_bg_events
 	bg_event  4,  2, BGEVENT_READ, ViridianPokecenter1FStoneSlab
@@ -111,6 +140,11 @@ ViridianPokecenter1F_MapEvents:
 	def_object_events
 	object_event  8,  3, SPRITE_NURSE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ViridianPokecenter1FNurseScript, -1
 	object_event  9,  3, SPRITE_NURSE_CHANSEY, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ViridianPokecenter1FChanseyScript, -1
-	object_event 14,  6, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, ViridianPokecenter1FCooltrainerMScript, -1
-	object_event 11,  5, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ViridianPokecenter1FGentlemanScript, -1
+	object_event 15,  6, SPRITE_COOLTRAINER_M, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, ViridianPokecenter1FCooltrainerMScript, -1
+	object_event 13,  3, SPRITE_GENTLEMAN, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ViridianPokecenter1FGentlemanScript, -1
 	object_event  3,  6, SPRITE_BUG_CATCHER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, ViridianPokecenter1FBugCatcherScript, -1
+	object_event 10,  8, SPRITE_EKANS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_PINK, OBJECTTYPE_SCRIPT, 0, ObjectEvent, -1
+	object_event  6,  8, SPRITE_KOFFING, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_PINK, OBJECTTYPE_SCRIPT, 0, ObjectEvent, -1
+	object_event  7,  6, SPRITE_JESSIE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, -1
+	object_event  9,  6, SPRITE_JAMES, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, -1
+	object_event  8,  5, SPRITE_MEOWTH, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, ObjectEvent, -1

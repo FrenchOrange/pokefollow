@@ -403,6 +403,7 @@ DebugSign:
 ; useful flags
 	setflag ENGINE_POKEDEX
 	setevent EVENT_GOT_PROPER_CLOTHES
+	setevent EVENT_MET_TEAM_ROCKET_VIRIDIAN
 	setscene SCENE_PLAYERSHOUSE2F_NOOP	
 ; useful items
 	giveitem BICYCLE

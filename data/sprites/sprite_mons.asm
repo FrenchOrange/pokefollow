@@ -1,35 +1,26 @@
 SpriteMons:
 ; entries correspond to SPRITE_* constants past SPRITE_POKEMON
 	table_width 1, SpriteMons
-	db BULBASAUR	; Doll
-	db CHARMANDER	; Doll
-	db SQUIRTLE	; Doll
-	db CLEFAIRY	; Doll & OW
-	db DIGLETT	; Doll & OW
-	db GENGAR	; Doll
-	db GEODUDE	; Doll
-	db GRIMER	; Doll
-	db JIGGLYPUFF	; Doll & OW
-	db MACHOP	; Doll & OW
-	db MAGIKARP	; Doll & OW
-	db ODDISH	; Doll
-	db PIKACHU	; Doll
-	db POLIWAG	; Doll
-	db SHELLDER	; Doll
-	db STARYU	; Doll
-	db VOLTORB	; Doll
-	db WEEDLE	; Doll
-	db TENTACOOL	; Doll
-	db UNOWN	; Doll
-	db PIDGEY       ; OW onward
+	db CLEFAIRY   ; Player's House 2F
+	db POLIWAG    ; Player's House 2F
+	db VOLTORB    ; Player's House 2F
+	db SQUIRTLE   ; Rival's House
+	db PIDGEY     ; Route 1
+	db SPEAROW    ; Route 1
+	db EKANS      ; Viridian Pokecenter
+	db KOFFING    ; Viridian Pokecenter
+	db MEOWTH     ; Viridian Pokecenter
 	db RATTATA
-	db SPEAROW
+	db ODDISH
+	db DIGLETT
+	db JIGGLYPUFF
+	db MACHOP
+	db MAGIKARP
 	db SLOWPOKE
 	db SLOWBRO
 	db DRATINI
 	db DRAGONITE
 	db POLIWRATH
-	db MEOWTH
 	db ZUBAT
 	db FARFETCH_D
 	db KANGASKHAN

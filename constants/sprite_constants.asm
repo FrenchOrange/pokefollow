@@ -115,35 +115,26 @@ DEF NUM_OVERWORLD_SPRITES EQU const_value - 1
 ; SpriteMons indexes (see data/sprites/sprite_mons.asm)
 	const_next $80
 DEF SPRITE_POKEMON EQU const_value
-	const SPRITE_BULBASAUR	; Doll
-	const SPRITE_CHARMANDER	; Doll
-	const SPRITE_SQUIRTLE	; Doll
-	const SPRITE_CLEFAIRY	; Doll & OW
-	const SPRITE_DIGLETT	; Doll & OW
-	const SPRITE_GENGAR	; Doll
-	const SPRITE_GEODUDE	; Doll
-	const SPRITE_GRIMER	; Doll
-	const SPRITE_JIGGLYPUFF	; Doll & OW
-	const SPRITE_MACHOP	; Doll & OW
-	const SPRITE_MAGIKARP	; Doll
-	const SPRITE_ODDISH	; Doll
-	const SPRITE_PIKACHU	; Doll
-	const SPRITE_POLIWAG	; Doll
-	const SPRITE_SHELLDER	; Doll
-	const SPRITE_STARYU	; Doll
-	const SPRITE_VOLTORB	; Doll
-	const SPRITE_WEEDLE	; Doll
-	const SPRITE_TENTACOOL	; Doll
-	const SPRITE_UNOWN	; Doll
-	const SPRITE_PIDGEY     ; OW onward
+	const SPRITE_CLEFAIRY   ; Player's House 2F
+	const SPRITE_POLIWAG    ; Player's House 2F
+	const SPRITE_VOLTORB    ; Player's House 2F
+	const SPRITE_SQUIRTLE   ; Rival's House
+	const SPRITE_PIDGEY     ; Route 1
+	const SPRITE_SPEAROW    ; Route 1
+	const SPRITE_EKANS      ; Viridian Pokecenter
+	const SPRITE_KOFFING    ; Viridian Pokecenter
+	const SPRITE_MEOWTH     ; Viridian Pokecenter
 	const SPRITE_RATTATA
-	const SPRITE_SPEAROW
+	const SPRITE_ODDISH
+	const SPRITE_DIGLETT
+	const SPRITE_JIGGLYPUFF
+	const SPRITE_MACHOP
+	const SPRITE_MAGIKARP
 	const SPRITE_SLOWPOKE
 	const SPRITE_SLOWBRO
 	const SPRITE_DRATINI
 	const SPRITE_DRAGONITE
 	const SPRITE_POLIWRATH
-	const SPRITE_MEOWTH
 	const SPRITE_ZUBAT
 	const SPRITE_FARFETCH_D
 	const SPRITE_KANGASKHAN

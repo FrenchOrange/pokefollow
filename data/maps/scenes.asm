@@ -8,7 +8,12 @@ MapScenes::
 	scene_var POKECENTER_2F,                               wPokecenter2FSceneID
 	scene_var TRADE_CENTER,                                wTradeCenterSceneID
 	scene_var COLOSSEUM,                                   wColosseumSceneID
+	scene_var PLAYERS_HOUSE_2F,                            wPlayersHouse2FSceneID
+	scene_var PALLET_TOWN,                                 wPalletTownSceneID
+	scene_var ROUTE_1,                                     wRoute1SceneID
+	scene_var PALLET_LAKE,                                 wPalletLakeSceneID
 	scene_var VIRIDIAN_CITY,                               wViridianCitySceneID
+	scene_var VIRIDIAN_POKECENTER_1F,                      wViridianPokecenter1FSceneID
 	scene_var POWER_PLANT,                                 wPowerPlantSceneID
 	scene_var CERULEAN_GYM,                                wCeruleanGymSceneID
 	scene_var ROUTE_25,                                    wRoute25SceneID
@@ -26,10 +31,6 @@ MapScenes::
 	scene_var HALL_OF_FAME,                                wHallOfFameSceneID
 	scene_var ROUTE_27,                                    wRoute27SceneID
 	scene_var ELMS_LAB,                                    wElmsLabSceneID
-	scene_var PLAYERS_HOUSE_2F,                            wPlayersHouse2FSceneID
-	scene_var PALLET_TOWN,                                 wPalletTownSceneID
-	scene_var ROUTE_1,                                     wRoute1SceneID
-	scene_var PALLET_LAKE,                                 wPalletLakeSceneID
 	scene_var CHERRYGROVE_CITY,                            wCherrygroveCitySceneID
 	scene_var MR_POKEMONS_HOUSE,                           wMrPokemonsHouseSceneID
 	scene_var ROUTE_32,                                    wRoute32SceneID
@@ -73,7 +74,6 @@ MapScenes::
 	scene_var TEAM_ROCKET_BASE_B2F,                        wTeamRocketBaseB2FSceneID
 	scene_var TEAM_ROCKET_BASE_B3F,                        wTeamRocketBaseB3FSceneID
 	scene_var GOLDENROD_UNDERGROUND_SWITCH_ROOM_ENTRANCES, wGoldenrodUndergroundSwitchRoomEntrancesSceneID
-	scene_var SILVER_CAVE_ROOM_3,                          wSilverCaveRoom3SceneID ; unused
 	scene_var VICTORY_ROAD,                                wVictoryRoadSceneID
 	scene_var DRAGONS_DEN_B1F,                             wDragonsDenB1FSceneID
 	scene_var DRAGON_SHRINE,                               wDragonShrineSceneID

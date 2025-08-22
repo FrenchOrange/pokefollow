@@ -672,6 +672,11 @@ BluesHouseSignText:
 	done
 
 PalletTownDodrioScript:
+	checkflag ENGINE_POKEDEX
+	iffalse .SkipDodrioCheckOutside
+	setval DODRIO
+	special UnusedSetSeenMon
+.SkipDodrioCheckOutside
 	opentext
 	checktime MORN
 	iftrue .morn

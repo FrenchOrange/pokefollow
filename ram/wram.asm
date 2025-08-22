@@ -3024,7 +3024,12 @@ wFarfetchdPosition:: db
 wPokecenter2FSceneID::                            db
 wTradeCenterSceneID::                             db
 wColosseumSceneID::                               db
+wPlayersHouse2FSceneID::                          db
+wPalletTownSceneID::                              db
+wRoute1SceneID::                                  db
+wPalletLakeSceneID::                              db
 wViridianCitySceneID::                            db
+wViridianPokecenter1FSceneID::                    db
 wPowerPlantSceneID::                              db
 wCeruleanGymSceneID::                             db
 wRoute25SceneID::                                 db
@@ -3042,10 +3047,6 @@ wLancesRoomSceneID::                              db
 wHallOfFameSceneID::                              db
 wRoute27SceneID::                                 db
 wElmsLabSceneID::                                 db
-wPlayersHouse2FSceneID::                          db
-wPalletTownSceneID::                              db
-wRoute1SceneID::                                  db
-wPalletLakeSceneID::                              db
 wCherrygroveCitySceneID::                         db
 wMrPokemonsHouseSceneID::                         db
 wRoute32SceneID::                                 db
@@ -3089,7 +3090,6 @@ wTeamRocketBaseB1FSceneID::                       db
 wTeamRocketBaseB2FSceneID::                       db
 wTeamRocketBaseB3FSceneID::                       db
 wGoldenrodUndergroundSwitchRoomEntrancesSceneID:: db
-wSilverCaveRoom3SceneID::                         db
 wVictoryRoadSceneID::                             db
 wDragonsDenB1FSceneID::                           db
 wDragonShrineSceneID::                            db

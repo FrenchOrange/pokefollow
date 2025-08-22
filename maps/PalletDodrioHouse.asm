@@ -23,6 +23,11 @@ PalletDodrioHouseSalesmanText:
 	done
 
 PalletDodrioHouseAsleepScript:
+	checkflag ENGINE_POKEDEX
+	iffalse .SkipDodrioCheckInside
+	setval DODRIO
+	special UnusedSetSeenMon
+.SkipDodrioCheckInside
 	opentext
 	writetext PalletDodrioHouseAsleepText
 	waitbutton

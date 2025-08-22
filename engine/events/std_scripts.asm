@@ -162,6 +162,7 @@ PokecenterNurseScript:
 	promptbutton
 	closetext
 	setevent EVENT_MET_TEAM_ROCKET_VIRIDIAN
+	setmapscene VIRIDIAN_POKECENTER_1F, SCENE_VIRIDIAN_POKECENTER_TEAM_ROCKET
 	end
 
 .pokerus
