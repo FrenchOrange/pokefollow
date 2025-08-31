@@ -103,6 +103,7 @@ PalletLakeMisty:
 	stopfollow
 	setevent EVENT_MET_MISTY_PALLET_LAKE
 	clearevent EVENT_MISTY_BIKE_BORROWED
+	setmapscene ROUTE_1, SCENE_ROUTE1_HOOH_APPEARS
 	end
 
 PalletLakeHideObjectMovement:

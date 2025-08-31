@@ -1,10 +1,10 @@
 	object_const_def
 	const ROUTE1_FRUIT_TREE
 	const ROUTE1_GYARADOS
+	const ROUTE1_PIDGEY
 	const ROUTE1_SPEAROW1
 	const ROUTE1_SPEAROW2
-	const ROUTE1_SPEAROW3
-	const ROUTE1_SPEAROW4
+	const ROUTE1_FOLLOWER
 	const ROUTE1_HO_OH
 
 Route1_MapScripts:
@@ -35,20 +35,124 @@ Route1_SpearowCutscene:
 	playsound SFX_GRASS_RUSTLE
 	waitsfx
 	pause 15
-	end
-
-
-
-
-TEMP:
-	; early on follower runs up a tree and player has to talk to them to continue (wildoff?)
-	; init: follower runs into tree?
-
-	; pan to see waterfall
-	; turn down to see Spearow closing in
+	applymovement FOLLOWER, Route1FollowerRun2
+	silentstowfollower
+	appear ROUTE1_FOLLOWER
+	pause 15
+	applymovement PLAYER, PlayerWalksUpMovement
+	readvar VAR_XCOORD
+	ifequal 20, .PlayerOnRoute1Coord20
+	ifequal 21, .PlayerOnRoute1Coord21
+	ifequal 22, .PlayerOnRoute1Coord22
+	ifequal 23, .PlayerOnRoute1Coord23
+	ifequal 25, .PlayerOnRoute1Coord25
+.SpearowSceneCont
+	pause 15
+	appear ROUTE1_PIDGEY
+	applymovement ROUTE1_PIDGEY, PidgeyWalksRight
+	pause 5
+	turnobject ROUTE1_PIDGEY, LEFT
+	pause 5
+	turnobject ROUTE1_PIDGEY, UP
+	pause 5
+	turnobject ROUTE1_PIDGEY, RIGHT
+	pause 15
+	turnobject PLAYER, UP
+	showemote EMOTE_SHOCK, PLAYER, 15
+	pause 15
+	showemote EMOTE_SAD, ROUTE1_FOLLOWER, 15
+	applymovement ROUTE1_FOLLOWER, FollowerJumpsOffTree
+	playsound SFX_JUMP_OVER_LEDGE
+	waitsfx
+	pause 15
+	cry PIDGEY
+	follow ROUTE1_FOLLOWER, PLAYER
+	applymovement ROUTE1_PIDGEY, PidgeyWalksSpot1
+	pause 5
+	applymovement ROUTE1_FOLLOWER, FollowerWalksSpot1
+	turnobject ROUTE1_PIDGEY, RIGHT
+	waitsfx
+	cry PIDGEY
+	applymovement ROUTE1_PIDGEY, PidgeyWalksSpot2
+	pause 5
+	applymovement ROUTE1_FOLLOWER, FollowerWalksSpot2
+	waitsfx
+	cry PIDGEY
+	stopfollow
+	applymovement ROUTE1_PIDGEY, PidgeyWalksSpot3
+	pause 5
+	applymovement ROUTE1_FOLLOWER, FollowerWalksSpot3
+	playsound SFX_TACKLE
+	waitsfx
+	pause 5
+	applymovement ROUTE1_PIDGEY, PidgeyWalksAway
+	disappear ROUTE1_PIDGEY
+	pause 15
+	appear ROUTE1_SPEAROW1
+	pause 15
+	waitsfx
+	cry SPEAROW
+	pause 5
+	applymovement ROUTE1_SPEAROW1, SpearowFliesDown1
+	turnobject ROUTE1_FOLLOWER, LEFT
+	loadvar VAR_BATTLETYPE, BATTLETYPE_CANLOSE
+	loadwildmon SPEAROW, 21
+	startbattle
+	dontrestartmapmusic
+	reloadmap
+	playmusic MUSIC_KANTO_WILD_BATTLE
+	applymovement ROUTE1_SPEAROW1, Spearow1Tackle
+	playsound SFX_TACKLE
+	waitsfx
+	turnobject ROUTE1_FOLLOWER, RIGHT
+	applymovement ROUTE1_SPEAROW1, Spearow1Tackle
+	playsound SFX_TACKLE
+	waitsfx
+	turnobject ROUTE1_FOLLOWER, UP
+	pause 5
+	showemote EMOTE_SHOCK, PLAYER, 15
+	applymovement PLAYER, PlayerShieldsPikachu
+	disappear ROUTE1_FOLLOWER
+	pause 5
+	waitsfx
+	cry SPEAROW
+	appear ROUTE1_SPEAROW2
+	applymovement ROUTE1_SPEAROW2, SpearowFliesDown2
+	pause 5
+	applymovement ROUTE1_SPEAROW1, Spearow1Tackle
+	playsound SFX_TACKLE
+	waitsfx
+	turnobject PLAYER, LEFT
+	applymovement ROUTE1_SPEAROW2, Spearow2Tackle
+	playsound SFX_TACKLE
+	waitsfx
+	turnobject PLAYER, RIGHT
+	applymovement ROUTE1_SPEAROW1, Spearow1Tackle
+	playsound SFX_TACKLE
+	waitsfx
+	turnobject PLAYER, LEFT
+	applymovement ROUTE1_SPEAROW2, Spearow2Tackle
+	playsound SFX_TACKLE
+	waitsfx
+	turnobject PLAYER, RIGHT
+	follow PLAYER, ROUTE1_SPEAROW1
+	applymovement PLAYER, PlayerRunsThroughWoods1
+	stopfollow
+	applymovement PLAYER, PlayerRunsThroughWoods2
+	showemote EMOTE_SHOCK, PLAYER, 15
+; pan to see waterfall
+	pause 15
+	waitsfx
+	cry SPEAROW
+	waitsfx
+	cry SPEAROW
+	turnobject PLAYER, DOWN
+	showemote EMOTE_SHOCK, PLAYER, 15
+	turnobject PLAYER, UP
+	pause 15
 
 	changeblock 24, 14, $ab ; bridge
-	stowfollower
+	silentstowfollower
 	applymovement FOLLOWER, Route1HideObjectMovement
 	applymovement PLAYER, PlayerJumpsInRiverMovement
 	applymovement PLAYER, Route1HideObjectMovement
@@ -80,6 +184,23 @@ TEMP:
 	warp PALLET_LAKE, 8, 18
 	end
 
+
+.PlayerOnRoute1Coord20:
+	applymovement PLAYER, PlayerInRiverMovement2
+.PlayerOnRoute1Coord21:
+	applymovement PLAYER, PlayerInRiverMovement2
+.PlayerOnRoute1Coord22:
+	applymovement PLAYER, PlayerWalksUpToTreeMovement
+	applymovement PLAYER, PlayerInRiverMovement2
+	sjump .SpearowSceneCont
+
+.PlayerOnRoute1Coord25:
+	applymovement PLAYER, PlayerWalksLeftTwiceMovement
+.PlayerOnRoute1Coord23:
+	applymovement PLAYER, PlayerWalksUpToTreeMovement
+	sjump .SpearowSceneCont
+
+
 Route1FollowerRun1:
 	big_step UP
 	big_step UP
@@ -100,6 +221,167 @@ Route1PlayerSpin:
 	turn_head DOWN
 	turn_head LEFT
 	turn_head UP
+	step_end
+
+PlayerWalksUpToTreeMovement:
+	step UP
+	step UP
+	step UP
+	step UP
+	step UP
+	step UP
+	step UP
+	turn_head RIGHT
+	step_end
+
+PidgeyWalksRight:
+	step RIGHT
+	step RIGHT
+	step RIGHT
+	step RIGHT
+	step RIGHT
+	step_end
+
+FollowerJumpsOffTree:
+	jump_step LEFT
+	turn_head UP
+	step_end
+
+PidgeyWalksSpot1:
+	step UP
+	step UP
+	step LEFT
+	step LEFT
+	step LEFT
+	step LEFT
+	turn_head DOWN
+	step_end
+
+FollowerWalksSpot1:
+	step UP
+	step UP
+	step UP
+	step LEFT
+	step LEFT
+	step LEFT
+	step_end
+
+PidgeyWalksSpot2:
+	step LEFT
+	step LEFT
+	step UP
+	step UP
+	step UP
+	step UP
+	turn_head DOWN
+	step_end
+
+FollowerWalksSpot2:
+	step LEFT
+	step LEFT
+	step LEFT
+PidgeyWalksAway:
+	step UP
+	step UP
+	step UP
+	step_end
+
+PidgeyWalksSpot3:
+	big_step RIGHT
+	big_step RIGHT
+	big_step RIGHT
+	big_step UP
+	turn_head DOWN
+	step_end
+
+FollowerWalksSpot3:
+	big_step RIGHT
+	big_step RIGHT
+	big_step UP
+	big_step UP
+	fix_facing
+	jump_step DOWN
+	remove_fixed_facing
+	step_end
+
+SpearowFliesDown1:
+	step DOWN
+	step DOWN
+	step DOWN
+	turn_head RIGHT
+	step_end
+
+SpearowFliesDown2:
+	step DOWN
+	step RIGHT
+	step DOWN
+	step DOWN
+	turn_head LEFT
+	step_end 
+
+Spearow1Tackle:
+	fix_facing
+	big_step RIGHT
+	big_step LEFT
+	remove_fixed_facing
+	step_end
+
+Spearow2Tackle:
+	fix_facing
+	big_step LEFT
+	big_step RIGHT
+	remove_fixed_facing
+	step_end
+
+PlayerShieldsPikachu:
+	big_step RIGHT
+	big_step RIGHT
+	big_step UP
+	step_end
+
+PlayerRunsThroughWoods1:
+	big_step DOWN
+	big_step LEFT
+	big_step LEFT
+	big_step LEFT
+	big_step DOWN
+	big_step DOWN
+	big_step DOWN
+	big_step LEFT
+	big_step LEFT
+	big_step LEFT
+	big_step LEFT
+	big_step LEFT
+	big_step LEFT
+	big_step LEFT
+	big_step LEFT
+	big_step LEFT
+	big_step LEFT
+	big_step UP
+	big_step UP
+	big_step LEFT
+	big_step LEFT
+	big_step UP
+	big_step UP
+	big_step UP
+	step_end
+
+PlayerRunsThroughWoods2:
+	big_step UP
+	big_step RIGHT
+	big_step UP
+	big_step UP
+	big_step UP
+	big_step UP
+	big_step UP
+	big_step UP
+	big_step UP
+	big_step UP
+	big_step RIGHT
+	big_step UP
+	big_step UP
+	big_step UP
+	big_step UP 
 	step_end
 
 Route1HideObjectMovement:
@@ -136,6 +418,11 @@ PlayerWalksUpMovement:
 	step UP
 	step_end
 
+PlayerWalksLeftTwiceMovement:
+	step LEFT
+	step LEFT
+	step_end
+
 PlayerInRiverMovement2:
 	step RIGHT
 	step_end
@@ -167,7 +454,6 @@ PlayerFallsOffWaterfallMovement:
 	step_end
 
 Route1_HoOhCutscene:
-	applymovement PLAYER, PlayerWalksUpMovement
 	checkevent EVENT_MET_HOOH_ROUTE_1
 	iftrue HurryToViridianScene
 	appear ROUTE1_HO_OH
@@ -181,6 +467,7 @@ Route1_HoOhCutscene:
 	end
 
 HurryToViridianScene:
+	applymovement PLAYER, PlayerWalksUpMovement
 	opentext
 	writetext Route1PlayerWalkBackText
 	waitbutton
@@ -230,8 +517,8 @@ Route1_MapEvents:
 	coord_event 23, 47, SCENE_ROUTE1_SPEAROW_FLOCK, Route1_SpearowCutscene
 	coord_event 25, 47, SCENE_ROUTE1_SPEAROW_FLOCK, Route1_SpearowCutscene
 
-	coord_event 29, 28, SCENE_ROUTE1_SPEAROW_FLOCK, Route1_SpearowCutscene
-	coord_event 29, 29, SCENE_ROUTE1_SPEAROW_FLOCK, Route1_SpearowCutscene
+	coord_event 29, 28, SCENE_ROUTE1_HOOH_APPEARS, Route1_HoOhCutscene
+	coord_event 29, 29, SCENE_ROUTE1_HOOH_APPEARS, Route1_HoOhCutscene
 	coord_event 24, 11, SCENE_ROUTE1_HOOH_APPEARS, Route1_HoOhCutscene
 	coord_event 25, 11, SCENE_ROUTE1_HOOH_APPEARS, Route1_HoOhCutscene
 
@@ -241,8 +528,8 @@ Route1_MapEvents:
 	def_object_events
 	object_event  7, 28, SPRITE_FRUIT_TREE, SPRITEMOVEDATA_STILL, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, Route1FruitTree, -1
 	object_event 19, 14, SPRITE_SURF_GYARADOS, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_INVISIBLE_NPC
-	object_event 19, 30, SPRITE_SPEAROW, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_INVISIBLE_NPC
-	object_event 18, 30, SPRITE_SPEAROW, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_INVISIBLE_NPC
-	object_event 19, 29, SPRITE_SPEAROW, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_INVISIBLE_NPC
+	object_event 18, 37, SPRITE_PIDGEY, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_ROUTE_1_PIDGEY
 	object_event 18, 29, SPRITE_SPEAROW, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_INVISIBLE_NPC
+	object_event 19, 29, SPRITE_SPEAROW, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_INVISIBLE_NPC
+	object_event 25, 38, SPRITE_FOLLOWER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_INVISIBLE_NPC
 	object_event 32,  7, SPRITE_HO_OH, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_INVISIBLE_NPC

@@ -536,6 +536,7 @@ InitializeEventsScript:
 	setevent EVENT_INVISIBLE_NPC
 	setevent EVENT_PLAYER_CROWD
 	setevent EVENT_MOM_AND_OAK_INVISIBLE
+	setevent EVENT_ROUTE_1_PIDGEY
 	setevent EVENT_MISTY_BIKE_BORROWED
 ; vanilla
 	setevent EVENT_EARLS_ACADEMY_EARL
