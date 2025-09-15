@@ -87,6 +87,7 @@ MeetMisty:
 	disappear PALLETLAKE_BIKE
 	loadvar VAR_MOVEMENT, PLAYER_BIKE
 	special UpdatePlayerSprite
+;	stowfollower
 
 	turnobject PALLETLAKE_MISTY_SCENE, LEFT
 	appear PALLETLAKE_MISTY_NORMAL

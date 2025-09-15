@@ -5,6 +5,10 @@
 	const ROUTE1_SPEAROW1
 	const ROUTE1_SPEAROW2
 	const ROUTE1_FOLLOWER
+	const ROUTE1_SPEAROW3
+	const ROUTE1_SPEAROW4
+	const ROUTE1_SPEAROW5
+	const ROUTE1_SPEAROW6
 	const ROUTE1_HO_OH
 
 Route1_MapScripts:
@@ -140,7 +144,6 @@ Route1_SpearowCutscene:
 	stopfollow
 	applymovement PLAYER, PlayerRunsThroughWoods2
 	showemote EMOTE_SHOCK, PLAYER, 15
-; pan to see waterfall
 	pause 15
 	waitsfx
 	cry SPEAROW
@@ -315,6 +318,7 @@ SpearowFliesDown2:
 	step DOWN
 	step RIGHT
 	step DOWN
+HoOhPlayerStepDown:
 	step DOWN
 	turn_head LEFT
 	step_end 
@@ -453,9 +457,66 @@ PlayerFallsOffWaterfallMovement:
 	slide_step DOWN
 	step_end
 
-Route1_HoOhCutscene:
+Route1_HoOhCutscene1:
+	follow PLAYER, FOLLOWER
+	applymovement PLAYER, HoOhPlayerStepDown	
+Route1_HoOhCutscene2:
 	checkevent EVENT_MET_HOOH_ROUTE_1
 	iftrue HurryToViridianScene
+	follow PLAYER, FOLLOWER
+	applymovement PLAYER, HoOhPlayerMovesDown
+	moveobject ROUTE1_SPEAROW1, 21, 35
+	moveobject ROUTE1_SPEAROW2, 23, 35
+	appear ROUTE1_SPEAROW1
+	appear ROUTE1_SPEAROW2
+	applymovement ROUTE1_SPEAROW1, PidgeyWalksAway
+	applymovement ROUTE1_SPEAROW2, PidgeyWalksAway
+	cry SPEAROW
+	pause 5
+	applymovement PLAYER, HoOhPlayerMovesUp
+	appear ROUTE1_SPEAROW3
+	appear ROUTE1_SPEAROW4
+	applymovement ROUTE1_SPEAROW3, SpearowFliesDown
+	applymovement ROUTE1_SPEAROW4, SpearowFliesDown
+	cry SPEAROW
+	pause 5
+	turnobject PLAYER, DOWN
+	appear ROUTE1_SPEAROW5
+	appear ROUTE1_SPEAROW6
+	applymovement ROUTE1_SPEAROW5, PidgeyWalksAway
+	applymovement ROUTE1_SPEAROW6, PidgeyWalksAway
+	cry SPEAROW
+	pause 15
+	followcry
+	special FadeOutMusic
+	special FadeOutToWhite
+	special FadeInFromWhite
+	special FadeOutToWhite
+	special LoadMapPalettes
+	waitsfx
+	playsound SFX_THUNDER
+	waitsfx
+	applymovement PLAYER, HoOhPlayerRunToBridge
+	applymovement PLAYER, HoOhPlayerRunToBridge
+	disappear ROUTE1_SPEAROW3
+	disappear ROUTE1_SPEAROW4
+	disappear ROUTE1_SPEAROW5
+	disappear ROUTE1_SPEAROW6
+	loadvar VAR_MOVEMENT, PLAYER_NORMAL
+	special UpdatePlayerSprite
+	pause 30
+	special FadeInFromWhite
+	pause 5
+	applymovement PLAYER, PlayerWalksUpMovement
+	pause 5
+	applymovement PLAYER, PlayerWalksUpMovement
+	pause 5
+	applymovement PLAYER, PlayerWalksUpMovement
+	pause 5
+	applymovement PLAYER, PlayerWalksUpMovement
+	stopfollow
+	applymovement FOLLOWER, PlayerInRiverMovement2
+	applymovement FOLLOWER, PlayerWalksUpMovement
 	appear ROUTE1_HO_OH
 	applymovement ROUTE1_HO_OH, HoOhFlyAcrossMovement
 	applymovement ROUTE1_HO_OH, HoOhFlyAcrossMovement
@@ -463,6 +524,12 @@ Route1_HoOhCutscene:
 	cry HO_OH
 	disappear ROUTE1_HO_OH
 	pause 15
+	turnobject PLAYER, RIGHT
+	turnobject FOLLOWER, LEFT
+	setval PIKACHU
+	special PlaySlowCry
+	pause 5
+	stowfollower
 	setevent EVENT_MET_HOOH_ROUTE_1
 	end
 
@@ -474,13 +541,49 @@ HurryToViridianScene:
 	closetext
 	end
 
+HoOhPlayerMovesDown:
+	step LEFT
+	step LEFT
+	step LEFT
+	step LEFT
+	step LEFT
+	step LEFT
+	step LEFT
+	step DOWN
+	step_end
+
+HoOhPlayerMovesUp:
+	step UP
+	step UP
+	step UP
+	step UP
+	step UP
+	step UP
+	step RIGHT
+	step RIGHT
+	step UP
+	step UP
+	step_end
+
+SpearowFliesDown:
+	step DOWN
+	step DOWN
+	step_end
+
+HoOhPlayerRunToBridge:
+	step UP
+	step UP
+	step UP
+	step UP 
+	step_end
+
 HoOhFlyAcrossMovement:
-	step RIGHT
-	step RIGHT
-	step RIGHT
-	step RIGHT
-	step RIGHT
-	step RIGHT
+	step LEFT
+	step LEFT
+	step LEFT
+	step LEFT
+	step LEFT
+	step LEFT
 	step_end
 
 Route1PlayerWalkBackText:
@@ -491,6 +594,7 @@ Route1PlayerWalkBackText:
 	para "There should be a"
 	line "#MON CENTER in"
 	cont "VIRIDIAN CITY."
+	done
 
 Route1FruitTree:
 	fruittree FRUITTREE_ROUTE_1
@@ -517,10 +621,10 @@ Route1_MapEvents:
 	coord_event 23, 47, SCENE_ROUTE1_SPEAROW_FLOCK, Route1_SpearowCutscene
 	coord_event 25, 47, SCENE_ROUTE1_SPEAROW_FLOCK, Route1_SpearowCutscene
 
-	coord_event 29, 28, SCENE_ROUTE1_HOOH_APPEARS, Route1_HoOhCutscene
-	coord_event 29, 29, SCENE_ROUTE1_HOOH_APPEARS, Route1_HoOhCutscene
-	coord_event 24, 11, SCENE_ROUTE1_HOOH_APPEARS, Route1_HoOhCutscene
-	coord_event 25, 11, SCENE_ROUTE1_HOOH_APPEARS, Route1_HoOhCutscene
+	coord_event 29, 28, SCENE_ROUTE1_HOOH_APPEARS, Route1_HoOhCutscene1
+	coord_event 29, 29, SCENE_ROUTE1_HOOH_APPEARS, Route1_HoOhCutscene2
+	coord_event 24, 11, SCENE_ROUTE1_HOOH_APPEARS, Route1_HoOhCutscene2
+	coord_event 25, 11, SCENE_ROUTE1_HOOH_APPEARS, Route1_HoOhCutscene2
 
 	def_bg_events
 	bg_event 23,  3, BGEVENT_READ, Route1Sign
@@ -532,4 +636,8 @@ Route1_MapEvents:
 	object_event 18, 29, SPRITE_SPEAROW, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_INVISIBLE_NPC
 	object_event 19, 29, SPRITE_SPEAROW, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_INVISIBLE_NPC
 	object_event 25, 38, SPRITE_FOLLOWER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_INVISIBLE_NPC
-	object_event 32,  7, SPRITE_HO_OH, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_INVISIBLE_NPC
+	object_event 26, 17, SPRITE_SPEAROW, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_INVISIBLE_NPC
+	object_event 23, 17, SPRITE_SPEAROW, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_INVISIBLE_NPC
+	object_event 23, 27, SPRITE_SPEAROW, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_INVISIBLE_NPC
+	object_event 26, 27, SPRITE_SPEAROW, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_BROWN, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_INVISIBLE_NPC
+	object_event 30,  7, SPRITE_HO_OH, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_INVISIBLE_NPC
