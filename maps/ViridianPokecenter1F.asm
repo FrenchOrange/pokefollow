@@ -104,17 +104,18 @@ ViridianStoneSlabText:
 	cont "saw on ROUTE 1."
 	done
 
-ViridianPokeCenterCutscene:
+ViridianPokeCenterCutscene: ; WIP
 	applymovement PLAYER, ViridianPokecenterPlayerMovesBackDown
 	applymovement FOLLOWER, ViridianPokecenterPlayerMovesBackDown
 	opentext
-	writetext ViridianStoneSlabText
+	writetext TempCutsceneText
 	waitbutton
 	closetext
 
 	setevent EVENT_MET_TEAM_ROCKET_VIRIDIAN
 	setscene SCENE_VIRIDIAN_POKECENTER_NOOP
 	setmapscene VIRIDIAN_CITY, SCENE_VIRIDIAN_CITY_GYM_GUARD
+	setmapscene ROUTE_1, SCENE_ROUTE1_NOOP
 	end
 
 ViridianPokecenterPlayerMovesBackDown:
@@ -123,6 +124,13 @@ ViridianPokecenterPlayerMovesBackDown:
 	big_step UP
 	remove_fixed_facing
 	step_end
+
+TempCutsceneText:
+	text "That's it folks!"
+
+	para "Nothing else to"
+	line "see for now."
+	done
 
 ViridianPokecenter1F_MapEvents:
 	db 0, 0 ; filler
